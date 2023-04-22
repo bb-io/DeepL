@@ -10,17 +10,17 @@ namespace Apps.DeepL
     [ActionList]
     public class Actions
     {
-        [Action]
-        public TextResult Translate(IEnumerable<AuthenticationCredentialsProvider> authenticationCredentialsProviders, [ActionParameter] TextTranslationRequest request)
+        [Action("Translate", Description = "Translate a string")]
+        public async Task<TextResult> Translate(IEnumerable<AuthenticationCredentialsProvider> authenticationCredentialsProviders, [ActionParameter] TextTranslationRequest request)
         {
-            var authenticationCredentialsProvider = GetAuthenticationCredentialsProvider(authenticationCredentialsProviders);
-            var translator = new Translator(authenticationCredentialsProvider.Value);
-            return Task.Run(async () => await translator.TranslateTextAsync(request.Text, request.SourceLanguage, request.TargetLanguage)).Result;
+            var translator = CreateTranslator(authenticationCredentialsProviders);
+            return await translator.TranslateTextAsync(request.Text, request.SourceLanguage, request.TargetLanguage);
         }
 
-        private AuthenticationCredentialsProvider GetAuthenticationCredentialsProvider(IEnumerable<AuthenticationCredentialsProvider> authenticationCredentialsProviders)
+        private static Translator CreateTranslator(IEnumerable<AuthenticationCredentialsProvider> authenticationCredentialsProviders)
         {
-            return authenticationCredentialsProviders.First(p => p.KeyName == "apiKey");
+            var apiKey = authenticationCredentialsProviders.First(p => p.KeyName == "apiKey");
+            return new Translator(apiKey.Value);
         }
     }
 }
