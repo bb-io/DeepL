@@ -31,7 +31,7 @@ namespace Apps.DeepL
         private static Translator CreateTranslator(IEnumerable<AuthenticationCredentialsProvider> authenticationCredentialsProviders)
         {
             var apiKey = authenticationCredentialsProviders.First(p => p.KeyName == "apiKey");
-            return new Translator(apiKey.Value);
+            return new Translator(apiKey.Value, new TranslatorOptions { Headers = new Dictionary<string, string?> { { "User-Agent", "Blackbird.io" } } });
         }
     }
 }
