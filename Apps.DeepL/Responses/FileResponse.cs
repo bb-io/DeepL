@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Apps.DeepL.Responses
 {
-    public class FileResult
+    public class FileResponse
     {
         public byte[] File { get; set; }
     }
