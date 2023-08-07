@@ -1,9 +1,6 @@
 ﻿using Blackbird.Applications.Sdk.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Apps.DeepL.DataSourceHandlers;
+using Blackbird.Applications.Sdk.Common.Dynamic;
 
 namespace Apps.DeepL.Requests
 {
@@ -13,9 +10,11 @@ namespace Apps.DeepL.Requests
         public string FileName { get; set; }
 
         [Display("Source language")]
+        [DataSource(typeof(LanguageDataHandler))]
         public string? SourceLanguage { get; set; }
 
         [Display("Target language")]
+        [DataSource(typeof(LanguageDataHandler))]
         public string TargetLanguage { get; set; }
 
         [Display("Formal")]
