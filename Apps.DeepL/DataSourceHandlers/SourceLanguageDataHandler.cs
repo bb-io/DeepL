@@ -5,9 +5,9 @@ using Blackbird.Applications.Sdk.Common.Invocation;
 
 namespace Apps.DeepL.DataSourceHandlers;
 
-public class LanguageDataHandler : BaseInvocable, IAsyncDataSourceHandler
+public class SourceLanguageDataHandler : BaseInvocable, IAsyncDataSourceHandler
 {
-    public LanguageDataHandler(InvocationContext invocationContext) : base(invocationContext)
+    public SourceLanguageDataHandler(InvocationContext invocationContext) : base(invocationContext)
     {
     }
 
