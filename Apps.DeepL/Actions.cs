@@ -32,9 +32,9 @@ namespace Apps.DeepL
             [ActionParameter] DocumentTranslationRequest request)
         {
             var translator = TranslatorFactory.GetTranslator(authenticationCredentialsProviders);
-            var stream = new MemoryStream(request.File);
+            var stream = new MemoryStream(request.File.Bytes);
             var outputStream = new MemoryStream();
-            await translator.TranslateDocumentAsync(stream, request.FileName, outputStream, request.SourceLanguage,
+            await translator.TranslateDocumentAsync(stream, request.File.Name, outputStream, request.SourceLanguage,
                 request.TargetLanguage, CreateDocumentTranslateOptions(request));
             return new FileResponse { File = outputStream.GetBuffer() };
         }
