@@ -9,11 +9,11 @@ namespace Apps.DeepL.Requests
         public string Text { get; set; }
 
         [Display("Source language")]
-        [DataSource(typeof(LanguageDataHandler))]
+        [DataSource(typeof(SourceLanguageDataHandler))]
         public string? SourceLanguage { get; set; }
 
         [Display("Target language")]
-        [DataSource(typeof(LanguageDataHandler))]
+        [DataSource(typeof(TargetLanguageDataHandler))]
         public string TargetLanguage { get; set; }
 
         [Display("Formal")]
