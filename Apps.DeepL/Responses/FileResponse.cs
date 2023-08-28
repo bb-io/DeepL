@@ -1,7 +1,9 @@
-﻿namespace Apps.DeepL.Responses
+﻿using File = Blackbird.Applications.Sdk.Common.Files.File;
+
+namespace Apps.DeepL.Responses
 {
     public class FileResponse
     {
-        public byte[] File { get; set; }
+        public File File { get; set; }
     }
 }

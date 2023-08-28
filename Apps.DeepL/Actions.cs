@@ -36,7 +36,15 @@ namespace Apps.DeepL
             var outputStream = new MemoryStream();
             await translator.TranslateDocumentAsync(stream, request.File.Name, outputStream, request.SourceLanguage,
                 request.TargetLanguage, CreateDocumentTranslateOptions(request));
-            return new FileResponse { File = outputStream.GetBuffer() };
+            
+            return new()
+            {
+                File = new(outputStream.GetBuffer())
+                {
+                    Name = request.File.Name,
+                    ContentType = request.File.ContentType
+                }
+            };
         }
 
         private TextTranslateOptions CreateTextTranslateOptions(TextTranslationRequest request)
