@@ -8,14 +8,14 @@ namespace Apps.DeepL.Connections
 
         public IEnumerable<ConnectionPropertyGroup> ConnectionPropertyGroups => new List<ConnectionPropertyGroup>()
         {
-            new ConnectionPropertyGroup
+            new()
             {
                 Name = "Developer API key",
                 AuthenticationType = ConnectionAuthenticationType.Undefined,
                 ConnectionUsage = ConnectionUsage.Actions,
                 ConnectionProperties = new List<ConnectionProperty>()
                 {
-                    new ConnectionProperty("apiKey") { DisplayName = "API key" }
+                    new("c") { DisplayName = "API key" }
                 }
             }
         };
