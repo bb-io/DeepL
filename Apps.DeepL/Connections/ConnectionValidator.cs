@@ -13,8 +13,7 @@ public class ConnectionValidator : IConnectionValidator
 
         try
         {
-            await translator.TranslateTextAsync("Connection test", "en",
-                "de", new());
+            await translator.TranslateTextAsync("Connection test", "EN", "DE");
             return new()
             {
                 IsValid = true

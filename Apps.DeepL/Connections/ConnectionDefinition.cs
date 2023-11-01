@@ -15,7 +15,7 @@ namespace Apps.DeepL.Connections
                 ConnectionUsage = ConnectionUsage.Actions,
                 ConnectionProperties = new List<ConnectionProperty>()
                 {
-                    new("c") { DisplayName = "API key" }
+                    new("c") { DisplayName = "API key", Sensitive = true }
                 }
             }
         };
