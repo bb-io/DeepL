@@ -14,6 +14,7 @@ public class ConnectionValidator : IConnectionValidator
         try
         {
             await translator.GetSourceLanguagesAsync(cancellationToken);
+
             return new()
             {
                 IsValid = true
