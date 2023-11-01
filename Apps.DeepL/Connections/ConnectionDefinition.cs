@@ -1,4 +1,5 @@
-﻿using Blackbird.Applications.Sdk.Common.Authentication;
+﻿using Apps.DeepL.Constants;
+using Blackbird.Applications.Sdk.Common.Authentication;
 using Blackbird.Applications.Sdk.Common.Connections;
 
 namespace Apps.DeepL.Connections
@@ -15,18 +16,17 @@ namespace Apps.DeepL.Connections
                 ConnectionUsage = ConnectionUsage.Actions,
                 ConnectionProperties = new List<ConnectionProperty>()
                 {
-                    new("c") { DisplayName = "API key" }
+                    new(CredsNames.ApiKey) { DisplayName = "API key", Sensitive = true }
                 }
             }
         };
 
         public IEnumerable<AuthenticationCredentialsProvider> CreateAuthorizationCredentialsProviders(Dictionary<string, string> values)
         {
-            var apiKey = values.First(v => v.Key == "apiKey");
             yield return new AuthenticationCredentialsProvider(
                 AuthenticationCredentialsRequestLocation.None,
-                apiKey.Key,
-                apiKey.Value
+                CredsNames.ApiKey,
+                values[CredsNames.ApiKey]
             );
         }
     }
