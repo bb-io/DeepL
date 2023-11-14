@@ -1,18 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <Product>DeepL</Product>
-    <Description>The NMT service</Description>
-    <Version>1.0.4</Version>
-    <AssemblyName>Apps.DeepL</AssemblyName>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Blackbird.Applications.Sdk.Common" Version="2.2.0-alpha4" />
-    <PackageReference Include="DeepL.net" Version="1.7.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource CopyToOutputDirectory="Always" Include="image\icon.png" />
-  </ItemGroup>
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Product>DeepL</Product>
+        <Description>The NMT service</Description>
+        <Version>1.0.5</Version>
+        <AssemblyName>Apps.DeepL</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Blackbird.Applications.Sdk.Common" Version="2.3.1" />
+        <PackageReference Include="DeepL.net" Version="1.7.1"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource CopyToOutputDirectory="Always" Include="image\icon.png"/>
+    </ItemGroup>
+    
 </Project>
