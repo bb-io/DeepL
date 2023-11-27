@@ -5,7 +5,7 @@ using Blackbird.Applications.Sdk.Common.Invocation;
 
 namespace Apps.DeepL.DataSourceHandlers;
 
-public class TargetLanguageDataHandler : BaseInvocable, IAsyncDataSourceHandler
+public class TargetLanguageDataHandler : DeepLInvocable, IAsyncDataSourceHandler
 {
     public TargetLanguageDataHandler(InvocationContext invocationContext) : base(invocationContext)
     {
@@ -15,9 +15,7 @@ public class TargetLanguageDataHandler : BaseInvocable, IAsyncDataSourceHandler
         DataSourceContext context,
         CancellationToken cancellationToken)
     {
-        var translator = TranslatorFactory.GetTranslator(InvocationContext.AuthenticationCredentialsProviders);
-
-        var languages = await translator.GetTargetLanguagesAsync(cancellationToken);
+        var languages = await Client.GetTargetLanguagesAsync(cancellationToken);
         return languages.Where(x =>
                 context.SearchString == null ||
                 x.Name.Contains(context.SearchString, StringComparison.OrdinalIgnoreCase))
