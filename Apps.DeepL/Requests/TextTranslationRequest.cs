@@ -21,6 +21,7 @@ public class TextTranslationRequest
     public bool? Formal { get; set; }
 
     [Display("Glossary", Description = "The ID of the glossary to be used for translation")]
+    [DataSource(typeof(GlossariesDataHandler))]
     public string? GlossaryId { get; set; }
 
     [Display("Tag handling",

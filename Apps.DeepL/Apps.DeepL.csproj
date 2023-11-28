@@ -6,17 +6,17 @@
         <Nullable>enable</Nullable>
         <Product>DeepL</Product>
         <Description>The NMT service</Description>
-        <Version>1.0.5</Version>
+        <Version>1.0.6</Version>
         <AssemblyName>Apps.DeepL</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Blackbird.Applications.Sdk.Common" Version="2.3.1" />
-        <PackageReference Include="DeepL.net" Version="1.7.1"/>
+        <PackageReference Include="DeepL.net" Version="1.8.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource CopyToOutputDirectory="Always" Include="image\icon.png"/>
+        <EmbeddedResource CopyToOutputDirectory="Always" Include="image\icon.png" />
     </ItemGroup>
     
 </Project>

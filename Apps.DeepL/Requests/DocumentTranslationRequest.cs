@@ -21,5 +21,6 @@ public class DocumentTranslationRequest
     public bool? Formal { get; set; }
 
     [Display("Glossary")]
+    [DataSource(typeof(GlossariesDataHandler))]
     public string? GlossaryId { get; set; }
 }
