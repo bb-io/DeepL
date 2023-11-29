@@ -23,4 +23,7 @@ public class DocumentTranslationRequest
     [Display("Glossary")]
     [DataSource(typeof(GlossariesDataHandler))]
     public string? GlossaryId { get; set; }
+
+    [Display("Translate file name")]
+    public bool? TranslateFileName { get; set; }
 }
