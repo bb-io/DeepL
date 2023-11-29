@@ -32,11 +32,25 @@ public class TranslationActions : DeepLInvocable
         await Client.TranslateDocumentAsync(stream, request.File.Name, outputStream, request.SourceLanguage,
             request.TargetLanguage, CreateDocumentTranslateOptions(request));
 
+        var newFileName = request.File.Name;
+
+        if (request.TranslateFileName.HasValue && request.TranslateFileName.Value) 
+        {
+            var translateResponse = await Translate(new TextTranslationRequest { 
+                Formal = request.Formal, 
+                GlossaryId = request.GlossaryId, 
+                SourceLanguage = request.SourceLanguage,
+                TargetLanguage = request.TargetLanguage,
+                Text = request.File.Name,
+            });
+            newFileName = translateResponse.TranslatedText;
+        }
+
         return new()
         {
             File = new(outputStream.GetBuffer())
             {
-                Name = request.File.Name,
+                Name = newFileName,
                 ContentType = request.File.ContentType
             }
         };
