@@ -46,5 +46,5 @@ public class TextTranslationRequest
     public List<string>? IgnoreTags { get; set; }
 
     [Display("Context")]
-    public string? Context { get; set }
+    public string? Context { get; set; }
 }
