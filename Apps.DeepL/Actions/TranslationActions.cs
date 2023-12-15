@@ -67,6 +67,7 @@ public class TranslationActions : DeepLInvocable
             GlossaryId = request.GlossaryId,
             TagHandling = request.TagHandling,
             OutlineDetection = request.OutlineDetection == null || (bool)request.OutlineDetection,
+            Context = request.Context,
         };
 
         if (request.NonSplittingTags != null)

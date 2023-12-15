@@ -44,4 +44,7 @@ public class TextTranslationRequest
 
     [Display("Ignore tags", Description = "Tags that should be ignored during translation")]
     public List<string>? IgnoreTags { get; set; }
+
+    [Display("Context")]
+    public string? Context { get; set }
 }
