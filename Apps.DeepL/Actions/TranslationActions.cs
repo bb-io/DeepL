@@ -3,6 +3,7 @@ using Apps.DeepL.Responses;
 using Blackbird.Applications.Sdk.Common;
 using Blackbird.Applications.Sdk.Common.Actions;
 using Blackbird.Applications.Sdk.Common.Invocation;
+using Blackbird.Applications.SDK.Extensions.FileManagement.Interfaces;
 using DeepL;
 
 namespace Apps.DeepL.Actions;
@@ -10,7 +11,13 @@ namespace Apps.DeepL.Actions;
 [ActionList]
 public class TranslationActions : DeepLInvocable
 {
-    public TranslationActions(InvocationContext invocationContext) : base(invocationContext) { }
+    private readonly IFileManagementClient _fileManagementClient;
+
+    public TranslationActions(InvocationContext invocationContext, IFileManagementClient fileManagementClient) : base(
+        invocationContext)
+    {
+        _fileManagementClient = fileManagementClient;
+    }
 
     [Action("Translate", Description = "Translate a text")]
     public async Task<TextResponse> Translate([ActionParameter] TextTranslationRequest request)
@@ -27,9 +34,10 @@ public class TranslationActions : DeepLInvocable
     [Action("Translate document", Description = "Translate a document")]
     public async Task<FileResponse> TranslateDocument([ActionParameter] DocumentTranslationRequest request)
     {
-        var stream = new MemoryStream(request.File.Bytes);
+        var file = await _fileManagementClient.DownloadAsync(request.File);
+
         var outputStream = new MemoryStream();
-        await Client.TranslateDocumentAsync(stream, request.File.Name, outputStream, request.SourceLanguage,
+        await Client.TranslateDocumentAsync(file, request.File.Name, outputStream, request.SourceLanguage,
             request.TargetLanguage, CreateDocumentTranslateOptions(request));
 
         var newFileName = request.File.Name;
@@ -46,13 +54,10 @@ public class TranslationActions : DeepLInvocable
             newFileName = translateResponse.TranslatedText;
         }
 
+        var uploadedFile = await _fileManagementClient.UploadAsync(outputStream, newFileName, request.File.ContentType);
         return new()
         {
-            File = new(outputStream.GetBuffer())
-            {
-                Name = newFileName,
-                ContentType = request.File.ContentType
-            }
+            File = uploadedFile
         };
     }
 

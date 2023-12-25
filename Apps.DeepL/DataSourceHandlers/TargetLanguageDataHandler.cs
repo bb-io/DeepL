@@ -1,6 +1,4 @@
-﻿using Apps.DeepL.Factories;
-using Blackbird.Applications.Sdk.Common;
-using Blackbird.Applications.Sdk.Common.Dynamic;
+﻿using Blackbird.Applications.Sdk.Common.Dynamic;
 using Blackbird.Applications.Sdk.Common.Invocation;
 
 namespace Apps.DeepL.DataSourceHandlers;

@@ -1,13 +1,13 @@
 ﻿using Blackbird.Applications.Sdk.Common;
 using Apps.DeepL.DataSourceHandlers;
 using Blackbird.Applications.Sdk.Common.Dynamic;
-using File = Blackbird.Applications.Sdk.Common.Files.File;
+using Blackbird.Applications.Sdk.Common.Files;
 
 namespace Apps.DeepL.Requests;
 
 public class DocumentTranslationRequest
 {
-    public File File { get; set; }
+    public FileReference File { get; set; }
 
     [Display("Source language")]
     [DataSource(typeof(SourceLanguageDataHandler))]
