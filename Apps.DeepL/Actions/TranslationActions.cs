@@ -54,7 +54,7 @@ public class TranslationActions : DeepLInvocable
             newFileName = translateResponse.TranslatedText;
         }
 
-        var uploadedFile = await _fileManagementClient.UploadAsync(outputStream, newFileName, request.File.ContentType);
+        var uploadedFile = await _fileManagementClient.UploadAsync(outputStream, request.File.ContentType, newFileName);
         return new()
         {
             File = uploadedFile
