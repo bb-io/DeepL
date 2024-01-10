@@ -42,11 +42,12 @@ public class TranslationActions : DeepLInvocable
 
         var newFileName = request.File.Name;
 
-        if (request.TranslateFileName.HasValue && request.TranslateFileName.Value) 
+        if (request.TranslateFileName.HasValue && request.TranslateFileName.Value)
         {
-            var translateResponse = await Translate(new TextTranslationRequest { 
-                Formal = request.Formal, 
-                GlossaryId = request.GlossaryId, 
+            var translateResponse = await Translate(new TextTranslationRequest
+            {
+                Formal = request.Formal,
+                GlossaryId = request.GlossaryId,
                 SourceLanguage = request.SourceLanguage,
                 TargetLanguage = request.TargetLanguage,
                 Text = request.File.Name,
@@ -54,7 +55,8 @@ public class TranslationActions : DeepLInvocable
             newFileName = translateResponse.TranslatedText;
         }
 
-        var uploadedFile = await _fileManagementClient.UploadAsync(outputStream, request.File.ContentType, newFileName);
+        var uploadedFile = await _fileManagementClient.UploadAsync(new MemoryStream(outputStream.GetBuffer()),
+            request.File.ContentType, newFileName);
         return new()
         {
             File = uploadedFile
@@ -68,7 +70,9 @@ public class TranslationActions : DeepLInvocable
             PreserveFormatting = request.PreserveFormatting == null || (bool)request.PreserveFormatting,
             Formality = request.Formal == null
                 ? Formality.Default
-                : (bool)request.Formal ? Formality.PreferMore : Formality.PreferLess,
+                : (bool)request.Formal
+                    ? Formality.PreferMore
+                    : Formality.PreferLess,
             GlossaryId = request.GlossaryId,
             TagHandling = request.TagHandling,
             OutlineDetection = request.OutlineDetection == null || (bool)request.OutlineDetection,
@@ -93,7 +97,9 @@ public class TranslationActions : DeepLInvocable
         {
             Formality = request.Formal == null
                 ? Formality.Default
-                : (bool)request.Formal ? Formality.PreferMore : Formality.PreferLess,
+                : (bool)request.Formal
+                    ? Formality.PreferMore
+                    : Formality.PreferLess,
             GlossaryId = request.GlossaryId,
         };
     }
