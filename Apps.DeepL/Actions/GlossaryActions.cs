@@ -17,7 +17,10 @@ namespace Apps.DeepL.Actions;
 public class GlossaryActions : DeepLInvocable
 {
     private readonly IFileManagementClient _fileManagementClient;
-    public GlossaryActions(InvocationContext invocationContext, IFileManagementClient fileManagementClient) : base(invocationContext) 
+
+    private readonly string missinGlossaryLanguageMessage = "Glossary file is missing terms for language: {0}";
+    
+        public GlossaryActions(InvocationContext invocationContext, IFileManagementClient fileManagementClient) : base(invocationContext) 
     {
         _fileManagementClient = fileManagementClient;
     }
@@ -61,16 +64,19 @@ public class GlossaryActions : DeepLInvocable
         var glosseryValues = new List<KeyValuePair<string, string>>();
         foreach(var entry in blackbirdGlossary.ConceptEntries)
         {
-            var langSection1 = entry.LanguageSections.ElementAt(0);
-            var langSection2 = entry.LanguageSections.ElementAt(1);
-            glosseryValues.Add(new(langSection1.Terms.First().Term, langSection2.Terms.First().Term));
+            var langSectionSource = entry.LanguageSections.FirstOrDefault(x => x.LanguageCode == request.SourceLanguageCode);
+            var langSectionTarget = entry.LanguageSections.FirstOrDefault(x => x.LanguageCode == request.TargetLanguageCode);
+            if(langSectionSource == null || langSectionTarget == null)
+            {
+                throw new ArgumentException(langSectionSource == null ? 
+                    String.Format(missinGlossaryLanguageMessage, request.SourceLanguageCode) :
+                    String.Format(missinGlossaryLanguageMessage, request.TargetLanguageCode));
+            }
+            glosseryValues.Add(new(langSectionSource.Terms.First().Term, langSectionTarget.Terms.First().Term));
         }
         var glossaryEntries = new GlossaryEntries(glosseryValues);
 
-        var sourceLanguage = blackbirdGlossary.ConceptEntries.First().LanguageSections.ElementAt(0).LanguageCode;
-        var targetLanguage = blackbirdGlossary.ConceptEntries.First().LanguageSections.ElementAt(1).LanguageCode;
-
-        var result = await Client.CreateGlossaryAsync(request.Name ?? blackbirdGlossary.Title, sourceLanguage, targetLanguage, glossaryEntries);
+        var result = await Client.CreateGlossaryAsync(request.Name ?? blackbirdGlossary.Title, request.SourceLanguageCode, request.TargetLanguageCode, glossaryEntries);
         await Client.WaitUntilGlossaryReadyAsync(result.GlossaryId);
         return new NewGlossaryResponse
         {
