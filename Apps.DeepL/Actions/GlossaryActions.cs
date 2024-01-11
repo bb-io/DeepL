@@ -1,4 +1,5 @@
 ﻿using Apps.DeepL.Requests;
+using Apps.DeepL.Responses;
 using Blackbird.Applications.Sdk.Common;
 using Blackbird.Applications.Sdk.Common.Actions;
 using Blackbird.Applications.Sdk.Common.Files;
@@ -6,6 +7,7 @@ using Blackbird.Applications.Sdk.Common.Invocation;
 using Blackbird.Applications.Sdk.Glossaries.Utils.Converters;
 using Blackbird.Applications.Sdk.Glossaries.Utils.Models.Dtos;
 using Blackbird.Applications.SDK.Extensions.FileManagement.Interfaces;
+using DeepL;
 using System.IO;
 using System.Net.Mime;
 
@@ -55,7 +57,7 @@ public class GlossaryActions : DeepLInvocable
     //}
 
     [Action("Export glossary", Description = "Export glossary")]
-    public async Task<FileReference> ExportGlossary([ActionParameter] GlossaryRequest request)
+    public async Task<ExportGlossaryResponse> ExportGlossary([ActionParameter] GlossaryRequest request)
     {
         var glossaryDetails = await Client.GetGlossaryAsync(request.GlossaryId);
         var glossaryEntries = await Client.GetGlossaryEntriesAsync(request.GlossaryId);
@@ -79,7 +81,29 @@ public class GlossaryActions : DeepLInvocable
             ++counter;
         }
         var blackbirdGlossary = new Glossary(conceptEntries);
+        blackbirdGlossary.Title = glossaryDetails.Name;
         using var stream = blackbirdGlossary.ConvertToTBX();
-        return await _fileManagementClient.UploadAsync(stream, MediaTypeNames.Application.Xml, $"{glossaryDetails.Name}.tbx");
+        return new ExportGlossaryResponse() { File = await _fileManagementClient.UploadAsync(stream, MediaTypeNames.Application.Xml, $"{glossaryDetails.Name}.tbx") };
+    }
+
+    [Action("Import glossary", Description = "Import glossary")]
+    public async Task ImportGlossary([ActionParameter] ImportGlossaryRequest request)
+    {
+        using var glossaryStream = await _fileManagementClient.DownloadAsync(request.File);
+        var blackbirdGlossary = await glossaryStream.ConvertFromTBX();
+
+        var glosseryValues = new List<KeyValuePair<string, string>>();
+        foreach(var entry in blackbirdGlossary.ConceptEntries)
+        {
+            var langSection1 = entry.LanguageSections.ElementAt(0);
+            var langSection2 = entry.LanguageSections.ElementAt(1);
+            glosseryValues.Add(new(langSection1.Terms.First().Term, langSection2.Terms.First().Term));
+        }
+        var glossaryEntries = new GlossaryEntries(glosseryValues);
+
+        var sourceLanguage = blackbirdGlossary.ConceptEntries.First().LanguageSections.ElementAt(0).LanguageCode;
+        var targetLanguage = blackbirdGlossary.ConceptEntries.First().LanguageSections.ElementAt(1).LanguageCode;
+
+        await Client.CreateGlossaryAsync(request.Name ?? blackbirdGlossary.Title, sourceLanguage, targetLanguage, glossaryEntries);
     }
 }
