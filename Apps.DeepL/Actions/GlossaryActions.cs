@@ -87,7 +87,7 @@ public class GlossaryActions : DeepLInvocable
     }
 
     [Action("Import glossary", Description = "Import glossary")]
-    public async Task ImportGlossary([ActionParameter] ImportGlossaryRequest request)
+    public async Task<NewGlossaryResponse> ImportGlossary([ActionParameter] ImportGlossaryRequest request)
     {
         using var glossaryStream = await _fileManagementClient.DownloadAsync(request.File);
         var blackbirdGlossary = await glossaryStream.ConvertFromTBX();
@@ -104,6 +104,15 @@ public class GlossaryActions : DeepLInvocable
         var sourceLanguage = blackbirdGlossary.ConceptEntries.First().LanguageSections.ElementAt(0).LanguageCode;
         var targetLanguage = blackbirdGlossary.ConceptEntries.First().LanguageSections.ElementAt(1).LanguageCode;
 
-        await Client.CreateGlossaryAsync(request.Name ?? blackbirdGlossary.Title, sourceLanguage, targetLanguage, glossaryEntries);
+        var result = await Client.CreateGlossaryAsync(request.Name ?? blackbirdGlossary.Title, sourceLanguage, targetLanguage, glossaryEntries);
+        await Client.WaitUntilGlossaryReadyAsync(result.GlossaryId);
+        return new NewGlossaryResponse
+        {
+            GossaryId = result.GlossaryId,
+            Name = result.Name,
+            SourceLanguageCode = result.SourceLanguageCode,
+            TargetLanguageCode = result.TargetLanguageCode,
+            EntryCount = result.EntryCount,
+        };
     }
 }
