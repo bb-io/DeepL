@@ -6,7 +6,7 @@
         <Nullable>enable</Nullable>
         <Product>DeepL</Product>
         <Description>The NMT service</Description>
-        <Version>1.0.14</Version>
+        <Version>1.0.15</Version>
         <AssemblyName>Apps.DeepL</AssemblyName>
     </PropertyGroup>
 
