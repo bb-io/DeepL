@@ -18,6 +18,7 @@ public class SourceLanguageDataHandler : DeepLInvocable, IAsyncDataSourceHandler
         return languages.Where(x =>
                 context.SearchString == null ||
                 x.Name.Contains(context.SearchString, StringComparison.OrdinalIgnoreCase))
+            .OrderBy(x => x.Name)
             .ToDictionary(x => x.Code, x => x.Name);
     }
 }
