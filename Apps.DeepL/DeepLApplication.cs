@@ -10,6 +10,8 @@ public class DeepLApplication : IApplication
         set { }
     }
 
+    public IPublicApplicationMetadata? PublicApplicationMetadata => throw new NotImplementedException();
+
     public T GetInstance<T>()
     {
         throw new NotImplementedException();

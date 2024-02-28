@@ -6,19 +6,20 @@
         <Nullable>enable</Nullable>
         <Product>DeepL</Product>
         <Description>The NMT service</Description>
-        <Version>1.0.16</Version>
+        <Version>1.0.17</Version>
         <AssemblyName>Apps.DeepL</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Blackbird.Applications.Sdk.Common" Version="2.3.2-alpha1" />
+        <PackageReference Include="Blackbird.Applications.Sdk.Common" Version="2.5.0-alpha1" />
         <PackageReference Include="Blackbird.Applications.SDK.Extensions.FileManagement" Version="1.0.1" />
         <PackageReference Include="Blackbird.Applications.Sdk.Glossaries.Utils" Version="1.0.0-alpha2" />
+        <PackageReference Include="Blackbird.Applications.Sdk.Utils" Version="1.0.25" />
         <PackageReference Include="DeepL.net" Version="1.8.0" />
     </ItemGroup>
 
     <ItemGroup>
         <EmbeddedResource CopyToOutputDirectory="Always" Include="image\icon.png" />
     </ItemGroup>
-    
+	
 </Project>
