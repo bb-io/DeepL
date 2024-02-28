@@ -19,11 +19,11 @@ namespace Apps.DeepL.Requests
         public string? Name { get; set; }
 
         [Display("Source language", Description = "DeepL glossary structure is key-value. Key is your source language.\nMake sure exported glossary has this language")]
-        [DataSource(typeof(SourceLanguageDataHandler))]
+        [DataSource(typeof(GlossaryLanguageDataHandler))]
         public string SourceLanguageCode { get; set; }
 
         [Display("Target language",  Description = "DeepL glossary structure is key-value. Value is your target language.\nMake sure exported glossary has this language")]
-        [DataSource(typeof(TargetLanguageDataHandler))]
+        [DataSource(typeof(GlossaryLanguageDataHandler))]
         public string TargetLanguageCode { get; set; }
     }
 }
