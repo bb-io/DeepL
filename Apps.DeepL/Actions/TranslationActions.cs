@@ -65,7 +65,14 @@ public class TranslationActions : DeepLInvocable
         memoryStream.Position = 0;
 
         var xliffDoc21 = xliffDocument != null ? XDocument.Load(memoryStream) : null;
-        var result = xliffDocument?.UpdateTranslationUnits(XliffDocument.FromXDocument(xliffDoc21).TranslationUnits);
+        XDocument? result = null;
+        if (xliffDoc21 != null)
+        {
+            var xliffDocument21 = XliffDocument.FromXDocument(xliffDoc21);
+            xliffDocument?.UpdateTranslationUnits(xliffDocument21.TranslationUnits);
+            xliffDocument?.UpdateSourceLanguage(xliffDocument21.SourceLanguage);
+            result = xliffDocument?.UpdateTargetLanguage(xliffDocument21.TargetLanguage);
+        }
 
         var outputFileStream = result?.ToStream() ?? memoryStream;
         var uploadedFile = await _fileManagementClient.UploadAsync(outputFileStream, request.File.ContentType, newFileName);
