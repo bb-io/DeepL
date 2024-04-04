@@ -38,8 +38,10 @@ public class TranslationActions : DeepLInvocable
     [Action("Translate document", Description = "Translate a document")]
     public async Task<FileResponse> TranslateDocument([ActionParameter] DocumentTranslationRequest request)
     {
-        var file = await GetFileAsync(request);
-        
+        var tuple = await GetFileAndXliffDocumentAsync(request);
+        var file = tuple.Item1;
+        var xliffDocument = tuple.Item2;
+
         var outputStream = new MemoryStream();
         await Client.TranslateDocumentAsync(file, request.File.Name, outputStream, request.SourceLanguage,
             request.TargetLanguage, CreateDocumentTranslateOptions(request));
@@ -59,12 +61,16 @@ public class TranslationActions : DeepLInvocable
             newFileName = translateResponse.TranslatedText;
         }
 
-        var uploadedFile = await _fileManagementClient.UploadAsync(new MemoryStream(outputStream.GetBuffer()),
-            request.File.ContentType, newFileName);
-        return new()
-        {
-            File = uploadedFile
-        };
+        var memoryStream = new MemoryStream(outputStream.GetBuffer());
+        memoryStream.Position = 0;
+
+        var xliffDoc21 = xliffDocument != null ? XDocument.Load(memoryStream) : null;
+        var result = xliffDocument?.UpdateTranslationUnits(XliffDocument.FromXDocument(xliffDoc21).TranslationUnits);
+
+        var outputFileStream = result?.ToStream() ?? memoryStream;
+        var uploadedFile = await _fileManagementClient.UploadAsync(outputFileStream, request.File.ContentType, newFileName);
+
+        return new FileResponse { File = uploadedFile };
     }
 
     private TextTranslateOptions CreateTextTranslateOptions(TextTranslationRequest request)
@@ -107,15 +113,15 @@ public class TranslationActions : DeepLInvocable
             GlossaryId = request.GlossaryId,
         };
     }
-    
-    private async Task<Stream> GetFileAsync(DocumentTranslationRequest request)
+
+    private async Task<(Stream, XliffDocument?)> GetFileAndXliffDocumentAsync(DocumentTranslationRequest request)
     {
         var fileStream = await _fileManagementClient.DownloadAsync(request.File);
-        
+
         var memoryStream = new MemoryStream();
         await fileStream.CopyToAsync(memoryStream);
         memoryStream.Position = 0;
-            
+
         if (request.File.Name.EndsWith(".xliff") || request.File.Name.EndsWith(".xlf"))
         {
             var xliffDoc = XDocument.Load(memoryStream);
@@ -123,17 +129,20 @@ public class TranslationActions : DeepLInvocable
             var version = xliffDoc.GetVersion();
             if (version == "1.2")
             {
-                XliffDocument xliffDocument = XliffDocument.FromXDocument(xliffDoc, new XliffConfig { RemoveWhitespaces = true, CopyAttributes = true});
+                XliffDocument xliffDocument = XliffDocument.FromXDocument(xliffDoc,
+                    new XliffConfig { RemoveWhitespaces = true, CopyAttributes = true });
                 xliffDoc = xliffDocument.ConvertToTwoPointOne();
+
+                return (xliffDoc.ToStream(), xliffDocument);
             }
             else if (version != "2.1")
             {
                 throw new InvalidOperationException($"Unsupported XLIFF version: {version}");
             }
 
-            return xliffDoc.ToStream();
+            return (xliffDoc.ToStream(), null);
         }
 
-        return memoryStream;
+        return (memoryStream, null);
     }
 }
