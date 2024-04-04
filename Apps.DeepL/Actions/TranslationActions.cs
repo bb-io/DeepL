@@ -1,9 +1,13 @@
-﻿using Apps.DeepL.Requests;
+﻿using System.Xml.Linq;
+using Apps.DeepL.Requests;
 using Apps.DeepL.Responses;
 using Blackbird.Applications.Sdk.Common;
 using Blackbird.Applications.Sdk.Common.Actions;
 using Blackbird.Applications.Sdk.Common.Invocation;
 using Blackbird.Applications.SDK.Extensions.FileManagement.Interfaces;
+using Blackbird.Xliff.Utils;
+using Blackbird.Xliff.Utils.Extensions;
+using Blackbird.Xliff.Utils.Models;
 using DeepL;
 
 namespace Apps.DeepL.Actions;
@@ -34,8 +38,8 @@ public class TranslationActions : DeepLInvocable
     [Action("Translate document", Description = "Translate a document")]
     public async Task<FileResponse> TranslateDocument([ActionParameter] DocumentTranslationRequest request)
     {
-        var file = await _fileManagementClient.DownloadAsync(request.File);
-
+        var file = await GetFileAsync(request);
+        
         var outputStream = new MemoryStream();
         await Client.TranslateDocumentAsync(file, request.File.Name, outputStream, request.SourceLanguage,
             request.TargetLanguage, CreateDocumentTranslateOptions(request));
@@ -102,5 +106,31 @@ public class TranslationActions : DeepLInvocable
                     : Formality.PreferLess,
             GlossaryId = request.GlossaryId,
         };
+    }
+    
+    private async Task<Stream> GetFileAsync(DocumentTranslationRequest request)
+    {
+        var file = await _fileManagementClient.DownloadAsync(request.File);
+            
+        if (request.File.Name.EndsWith(".xliff") || request.File.Name.EndsWith(".xlf"))
+        {
+            var xliffDoc = XDocument.Load(file);
+
+            var version = xliffDoc.GetVersion();
+            if (version == "1.2")
+            {
+                XliffDocument xliffDocument = XliffDocument.FromXDocument(xliffDoc, new XliffConfig { RemoveWhitespaces = true, CopyAttributes = true});
+                xliffDoc = xliffDocument.ConvertToTwoPointOne();
+            }
+            else if (version != "2.1")
+            {
+                throw new InvalidOperationException($"Unsupported XLIFF version: {version}");
+            }
+        
+            file = new MemoryStream();
+            xliffDoc.Save(file);
+        }
+
+        return file;
     }
 }
