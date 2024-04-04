@@ -110,11 +110,15 @@ public class TranslationActions : DeepLInvocable
     
     private async Task<Stream> GetFileAsync(DocumentTranslationRequest request)
     {
-        var file = await _fileManagementClient.DownloadAsync(request.File);
+        var fileStream = await _fileManagementClient.DownloadAsync(request.File);
+        
+        var memoryStream = new MemoryStream();
+        await fileStream.CopyToAsync(memoryStream);
+        memoryStream.Position = 0;
             
         if (request.File.Name.EndsWith(".xliff") || request.File.Name.EndsWith(".xlf"))
         {
-            var xliffDoc = XDocument.Load(file);
+            var xliffDoc = XDocument.Load(memoryStream);
 
             var version = xliffDoc.GetVersion();
             if (version == "1.2")
@@ -126,11 +130,10 @@ public class TranslationActions : DeepLInvocable
             {
                 throw new InvalidOperationException($"Unsupported XLIFF version: {version}");
             }
-        
-            file = new MemoryStream();
-            xliffDoc.Save(file);
+
+            return xliffDoc.ToStream();
         }
 
-        return file;
+        return memoryStream;
     }
 }
