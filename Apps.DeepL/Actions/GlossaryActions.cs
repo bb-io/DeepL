@@ -2,14 +2,17 @@
 using Apps.DeepL.Responses;
 using Blackbird.Applications.Sdk.Common;
 using Blackbird.Applications.Sdk.Common.Actions;
-using Blackbird.Applications.Sdk.Common.Files;
 using Blackbird.Applications.Sdk.Common.Invocation;
 using Blackbird.Applications.Sdk.Glossaries.Utils.Converters;
 using Blackbird.Applications.Sdk.Glossaries.Utils.Models.Dtos;
 using Blackbird.Applications.SDK.Extensions.FileManagement.Interfaces;
 using DeepL;
-using System.IO;
 using System.Net.Mime;
+using System.Text;
+using Apps.DeepL.Entities;
+using Apps.DeepL.Requests.Glossaries;
+using Apps.DeepL.Responses.Glossaries;
+using Blackbird.Applications.Sdk.Utils.Extensions.Files;
 
 namespace Apps.DeepL.Actions;
 
@@ -19,8 +22,9 @@ public class GlossaryActions : DeepLInvocable
     private readonly IFileManagementClient _fileManagementClient;
 
     private readonly string missinGlossaryLanguageMessage = "Glossary file is missing terms for language: {0}";
-    
-        public GlossaryActions(InvocationContext invocationContext, IFileManagementClient fileManagementClient) : base(invocationContext) 
+
+    public GlossaryActions(InvocationContext invocationContext, IFileManagementClient fileManagementClient) : base(
+        invocationContext)
     {
         _fileManagementClient = fileManagementClient;
     }
@@ -49,10 +53,15 @@ public class GlossaryActions : DeepLInvocable
             conceptEntries.Add(new GlossaryConceptEntry(counter.ToString(), languageSections));
             ++counter;
         }
+
         var blackbirdGlossary = new Glossary(conceptEntries);
         blackbirdGlossary.Title = glossaryDetails.Name;
         using var stream = blackbirdGlossary.ConvertToTBX();
-        return new ExportGlossaryResponse() { File = await _fileManagementClient.UploadAsync(stream, MediaTypeNames.Application.Xml, $"{glossaryDetails.Name}.tbx") };
+        return new ExportGlossaryResponse()
+        {
+            File = await _fileManagementClient.UploadAsync(stream, MediaTypeNames.Application.Xml,
+                $"{glossaryDetails.Name}.tbx")
+        };
     }
 
     [Action("Import glossary", Description = "Import glossary")]
@@ -62,21 +71,26 @@ public class GlossaryActions : DeepLInvocable
         var blackbirdGlossary = await glossaryStream.ConvertFromTBX();
 
         var glosseryValues = new List<KeyValuePair<string, string>>();
-        foreach(var entry in blackbirdGlossary.ConceptEntries)
+        foreach (var entry in blackbirdGlossary.ConceptEntries)
         {
-            var langSectionSource = entry.LanguageSections.FirstOrDefault(x => x.LanguageCode == request.SourceLanguageCode);
-            var langSectionTarget = entry.LanguageSections.FirstOrDefault(x => x.LanguageCode == request.TargetLanguageCode);
-            if(langSectionSource == null || langSectionTarget == null)
+            var langSectionSource =
+                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode == request.SourceLanguageCode);
+            var langSectionTarget =
+                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode == request.TargetLanguageCode);
+            if (langSectionSource == null || langSectionTarget == null)
             {
-                throw new ArgumentException(langSectionSource == null ? 
-                    String.Format(missinGlossaryLanguageMessage, request.SourceLanguageCode) :
-                    String.Format(missinGlossaryLanguageMessage, request.TargetLanguageCode));
+                throw new ArgumentException(langSectionSource == null
+                    ? String.Format(missinGlossaryLanguageMessage, request.SourceLanguageCode)
+                    : String.Format(missinGlossaryLanguageMessage, request.TargetLanguageCode));
             }
+
             glosseryValues.Add(new(langSectionSource.Terms.First().Term, langSectionTarget.Terms.First().Term));
         }
+
         var glossaryEntries = new GlossaryEntries(glosseryValues);
 
-        var result = await Client.CreateGlossaryAsync(request.Name ?? blackbirdGlossary.Title, request.SourceLanguageCode, request.TargetLanguageCode, glossaryEntries);
+        var result = await Client.CreateGlossaryAsync(request.Name ?? blackbirdGlossary.Title,
+            request.SourceLanguageCode, request.TargetLanguageCode, glossaryEntries);
         await Client.WaitUntilGlossaryReadyAsync(result.GlossaryId);
         return new NewGlossaryResponse
         {
@@ -85,6 +99,61 @@ public class GlossaryActions : DeepLInvocable
             SourceLanguageCode = result.SourceLanguageCode,
             TargetLanguageCode = result.TargetLanguageCode,
             EntryCount = result.EntryCount,
+        };
+    }
+
+    [Action("Create glossary", Description = "Create a new glossary")]
+    public async Task<GlossaryEntity> CreateGlossary([ActionParameter] CreateGlossaryRequest request)
+    {
+        var fileStream = await _fileManagementClient.DownloadAsync(request.File);
+
+        var glossary = request.File.ContentType is MediaTypeNames.Text.Csv
+            ? await Client.CreateGlossaryFromCsvAsync(request.Name, request.SourceLanguageCode, request.TargetLanguageCode,
+                fileStream)
+            : await Client.CreateGlossaryAsync(request.Name, request.SourceLanguageCode, request.TargetLanguageCode,
+                GlossaryEntries.FromTsv(Encoding.UTF8.GetString(await fileStream.GetByteData())));
+
+        return new(glossary);
+    }
+
+    [Action("List glossaries", Description = "List all glossaries")]
+    public async Task<ListGlossariesResponse> ListGlossaries()
+    {
+        var glossary = await Client.ListGlossariesAsync();
+        return new(glossary.Select(x => new GlossaryEntity(x)));
+    }
+
+    [Action("Get glossary", Description = "Get details of a specific glossary")]
+    public async Task<GlossaryEntity> GetGlossary([ActionParameter] GlossaryRequest input)
+    {
+        var glossary = await Client.GetGlossaryAsync(input.GlossaryId);
+        return new(glossary);
+    }
+
+    [Action("List glossary language pairs", Description = "List supported glossary language pairs")]
+    public async Task<ListLanguagePairsResponse> ListGlossaryLanguagePairs()
+    {
+        var glossary = await Client.GetGlossaryLanguagesAsync();
+        return new()
+        {
+            LanguagePairs = glossary.Select(x => new LanguagePairEntity()
+            {
+                SourceLanguage = x.SourceLanguageCode,
+                TargetLanguage = x.TargetLanguageCode
+            })
+        };
+    }
+
+    [Action("Get glossary entries", Description = "Get glossary entries in a TSV format")]
+    public async Task<FileResponse> GetGlossaryEntries([ActionParameter] GlossaryRequest input)
+    {
+        var entries = await Client.GetGlossaryEntriesAsync(input.GlossaryId);
+        var tsvContent = Encoding.UTF8.GetBytes(entries.ToTsv());
+
+        return new()
+        {
+            File = await _fileManagementClient.UploadAsync(new MemoryStream(tsvContent), "text/tab-separated-values",
+                $"{input.GlossaryId}.tsv")
         };
     }
 }
