@@ -84,7 +84,9 @@ public class GlossaryActions : DeepLInvocable
                     : String.Format(missinGlossaryLanguageMessage, request.TargetLanguageCode));
             }
 
-            glosseryValues.Add(new(langSectionSource.Terms.First().Term, langSectionTarget.Terms.First().Term));
+            var cleanTermSource = CleanText(langSectionSource.Terms.First().Term);
+            var cleanTermTarget = CleanText(langSectionTarget.Terms.First().Term);
+            glosseryValues.Add(new KeyValuePair<string, string>(cleanTermSource, cleanTermTarget));
         }
 
         var glossaryEntries = new GlossaryEntries(glosseryValues);
@@ -155,5 +157,10 @@ public class GlossaryActions : DeepLInvocable
             File = await _fileManagementClient.UploadAsync(new MemoryStream(tsvContent), "text/tab-separated-values",
                 $"{input.GlossaryId}.tsv")
         };
+    }
+    
+    private string CleanText(string input)
+    {
+        return input.Replace("\r", "");
     }
 }
