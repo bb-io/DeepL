@@ -1,9 +1,13 @@
-﻿using Apps.DeepL.Requests;
+﻿using System.Xml.Linq;
+using Apps.DeepL.Requests;
 using Apps.DeepL.Responses;
 using Blackbird.Applications.Sdk.Common;
 using Blackbird.Applications.Sdk.Common.Actions;
 using Blackbird.Applications.Sdk.Common.Invocation;
 using Blackbird.Applications.SDK.Extensions.FileManagement.Interfaces;
+using Blackbird.Xliff.Utils;
+using Blackbird.Xliff.Utils.Extensions;
+using Blackbird.Xliff.Utils.Models;
 using DeepL;
 
 namespace Apps.DeepL.Actions;
@@ -34,7 +38,9 @@ public class TranslationActions : DeepLInvocable
     [Action("Translate document", Description = "Translate a document")]
     public async Task<FileResponse> TranslateDocument([ActionParameter] DocumentTranslationRequest request)
     {
-        var file = await _fileManagementClient.DownloadAsync(request.File);
+        var tuple = await GetFileAndXliffDocumentAsync(request);
+        var file = tuple.Item1;
+        var xliffDocument = tuple.Item2;
 
         var outputStream = new MemoryStream();
         await Client.TranslateDocumentAsync(file, request.File.Name, outputStream, request.SourceLanguage,
@@ -55,12 +61,23 @@ public class TranslationActions : DeepLInvocable
             newFileName = translateResponse.TranslatedText;
         }
 
-        var uploadedFile = await _fileManagementClient.UploadAsync(new MemoryStream(outputStream.GetBuffer()),
-            request.File.ContentType, newFileName);
-        return new()
+        var memoryStream = new MemoryStream(outputStream.GetBuffer());
+        memoryStream.Position = 0;
+
+        var xliffDoc21 = xliffDocument != null ? XDocument.Load(memoryStream) : null;
+        XDocument? result = null;
+        if (xliffDoc21 != null)
         {
-            File = uploadedFile
-        };
+            var xliffDocument21 = XliffDocument.FromXDocument(xliffDoc21);
+            xliffDocument?.UpdateTranslationUnits(xliffDocument21.TranslationUnits);
+            xliffDocument?.UpdateSourceLanguage(xliffDocument21.SourceLanguage);
+            result = xliffDocument?.UpdateTargetLanguage(xliffDocument21.TargetLanguage);
+        }
+
+        var outputFileStream = result?.ToStream() ?? memoryStream;
+        var uploadedFile = await _fileManagementClient.UploadAsync(outputFileStream, request.File.ContentType, newFileName);
+
+        return new FileResponse { File = uploadedFile };
     }
 
     private TextTranslateOptions CreateTextTranslateOptions(TextTranslationRequest request)
@@ -102,5 +119,37 @@ public class TranslationActions : DeepLInvocable
                     : Formality.PreferLess,
             GlossaryId = request.GlossaryId,
         };
+    }
+
+    private async Task<(Stream, XliffDocument?)> GetFileAndXliffDocumentAsync(DocumentTranslationRequest request)
+    {
+        var fileStream = await _fileManagementClient.DownloadAsync(request.File);
+
+        var memoryStream = new MemoryStream();
+        await fileStream.CopyToAsync(memoryStream);
+        memoryStream.Position = 0;
+
+        if (request.File.Name.EndsWith(".xliff") || request.File.Name.EndsWith(".xlf"))
+        {
+            var xliffDoc = XDocument.Load(memoryStream);
+
+            var version = xliffDoc.GetVersion();
+            if (version == "1.2")
+            {
+                XliffDocument xliffDocument = XliffDocument.FromXDocument(xliffDoc,
+                    new XliffConfig { RemoveWhitespaces = true, CopyAttributes = true });
+                xliffDoc = xliffDocument.ConvertToTwoPointOne();
+
+                return (xliffDoc.ToStream(), xliffDocument);
+            }
+            else if (version != "2.1")
+            {
+                throw new InvalidOperationException($"Unsupported XLIFF version: {version}");
+            }
+
+            return (xliffDoc.ToStream(), null);
+        }
+
+        return (memoryStream, null);
     }
 }

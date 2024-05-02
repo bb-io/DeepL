@@ -30,7 +30,7 @@ Before you can connect you need to make sure that:
 ### Translation 
 
 - **Translate** Translate text
-- **Translate document** Translate a document
+- **Translate document** Translate a document, including XLIFF files of 1.2 and 2.1 versions
 
 ### Glossaries 
 

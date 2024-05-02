@@ -1,16 +1,21 @@
 ﻿using Blackbird.Applications.Sdk.Common;
+using Blackbird.Applications.Sdk.Common.Metadata;
 
 namespace Apps.DeepL;
 
-public class DeepLApplication : IApplication
+public class DeepLApplication : IApplication, ICategoryProvider
 {
+    public IEnumerable<ApplicationCategory> Categories
+    {
+        get => [ApplicationCategory.MachineTranslationAndMtqe];
+        set { }
+    }
+    
     public string Name
     {
         get => "DeepL";
         set { }
     }
-
-    public IPublicApplicationMetadata? PublicApplicationMetadata => throw new NotImplementedException();
 
     public T GetInstance<T>()
     {
