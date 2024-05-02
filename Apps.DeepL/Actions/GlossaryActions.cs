@@ -161,6 +161,6 @@ public class GlossaryActions : DeepLInvocable
     
     private string CleanText(string input)
     {
-        return input.Replace("\r", "").Replace("\n", " ").Replace("\\u2028", "");
+        return input.Replace("\r", "").Replace("\n", " ").Replace("\u2028", "");
     }
 }
