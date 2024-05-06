@@ -17,11 +17,11 @@ Before you can connect you need to make sure that:
 
 ## Connecting
 
-1. Navigate to apps and search for DeepL. If you cannot find DeepL then click _Add App_ in the top right corner, select DeepL and add the app to your Blackbird environment.
+1. Navigate to Apps, and identify the DeepL app. You can use search to find it.
 2. Click _Add Connection_.
 3. Name your connection for future reference e.g. 'My DeepL connection'.
 4. Fill in the API key to your DeepL account.
-7. Click _Connect_.
+5. Click _Connect_.
 
 ![DeepLBlackbirdConnection](image/README/DeepLBlackbirdConnection.png)
 
