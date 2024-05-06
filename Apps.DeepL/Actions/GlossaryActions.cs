@@ -13,6 +13,8 @@ using Apps.DeepL.Entities;
 using Apps.DeepL.Requests.Glossaries;
 using Apps.DeepL.Responses.Glossaries;
 using Blackbird.Applications.Sdk.Utils.Extensions.Files;
+using DocumentFormat.OpenXml.Spreadsheet;
+using System.Collections.Generic;
 
 namespace Apps.DeepL.Actions;
 
@@ -68,40 +70,73 @@ public class GlossaryActions : DeepLInvocable
     public async Task<NewGlossaryResponse> ImportGlossary([ActionParameter] ImportGlossaryRequest request)
     {
         using var glossaryStream = await _fileManagementClient.DownloadAsync(request.File);
-        var blackbirdGlossary = await glossaryStream.ConvertFromTBX();
-
-        var glosseryValues = new List<KeyValuePair<string, string>>();
-        foreach (var entry in blackbirdGlossary.ConceptEntries)
+        var fileExtension = Path.GetExtension(request.File.Name);
+        switch (fileExtension) 
         {
-            var langSectionSource =
-                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode == request.SourceLanguageCode);
-            var langSectionTarget =
-                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode == request.TargetLanguageCode);
-            if (langSectionSource == null || langSectionTarget == null)
-            {
-                throw new ArgumentException(langSectionSource == null
-                    ? String.Format(missinGlossaryLanguageMessage, request.SourceLanguageCode)
-                    : String.Format(missinGlossaryLanguageMessage, request.TargetLanguageCode));
-            }
+            case ".tbx":
+                var blackbirdGlossary = await glossaryStream.ConvertFromTBX();
+                var glosseryValues = new List<KeyValuePair<string, string>>();
+                foreach (var entry in blackbirdGlossary.ConceptEntries)
+                {
+                    var langSectionSource =
+                        entry.LanguageSections.FirstOrDefault(x => x.LanguageCode == request.SourceLanguageCode);
+                    var langSectionTarget =
+                        entry.LanguageSections.FirstOrDefault(x => x.LanguageCode == request.TargetLanguageCode);
+                    if (langSectionSource == null || langSectionTarget == null)
+                    {
+                        throw new ArgumentException(langSectionSource == null
+                            ? String.Format(missinGlossaryLanguageMessage, request.SourceLanguageCode)
+                            : String.Format(missinGlossaryLanguageMessage, request.TargetLanguageCode));
+                    }
 
-            var cleanTermSource = CleanText(langSectionSource.Terms.First().Term);
-            var cleanTermTarget = CleanText(langSectionTarget.Terms.First().Term);
-            glosseryValues.Add(new KeyValuePair<string, string>(cleanTermSource, cleanTermTarget));
+                    var cleanTermSource = CleanText(langSectionSource.Terms.First().Term);
+                    var cleanTermTarget = CleanText(langSectionTarget.Terms.First().Term);
+                    glosseryValues.Add(new KeyValuePair<string, string>(cleanTermSource, cleanTermTarget));
+                }
+
+                var glossaryEntries = new GlossaryEntries(glosseryValues);
+
+                var result = await Client.CreateGlossaryAsync(request.Name ?? blackbirdGlossary.Title,
+                    request.SourceLanguageCode, request.TargetLanguageCode, glossaryEntries);
+                await Client.WaitUntilGlossaryReadyAsync(result.GlossaryId);
+                return new NewGlossaryResponse
+                {
+                    GossaryId = result.GlossaryId,
+                    Name = result.Name,
+                    SourceLanguageCode = result.SourceLanguageCode,
+                    TargetLanguageCode = result.TargetLanguageCode,
+                    EntryCount = result.EntryCount,
+                };
+            case ".csv":
+                List<string> lines = new List<string>();
+                using (StreamReader reader = new StreamReader(glossaryStream))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        lines.Add(reader.ReadLine());
+                    }
+                }
+                var entries = new List<KeyValuePair<string, string>>();
+                foreach (var line in lines)
+                {
+                    entries.Add(new KeyValuePair<string, string>(line.Split(',')[0], line.Split(',')[1]));
+                }
+                var csv_glossaryEntries = new GlossaryEntries(entries);
+                var csv_result = await Client.CreateGlossaryAsync(request.Name ?? request.File.Name,
+                   request.SourceLanguageCode, request.TargetLanguageCode, csv_glossaryEntries);
+                await Client.WaitUntilGlossaryReadyAsync(csv_result.GlossaryId);
+                return new NewGlossaryResponse
+                {
+                    GossaryId = csv_result.GlossaryId,
+                    Name = csv_result.Name,
+                    SourceLanguageCode = csv_result.SourceLanguageCode,
+                    TargetLanguageCode = csv_result.TargetLanguageCode,
+                    EntryCount = csv_result.EntryCount,
+                };
+            default:
+                throw new Exception($"Glossary format not supported ({fileExtension}).");
         }
-
-        var glossaryEntries = new GlossaryEntries(glosseryValues);
-
-        var result = await Client.CreateGlossaryAsync(request.Name ?? blackbirdGlossary.Title,
-            request.SourceLanguageCode, request.TargetLanguageCode, glossaryEntries);
-        await Client.WaitUntilGlossaryReadyAsync(result.GlossaryId);
-        return new NewGlossaryResponse
-        {
-            GossaryId = result.GlossaryId,
-            Name = result.Name,
-            SourceLanguageCode = result.SourceLanguageCode,
-            TargetLanguageCode = result.TargetLanguageCode,
-            EntryCount = result.EntryCount,
-        };
+        
     }
 
     [Action("Create glossary", Description = "Create a new glossary")]
@@ -161,6 +196,6 @@ public class GlossaryActions : DeepLInvocable
     
     private string CleanText(string input)
     {
-        return input.Replace("\r", "").Replace("\n", " ");
+        return input.Replace("\r", "").Replace("\n", " ").Replace("\u2028", "");
     }
 }
