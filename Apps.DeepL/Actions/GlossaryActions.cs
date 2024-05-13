@@ -133,24 +133,37 @@ public class GlossaryActions : DeepLInvocable
                     TargetLanguageCode = csv_result.TargetLanguageCode,
                     EntryCount = csv_result.EntryCount,
                 };
+            case ".tsv":
+                List<string> tsv_lines = new List<string>();
+                using (StreamReader reader = new StreamReader(glossaryStream))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        tsv_lines.Add(reader.ReadLine());
+                    }
+                }
+                var tsv_entries = new List<KeyValuePair<string, string>>();
+                foreach (var line in tsv_lines)
+                {
+                    tsv_entries.Add(new KeyValuePair<string, string>(line.Split('\t')[0], line.Split('\t')[1]));
+                }
+                var tsv_glossaryEntries = new GlossaryEntries(tsv_entries);
+                var tsv_result = await Client.CreateGlossaryAsync(request.Name ?? request.File.Name,
+                   request.SourceLanguageCode, request.TargetLanguageCode, tsv_glossaryEntries);
+                await Client.WaitUntilGlossaryReadyAsync(tsv_result.GlossaryId);
+                return new NewGlossaryResponse
+                {
+                    GossaryId = tsv_result.GlossaryId,
+                    Name = tsv_result.Name,
+                    SourceLanguageCode = tsv_result.SourceLanguageCode,
+                    TargetLanguageCode = tsv_result.TargetLanguageCode,
+                    EntryCount = tsv_result.EntryCount,
+                };
             default:
-                throw new Exception($"Glossary format not supported ({fileExtension}).");
+                throw new Exception($"Glossary format not supported ({fileExtension})." +
+                    "Supported file extensions include .tbx, .csv & .tsv");
         }
         
-    }
-
-    [Action("Create glossary", Description = "Create a new glossary")]
-    public async Task<GlossaryEntity> CreateGlossary([ActionParameter] CreateGlossaryRequest request)
-    {
-        var fileStream = await _fileManagementClient.DownloadAsync(request.File);
-
-        var glossary = request.File.ContentType is MediaTypeNames.Text.Csv
-            ? await Client.CreateGlossaryFromCsvAsync(request.Name, request.SourceLanguageCode, request.TargetLanguageCode,
-                fileStream)
-            : await Client.CreateGlossaryAsync(request.Name, request.SourceLanguageCode, request.TargetLanguageCode,
-                GlossaryEntries.FromTsv(Encoding.UTF8.GetString(await fileStream.GetByteData())));
-
-        return new(glossary);
     }
 
     [Action("List glossaries", Description = "List all glossaries")]

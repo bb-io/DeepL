@@ -17,11 +17,11 @@ Before you can connect you need to make sure that:
 
 ## Connecting
 
-1. Navigate to apps and search for DeepL. If you cannot find DeepL then click _Add App_ in the top right corner, select DeepL and add the app to your Blackbird environment.
+1. Navigate to Apps, and identify the DeepL app. You can use search to find it.
 2. Click _Add Connection_.
 3. Name your connection for future reference e.g. 'My DeepL connection'.
 4. Fill in the API key to your DeepL account.
-7. Click _Connect_.
+5. Click _Connect_.
 
 ![DeepLBlackbirdConnection](image/README/DeepLBlackbirdConnection.png)
 
@@ -30,12 +30,16 @@ Before you can connect you need to make sure that:
 ### Translation 
 
 - **Translate** Translate text
-- **Translate document** Translate a document, including XLIFF files of 1.2 and 2.1 versions
+- **Translate document** Translate a document, including XLIFF files (1.2 or 2.1 version)
 
 ### Glossaries 
 
 - **Export glossary** Export glossary
-- **Import glossary** Import glossary
+- **Import glossary** Import glossary (.tbx, .csv & .tsv)
+- **Get glossary** Get details of a specific glossary
+- **Get glossary entries** Get glossary entries in a TSV format
+- **List glossaries** List all glossaries
+- **List glossary language pairs** List supported glossary language pairs
 
 ## Example
 
