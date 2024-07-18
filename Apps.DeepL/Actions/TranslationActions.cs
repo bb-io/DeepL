@@ -40,8 +40,6 @@ public class TranslationActions : DeepLInvocable
     {
         var tuple = await GetFileAndXliffDocumentAsync(request);
         var file = tuple.Item1;
-        await _fileManagementClient.UploadAsync(file, "xliff", "log1.xliff");
-        file.Position = 0;
         var xliffDocument = tuple.Item2;
 
         var outputStream = new MemoryStream();
