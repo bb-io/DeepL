@@ -67,15 +67,18 @@ public class TranslationActions : DeepLInvocable
         XDocument? result = null;
         if (xliffDocument != null)
         {
-            var xliffDocument21 = memoryStream.ToXliffDocument();
-            xliffDocument?.UpdateTranslationUnits(xliffDocument21.TranslationUnits);
-            xliffDocument?.UpdateSourceLanguage(xliffDocument21.SourceLanguage);
-            result = xliffDocument?.UpdateTargetLanguage(xliffDocument21.TargetLanguage);
+            var xliffDocument21 = memoryStream.ToXliffDocument(new Blackbird.Xliff.Utils.Models.XliffConfig
+            {
+                CopyAttributes = true,
+                IncludeInlineTags = true,
+                RemoveWhitespaces = true,
+                DontChangeTags = true
+            });
+            result = xliffDocument?.UpdateTranslationUnits(xliffDocument21.TranslationUnits);
         }
 
         var outputFileStream = result?.ToStream(ignoreAllFormatting: true) ?? memoryStream;
         var uploadedFile = await _fileManagementClient.UploadAsync(outputFileStream, request.File.ContentType, newFileName);
-
         return new FileResponse { File = uploadedFile };
     }
 
