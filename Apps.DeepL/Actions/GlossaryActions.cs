@@ -94,7 +94,7 @@ public class GlossaryActions : DeepLInvocable
                     glosseryValues.Add(new KeyValuePair<string, string>(cleanTermSource, cleanTermTarget));
                 }
 
-                var glossaryEntries = new GlossaryEntries(glosseryValues);
+                var glossaryEntries = new GlossaryEntries(glosseryValues, skipChecks: true);
 
                 var result = await Client.CreateGlossaryAsync(request.Name ?? blackbirdGlossary.Title,
                     request.SourceLanguageCode, request.TargetLanguageCode, glossaryEntries);
