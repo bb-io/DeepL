@@ -6,8 +6,8 @@ using Blackbird.Applications.Sdk.Common.Actions;
 using Blackbird.Applications.Sdk.Common.Invocation;
 using Blackbird.Applications.SDK.Extensions.FileManagement.Interfaces;
 using Blackbird.Xliff.Utils;
+using Blackbird.Xliff.Utils.Converters;
 using Blackbird.Xliff.Utils.Extensions;
-using Blackbird.Xliff.Utils.Models;
 using DeepL;
 
 namespace Apps.DeepL.Actions;
@@ -64,19 +64,21 @@ public class TranslationActions : DeepLInvocable
         var memoryStream = new MemoryStream(outputStream.GetBuffer());
         memoryStream.Position = 0;
 
-        var xliffDoc21 = xliffDocument != null ? XDocument.Load(memoryStream) : null;
         XDocument? result = null;
-        if (xliffDoc21 != null)
+        if (xliffDocument != null)
         {
-            var xliffDocument21 = XliffDocument.FromXDocument(xliffDoc21);
-            xliffDocument?.UpdateTranslationUnits(xliffDocument21.TranslationUnits);
-            xliffDocument?.UpdateSourceLanguage(xliffDocument21.SourceLanguage);
-            result = xliffDocument?.UpdateTargetLanguage(xliffDocument21.TargetLanguage);
+            var xliffDocument21 = memoryStream.ToXliffDocument(new Blackbird.Xliff.Utils.Models.XliffConfig
+            {
+                CopyAttributes = true,
+                IncludeInlineTags = true,
+                RemoveWhitespaces = true,
+                DontChangeTags = true
+            });
+            result = xliffDocument?.UpdateTranslationUnits(xliffDocument21.TranslationUnits);
         }
 
-        var outputFileStream = result?.ToStream() ?? memoryStream;
+        var outputFileStream = result?.ToStream(ignoreAllFormatting: true) ?? memoryStream;
         var uploadedFile = await _fileManagementClient.UploadAsync(outputFileStream, request.File.ContentType, newFileName);
-
         return new FileResponse { File = uploadedFile };
     }
 
@@ -132,22 +134,22 @@ public class TranslationActions : DeepLInvocable
         if (request.File.Name.EndsWith(".xliff") || request.File.Name.EndsWith(".xlf"))
         {
             var xliffDoc = XDocument.Load(memoryStream);
+            memoryStream.Position = 0;
 
             var version = xliffDoc.GetVersion();
             if (version == "1.2")
             {
-                XliffDocument xliffDocument = XliffDocument.FromXDocument(xliffDoc,
-                    new XliffConfig { RemoveWhitespaces = true, CopyAttributes = true });
-                xliffDoc = xliffDocument.ConvertToTwoPointOne();
+                XliffDocument xliffDocument = memoryStream.ToXliffDocument(new Blackbird.Xliff.Utils.Models.XliffConfig
+                {
+                    CopyAttributes = true,
+                    IncludeInlineTags = true,
+                    RemoveWhitespaces = true,
+                    DontChangeTags = true
+                });
 
-                return (xliffDoc.ToStream(), xliffDocument);
+                var converted = Xliff12To21Converter.Convert(xliffDocument);
+                return (converted.ToStream(ignoreAllFormatting: true), xliffDocument);
             }
-            else if (version != "2.1")
-            {
-                throw new InvalidOperationException($"Unsupported XLIFF version: {version}");
-            }
-
-            return (xliffDoc.ToStream(), null);
         }
 
         return (memoryStream, null);
