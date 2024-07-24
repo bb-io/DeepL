@@ -69,6 +69,8 @@ public class GlossaryActions : DeepLInvocable
     [Action("Import glossary", Description = "Import glossary")]
     public async Task<NewGlossaryResponse> ImportGlossary([ActionParameter] ImportGlossaryRequest request)
     {
+        request.TargetLanguageCode = request.TargetLanguageCode.ToLower();
+        request.SourceLanguageCode = request.SourceLanguageCode.ToLower();
         using var glossaryStream = await _fileManagementClient.DownloadAsync(request.File);
         var fileExtension = Path.GetExtension(request.File.Name);
         switch (fileExtension) 
@@ -79,9 +81,9 @@ public class GlossaryActions : DeepLInvocable
                 foreach (var entry in blackbirdGlossary.ConceptEntries)
                 {
                     var langSectionSource =
-                        entry.LanguageSections.FirstOrDefault(x => x.LanguageCode == request.SourceLanguageCode);
+                        entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.ToLower() == request.SourceLanguageCode);
                     var langSectionTarget =
-                        entry.LanguageSections.FirstOrDefault(x => x.LanguageCode == request.TargetLanguageCode);
+                        entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.ToLower() == request.TargetLanguageCode);
                     if (langSectionSource == null || langSectionTarget == null)
                     {
                         throw new ArgumentException(langSectionSource == null
