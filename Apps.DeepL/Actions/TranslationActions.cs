@@ -1,23 +1,16 @@
-﻿using System.Diagnostics;
-using System.IO;
-using System.Text;
+﻿using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Apps.DeepL.Requests;
 using Apps.DeepL.Responses;
 using Blackbird.Applications.Sdk.Common;
 using Blackbird.Applications.Sdk.Common.Actions;
-using Blackbird.Applications.Sdk.Common.Files;
 using Blackbird.Applications.Sdk.Common.Invocation;
 using Blackbird.Applications.SDK.Extensions.FileManagement.Interfaces;
 using Blackbird.Xliff.Utils;
-using Blackbird.Xliff.Utils.Converters;
 using Blackbird.Xliff.Utils.Extensions;
 using Blackbird.Xliff.Utils.Models;
 using DeepL;
-using DocumentFormat.OpenXml.Office2010.Word;
-using DocumentFormat.OpenXml.Wordprocessing;
-using Microsoft.Extensions.Primitives;
 
 namespace Apps.DeepL.Actions;
 
