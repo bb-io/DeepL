@@ -14,7 +14,7 @@
         <PackageReference Include="Blackbird.Applications.SDK.Extensions.FileManagement" Version="1.0.1" />
         <PackageReference Include="Blackbird.Applications.Sdk.Glossaries.Utils" Version="1.0.0-alpha2" />
         <PackageReference Include="Blackbird.Applications.Sdk.Utils" Version="1.0.25" />
-        <PackageReference Include="Blackbird.Xliff.Utils" Version="1.1.0" />
+        <PackageReference Include="Blackbird.Xliff.Utils" Version="1.1.1" />
         <PackageReference Include="DeepL.net" Version="1.9.0" />
     </ItemGroup>
 
