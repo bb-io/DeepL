@@ -64,7 +64,8 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         {
             if (tuple.Item2?.Version == "1.2")
             {
-                var finalFileStream = Xliff21To12Converter.Convert(memoryStream.ToXliffDocument()).ToStream();
+                var xliff12 = Xliff21To12Converter.Convert(memoryStream.ToXliffDocument());
+                var finalFileStream = xliff12.ToStream();
                 var uploadedFinalFile = await fileManagementClient.UploadAsync(finalFileStream, request.File.ContentType, newFileName);
                 return new FileResponse { File = uploadedFinalFile };
             }
