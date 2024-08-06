@@ -36,7 +36,6 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         var xliffDocument = tuple.Item2;
     
         var outputStream = new MemoryStream();
-
         
         await Client.TranslateDocumentAsync(file, request.File.Name, outputStream, request.SourceLanguage,
             request.TargetLanguage, CreateDocumentTranslateOptions(request));
