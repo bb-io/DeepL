@@ -1,6 +1,6 @@
 ﻿using Blackbird.Applications.Sdk.Common.Dictionaries;
 
-namespace Apps.DeepL.DataSourceHandlers;
+namespace Apps.DeepL.DataSourceHandlers.Enums;
 
 public class GlossaryLanguageDataHandler : IStaticDataSourceHandler
 {

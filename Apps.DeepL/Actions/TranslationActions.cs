@@ -46,7 +46,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         {
             var translateResponse = await Translate(new TextTranslationRequest
             {
-                Formal = request.Formal,
+                Formality = request.Formality,
                 GlossaryId = request.GlossaryId,
                 SourceLanguage = request.SourceLanguage,
                 TargetLanguage = request.TargetLanguage,
@@ -80,14 +80,22 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
     
     private TextTranslateOptions CreateTextTranslateOptions(TextTranslationRequest request)
     {
+        var formality = Formality.Default;
+
+        switch(request.Formality)
+        {
+            case "more": formality = Formality.More; break;
+            case "less": formality = Formality.Less; break;
+            case "prefer_more": formality = Formality.PreferMore; break;
+            case "prefer_less": formality = Formality.PreferLess; break;
+            default:
+            break;
+        }
+
         var options = new TextTranslateOptions
         {
             PreserveFormatting = request.PreserveFormatting == null || (bool)request.PreserveFormatting,
-            Formality = request.Formal == null
-                ? Formality.Default
-                : (bool)request.Formal
-                    ? Formality.PreferMore
-                    : Formality.PreferLess,
+            Formality = formality,
             GlossaryId = request.GlossaryId,
             TagHandling = request.TagHandling,
             OutlineDetection = request.OutlineDetection == null || (bool)request.OutlineDetection,
@@ -108,13 +116,21 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
 
     private DocumentTranslateOptions CreateDocumentTranslateOptions(DocumentTranslationRequest request)
     {
+        var formality = Formality.Default;
+
+        switch (request.Formality)
+        {
+            case "more": formality = Formality.More; break;
+            case "less": formality = Formality.Less; break;
+            case "prefer_more": formality = Formality.PreferMore; break;
+            case "prefer_less": formality = Formality.PreferLess; break;
+            default:
+                break;
+        }
+
         return new DocumentTranslateOptions
         {
-            Formality = request.Formal == null
-                ? Formality.Default
-                : (bool)request.Formal
-                    ? Formality.PreferMore
-                    : Formality.PreferLess,
+            Formality = formality,
             GlossaryId = request.GlossaryId,
         };
     }
