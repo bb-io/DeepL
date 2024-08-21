@@ -2,6 +2,8 @@
 using Apps.DeepL.DataSourceHandlers;
 using Blackbird.Applications.Sdk.Common.Dynamic;
 using Blackbird.Applications.Sdk.Common.Files;
+using Apps.DeepL.DataSourceHandlers.Enums;
+using Blackbird.Applications.Sdk.Common.Dictionaries;
 
 namespace Apps.DeepL.Requests;
 
@@ -10,15 +12,16 @@ public class DocumentTranslationRequest
     public FileReference File { get; set; }
 
     [Display("Source language")]
-    [DataSource(typeof(SourceLanguageDataHandler))]
+    [StaticDataSource(typeof(SourceLanguageDataHandler))]
     public string? SourceLanguage { get; set; }
 
     [Display("Target language")]
-    [DataSource(typeof(TargetLanguageDataHandler))]
+    [StaticDataSource(typeof(TargetLanguageDataHandler))]
     public string TargetLanguage { get; set; }
 
-    [Display("Formal")]
-    public bool? Formal { get; set; }
+    [Display("Formality", Description = "Indicates whether the translation should be formal")]
+    [StaticDataSource(typeof(FormalityDataHandler))]
+    public string? Formality { get; set; }
 
     [Display("Glossary")]
     [DataSource(typeof(GlossariesDataHandler))]
