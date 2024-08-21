@@ -116,13 +116,21 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
 
     private DocumentTranslateOptions CreateDocumentTranslateOptions(DocumentTranslationRequest request)
     {
+        var formality = Formality.Default;
+
+        switch (request.Formality)
+        {
+            case "more": formality = Formality.More; break;
+            case "less": formality = Formality.Less; break;
+            case "prefer_more": formality = Formality.PreferMore; break;
+            case "prefer_less": formality = Formality.PreferLess; break;
+            default:
+                break;
+        }
+
         return new DocumentTranslateOptions
         {
-            Formality = request.Formal == null
-                ? Formality.Default
-                : (bool)request.Formal
-                    ? Formality.PreferMore
-                    : Formality.PreferLess,
+            Formality = formality,
             GlossaryId = request.GlossaryId,
         };
     }
