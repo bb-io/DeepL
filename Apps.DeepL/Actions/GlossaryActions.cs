@@ -150,13 +150,21 @@ public class GlossaryActions : DeepLInvocable
         {
             var langSectionSource =
                 entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.ToLower() == request.SourceLanguageCode);
+            if (langSectionSource is null && request.SourceLanguageCode == "en") 
+            {
+                langSectionSource =
+                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.ToLower() == "en-us" || x.LanguageCode.ToLower() == "en-gb");
+            }
             var langSectionTarget =
                 entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.ToLower() == request.TargetLanguageCode);
+            if (langSectionTarget is null)
+            {
+                langSectionTarget =
+                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.ToLower().Substring(0, 2) == request.TargetLanguageCode.Substring(0, 2));
+            }
             if (langSectionSource == null || langSectionTarget == null)
             {
-                throw new ArgumentException(langSectionSource == null
-                    ? String.Format(MissingGlossaryLanguageMessage, request.SourceLanguageCode)
-                    : String.Format(MissingGlossaryLanguageMessage, request.TargetLanguageCode));
+                continue;
             }
 
             var cleanTermSource = CleanText(langSectionSource.Terms.First().Term);
