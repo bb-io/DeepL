@@ -14,6 +14,7 @@ Before you can connect you need to make sure that:
 
 - You have a DeepL account.
 - You have an API key for your DeepL account. It can be found under _account settings_ in DeepL.
+- **Important**: If you are using an API key for CAT tools, it will not work for the public API. Instead, you need to use the Authentication key for DeepL API. You can find [guidance](https://youtu.be/WTt3UuiDAf4?t=79) on where it is located in this guide. For more details, you can also refer to this [discussion](https://github.com/DeepLcom/deepl-python/issues/106), where a similar issue was resolved.
 
 ## Connecting
 

@@ -1,6 +1,8 @@
 ﻿using Blackbird.Applications.Sdk.Common;
 using Apps.DeepL.DataSourceHandlers;
 using Blackbird.Applications.Sdk.Common.Dynamic;
+using Blackbird.Applications.Sdk.Common.Dictionaries;
+using Apps.DeepL.DataSourceHandlers.Enums;
 
 namespace Apps.DeepL.Requests;
 
@@ -10,15 +12,16 @@ public class TextTranslationRequest
     public string Text { get; set; }
 
     [Display("Source language", Description = "The source language for translation")]
-    [DataSource(typeof(SourceLanguageDataHandler))]
+    [StaticDataSource(typeof(SourceLanguageDataHandler))]
     public string? SourceLanguage { get; set; }
 
     [Display("Target language", Description = "The target language for translation")]
-    [DataSource(typeof(TargetLanguageDataHandler))]
+    [StaticDataSource(typeof(TargetLanguageDataHandler))]
     public string TargetLanguage { get; set; }
 
-    [Display("Formal", Description = "Indicates whether the translation should be formal")]
-    public bool? Formal { get; set; }
+    [Display("Formality", Description = "Indicates whether the translation should be formal")]
+    [StaticDataSource(typeof(FormalityDataHandler))]
+    public string? Formality { get; set; }
 
     [Display("Glossary", Description = "The ID of the glossary to be used for translation")]
     [DataSource(typeof(GlossariesDataHandler))]

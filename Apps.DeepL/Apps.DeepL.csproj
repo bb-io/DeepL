@@ -5,7 +5,7 @@
         <Nullable>enable</Nullable>
         <Product>DeepL</Product>
         <Description>The NMT service</Description>
-        <Version>1.1.4</Version>
+        <Version>1.1.5</Version>
         <AssemblyName>Apps.DeepL</AssemblyName>
     </PropertyGroup>
 
@@ -20,5 +20,11 @@
 
     <ItemGroup>
         <EmbeddedResource CopyToOutputDirectory="Always" Include="image\icon.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\README.md">
+        <Link>README.md</Link>
+      </Content>
     </ItemGroup>
 </Project>

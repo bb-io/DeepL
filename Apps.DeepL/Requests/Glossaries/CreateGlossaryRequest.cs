@@ -1,4 +1,4 @@
-using Apps.DeepL.DataSourceHandlers;
+using Apps.DeepL.DataSourceHandlers.Enums;
 using Blackbird.Applications.Sdk.Common;
 using Blackbird.Applications.Sdk.Common.Dictionaries;
 using Blackbird.Applications.Sdk.Common.Files;
