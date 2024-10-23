@@ -35,7 +35,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         var file = tuple.Item1;
         var xliffDocument = tuple.Item2;
     
-        var outputStream = new MemoryStream();
+        using var outputStream = new MemoryStream();
         
         await Client.TranslateDocumentAsync(file, request.File.Name, outputStream, request.SourceLanguage,
             request.TargetLanguage, CreateDocumentTranslateOptions(request));
@@ -55,7 +55,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             newFileName = translateResponse.TranslatedText;
         }
         
-        var memoryStream = new MemoryStream(outputStream.GetBuffer());
+        using var memoryStream = new MemoryStream(outputStream.GetBuffer());
         memoryStream.Position = 0;
 
         XDocument? result = null;
@@ -73,7 +73,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             result = xliffDocument?.UpdateTranslationUnits(xliffDocument21.TranslationUnits);
         }
 
-        var outputFileStream = result?.ToStream() ?? memoryStream;
+        using var outputFileStream = result?.ToStream() ?? memoryStream;
         var uploadedFile = await fileManagementClient.UploadAsync(outputFileStream, request.File.ContentType, newFileName);
         return new FileResponse { File = uploadedFile };
     }
