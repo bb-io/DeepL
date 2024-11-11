@@ -1,6 +1,7 @@
 ﻿using System.Xml.Linq;
 using Apps.DeepL.Requests;
 using Apps.DeepL.Responses;
+using Apps.DeepL.Utils;
 using Blackbird.Applications.Sdk.Common;
 using Blackbird.Applications.Sdk.Common.Actions;
 using Blackbird.Applications.Sdk.Common.Invocation;
@@ -36,9 +37,10 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         var xliffDocument = tuple.Item2;
     
         using var outputStream = new MemoryStream();
-        
-        await Client.TranslateDocumentAsync(file, request.File.Name, outputStream, request.SourceLanguage,
-            request.TargetLanguage, CreateDocumentTranslateOptions(request));
+
+        await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.TranslateDocumentAsync(file,
+            request.File.Name, outputStream, request.SourceLanguage,
+            request.TargetLanguage, CreateDocumentTranslateOptions(request)));
 
         var newFileName = request.File.Name;
 
