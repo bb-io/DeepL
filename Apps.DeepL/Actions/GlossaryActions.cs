@@ -135,6 +135,12 @@ public class GlossaryActions : DeepLInvocable
                 $"{input.GlossaryId}.tsv")
         };
     }
+    
+    [Action("Delete glossary", Description = "Delete a glossary")]
+    public async Task DeleteGlossary([ActionParameter] GlossaryRequest input)
+    {
+        await Client.DeleteGlossaryAsync(input.GlossaryId);
+    }
 
     private string CleanText(string input)
     {
