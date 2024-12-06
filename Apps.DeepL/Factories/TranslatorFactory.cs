@@ -11,10 +11,7 @@ public static class TranslatorFactory
         var apiKey = creds.First(p => p.KeyName == CredsNames.ApiKey);
         return new(apiKey.Value, new()
         {
-            Headers = new()
-            {
-                { "User-Agent", "Blackbird.io" }
-            }
+            appInfo = new AppInfo { AppName = "Blackbird.io", AppVersion = "1.1.x" }
         });
     }
 }
