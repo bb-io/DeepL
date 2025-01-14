@@ -15,17 +15,10 @@ using Apps.DeepL.Responses.Glossaries;
 namespace Apps.DeepL.Actions;
 
 [ActionList]
-public class GlossaryActions : DeepLInvocable
+public class GlossaryActions(InvocationContext invocationContext, IFileManagementClient fileManagementClient)
+    : DeepLInvocable(invocationContext)
 {
-    private readonly IFileManagementClient _fileManagementClient;
-
     private const string MissingGlossaryLanguageMessage = "Glossary file is missing terms for language: {0}";
-
-    public GlossaryActions(InvocationContext invocationContext, IFileManagementClient fileManagementClient) : base(
-        invocationContext)
-    {
-        _fileManagementClient = fileManagementClient;
-    }
 
     [Action("Export glossary", Description = "Export glossary")]
     public async Task<ExportGlossaryResponse> ExportGlossary([ActionParameter] GlossaryRequest request)
@@ -59,7 +52,7 @@ public class GlossaryActions : DeepLInvocable
         await using var stream = blackbirdGlossary.ConvertToTBX();
         return new ExportGlossaryResponse()
         {
-            File = await _fileManagementClient.UploadAsync(stream, MediaTypeNames.Application.Xml,
+            File = await fileManagementClient.UploadAsync(stream, MediaTypeNames.Application.Xml,
                 $"{glossaryDetails.Name}.tbx")
         };
     }
@@ -69,7 +62,7 @@ public class GlossaryActions : DeepLInvocable
     {
         request.TargetLanguageCode = request.TargetLanguageCode.ToLower();
         request.SourceLanguageCode = request.SourceLanguageCode.ToLower();
-        await using var glossaryStream = await _fileManagementClient.DownloadAsync(request.File);
+        await using var glossaryStream = await fileManagementClient.DownloadAsync(request.File);
         var fileExtension = Path.GetExtension(request.File.Name);
 
         var (glossaryEntries, glossaryTitle) = fileExtension switch
@@ -131,7 +124,7 @@ public class GlossaryActions : DeepLInvocable
 
         return new()
         {
-            File = await _fileManagementClient.UploadAsync(new MemoryStream(tsvContent), "text/tab-separated-values",
+            File = await fileManagementClient.UploadAsync(new MemoryStream(tsvContent), "text/tab-separated-values",
                 $"{input.GlossaryId}.tsv")
         };
     }

@@ -3,20 +3,15 @@ using Blackbird.Applications.Sdk.Common.Invocation;
 
 namespace Apps.DeepL.DataSourceHandlers;
 
-public class GlossariesDataHandler : DeepLInvocable, IAsyncDataSourceHandler
+public class GlossariesDataHandler(InvocationContext invocationContext)
+    : DeepLInvocable(invocationContext), IAsyncDataSourceItemHandler
 {
-    public GlossariesDataHandler(InvocationContext invocationContext) : base(invocationContext)
-    {
-    }
-
-    public async Task<Dictionary<string, string>> GetDataAsync(
-        DataSourceContext context,
-        CancellationToken cancellationToken)
+    public async Task<IEnumerable<DataSourceItem>> GetDataAsync(DataSourceContext context, CancellationToken cancellationToken)
     {
         var glossaries = await Client.ListGlossariesAsync(cancellationToken);
         return glossaries.Where(x =>
                 context.SearchString == null ||
                 x.Name.Contains(context.SearchString, StringComparison.OrdinalIgnoreCase))
-            .ToDictionary(x => x.GlossaryId, x => x.Name);
+            .Select(x => new DataSourceItem(x.GlossaryId, x.Name));
     }
 }

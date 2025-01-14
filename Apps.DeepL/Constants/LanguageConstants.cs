@@ -1,11 +1,8 @@
-﻿using Blackbird.Applications.Sdk.Common.Dictionaries;
-using Blackbird.Applications.Sdk.Common.Dynamic;
+﻿namespace Apps.DeepL.Constants;
 
-namespace Apps.DeepL.DataSourceHandlers.Enums;
-
-public class SourceLanguageDataHandler : IStaticDataSourceItemHandler
+public static class LanguageConstants
 {
-    private static Dictionary<string, string> Data => new()
+    public static Dictionary<string, string> TargetLanguages => new()
     {
         { "AR", "Arabic" },
         { "BG", "Bulgarian" },
@@ -13,7 +10,8 @@ public class SourceLanguageDataHandler : IStaticDataSourceItemHandler
         { "DA", "Danish" },
         { "DE", "German" },
         { "EL", "Greek" },
-        { "EN", "English" },
+        { "EN-GB", "English (British)" },
+        { "EN-US", "English (American)" },
         { "ES", "Spanish" },
         { "ET", "Estonian" },
         { "FI", "Finnish" },
@@ -28,7 +26,8 @@ public class SourceLanguageDataHandler : IStaticDataSourceItemHandler
         { "NB", "Norwegian Bokmål" },
         { "NL", "Dutch" },
         { "PL", "Polish" },
-        { "PT", "Portuguese" },
+        { "PT-BR", "Portuguese (Brazilian)" },
+        { "PT-PT", "Portuguese (Portiguese)" },
         { "RO", "Romanian" },
         { "RU", "Russian" },
         { "SK", "Slovak" },
@@ -36,11 +35,7 @@ public class SourceLanguageDataHandler : IStaticDataSourceItemHandler
         { "SV", "Swedish" },
         { "TR", "Turkish" },
         { "UK", "Ukrainian" },
-        { "ZH", "Chinese" },
+        { "ZH-HANS", "Chinese (simplified)" },
+        { "ZH-HANT", "Chinese (traditional)" },
     };
-    
-    public IEnumerable<DataSourceItem> GetData()
-    {
-        return Data.Select(x => new DataSourceItem(x.Key, x.Value));
-    }
 }

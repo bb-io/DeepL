@@ -1,15 +1,11 @@
 ﻿using Blackbird.Applications.Sdk.Common.Dictionaries;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Blackbird.Applications.Sdk.Common.Dynamic;
 
 namespace Apps.DeepL.DataSourceHandlers.Enums
 {
-    public class FormalityDataHandler : IStaticDataSourceHandler
+    public class FormalityDataHandler : IStaticDataSourceItemHandler
     {
-        public Dictionary<string, string> GetData() => new()
+        private static Dictionary<string, string> Data => new()
         {
             { "default", "Default" },
             { "more", "More" },
@@ -17,5 +13,10 @@ namespace Apps.DeepL.DataSourceHandlers.Enums
             { "prefer_more", "Prefer more" },
             { "prefer_less", "Prefer less" },
         };
+
+        public IEnumerable<DataSourceItem> GetData()
+        {
+            return Data.Select(x => new DataSourceItem(x.Key, x.Value));
+        }
     }
 }

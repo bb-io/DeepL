@@ -1,4 +1,5 @@
 ﻿using System.Xml.Linq;
+using Apps.DeepL.Constants;
 using Apps.DeepL.Requests;
 using Apps.DeepL.Responses;
 using Apps.DeepL.Utils;
@@ -18,19 +19,6 @@ namespace Apps.DeepL.Actions;
 public class TranslationActions(InvocationContext invocationContext, IFileManagementClient fileManagementClient)
     : DeepLInvocable(invocationContext)
 {
-    private static readonly Dictionary<string, string> TargetLanguages = new()
-{
-    { "AR", "Arabic" }, { "BG", "Bulgarian" }, { "CS", "Czech" }, { "DA", "Danish" }, { "DE", "German" },
-    { "EL", "Greek" }, { "EN-GB", "English (British)" }, { "EN-US", "English (American)" }, { "ES", "Spanish" },
-    { "ET", "Estonian" }, { "FI", "Finnish" }, { "FR", "French" }, { "HU", "Hungarian" }, { "ID", "Indonesian" },
-    { "IT", "Italian" }, { "JA", "Japanese" }, { "KO", "Korean" }, { "LT", "Lithuanian" }, { "LV", "Latvian" },
-    { "NB", "Norwegian Bokmål" }, { "NL", "Dutch" }, { "PL", "Polish" }, { "PT-BR", "Portuguese (Brazilian)" },
-    { "PT-PT", "Portuguese (Portiguese)" }, { "RO", "Romanian" }, { "RU", "Russian" }, { "SK", "Slovak" },
-    { "SL", "Slovenian" }, { "SV", "Swedish" }, { "TR", "Turkish" }, { "UK", "Ukrainian" },
-    { "ZH-HANS", "Chinese (simplified)" }, { "ZH-HANT", "Chinese (traditional)" }
-};
-
-
     [Action("Translate", Description = "Translate a text")]
     public async Task<TextResponse> Translate([ActionParameter] TextTranslationRequest request)
     {
@@ -39,7 +27,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             throw new PluginMisconfigurationException("The target language can not be empty, please fill the 'Target language' field");
         }
 
-        var supportedLanguages = TargetLanguages.Keys;
+        var supportedLanguages = LanguageConstants.TargetLanguages.Keys;
         if (!supportedLanguages.Contains(request.TargetLanguage.ToUpperInvariant()))
         {
             throw new PluginMisconfigurationException($"The target language '{request.TargetLanguage}' is not supported. Please select a valid language.");
@@ -100,7 +88,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             result = xliffDocument?.UpdateTranslationUnits(xliffDocument21.TranslationUnits);
         }
 
-        using var outputFileStream = result?.ToStream() ?? memoryStream;
+        await using var outputFileStream = result?.ToStream() ?? memoryStream;
         var uploadedFile = await fileManagementClient.UploadAsync(outputFileStream, request.File.ContentType, newFileName);
         return new FileResponse { File = uploadedFile };
     }
