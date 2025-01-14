@@ -27,7 +27,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             throw new PluginMisconfigurationException("The target language can not be empty, please fill the 'Target language' field");
         }
 
-        var supportedLanguages = LanguagesConstants.TargetLanguages.Keys;
+        var supportedLanguages = LanguageConstants.TargetLanguages.Keys;
         if (!supportedLanguages.Contains(request.TargetLanguage.ToUpperInvariant()))
         {
             throw new PluginMisconfigurationException($"The target language '{request.TargetLanguage}' is not supported. Please select a valid language.");

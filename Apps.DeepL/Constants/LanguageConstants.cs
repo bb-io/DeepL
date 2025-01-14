@@ -1,6 +1,6 @@
 ﻿namespace Apps.DeepL.Constants;
 
-public static class LanguagesConstants
+public static class LanguageConstants
 {
     public static Dictionary<string, string> TargetLanguages => new()
     {

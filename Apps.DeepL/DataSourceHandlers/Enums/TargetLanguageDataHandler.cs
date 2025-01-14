@@ -8,6 +8,6 @@ public class TargetLanguageDataHandler : IStaticDataSourceItemHandler
 {
     public IEnumerable<DataSourceItem> GetData()
     {
-        return LanguagesConstants.TargetLanguages.Select(x => new DataSourceItem(x.Key, x.Value));
+        return LanguageConstants.TargetLanguages.Select(x => new DataSourceItem(x.Key, x.Value));
     }
 }
