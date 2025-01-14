@@ -1,9 +1,11 @@
 ﻿using System.Xml.Linq;
+using Apps.DeepL.Constants;
 using Apps.DeepL.Requests;
 using Apps.DeepL.Responses;
 using Apps.DeepL.Utils;
 using Blackbird.Applications.Sdk.Common;
 using Blackbird.Applications.Sdk.Common.Actions;
+using Blackbird.Applications.Sdk.Common.Exceptions;
 using Blackbird.Applications.Sdk.Common.Invocation;
 using Blackbird.Applications.SDK.Extensions.FileManagement.Interfaces;
 using Blackbird.Xliff.Utils;
@@ -20,6 +22,17 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
     [Action("Translate", Description = "Translate a text")]
     public async Task<TextResponse> Translate([ActionParameter] TextTranslationRequest request)
     {
+        if (string.IsNullOrWhiteSpace(request.TargetLanguage))
+        {
+            throw new PluginMisconfigurationException("The target language can not be empty, please fill the 'Target language' field");
+        }
+
+        var supportedLanguages = LanguagesConstants.TargetLanguages.Keys;
+        if (!supportedLanguages.Contains(request.TargetLanguage.ToUpperInvariant()))
+        {
+            throw new PluginMisconfigurationException($"The target language '{request.TargetLanguage}' is not supported. Please select a valid language.");
+        }
+
         var result = await Client.TranslateTextAsync(request.Text, request.SourceLanguage,
             request.TargetLanguage, CreateTextTranslateOptions(request));
         return new TextResponse
