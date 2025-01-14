@@ -1,12 +1,11 @@
 ﻿using Blackbird.Applications.Sdk.Common.Dictionaries;
 using Blackbird.Applications.Sdk.Common.Dynamic;
-using Blackbird.Applications.Sdk.Common.Invocation;
 
 namespace Apps.DeepL.DataSourceHandlers.Enums;
 
-public class SourceLanguageDataHandler : IStaticDataSourceHandler
+public class SourceLanguageDataHandler : IStaticDataSourceItemHandler
 {
-    public Dictionary<string, string> GetData() => new()
+    private static Dictionary<string, string> Data => new()
     {
         { "AR", "Arabic" },
         { "BG", "Bulgarian" },
@@ -39,4 +38,9 @@ public class SourceLanguageDataHandler : IStaticDataSourceHandler
         { "UK", "Ukrainian" },
         { "ZH", "Chinese" },
     };
+    
+    public IEnumerable<DataSourceItem> GetData()
+    {
+        return Data.Select(x => new DataSourceItem(x.Key, x.Value));
+    }
 }

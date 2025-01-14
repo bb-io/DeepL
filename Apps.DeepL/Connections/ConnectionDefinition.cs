@@ -13,7 +13,6 @@ public class ConnectionDefinition : IConnectionDefinition
         {
             Name = "Developer API key",
             AuthenticationType = ConnectionAuthenticationType.Undefined,
-            ConnectionUsage = ConnectionUsage.Actions,
             ConnectionProperties = new List<ConnectionProperty>()
             {
                 new(CredsNames.ApiKey) { DisplayName = "API key", Sensitive = true }
@@ -23,10 +22,6 @@ public class ConnectionDefinition : IConnectionDefinition
 
     public IEnumerable<AuthenticationCredentialsProvider> CreateAuthorizationCredentialsProviders(Dictionary<string, string> values)
     {
-        yield return new AuthenticationCredentialsProvider(
-            AuthenticationCredentialsRequestLocation.None,
-            CredsNames.ApiKey,
-            values[CredsNames.ApiKey]
-        );
+        yield return new AuthenticationCredentialsProvider(CredsNames.ApiKey, values[CredsNames.ApiKey]);
     }
 }

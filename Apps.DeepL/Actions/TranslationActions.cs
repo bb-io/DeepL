@@ -75,7 +75,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             result = xliffDocument?.UpdateTranslationUnits(xliffDocument21.TranslationUnits);
         }
 
-        using var outputFileStream = result?.ToStream() ?? memoryStream;
+        await using var outputFileStream = result?.ToStream() ?? memoryStream;
         var uploadedFile = await fileManagementClient.UploadAsync(outputFileStream, request.File.ContentType, newFileName);
         return new FileResponse { File = uploadedFile };
     }

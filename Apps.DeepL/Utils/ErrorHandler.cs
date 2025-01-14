@@ -1,4 +1,7 @@
-﻿namespace Apps.DeepL.Utils;
+﻿using Blackbird.Applications.Sdk.Common.Exceptions;
+using DeepL;
+
+namespace Apps.DeepL.Utils;
 
 public static class ErrorHandler
 {
@@ -8,9 +11,9 @@ public static class ErrorHandler
         { 
             await action();
         }
-        catch (Exception ex)
+        catch (DeepLException ex)
         {
-            throw new Exception($"Error occurred while executing action: {ex.Message}");
+            throw new PluginApplicationException(ex.Message);
         }
     }
     
@@ -20,9 +23,9 @@ public static class ErrorHandler
         {
             return await action();
         }
-        catch (Exception ex)
+        catch (DeepLException ex)
         {
-            throw new Exception($"Error occurred while executing action: {ex.Message}");
+            throw new PluginApplicationException(ex.Message);
         }
     }
 }
