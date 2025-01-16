@@ -12,6 +12,6 @@ public class ImproveLanguageDataHandler : IStaticDataSourceItemHandler
 {
     public IEnumerable<DataSourceItem> GetData()
     {
-        return LanguageConstants.TargetLanguages.Select(x => new DataSourceItem(x.Key, x.Value));
+        return LanguageConstants.WriteLanguages.Select(x => new DataSourceItem(x.Key, x.Value));
     }
 }
