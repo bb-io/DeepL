@@ -19,7 +19,7 @@ namespace Apps.DeepL.Actions;
 public class TranslationActions(InvocationContext invocationContext, IFileManagementClient fileManagementClient)
     : DeepLInvocable(invocationContext)
 {
-    [Action("Translate", Description = "Translate a text")]
+    [Action("Translate text", Description = "Translate a text")]
     public async Task<TextResponse> Translate([ActionParameter] TextTranslationRequest request)
     {
         if (string.IsNullOrWhiteSpace(request.TargetLanguage))

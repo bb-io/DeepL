@@ -30,8 +30,11 @@ Before you can connect you need to make sure that:
 
 ### Translation 
 
-- **Translate** Translate text
+- **Translate text** Translate text inputs.
 - **Translate document** Translate a document, including XLIFF files (1.2 or 2.1 version)
+
+### Write
+- **Improve text** improve a text using DeepL Write, set writing style or tone. Currently only supports some of the languages. Can also be used to change locale from f.e. American English to British English. For more details see [DeepL's write documentation](https://developers.deepl.com/docs/api-reference/improve-text).
 
 ### Glossaries 
 

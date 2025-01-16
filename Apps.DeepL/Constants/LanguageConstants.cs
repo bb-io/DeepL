@@ -38,4 +38,16 @@ public static class LanguageConstants
         { "ZH-HANS", "Chinese (simplified)" },
         { "ZH-HANT", "Chinese (traditional)" },
     };
+
+    public static Dictionary<string, string> WriteLanguages => new()
+    {
+        { "de", "German" },
+        { "en-GB", "British English" },
+        { "en-US", "American English" },
+        { "es", "Spanish" },
+        { "fr", "French" },
+        { "it", "Italian" },
+        { "pt-BR", "Brazilian Portuguese" },
+        { "pt-PT", "Portuguese" }
+    };
 }
