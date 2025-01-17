@@ -34,6 +34,11 @@ public class WriteActions(InvocationContext invocationContext) : DeepLInvocable(
             throw new PluginMisconfigurationException("Both writing style and tone are defined. DeepL does not allow this. Please select only either writing style or tone.");
         }
 
+        if (string.IsNullOrEmpty(input.Text))
+        {
+            throw new PluginMisconfigurationException("The text can not be empty, please fill the 'Text' field and make sure it has content");
+        }
+
         var request = new RestRequest("/write/rephrase", Method.Post);
         request.AddJsonBody(new
         {

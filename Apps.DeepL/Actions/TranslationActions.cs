@@ -24,7 +24,12 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
     {
         if (string.IsNullOrWhiteSpace(request.TargetLanguage))
         {
-            throw new PluginMisconfigurationException("The target language can not be empty, please fill the 'Target language' field");
+            throw new PluginMisconfigurationException("The target language can not be empty, please fill the 'Target language' field and make sure it has a valid language code");
+        }
+
+        if (string.IsNullOrEmpty(request.Text))
+        {
+            throw new PluginMisconfigurationException("The text can not be empty, please fill the 'Text' field and make sure it has content");
         }
 
         var supportedLanguages = LanguageConstants.TargetLanguages.Keys;

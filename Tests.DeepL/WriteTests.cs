@@ -29,6 +29,13 @@ public class WriteTests : TestBase
     }
 
     [TestMethod]
+    public async Task Empty_text_throws_misconfiguration()
+    {
+        var actions = new WriteActions(InvocationContext);
+        await Throws.MisconfigurationException(() => actions.Improve(new ImproveRequest { Text = string.Empty }));
+    }
+
+    [TestMethod]
     public async Task Base_write_with_invalid_language_throws()
     {
         var actions = new WriteActions(InvocationContext);
