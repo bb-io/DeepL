@@ -13,6 +13,7 @@ public class ValidatorTests : TestBase
         var validator = new ConnectionValidator();
 
         var result = await validator.ValidateConnection(Creds, CancellationToken.None);
+        Console.WriteLine(result.Message);
         Assert.IsTrue(result.IsValid);
     }
 
@@ -23,6 +24,7 @@ public class ValidatorTests : TestBase
 
         var newCreds = Creds.Select(x => new AuthenticationCredentialsProvider(x.KeyName, x.Value + "_incorrect"));
         var result = await validator.ValidateConnection(newCreds, CancellationToken.None);
+        Console.WriteLine(result.Message);
         Assert.IsFalse(result.IsValid);
     }
 }
