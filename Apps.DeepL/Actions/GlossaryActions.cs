@@ -11,6 +11,7 @@ using System.Net.Mime;
 using System.Text;
 using Apps.DeepL.Entities;
 using Apps.DeepL.Responses.Glossaries;
+using Apps.DeepL.Utils;
 
 namespace Apps.DeepL.Actions;
 
@@ -23,8 +24,8 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
     [Action("Export glossary", Description = "Export glossary")]
     public async Task<ExportGlossaryResponse> ExportGlossary([ActionParameter] GlossaryRequest request)
     {
-        var glossaryDetails = await Client.GetGlossaryAsync(request.GlossaryId);
-        var glossaryEntries = await Client.GetGlossaryEntriesAsync(request.GlossaryId);
+        var glossaryDetails = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.GetGlossaryAsync(request.GlossaryId));
+        var glossaryEntries = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.GetGlossaryEntriesAsync(request.GlossaryId));
         var entries = glossaryEntries.ToDictionary();
 
         var conceptEntries = new List<GlossaryConceptEntry>();
@@ -74,9 +75,9 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
                                      "Supported file extensions include .tbx, .csv & .tsv")
         };
 
-        var result = await Client.CreateGlossaryAsync(glossaryTitle,
-            request.SourceLanguageCode, request.TargetLanguageCode, glossaryEntries);
-        await Client.WaitUntilGlossaryReadyAsync(result.GlossaryId);
+        var result = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.CreateGlossaryAsync(glossaryTitle,
+            request.SourceLanguageCode, request.TargetLanguageCode, glossaryEntries));
+        await await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => Client.WaitUntilGlossaryReadyAsync(result.GlossaryId));
 
         return new NewGlossaryResponse
         {
@@ -91,21 +92,21 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
     [Action("List glossaries", Description = "List all glossaries")]
     public async Task<ListGlossariesResponse> ListGlossaries()
     {
-        var glossary = await Client.ListGlossariesAsync();
+        var glossary = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.ListGlossariesAsync());
         return new(glossary.Select(x => new GlossaryEntity(x)));
     }
 
     [Action("Get glossary", Description = "Get details of a specific glossary")]
     public async Task<GlossaryEntity> GetGlossary([ActionParameter] GlossaryRequest input)
     {
-        var glossary = await Client.GetGlossaryAsync(input.GlossaryId);
+        var glossary = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.GetGlossaryAsync(input.GlossaryId));
         return new(glossary);
     }
 
     [Action("List glossary language pairs", Description = "List supported glossary language pairs")]
     public async Task<ListLanguagePairsResponse> ListGlossaryLanguagePairs()
     {
-        var glossary = await Client.GetGlossaryLanguagesAsync();
+        var glossary = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.GetGlossaryLanguagesAsync());
         return new()
         {
             LanguagePairs = glossary.Select(x => new LanguagePairEntity()
@@ -119,7 +120,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
     [Action("Get glossary entries", Description = "Get glossary entries in a TSV format")]
     public async Task<FileResponse> GetGlossaryEntries([ActionParameter] GlossaryRequest input)
     {
-        var entries = await Client.GetGlossaryEntriesAsync(input.GlossaryId);
+        var entries = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.GetGlossaryEntriesAsync(input.GlossaryId));
         var tsvContent = Encoding.UTF8.GetBytes(entries.ToTsv());
 
         return new()
@@ -132,7 +133,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
     [Action("Delete glossary", Description = "Delete a glossary")]
     public async Task DeleteGlossary([ActionParameter] GlossaryRequest input)
     {
-        await Client.DeleteGlossaryAsync(input.GlossaryId);
+        await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.DeleteGlossaryAsync(input.GlossaryId));
     }
 
     private string CleanText(string input)

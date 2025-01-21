@@ -38,8 +38,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             throw new PluginMisconfigurationException($"The target language '{request.TargetLanguage}' is not supported. Please select a valid language.");
         }
 
-        var result = await Client.TranslateTextAsync(request.Text, request.SourceLanguage,
-            request.TargetLanguage, CreateTextTranslateOptions(request));
+        var result = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.TranslateTextAsync(request.Text, request.SourceLanguage, request.TargetLanguage, CreateTextTranslateOptions(request)));
         return new TextResponse
         {
             TranslatedText = result.Text,
