@@ -49,10 +49,16 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
     [Action("Translate document", Description = "Translate a document")]
     public async Task<FileResponse> TranslateDocument([ActionParameter] DocumentTranslationRequest request)
     {
+
+        if (string.IsNullOrWhiteSpace(request.TargetLanguage))
+        {
+            throw new PluginMisconfigurationException("The target language can not be empty, please fill the 'Target language' field and make sure it has a valid language code");
+        }
         var tuple = await GetFileAndXliffDocumentAsync(request);
         var file = tuple.Item1;
         var xliffDocument = tuple.Item2;
-    
+
+
         using var outputStream = new MemoryStream();
 
         await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.TranslateDocumentAsync(file,
@@ -156,10 +162,21 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
 
     private async Task<(Stream, XliffDocument?)> GetFileAndXliffDocumentAsync(DocumentTranslationRequest request)
     {
+        if (request.File == null)
+        {
+            throw new PluginMisconfigurationException("No file provided. Please provide a valid file and try again.");
+        }
+
         var fileStream = await fileManagementClient.DownloadAsync(request.File);
 
         var memoryStream = new MemoryStream();
         await fileStream.CopyToAsync(memoryStream);
+        memoryStream.Position = 0;
+
+        if (memoryStream.ReadByte() == -1)
+        {
+            throw new PluginMisconfigurationException("The provided file is empty. Please provide a valid file and try again.");
+        }
         memoryStream.Position = 0;
 
         if (request.File.Name.EndsWith(".xliff") || request.File.Name.EndsWith(".xlf"))
