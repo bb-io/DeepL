@@ -31,4 +31,17 @@ public class TranslateTests : TestBase
         var actions = new TranslationActions(InvocationContext, FileManager);
         await Throws.MisconfigurationException(() => actions.Translate(new TextTranslationRequest { Text = string.Empty, TargetLanguage = "nl" }));
     }
+
+
+    [TestMethod]
+    public async Task Translate_file()
+    {
+        var actions = new TranslationActions(InvocationContext, FileManager);
+
+        var result = await actions.TranslateDocument(
+            new DocumentTranslationRequest { File=new Blackbird.Applications.Sdk.Common.Files.FileReference { Name= "testEmpty.txt" },
+             TargetLanguage = "es"});
+
+        Assert.IsNotNull(result);
+    }
 }
