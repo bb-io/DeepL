@@ -11,25 +11,24 @@ public class TextTranslationRequest
     [Display("Text", Description = "Text to translate")]
     public string Text { get; set; }
 
-    [Display("Source language", Description = "The source language for translation")]
-    [StaticDataSource(typeof(SourceLanguageDataHandler))]
+    [Display("Source language", Description = "The source language for translation"), StaticDataSource(typeof(SourceLanguageDataHandler))]
     public string? SourceLanguage { get; set; }
 
-    [Display("Target language", Description = "The target language for translation")]
-    [StaticDataSource(typeof(TargetLanguageDataHandler))]
+    [Display("Target language", Description = "The target language for translation"), StaticDataSource(typeof(TargetLanguageDataHandler))]
     public string TargetLanguage { get; set; }
 
-    [Display("Formality", Description = "Indicates whether the translation should be formal")]
-    [StaticDataSource(typeof(FormalityDataHandler))]
+    [Display("Formality", Description = "Indicates whether the translation should be formal"), StaticDataSource(typeof(FormalityDataHandler))]
     public string? Formality { get; set; }
 
-    [Display("Glossary", Description = "The ID of the glossary to be used for translation")]
-    [DataSource(typeof(GlossariesDataHandler))]
+    [Display("Glossary", Description = "The ID of the glossary to be used for translation"), DataSource(typeof(GlossariesDataHandler))]
     public string? GlossaryId { get; set; }
 
     [Display("Tag handling",
         Description = "Specifies how tags in the text should be handled during translation")]
     public string? TagHandling { get; set; }
+
+    [Display("Model type", Description = "Specifies which DeepL model should be used for translation"), StaticDataSource(typeof(ModelTypeDataHandler))]
+    public string? ModelType { get; set; }
 
     // Todo: Split sentences
 
