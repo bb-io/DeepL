@@ -38,7 +38,8 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             throw new PluginMisconfigurationException($"The target language '{request.TargetLanguage}' is not supported. Please select a valid language.");
         }
 
-        var result = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.TranslateTextAsync(request.Text, request.SourceLanguage, request.TargetLanguage, CreateTextTranslateOptions(request)));
+        var result = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => 
+            await Client.TranslateTextAsync(request.Text, request.SourceLanguage, request.TargetLanguage, CreateTextTranslateOptions(request)));
         return new TextResponse
         {
             TranslatedText = result.Text,
@@ -105,28 +106,45 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
     
     private TextTranslateOptions CreateTextTranslateOptions(TextTranslationRequest request)
     {
-        var formality = Formality.Default;
-
-        switch(request.Formality)
-        {
-            case "more": formality = Formality.More; break;
-            case "less": formality = Formality.Less; break;
-            case "prefer_more": formality = Formality.PreferMore; break;
-            case "prefer_less": formality = Formality.PreferLess; break;
-            default:
-            break;
-        }
-
         var options = new TextTranslateOptions
         {
             PreserveFormatting = request.PreserveFormatting == null || (bool)request.PreserveFormatting,
-            Formality = formality,
+            Formality = GetFormality(request.Formality),
             GlossaryId = request.GlossaryId,
             TagHandling = request.TagHandling,
             OutlineDetection = request.OutlineDetection == null || (bool)request.OutlineDetection,
             Context = request.Context,
+            ModelType = GetModelType(request.ModelType)
         };
 
+        AddTagsToOptions(options, request);
+        return options;
+    }
+
+    private static Formality GetFormality(string? formalityString)
+    {
+        return formalityString switch
+        {
+            "more" => Formality.More,
+            "less" => Formality.Less,
+            "prefer_more" => Formality.PreferMore,
+            "prefer_less" => Formality.PreferLess,
+            _ => Formality.Default
+        };
+    }
+
+    private static ModelType GetModelType(string? modelTypeString)
+    {
+        return modelTypeString switch
+        {
+            "quality_optimized" => ModelType.QualityOptimized,
+            "prefer_quality_optimized" => ModelType.PreferQualityOptimized,
+            _ => ModelType.LatencyOptimized
+        };
+    }
+
+    private static void AddTagsToOptions(TextTranslateOptions options, TextTranslationRequest request)
+    {
         if (request.NonSplittingTags != null)
             options.NonSplittingTags.AddRange(request.NonSplittingTags);
 
@@ -135,8 +153,6 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
 
         if (request.IgnoreTags != null)
             options.IgnoreTags.AddRange(request.IgnoreTags);
-
-        return options;
     }
 
     private DocumentTranslateOptions CreateDocumentTranslateOptions(DocumentTranslationRequest request)
