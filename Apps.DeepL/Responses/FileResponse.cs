@@ -4,5 +4,5 @@ namespace Apps.DeepL.Responses;
 
 public class FileResponse
 {
-    public FileReference File { get; set; }
+    public FileReference File { get; set; } = default!;
 }
