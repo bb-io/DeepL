@@ -3,6 +3,9 @@ using Apps.DeepL.DataSourceHandlers;
 using Blackbird.Applications.Sdk.Common.Dynamic;
 using Blackbird.Applications.Sdk.Common.Dictionaries;
 using Apps.DeepL.DataSourceHandlers.Enums;
+using Apps.DeepL.Requests.Xliff;
+using Blackbird.Xliff.Utils.Models;
+using Blackbird.Xliff.Utils;
 
 namespace Apps.DeepL.Requests;
 
@@ -49,4 +52,52 @@ public class TextTranslationRequest
 
     [Display("Context")]
     public string? Context { get; set; }
+
+    /// <summary>
+    /// Creates a TextTranslationRequest from an XLIFF translation unit
+    /// </summary>
+    public static TextTranslationRequest FromXliffUnit(
+        TranslationUnit translationUnit,
+        XliffDocument xliffDocument,
+        XliffTranslationRequest request)
+    {
+        return new TextTranslationRequest
+        {
+            Text = translationUnit.Source!,
+            TargetLanguage = string.IsNullOrEmpty(translationUnit.TargetLanguage) ? xliffDocument.TargetLanguage : translationUnit.TargetLanguage,
+            SourceLanguage = string.IsNullOrEmpty(translationUnit.SourceLanguage) ? xliffDocument.SourceLanguage : translationUnit.SourceLanguage,
+            Formality = request.Formality,
+            GlossaryId = request.GlossaryId,
+            ModelType = request.ModelType,
+            PreserveFormatting = request.PreserveFormatting,
+            OutlineDetection = request.OutlineDetection,
+            NonSplittingTags = request.NonSplittingTags,
+            SplittingTags = request.SplittingTags,
+            IgnoreTags = request.IgnoreTags,
+            Context = request.Context
+        };
+    }
+    
+    public static TextTranslationRequest CreateBatchRequest(
+        IEnumerable<string> texts, 
+        string targetLanguage, 
+        string? sourceLanguage, 
+        XliffTranslationRequest request)
+    {
+        return new TextTranslationRequest
+        {
+            Text = string.Join("\n", texts),
+            TargetLanguage = targetLanguage,
+            SourceLanguage = sourceLanguage,
+            Formality = request.Formality,
+            GlossaryId = request.GlossaryId,
+            ModelType = request.ModelType,
+            PreserveFormatting = request.PreserveFormatting,
+            OutlineDetection = request.OutlineDetection,
+            NonSplittingTags = request.NonSplittingTags,
+            SplittingTags = request.SplittingTags,
+            IgnoreTags = request.IgnoreTags,
+            Context = request.Context
+        };
+    }
 }
