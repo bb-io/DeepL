@@ -3,6 +3,7 @@ using Apps.DeepL.Requests.Xliff;
 using Apps.DeepL.Responses;
 using Blackbird.Applications.Sdk.Common;
 using Blackbird.Applications.Sdk.Common.Actions;
+using Blackbird.Applications.Sdk.Common.Exceptions;
 using Blackbird.Applications.Sdk.Common.Files;
 using Blackbird.Applications.Sdk.Common.Invocation;
 using Blackbird.Applications.SDK.Extensions.FileManagement.Interfaces;
@@ -19,6 +20,11 @@ public class XliffTextActions(InvocationContext invocationContext, IFileManageme
     [Action("Translate XLIFF", Description = "Translate an XLIFF file using the text translation endpoint. Useful when using the next-generation model for small XLIFF files.")]
     public async Task<FileResponse> TranslateXliff([ActionParameter] XliffTranslationRequest request)
     {
+        if(string.IsNullOrEmpty(request.TargetLanguage))
+        {
+            throw new PluginMisconfigurationException("Target language is null or empty. Please provide a valid target language.");
+        }
+
         var xliffDocument = await LoadXliffDocumentFromFile(request.File);
         await ProcessTranslationUnits(xliffDocument, request);
         return await SaveTranslatedXliffToFile(xliffDocument, request.File);
@@ -66,11 +72,7 @@ public class XliffTextActions(InvocationContext invocationContext, IFileManageme
             var batch = units.Skip(i).Take(batchSize).ToList();
             var batchTexts = batch.Select(unit => unit.Source!).ToList();
             
-            var translationRequest = TextTranslationRequest.CreateBatchRequest(
-                batchTexts, 
-                xliffDocument.TargetLanguage, 
-                xliffDocument.SourceLanguage, 
-                request);
+            var translationRequest = TextTranslationRequest.CreateBatchRequest(batchTexts, request);
             
             var translationResponse = await translationActions.Translate(translationRequest);
             var translatedParts = translationResponse.TranslatedText.Split('\n');
@@ -99,7 +101,7 @@ public class XliffTextActions(InvocationContext invocationContext, IFileManageme
     {
         foreach (var unit in units)
         {
-            var individualRequest = TextTranslationRequest.FromXliffUnit(unit, xliffDocument, request);
+            var individualRequest = TextTranslationRequest.FromXliffUnit(unit, request);
             var individualResponse = await translationActions.Translate(individualRequest);
             
             unit.Target = individualResponse.TranslatedText;

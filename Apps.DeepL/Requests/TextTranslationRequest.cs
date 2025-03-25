@@ -53,19 +53,14 @@ public class TextTranslationRequest
     [Display("Context")]
     public string? Context { get; set; }
 
-    /// <summary>
-    /// Creates a TextTranslationRequest from an XLIFF translation unit
-    /// </summary>
-    public static TextTranslationRequest FromXliffUnit(
-        TranslationUnit translationUnit,
-        XliffDocument xliffDocument,
+    public static TextTranslationRequest FromXliffUnit(TranslationUnit translationUnit,
         XliffTranslationRequest request)
     {
         return new TextTranslationRequest
         {
             Text = translationUnit.Source!,
-            TargetLanguage = string.IsNullOrEmpty(translationUnit.TargetLanguage) ? xliffDocument.TargetLanguage : translationUnit.TargetLanguage,
-            SourceLanguage = string.IsNullOrEmpty(translationUnit.SourceLanguage) ? xliffDocument.SourceLanguage : translationUnit.SourceLanguage,
+            SourceLanguage = request.SourceLanguage,
+            TargetLanguage = request.TargetLanguage,
             Formality = request.Formality,
             GlossaryId = request.GlossaryId,
             ModelType = request.ModelType,
@@ -78,17 +73,14 @@ public class TextTranslationRequest
         };
     }
     
-    public static TextTranslationRequest CreateBatchRequest(
-        IEnumerable<string> texts, 
-        string targetLanguage, 
-        string? sourceLanguage, 
+    public static TextTranslationRequest CreateBatchRequest(IEnumerable<string> texts, 
         XliffTranslationRequest request)
     {
         return new TextTranslationRequest
         {
             Text = string.Join("\n", texts),
-            TargetLanguage = targetLanguage,
-            SourceLanguage = sourceLanguage,
+            TargetLanguage = request.TargetLanguage,
+            SourceLanguage = request.SourceLanguage,
             Formality = request.Formality,
             GlossaryId = request.GlossaryId,
             ModelType = request.ModelType,
