@@ -12,6 +12,12 @@ public class XliffTranslationRequest
     [Display("XLIFF file")]
     public FileReference File { get; set; } = default!;
 
+    [Display("Source language", Description = "The source language for translation"), StaticDataSource(typeof(SourceLanguageDataHandler))]
+    public string? SourceLanguage { get; set; }
+
+    [Display("Target language", Description = "The target language for translation"), StaticDataSource(typeof(TargetLanguageDataHandler))]
+    public string TargetLanguage { get; set; } = string.Empty;
+
     [Display("Formality", Description = "Indicates whether the translation should be formal"), StaticDataSource(typeof(FormalityDataHandler))]
     public string? Formality { get; set; }
 

@@ -1,5 +1,6 @@
 using Apps.DeepL.Actions;
 using Apps.DeepL.Requests.Xliff;
+using Blackbird.Applications.Sdk.Common.Exceptions;
 using Blackbird.Applications.Sdk.Common.Files;
 using Tests.DeepL.Base;
 
@@ -19,7 +20,8 @@ public class XliffTextActionsTests : TestBase
             {
                 Name = "simple.xliff"
             },
-            ModelType = "latency_optimized"
+            ModelType = "latency_optimized",
+            TargetLanguage = "DE"
         };
 
         // Act
@@ -44,7 +46,8 @@ public class XliffTextActionsTests : TestBase
                 Name = "simple.xliff"
             },
             ModelType = "latency_optimized",
-            UseBatches = true
+            UseBatches = true,
+            TargetLanguage = "DE"
         };
 
         // Act
@@ -54,5 +57,24 @@ public class XliffTextActionsTests : TestBase
         Assert.IsNotNull(result);
         Assert.IsNotNull(result.File);
         Assert.AreEqual("simple.xliff", result.File.Name);
+    }
+
+    [TestMethod]
+    public async Task TranslateXliff_WithoutTargetLanguage_ShouldThrowMisconfigurationException()
+    {
+        // Arrange
+        var actions = new XliffTextActions(InvocationContext, FileManager);
+        var request = new XliffTranslationRequest
+        {
+            File = new FileReference
+            {
+                Name = "simple.xliff"
+            },
+            ModelType = "latency_optimized",
+            TargetLanguage = string.Empty
+        };
+
+        // Act & Assert
+        await Assert.ThrowsExceptionAsync<PluginMisconfigurationException>(async () => await actions.TranslateXliff(request));
     }
 }
