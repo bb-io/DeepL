@@ -9,15 +9,13 @@ namespace Apps.DeepL.Requests;
 
 public class DocumentTranslationRequest
 {
-    public FileReference File { get; set; }
+    public FileReference File { get; set; } = default!;
 
-    [Display("Source language")]
-    [StaticDataSource(typeof(SourceLanguageDataHandler))]
+    [Display("Source language"), StaticDataSource(typeof(SourceLanguageDataHandler))]
     public string? SourceLanguage { get; set; }
 
-    [Display("Target language")]
-    [StaticDataSource(typeof(TargetLanguageDataHandler))]
-    public string TargetLanguage { get; set; }
+    [Display("Target language"), StaticDataSource(typeof(TargetLanguageDataHandler))]
+    public string TargetLanguage { get; set; } = string.Empty;
 
     [Display("Formality", Description = "Indicates whether the translation should be formal")]
     [StaticDataSource(typeof(FormalityDataHandler))]

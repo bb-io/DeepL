@@ -50,16 +50,15 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
     [Action("Translate document", Description = "Translate a document")]
     public async Task<FileResponse> TranslateDocument([ActionParameter] DocumentTranslationRequest request)
     {
-
         if (string.IsNullOrWhiteSpace(request.TargetLanguage))
         {
             throw new PluginMisconfigurationException("The target language can not be empty, please fill the 'Target language' field and make sure it has a valid language code");
         }
+        
         var tuple = await GetFileAndXliffDocumentAsync(request);
         var file = tuple.Item1;
         var xliffDocument = tuple.Item2;
-
-
+        
         using var outputStream = new MemoryStream();
 
         await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.TranslateDocumentAsync(file,
