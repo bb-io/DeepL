@@ -1,0 +1,7 @@
+This is a simple text file.
+It contains multiple lines of text.
+This file is used to test that the TranslateXliff action
+properly rejects non-XLIFF files.
+
+Hooray, you're here! The day just got better - enjoy the following tips!
+A section of text like this is known as a text segment. Start rockin' your translations now!
