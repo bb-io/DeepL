@@ -77,4 +77,42 @@ public class XliffTextActionsTests : TestBase
         // Act & Assert
         await Assert.ThrowsExceptionAsync<PluginMisconfigurationException>(async () => await actions.TranslateXliff(request));
     }
+    
+    [TestMethod]
+    public async Task TranslateXliff_WithTxtFile_ShouldThrowMisconfigurationException()
+    {
+        // Arrange
+        var actions = new XliffTextActions(InvocationContext, FileManager);
+        var request = new XliffTranslationRequest
+        {
+            File = new FileReference
+            {
+                Name = "sample.txt"
+            },
+            ModelType = "latency_optimized",
+            TargetLanguage = "DE"
+        };
+
+        // Act & Assert
+        await Assert.ThrowsExceptionAsync<PluginMisconfigurationException>(async () => await actions.TranslateXliff(request));
+    }
+    
+    [TestMethod]
+    public async Task TranslateXliff_WithCsvFile_ShouldThrowMisconfigurationException()
+    {
+        // Arrange
+        var actions = new XliffTextActions(InvocationContext, FileManager);
+        var request = new XliffTranslationRequest
+        {
+            File = new FileReference
+            {
+                Name = "sample.csv"
+            },
+            ModelType = "latency_optimized",
+            TargetLanguage = "DE"
+        };
+
+        // Act & Assert
+        await Assert.ThrowsExceptionAsync<PluginMisconfigurationException>(async () => await actions.TranslateXliff(request));
+    }
 }

@@ -32,7 +32,7 @@ Before you can connect you need to make sure that:
 
 - **Translate text** Translate text inputs.
 - **Translate document** Translate a document, including XLIFF files (1.2 or 2.1 version).
-- **Translate XLIFF** Translate an XLIFF file using the text translation endpoint. Useful when using the next-generation model for small XLIFF files (support only 1.2 version)
+- **Translate XLIFF** Translate an XLIFF file using the text translation endpoint. Useful when using the next-generation model for small XLIFF files (support only 1.2 version). Supported file extensions: `.xliff`, `.xlf`, `.mqxliff`, `.mxliff`, `.txlf`.
 
 ### Write
 - **Improve text** improve a text using DeepL Write, set writing style or tone. Currently only supports some of the languages. Can also be used to change locale from f.e. American English to British English. For more details see [DeepL's write documentation](https://developers.deepl.com/docs/api-reference/improve-text).

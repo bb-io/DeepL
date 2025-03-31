@@ -17,12 +17,20 @@ namespace Apps.DeepL.Actions;
 public class XliffTextActions(InvocationContext invocationContext, IFileManagementClient fileManagementClient)
     : DeepLInvocable(invocationContext)
 {
+    private static readonly string[] SupportedFileExtensions = { ".xliff", ".xlf", ".mqxliff", ".mxliff", ".txlf" };
+
     [Action("Translate XLIFF", Description = "Translate an XLIFF file using the text translation endpoint. Useful when using the next-generation model for small XLIFF files.")]
     public async Task<FileResponse> TranslateXliff([ActionParameter] XliffTranslationRequest request)
     {
         if(string.IsNullOrEmpty(request.TargetLanguage))
         {
             throw new PluginMisconfigurationException("Target language is null or empty. Please provide a valid target language.");
+        }
+
+        if(!SupportedFileExtensions.Contains(Path.GetExtension(request.File.Name)))
+        {
+            throw new PluginMisconfigurationException("This action only supports XLIFF files and it seems that the file you provided is not an XLIFF file." +
+                $"Please provide a valid XLIFF file. Supported file extensions are: {string.Join(", ", SupportedFileExtensions)}");
         }
 
         var xliffDocument = await LoadXliffDocumentFromFile(request.File);
