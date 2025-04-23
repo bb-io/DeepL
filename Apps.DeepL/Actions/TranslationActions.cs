@@ -200,6 +200,12 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             memoryStream.Position = 0;
 
             var version = xliffDoc.GetVersion();
+
+            if(version != "1.2" || version != "2.1")
+            {
+                throw new PluginMisconfigurationException($"The version '{version}' of the provided XLIFF file is not supported. Please provide a valid XLIFF file with version 1.2 or 2.1.");
+            }
+
             if (version == "1.2")
             {
                 XliffDocument xliffDocument = memoryStream.ToXliffDocument();
