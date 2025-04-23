@@ -80,4 +80,36 @@ public class TranslationActionsTests : TestBase
 
         Assert.IsNotNull(result);
     }
+
+    [TestMethod]
+    public async Task TranslateDocument_WithValidXliffFile_ReturnsTranslatedDocument()
+    {
+        var result = await _actions.TranslateDocument(
+            new DocumentTranslationRequest 
+            { 
+                File = new Blackbird.Applications.Sdk.Common.Files.FileReference 
+                { 
+                    Name = "Localizable.xliff" 
+                },
+                TargetLanguage = "DE"
+            });
+
+        Assert.IsNotNull(result);
+    }
+
+    [TestMethod]
+    public async Task TranslateDocument_WithValidUnsupported20XliffVersion_ThrowsPluginMisconfigurationException()
+    {
+        var task = _actions.TranslateDocument(
+            new DocumentTranslationRequest 
+            { 
+                File = new Blackbird.Applications.Sdk.Common.Files.FileReference 
+                { 
+                    Name = "xliff20.xlf" 
+                },
+                TargetLanguage = "DE"
+            });
+
+        await Throws.MisconfigurationException(() => task);
+    }
 }

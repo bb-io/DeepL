@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="es" xmlns:its="http://www.w3.org/2005/11/its" xmlns:itsxlf="http://www.w3.org/ns/its-xliff/" its:version="2.0">
+ <file id="f1" original="/C:/Users/terales/Desktop/okapi-get-tm-matches-locked/source.html">
+  <unit id="tu1" type="okp:title">
+   <segment>
+    <source>Two Paragraphs</source>
+    <target></target>
+   </segment>
+  </unit>
+  <unit id="tu2" type="okp:paragraph">
+   <mtc:matches xmlns:mtc="urn:oasis:names:tc:xliff:matches:2.0">
+   <mtc:match ref="#1" type="tm" subType="okp:EXACT" similarity="100.0" matchSuitability="100.0" origin="okapi-connector-bitext9147617078968745190">
+   <source>Welcome to our new product launch event.</source>
+   <target>Bienvenidos a nuestro evento de lanzamiento de producto.</target>
+   </mtc:match>
+</mtc:matches>
+   <segment>
+    <source><mrk id="1" type="mtc:match">Welcome to our new product launch event.</mrk></source>
+    <target>Bienvenidos a nuestro evento de lanzamiento de producto.</target>
+   </segment>
+   <ignorable>
+    <source> </source>
+   </ignorable>
+   <segment>
+    <source>It contains some basic text to demonstrate HTML paragraph elements.</source>
+    <target></target>
+   </segment>
+   <ignorable>
+    <source> </source>
+   </ignorable>
+   <segment>
+    <source>Paragraphs are fundamental building blocks of web content that help organize text into readable chunks.</source>
+    <target></target>
+   </segment>
+  </unit>
+  <unit id="tu3" type="okp:paragraph">
+   <segment>
+    <source>Here is the second paragraph.</source>
+    <target></target>
+   </segment>
+   <ignorable>
+    <source> </source>
+   </ignorable>
+   <segment>
+    <source>Adding multiple paragraphs helps improve readability by creating visual separation between different thoughts or sections of content.</source>
+    <target></target>
+   </segment>
+   <ignorable>
+    <source> </source>
+   </ignorable>
+   <segment>
+    <source>This makes the document easier to scan and understand.</source>
+    <target></target>
+   </segment>
+  </unit>
+ </file>
+</xliff>
