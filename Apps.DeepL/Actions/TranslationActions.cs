@@ -7,6 +7,7 @@ using Blackbird.Applications.Sdk.Common;
 using Blackbird.Applications.Sdk.Common.Actions;
 using Blackbird.Applications.Sdk.Common.Exceptions;
 using Blackbird.Applications.Sdk.Common.Invocation;
+using Blackbird.Applications.SDK.Blueprints;
 using Blackbird.Applications.SDK.Extensions.FileManagement.Interfaces;
 using Blackbird.Xliff.Utils;
 using Blackbird.Xliff.Utils.Converters;
@@ -19,6 +20,8 @@ namespace Apps.DeepL.Actions;
 public class TranslationActions(InvocationContext invocationContext, IFileManagementClient fileManagementClient)
     : DeepLInvocable(invocationContext)
 {
+
+    [BlueprintActionDefinition(BlueprintAction.TestAction)]
     [Action("Translate text", Description = "Translate a text")]
     public async Task<TextResponse> Translate([ActionParameter] TextTranslationRequest request)
     {

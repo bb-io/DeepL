@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apps.DeepL", "Apps.DeepL\Apps.DeepL.csproj", "{E7D72110-5739-46CC-9ACB-F91004A57844}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.DeepL", "Tests.DeepL\Tests.DeepL.csproj", "{0B0B4470-42A3-4903-8EEC-05698E0BEA38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.DeepL", "Tests.DeepL\Tests.DeepL.csproj", "{0B0B4470-42A3-4903-8EEC-05698E0BEA38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
