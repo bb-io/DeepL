@@ -12,6 +12,10 @@ using System.Text;
 using Apps.DeepL.Entities;
 using Apps.DeepL.Responses.Glossaries;
 using Apps.DeepL.Utils;
+using RestSharp;
+using Apps.DeepL.Models;
+using System.Xml.Linq;
+using Blackbird.Applications.Sdk.Common.Exceptions;
 
 namespace Apps.DeepL.Actions;
 
@@ -58,7 +62,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         };
     }
 
-    [Action("Import glossary", Description = "Import glossary")]
+    [Action("Import glossary", Description = "Import glossary")] //Create glossary v2
     public async Task<NewGlossaryResponse> ImportGlossary([ActionParameter] ImportGlossaryRequest request)
     {
         request.TargetLanguageCode = request.TargetLanguageCode.ToLower();
@@ -88,6 +92,276 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
             EntryCount = result.EntryCount,
         };
     }
+
+    [Action("Import glossary v3", Description = "Import glossary via DeepL v3 endpoint")]
+    public async Task<NewGlossaryResponse> ImportGlossaryV3([ActionParameter] ImportGlossaryRequest request)
+    {
+        await using var stream = await fileManagementClient.DownloadAsync(request.File);
+        await using var memStream = new MemoryStream();
+        await stream.CopyToAsync(memStream).ConfigureAwait(false);
+        var fileBytes = memStream.ToArray();
+
+        var ext = Path.GetExtension(request.File.Name).ToLowerInvariant();
+        string glossaryName;
+        var dictionariesPayload = new List<object>();
+
+        if (ext == ".tbx")
+        {
+            var xdoc = XDocument.Load(new MemoryStream(fileBytes));
+            XNamespace ns = xdoc.Root.GetDefaultNamespace();
+
+            glossaryName = string.IsNullOrWhiteSpace(request.Name)
+                ? xdoc.Descendants(ns + "title").FirstOrDefault()?.Value
+                  ?? Path.GetFileNameWithoutExtension(request.File.Name)
+                : request.Name;
+
+            var langs = xdoc
+                .Descendants(ns + "langSec")
+                .Attributes(XNamespace.Xml + "lang")
+                .Select(a => a.Value.ToLower())
+                .Distinct()
+                .ToList();
+
+            var pivotLang = xdoc.Root.Attribute(XNamespace.Xml + "lang")?.Value.ToLower()
+                            ?? langs.First();
+
+            foreach (var targetLang in langs.Where(l => l != pivotLang))
+            {
+                var reqPair = new ImportGlossaryRequest
+                {
+                    File = request.File,
+                    SourceLanguageCode = pivotLang,
+                    TargetLanguageCode = targetLang,
+                    Name = request.Name
+                };
+                await using var pairStream = new MemoryStream(fileBytes);
+                var (entriesPair, _) = await GetEntriesFromTbx(reqPair, pairStream);
+                var tsvPair = entriesPair.ToTsv();
+
+                dictionariesPayload.Add(new
+                {
+                    source_lang = pivotLang,
+                    target_lang = targetLang,
+                    entries = tsvPair,
+                    entries_format = "tsv"
+                });
+            }
+        }
+        else
+        {
+            await using var cueStream = new MemoryStream(fileBytes);
+            (GlossaryEntries entries, string name) data;
+            string format;
+            switch (ext)
+            {
+                case ".csv":
+                    data = GetEntriesFromCsv(request, cueStream);
+                    format = "csv";
+                    break;
+                case ".tsv":
+                    data = GetEntriesFromTsv(request, cueStream);
+                    format = "tsv";
+                    break;
+                default:
+                    throw new PluginMisconfigurationException($"Unsupported format: {ext}");
+            }
+            glossaryName = string.IsNullOrWhiteSpace(request.Name) ? data.name : request.Name;
+            var tsv = data.entries.ToTsv();
+            var entriesText = format == "tsv" ? tsv : tsv.Replace("	", ",");
+
+            dictionariesPayload.Add(new
+            {
+                source_lang = request.SourceLanguageCode.ToLower(),
+                target_lang = request.TargetLanguageCode.ToLower(),
+                entries = entriesText,
+                entries_format = format
+            });
+        }
+
+        var body = new
+        {
+            name = glossaryName,
+            dictionaries = dictionariesPayload.ToArray()
+        };
+
+        var restReq = new RestRequest("https://api.deepl.com/v3/glossaries", Method.Post)
+            .AddJsonBody(body);
+
+        var resp = await RestClient.ExecuteAsync<CreateGlossaryV3Result>(restReq).ConfigureAwait(false);
+        if (!resp.IsSuccessful)
+            throw new PluginApplicationException($"DeepL v3 import error: {resp.StatusCode} – {resp.Content}");
+
+        var result = resp.Data!;
+
+        var info = result.Dictionaries.First();
+        return new NewGlossaryResponse
+        {
+            GossaryId = result.GlossaryId,
+            Name = result.Name,
+            SourceLanguageCode = info.SourceLang,
+            TargetLanguageCode = info.TargetLang,
+            EntryCount = info.EntryCount
+        };
+    }
+
+    [Action("Update dictionary v3", Description = "Add a new dictionary or replace an existing one via DeepL v3 endpoint")]
+    public async Task<NewGlossaryResponse> AddOrReplaceDictionaryV3([ActionParameter] UpdateGlossaryRequest request)
+    {
+        await using var stream = await fileManagementClient.DownloadAsync(request.File);
+        await using var memStream = new MemoryStream();
+        await stream.CopyToAsync(memStream).ConfigureAwait(false);
+        var fileBytes = memStream.ToArray();
+
+        var ext = Path.GetExtension(request.File.Name).ToLowerInvariant();
+        string lastSource = null, lastTarget = null;
+        int lastCount = 0;
+        string format;
+
+        if (ext == ".tbx")
+        {
+            var xdoc = XDocument.Load(new MemoryStream(fileBytes));
+            XNamespace ns = xdoc.Root.GetDefaultNamespace();
+            var pivotLang = xdoc.Root.Attribute(XNamespace.Xml + "lang")?.Value.ToLower()
+                            ?? xdoc.Descendants(ns + "langSec").Attributes(XNamespace.Xml + "lang").First().Value.ToLower();
+            var langs = xdoc.Descendants(ns + "langSec").Attributes(XNamespace.Xml + "lang").Select(a => a.Value.ToLower()).Distinct();
+
+            foreach (var targetLang in langs.Where(l => l != pivotLang))
+            {
+                var reqPair = new ImportGlossaryRequest
+                {
+                    File = request.File,
+                    SourceLanguageCode = pivotLang,
+                    TargetLanguageCode = targetLang
+                };
+                await using var pairStream = new MemoryStream(fileBytes);
+                var (entriesPair, _) = await GetEntriesFromTbx(reqPair, pairStream);
+                var tsvPair = entriesPair.ToTsv();
+
+                var body = new
+                {
+                    source_lang = pivotLang,
+                    target_lang = targetLang,
+                    entries = tsvPair,
+                    entries_format = "tsv"
+                };
+                var restReq = new RestRequest($"https://api.deepl.com/v3/glossaries/{request.GlossaryId}/dictionaries", Method.Put)
+                    .AddJsonBody(body);
+                var resp = await RestClient.ExecuteAsync<AddOrReplaceDictionaryResult>(restReq).ConfigureAwait(false);
+                if (!resp.IsSuccessful)
+                    throw new PluginApplicationException($"DeepL v3 add/replace dictionary error: {resp.StatusCode} – {resp.Content}");
+                var data = resp.Data!;
+                lastSource = data.SourceLang;
+                lastTarget = data.TargetLang;
+                lastCount = data.EntryCount;
+            }
+        }
+        else
+        {
+            await using var cueStream = new MemoryStream(fileBytes);
+            (GlossaryEntries entries, string name) data;
+            switch (ext)
+            {
+                case ".csv":
+                    data = GetEntriesFromCsv(request, cueStream);
+                    format = "csv";
+                    break;
+                case ".tsv":
+                    data = GetEntriesFromTsv(request, cueStream);
+                    format = "tsv";
+                    break;
+                default:
+                    throw new NotSupportedException($"Unsupported format: {ext}");
+            }
+            var tsv = data.entries.ToTsv();
+            var entriesText = format == "tsv" ? tsv : tsv.Replace("	", ",");
+            var body = new
+            {
+                source_lang = request.SourceLanguageCode.ToLower(),
+                target_lang = request.TargetLanguageCode.ToLower(),
+                entries = entriesText,
+                entries_format = format
+            };
+            var restReq = new RestRequest($"https://api.deepl.com/v3/glossaries/{request.GlossaryId}/dictionaries", Method.Put)
+                .AddJsonBody(body);
+            var resp = await RestClient.ExecuteAsync<AddOrReplaceDictionaryResult>(restReq).ConfigureAwait(false);
+            if (!resp.IsSuccessful)
+                throw new PluginApplicationException($"DeepL v3 add/replace dictionary error: {resp.StatusCode} – {resp.Content}");
+            var dataRes = resp.Data!;
+            lastSource = dataRes.SourceLang;
+            lastTarget = dataRes.TargetLang;
+            lastCount = dataRes.EntryCount;
+        }
+
+        return new NewGlossaryResponse
+        {
+            GossaryId = request.GlossaryId,
+            Name = request.GlossaryId,
+            SourceLanguageCode = lastSource,
+            TargetLanguageCode = lastTarget,
+            EntryCount = lastCount
+        };
+    }
+
+    [Action("Export glossary v3", Description = "Export glossary via DeepL v3 endpoint")]
+    public async Task<ExportGlossaryResponse> ExportGlossaryV3([ActionParameter] GlossaryRequest request)
+    {
+        var metaReq = new RestRequest($"https://api.deepl.com/v3/glossaries/{request.GlossaryId}", Method.Get);
+        var metaResp = await RestClient.ExecuteAsync<GetGlossaryMetadataResult>(metaReq).ConfigureAwait(false);
+        if (!metaResp.IsSuccessful)
+            throw new Exception($"DeepL v3 metadata error: {metaResp.StatusCode} – {metaResp.Content}");
+        var metadata = metaResp.Data!;
+
+        var pivotLang = metadata.Dictionaries.First().SourceLang;
+
+        var termMap = new Dictionary<string, Dictionary<string, string>>(StringComparer.OrdinalIgnoreCase);
+        foreach (var dictInfo in metadata.Dictionaries)
+        {
+            var entriesReq = new RestRequest(
+                $"https://api.deepl.com/v3/glossaries/{request.GlossaryId}/entries?source_lang={pivotLang}&target_lang={dictInfo.TargetLang}",
+                Method.Get);
+            var entriesResp = await RestClient.ExecuteAsync<GetGlossaryEntriesResult>(entriesReq).ConfigureAwait(false);
+            if (!entriesResp.IsSuccessful)
+                throw new PluginApplicationException($"DeepL v3 entries error: {entriesResp.StatusCode} – {entriesResp.Content}");
+            var dictData = entriesResp.Data!.Dictionaries.First();
+            var entries = GlossaryEntries.FromTsv(dictData.Entries, skipChecks: true).ToDictionary();
+
+            foreach (var kvp in entries)
+            {
+                if (!termMap.ContainsKey(kvp.Key))
+                    termMap[kvp.Key] = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+                    {
+                        [pivotLang] = kvp.Key
+                    };
+                termMap[kvp.Key][dictInfo.TargetLang] = kvp.Value;
+            }
+        }
+
+        var conceptEntries = new List<GlossaryConceptEntry>();
+        int id = 0;
+        foreach (var kv in termMap)
+        {
+            var sections = kv.Value
+                .Select(pair => new GlossaryLanguageSection(pair.Key,
+                    new List<GlossaryTermSection> { new GlossaryTermSection(pair.Value) }))
+                .ToList();
+            conceptEntries.Add(new GlossaryConceptEntry((id++).ToString(), sections));
+        }
+
+        var blackbirdGlossary = new Glossary(conceptEntries)
+        {
+            Title = metadata.Name
+        };
+        await using var tbxStream = blackbirdGlossary.ConvertToTBX();
+        return new ExportGlossaryResponse
+        {
+            File = await fileManagementClient.UploadAsync(
+                tbxStream,
+                MediaTypeNames.Application.Xml,
+                $"{metadata.Name}.tbx")
+        };
+    }
+
+
 
     [Action("List glossaries", Description = "List all glossaries")]
     public async Task<ListGlossariesResponse> ListGlossaries()

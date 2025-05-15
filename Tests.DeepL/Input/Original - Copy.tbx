@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tbx type="TBX-Core" style="dca" xml:lang="en" xmlns="urn:iso:std:iso:30042:ed-2">
+  <tbxHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>MultilingualTEST</title>
+      </titleStmt>
+    </fileDesc>
+  </tbxHeader>
+  <text>
+    <body>
+      <conceptEntry id="0">
+        <langSec xml:lang="de">
+          <termSec>
+            <term>Wasser</term>
+            <termNote type="termId">rn1EYlRPwyS48R9ES21ym4hH2</termNote>
+            <termNote type="forbidden">false</termNote>
+            <termNote type="preferred">false</termNote>
+            <termNote type="exactMatch">false</termNote>
+            <termNote type="status">Approved</termNote>
+            <termNote type="caseSensitive">false</termNote>
+            <termNote type="createdBy">ceci</termNote>
+            <termNote type="createdAt">1746728764189</termNote>
+            <termNote type="lastModifiedBy">ceci</termNote>
+            <termNote type="lastModifiedAt">1746728764189</termNote>
+          </termSec>
+        </langSec>
+		  <langSec xml:lang="uk">
+			  <termSec>
+				  <term>Вода</term>
+				  <termNote type="termId">rn1EYlRPcyS48R9ES21ym4hH2</termNote>
+				  <termNote type="forbidden">false</termNote>
+				  <termNote type="preferred">false</termNote>
+				  <termNote type="exactMatch">false</termNote>
+				  <termNote type="status">Approved</termNote>
+				  <termNote type="caseSensitive">false</termNote>
+				  <termNote type="createdBy">ceci</termNote>
+				  <termNote type="createdAt">1746728764189</termNote>
+				  <termNote type="lastModifiedBy">ceci</termNote>
+				  <termNote type="lastModifiedAt">1746728764189</termNote>
+			  </termSec>
+		  </langSec>
+        <langSec xml:lang="es">
+          <termSec>
+            <term>Ujë</term>
+            <termNote type="termId">EoTz6pbGMGZ2My4QXBgi3c38</termNote>
+            <termNote type="forbidden">false</termNote>
+            <termNote type="preferred">false</termNote>
+            <termNote type="exactMatch">false</termNote>
+            <termNote type="status">Approved</termNote>
+            <termNote type="caseSensitive">false</termNote>
+            <termNote type="createdBy">ceci</termNote>
+            <termNote type="createdAt">1746728765126</termNote>
+            <termNote type="lastModifiedBy">ceci</termNote>
+            <termNote type="lastModifiedAt">1746728765126</termNote>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="en">
+          <termSec>
+            <term>Water</term>
+            <termNote type="termId">XzLP0L4QxQ75Mi9EEQ0ezfqE2</termNote>
+            <termNote type="forbidden">false</termNote>
+            <termNote type="preferred">false</termNote>
+            <termNote type="exactMatch">false</termNote>
+            <termNote type="status">Approved</termNote>
+            <termNote type="caseSensitive">false</termNote>
+            <termNote type="createdBy">ceci</termNote>
+            <termNote type="createdAt">1746728764405</termNote>
+            <termNote type="lastModifiedBy">ceci</termNote>
+            <termNote type="lastModifiedAt">1746728764405</termNote>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="nl">
+          <termSec>
+            <term>Water</term>
+            <termNote type="termId">TrnPnqdSMaR20698fFxaAduB1</termNote>
+            <termNote type="forbidden">false</termNote>
+            <termNote type="preferred">false</termNote>
+            <termNote type="exactMatch">false</termNote>
+            <termNote type="status">Approved</termNote>
+            <termNote type="caseSensitive">false</termNote>
+            <termNote type="createdBy">ceci</termNote>
+            <termNote type="createdAt">1746728764901</termNote>
+            <termNote type="lastModifiedBy">ceci</termNote>
+            <termNote type="lastModifiedAt">1746728764901</termNote>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="fr">
+          <termSec>
+            <term>Eau</term>
+            <termNote type="termId">01aKEDJP0QHggVBwzP2ELDSt6</termNote>
+            <termNote type="forbidden">false</termNote>
+            <termNote type="preferred">false</termNote>
+            <termNote type="exactMatch">false</termNote>
+            <termNote type="status">Approved</termNote>
+            <termNote type="caseSensitive">false</termNote>
+            <termNote type="createdBy">ceci</termNote>
+            <termNote type="createdAt">1746728764622</termNote>
+            <termNote type="lastModifiedBy">ceci</termNote>
+            <termNote type="lastModifiedAt">1746728764622</termNote>
+          </termSec>
+        </langSec>
+      </conceptEntry>
+      <conceptEntry id="1">
+        <langSec xml:lang="de">
+          <termSec>
+            <term>Haus</term>
+            <termNote type="termId">qWEjtjAAMA04SO902r0aWJSb0</termNote>
+            <termNote type="forbidden">false</termNote>
+            <termNote type="preferred">false</termNote>
+            <termNote type="exactMatch">false</termNote>
+            <termNote type="status">Approved</termNote>
+            <termNote type="caseSensitive">false</termNote>
+            <termNote type="createdBy">ceci</termNote>
+            <termNote type="createdAt">1746728701776</termNote>
+            <termNote type="lastModifiedBy">ceci</termNote>
+            <termNote type="lastModifiedAt">1746728701776</termNote>
+          </termSec>
+        </langSec>
+		  <langSec xml:lang="uk">
+			  <termSec>
+				  <term>Дім</term>
+				  <termNote type="termId">qWEjtjAAMA04SO902r0aWJSb0</termNote>
+				  <termNote type="forbidden">false</termNote>
+				  <termNote type="preferred">false</termNote>
+				  <termNote type="exactMatch">false</termNote>
+				  <termNote type="status">Approved</termNote>
+				  <termNote type="caseSensitive">false</termNote>
+				  <termNote type="createdBy">ceci</termNote>
+				  <termNote type="createdAt">1746728701776</termNote>
+				  <termNote type="lastModifiedBy">ceci</termNote>
+				  <termNote type="lastModifiedAt">1746728701776</termNote>
+			  </termSec>
+		  </langSec>
+        <langSec xml:lang="es">
+          <termSec>
+            <term>Shtëpi</term>
+            <termNote type="termId">9L3coemQ0YR4Qn90gF0qXjmH4</termNote>
+            <termNote type="forbidden">false</termNote>
+            <termNote type="preferred">false</termNote>
+            <termNote type="exactMatch">false</termNote>
+            <termNote type="status">Approved</termNote>
+            <termNote type="caseSensitive">false</termNote>
+            <termNote type="createdBy">ceci</termNote>
+            <termNote type="createdAt">1746728702785</termNote>
+            <termNote type="lastModifiedBy">ceci</termNote>
+            <termNote type="lastModifiedAt">1746728702785</termNote>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="en">
+          <termSec>
+            <term>House</term>
+            <termNote type="termId">auGCR3Jy0YC48q9E5i18SceY3</termNote>
+            <termNote type="forbidden">false</termNote>
+            <termNote type="preferred">false</termNote>
+            <termNote type="exactMatch">false</termNote>
+            <termNote type="status">Approved</termNote>
+            <termNote type="caseSensitive">false</termNote>
+            <termNote type="createdBy">ceci</termNote>
+            <termNote type="createdAt">1746728702039</termNote>
+            <termNote type="lastModifiedBy">ceci</termNote>
+            <termNote type="lastModifiedAt">1746728702039</termNote>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="fr">
+          <termSec>
+            <term>Maison</term>
+            <termNote type="termId">sydSrgXtMG04IX9gyB1qj0V43</termNote>
+            <termNote type="forbidden">false</termNote>
+            <termNote type="preferred">false</termNote>
+            <termNote type="exactMatch">false</termNote>
+            <termNote type="status">Approved</termNote>
+            <termNote type="caseSensitive">false</termNote>
+            <termNote type="createdBy">ceci</termNote>
+            <termNote type="createdAt">1746728702260</termNote>
+            <termNote type="lastModifiedBy">ceci</termNote>
+            <termNote type="lastModifiedAt">1746728702260</termNote>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="nl">
+          <termSec>
+            <term>Huis</term>
+            <termNote type="termId">NfTbdQqj0UC5A48gsJ041h593</termNote>
+            <termNote type="forbidden">false</termNote>
+            <termNote type="preferred">false</termNote>
+            <termNote type="exactMatch">false</termNote>
+            <termNote type="status">Approved</termNote>
+            <termNote type="caseSensitive">false</termNote>
+            <termNote type="createdBy">ceci</termNote>
+            <termNote type="createdAt">1746728702540</termNote>
+            <termNote type="lastModifiedBy">ceci</termNote>
+            <termNote type="lastModifiedAt">1746728702540</termNote>
+          </termSec>
+        </langSec>
+      </conceptEntry>
+      <conceptEntry id="2">
+        <langSec xml:lang="de">
+          <termSec>
+            <term>Freund</term>
+            <termNote type="termId">45K15XhQ00EigfAwnk0IMdP97</termNote>
+            <termNote type="forbidden">false</termNote>
+            <termNote type="preferred">false</termNote>
+            <termNote type="exactMatch">false</termNote>
+            <termNote type="status">Approved</termNote>
+            <termNote type="caseSensitive">false</termNote>
+            <termNote type="createdBy">ceci</termNote>
+            <termNote type="createdAt">1746728793634</termNote>
+            <termNote type="lastModifiedBy">ceci</termNote>
+            <termNote type="lastModifiedAt">1746728793634</termNote>
+          </termSec>
+        </langSec>
+		  <langSec xml:lang="uk">
+			  <termSec>
+				  <term>Друг</term>
+				  <termNote type="termId">45K15XhQ00EigfAwnk0IMdP97</termNote>
+				  <termNote type="forbidden">false</termNote>
+				  <termNote type="preferred">false</termNote>
+				  <termNote type="exactMatch">false</termNote>
+				  <termNote type="status">Approved</termNote>
+				  <termNote type="caseSensitive">false</termNote>
+				  <termNote type="createdBy">ceci</termNote>
+				  <termNote type="createdAt">1746728793634</termNote>
+				  <termNote type="lastModifiedBy">ceci</termNote>
+				  <termNote type="lastModifiedAt">1746728793634</termNote>
+			  </termSec>
+		  </langSec>
+        <langSec xml:lang="es">
+          <termSec>
+            <term>Mik</term>
+            <termNote type="termId">O2xoGrtFMmh21U8UxhxC72Ct1</termNote>
+            <termNote type="forbidden">false</termNote>
+            <termNote type="preferred">false</termNote>
+            <termNote type="exactMatch">false</termNote>
+            <termNote type="status">Approved</termNote>
+            <termNote type="caseSensitive">false</termNote>
+            <termNote type="createdBy">ceci</termNote>
+            <termNote type="createdAt">1746728794490</termNote>
+            <termNote type="lastModifiedBy">ceci</termNote>
+            <termNote type="lastModifiedAt">1746728794490</termNote>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="en">
+          <termSec>
+            <term>Friend</term>
+            <termNote type="termId">1qgXFa302FZ9IHi0YC18H11pc</termNote>
+            <termNote type="forbidden">false</termNote>
+            <termNote type="preferred">false</termNote>
+            <termNote type="exactMatch">false</termNote>
+            <termNote type="status">Approved</termNote>
+            <termNote type="caseSensitive">false</termNote>
+            <termNote type="createdBy">ceci</termNote>
+            <termNote type="createdAt">1746728793850</termNote>
+            <termNote type="lastModifiedBy">ceci</termNote>
+            <termNote type="lastModifiedAt">1746728793850</termNote>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="fr">
+          <termSec>
+            <term>Ami</term>
+            <termNote type="termId">L0cVSxnqwRZ5g1iwQ40ugQUE1</termNote>
+            <termNote type="forbidden">false</termNote>
+            <termNote type="preferred">false</termNote>
+            <termNote type="exactMatch">false</termNote>
+            <termNote type="status">Approved</termNote>
+            <termNote type="caseSensitive">false</termNote>
+            <termNote type="createdBy">ceci</termNote>
+            <termNote type="createdAt">1746728794057</termNote>
+            <termNote type="lastModifiedBy">ceci</termNote>
+            <termNote type="lastModifiedAt">1746728794057</termNote>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="nl">
+          <termSec>
+            <term>Vriend</term>
+            <termNote type="termId">zsvSQlewgPz2L09UaKwBNYSy0</termNote>
+            <termNote type="forbidden">false</termNote>
+            <termNote type="preferred">false</termNote>
+            <termNote type="exactMatch">false</termNote>
+            <termNote type="status">Approved</termNote>
+            <termNote type="caseSensitive">false</termNote>
+            <termNote type="createdBy">ceci</termNote>
+            <termNote type="createdAt">1746728794286</termNote>
+            <termNote type="lastModifiedBy">ceci</termNote>
+            <termNote type="lastModifiedAt">1746728794286</termNote>
+          </termSec>
+        </langSec>
+      </conceptEntry>
+    </body>
+  </text>
+</tbx>
