@@ -1,4 +1,6 @@
-﻿using System.Xml.Linq;
+﻿extern alias XliffContent;
+
+using System.Xml.Linq;
 using Apps.DeepL.Constants;
 using Apps.DeepL.Requests;
 using Apps.DeepL.Responses;
@@ -46,6 +48,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             DetectedSourceLanguage = result.DetectedSourceLanguageCode
         };
     }
+
 
     [Action("Translate document", Description = "Translate a document")]
     public async Task<FileResponse> TranslateDocument([ActionParameter] DocumentTranslationRequest request)

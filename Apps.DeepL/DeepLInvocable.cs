@@ -14,6 +14,8 @@ public class DeepLInvocable : BaseInvocable
     protected Translator Client { get; }
     protected RestClient RestClient { get; }
 
+
+
     public DeepLInvocable(InvocationContext invocationContext) : base(invocationContext) 
     {
         Client = TranslatorFactory.GetTranslator(invocationContext.AuthenticationCredentialsProviders);
