@@ -34,7 +34,6 @@ public class ContentActions(InvocationContext invocationContext, IFileManagement
     [Action("Translate content", Description = "Translate content retrieved from a CMS. The output can be used in compatible actions.")]
     public async Task<FileResponse> TranslateContent([ActionParameter] ContentTranslationRequest input)
     {
-        var 
         if (string.IsNullOrWhiteSpace(input.TargetLanguage))
         {
             throw new PluginMisconfigurationException("The target language can not be empty, please fill the 'Target language' field and make sure it has a valid language code");
