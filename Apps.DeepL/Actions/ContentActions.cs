@@ -34,6 +34,7 @@ public class ContentActions(InvocationContext invocationContext, IFileManagement
     [Action("Translate content", Description = "Translate content retrieved from a CMS. The output can be used in compatible actions.")]
     public async Task<FileResponse> TranslateContent([ActionParameter] ContentTranslationRequest input)
     {
+        var 
         if (string.IsNullOrWhiteSpace(input.TargetLanguage))
         {
             throw new PluginMisconfigurationException("The target language can not be empty, please fill the 'Target language' field and make sure it has a valid language code");
@@ -49,7 +50,7 @@ public class ContentActions(InvocationContext invocationContext, IFileManagement
         var content = await FileGroup.TryParse(stream);
         if (content == null) throw new PluginApplicationException("Something went wrong parsing this XLIFF file. Please send a copy of this file to the team for inspection!");
         content.SourceLanguage ??= input.SourceLanguage;
-        content.TargetLanguage ??= input.TargetLanguage;
+        content.TargetLanguage ??= input.TargetLanguage.ToLower();
 
         var options = new TextTranslateOptions
         {
@@ -68,7 +69,7 @@ public class ContentActions(InvocationContext invocationContext, IFileManagement
         foreach(var batch in batches)
         {
             var results = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () =>
-                await Client.TranslateTextAsync(batch.Select(x => x.GetSource()), content.SourceLanguage, content.TargetLanguage, options));
+                await Client.TranslateTextAsync(batch.Select(x => x.GetSource()), content.SourceLanguage, input.TargetLanguage, options));
 
             var batchAsArray = batch.ToArray();
             for(int i = 0; i < results.Length; i++)
