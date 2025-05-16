@@ -23,6 +23,7 @@ using DocumentFormat.OpenXml.Office2016.Excel;
 using Blackbird.Xliff.Utils.Constants;
 using Apps.DeepL.Constants;
 using Apps.DeepL.Requests.Content;
+using Microsoft.VisualBasic;
 
 namespace Apps.DeepL.Actions;
 
@@ -62,6 +63,8 @@ public class ContentActions(InvocationContext invocationContext, IFileManagement
 
         var batches = content.IterateSegments().Where(x => !x.Ignorable && x.IsInitial()).Batch(100);
 
+        var sourceLanguages = new List<string>();
+
         foreach(var batch in batches)
         {
             var results = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () =>
@@ -75,9 +78,20 @@ public class ContentActions(InvocationContext invocationContext, IFileManagement
 
                 segment.SetTarget(result.Text, TagParsing.Html);
                 segment.State = SegmentState.Translated;
-                content.SourceLanguage ??= result.DetectedSourceLanguageCode;
+                if (!string.IsNullOrEmpty(result.DetectedSourceLanguageCode))
+                {
+                    sourceLanguages.Add(result.DetectedSourceLanguageCode.ToLower());
+                }
             }
         }
+
+        var mostOccuringSourceLanguage = sourceLanguages
+            .GroupBy(s => s)
+            .OrderByDescending(g => g.Count())
+            .First()
+            .Key;
+
+        content.SourceLanguage ??= mostOccuringSourceLanguage;
 
         var xliffStream = Xliff2Serializer.Serialize(content).ToStream();
         var fileName = input.File.Name.EndsWith("xliff") || input.File.Name.EndsWith("xlf") ? input.File.Name : input.File.Name + ".xliff";
