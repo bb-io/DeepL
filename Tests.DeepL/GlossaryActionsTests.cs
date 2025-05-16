@@ -20,7 +20,7 @@ namespace Tests.DeepL
             var action = new GlossaryActions(InvocationContext, FileManager);
 
             var result = await action.ImportGlossaryV3(new ImportGlossaryRequest {
-                File = new FileReference { Name= "Original - Copy.tbx" } });
+                File = new FileReference { Name= "test.csv" } });
 
 
             Console.WriteLine(result.GossaryId);
@@ -44,12 +44,10 @@ namespace Tests.DeepL
         {
             var action = new GlossaryActions(InvocationContext, FileManager);
 
-            var result = await action.AddOrReplaceDictionaryV3(new UpdateGlossaryRequest
+            var result = await action.UpdateDictionaryV3(new UpdateGlossaryRequest
             {
-                SourceLanguageCode = "en",
-                TargetLanguageCode = "nl",
-                GlossaryId = "2cbf92b3-e7bd-4538-8a7c-0d5dfcac4778",
-                File = new FileReference { Name = "Original - Copy.tbx" }
+                GlossaryId = "51e21b1e-9d70-4b6b-9519-d1050a175c88",
+                File = new FileReference { Name = "test.csv" }
             });
 
             Assert.IsNotNull(result);
@@ -62,7 +60,7 @@ namespace Tests.DeepL
 
             var result = await action.ExportGlossaryV3(new GlossaryRequest
             {
-                GlossaryId = "2cbf92b3-e7bd-4538-8a7c-0d5dfcac4778",
+                GlossaryId = "2ae0905b-ed51-42f2-8abf-f0804b1b7780",
 
             });
             Assert.IsNotNull(result);

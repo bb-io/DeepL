@@ -46,6 +46,9 @@ Before you can connect you need to make sure that:
 - **List glossaries** List all glossaries
 - **List glossary language pairs** List supported glossary language pairs
 - **Delete glossary** Delete a glossary
+- **Import glossary (multilingual)** Import a glossary with multiple language pairs.
+- **Update dictionary (multilingual)** Updates multilingual dictionary 
+- **Export glossary (multilingual)** Export multilingual glossary
 
 ## Example
 
