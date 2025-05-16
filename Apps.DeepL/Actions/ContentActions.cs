@@ -75,6 +75,7 @@ public class ContentActions(InvocationContext invocationContext, IFileManagement
 
                 segment.SetTarget(result.Text, TagParsing.Html);
                 segment.State = SegmentState.Translated;
+                content.SourceLanguage ??= result.DetectedSourceLanguageCode;
             }
         }
 
