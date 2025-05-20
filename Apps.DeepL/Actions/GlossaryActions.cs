@@ -208,7 +208,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
 
         var resp = await RestClient.ExecuteAsync<CreateGlossaryV3Result>(restReq).ConfigureAwait(false);
         if (!resp.IsSuccessful)
-            throw new PluginMisconfigurationException($"Multilingual import file error: {resp.StatusCode} – {resp.Content}");
+            throw new PluginApplicationException($" {resp.StatusCode} – {resp.Content}");
 
         var result = resp.Data!;
 
