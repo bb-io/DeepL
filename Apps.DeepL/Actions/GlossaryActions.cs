@@ -96,7 +96,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
     }
 
     [Action("Import glossary (multilingual)", Description = "Import multilingual glossary")]
-    public async Task<NewGlossaryResponse> ImportGlossaryV3([ActionParameter] ImportGlossaryRequest request)
+    public async Task<NewGlossaryResponse> ImportGlossaryV3([ActionParameter] ImportMultilingualGlossaryRequest request)
     {
         if (request == null || request.File == null)
             throw new PluginMisconfigurationException("Request or file cannot be null.");

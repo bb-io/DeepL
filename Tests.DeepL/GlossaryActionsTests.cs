@@ -19,7 +19,7 @@ namespace Tests.DeepL
         {
             var action = new GlossaryActions(InvocationContext, FileManager);
 
-            var result = await action.ImportGlossaryV3(new ImportGlossaryRequest {
+            var result = await action.ImportGlossaryV3(new ImportMultilingualGlossaryRequest {
                 File = new FileReference { Name= "test.csv" } });
 
 
