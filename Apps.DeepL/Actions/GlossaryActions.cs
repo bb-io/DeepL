@@ -96,7 +96,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
     }
 
     [Action("Import glossary (multilingual)", Description = "Import multilingual glossary")]
-    public async Task<NewGlossaryResponse> ImportGlossaryV3([ActionParameter] ImportGlossaryRequest request)
+    public async Task<NewGlossaryResponse> ImportGlossaryV3([ActionParameter] ImportMultilingualGlossaryRequest request)
     {
         if (request == null || request.File == null)
             throw new PluginMisconfigurationException("Request or file cannot be null.");
@@ -208,7 +208,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
 
         var resp = await RestClient.ExecuteAsync<CreateGlossaryV3Result>(restReq).ConfigureAwait(false);
         if (!resp.IsSuccessful)
-            throw new PluginMisconfigurationException($"Multilingual import file error: {resp.StatusCode} – {resp.Content}");
+            throw new PluginApplicationException($" {resp.StatusCode} – {resp.Content}");
 
         var result = resp.Data!;
 
