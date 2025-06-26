@@ -111,7 +111,7 @@ public class ContentActions(InvocationContext invocationContext, IFileManagement
         else
         {
             var resultStream = content.Target().Serialize().ToStream();
-            var uploadedFile = await fileManagementClient.UploadAsync(resultStream, "application/xliff+xml", input.File.Name);
+            var uploadedFile = await fileManagementClient.UploadAsync(resultStream, input.File.ContentType, input.File.Name);
             return new FileResponse { File = uploadedFile };
         }
     }

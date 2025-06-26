@@ -4,10 +4,11 @@ using Blackbird.Applications.Sdk.Common;
 using Blackbird.Applications.Sdk.Common.Dictionaries;
 using Blackbird.Applications.Sdk.Common.Dynamic;
 using Blackbird.Applications.Sdk.Common.Files;
+using Blackbird.Applications.SDK.Blueprints.Interfaces.Translate;
 
 namespace Apps.DeepL.Requests.Content;
 
-public class ContentTranslationRequest
+public class ContentTranslationRequest : ITranslateFileInput
 {
     [Display("Content file")]
     public FileReference File { get; set; } = default!;
