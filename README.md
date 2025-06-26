@@ -30,9 +30,9 @@ Before you can connect you need to make sure that:
 
 ### Translation 
 
-- **Translate text** Translate text inputs.
-- **Translate document** Translate a document, including XLIFF files (1.2 or 2.1 version).
-- **Translate XLIFF** Translate an XLIFF file using the text translation endpoint. Useful when using the next-generation model for small XLIFF files (support only 1.2 version). Supported file extensions: `.xliff`, `.xlf`, `.mqxliff`, `.mxliff`, `.txlf`.
+- **Translate** Translate interopability compatible files (today XLIFF 2 and HTML) in Blackbird interoperability mode. Can also be used to translate other file types that DeepL supports.
+- **Translate text** Translate a single text string. Useful when translating small messages. For larger content and files use *Translate* instead.
+- **Translate XLIFF** Translate an XLIFF file using the text translation endpoint. Useful when using the next-generation model for small XLIFF files (support only 1.2 version). Supported file extensions: `.xliff`, `.xlf`, `.mqxliff`, `.mxliff`, `.txlf`. This action will soon be deprecated once Blackbird interoperability mode also supports all these dialects.
 
 ### Write
 - **Improve text** improve a text using DeepL Write, set writing style or tone. Currently only supports some of the languages. Can also be used to change locale from f.e. American English to British English. For more details see [DeepL's write documentation](https://developers.deepl.com/docs/api-reference/improve-text).

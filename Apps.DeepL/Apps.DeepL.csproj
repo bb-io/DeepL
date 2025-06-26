@@ -5,7 +5,7 @@
         <Nullable>enable</Nullable>
         <Product>DeepL</Product>
         <Description>The NMT service</Description>
-        <Version>1.1.28</Version>
+        <Version>1.1.29</Version>
         <AssemblyName>Apps.DeepL</AssemblyName>
     </PropertyGroup>
 
@@ -14,9 +14,7 @@
         <PackageReference Include="Blackbird.Applications.SDK.Extensions.FileManagement" Version="1.0.1" />
         <PackageReference Include="Blackbird.Applications.Sdk.Glossaries.Utils" Version="1.0.0-alpha2" />
         <PackageReference Include="Blackbird.Applications.Sdk.Utils" Version="1.0.26" />
-        <PackageReference Include="Blackbird.Applications.Sdk.Xliff.Utils" Version="1.1.2">
-          <Aliases>XliffContent</Aliases>
-        </PackageReference>
+        <PackageReference Include="Blackbird.Filters" Version="1.1.2" />
         <PackageReference Include="Blackbird.Xliff.Utils" Version="1.1.12">
           <Aliases></Aliases>
         </PackageReference>

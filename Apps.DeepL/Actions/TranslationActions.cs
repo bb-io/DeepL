@@ -1,6 +1,4 @@
-﻿extern alias XliffContent;
-
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 using Apps.DeepL.Constants;
 using Apps.DeepL.Requests;
 using Apps.DeepL.Responses;
@@ -21,7 +19,7 @@ namespace Apps.DeepL.Actions;
 public class TranslationActions(InvocationContext invocationContext, IFileManagementClient fileManagementClient)
     : DeepLInvocable(invocationContext)
 {
-    [Action("Translate text", Description = "Translate a text")]
+    [Action("Translate text", Description = "Translate a single simple text string")]
     public async Task<TextResponse> Translate([ActionParameter] TextTranslationRequest request)
     {
         if (string.IsNullOrWhiteSpace(request.TargetLanguage))
@@ -50,7 +48,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
     }
 
 
-    [Action("Translate document", Description = "Translate a document")]
+    [Action("Translate document (deprecated)", Description = "Translate a document - DEPRECATED. Use: Translate")]
     public async Task<FileResponse> TranslateDocument([ActionParameter] DocumentTranslationRequest request)
     {
         if (string.IsNullOrWhiteSpace(request.TargetLanguage))

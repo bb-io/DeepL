@@ -21,7 +21,7 @@ public class ContentTranslationRequest
     [Display("Formality", Description = "Indicates whether the translation should be formal"), StaticDataSource(typeof(FormalityDataHandler))]
     public string? Formality { get; set; }
 
-    [Display("Glossary", Description = "The ID of the glossary to be used for translation"), DataSource(typeof(GlossariesDataHandler))]
+    [Display("Glossary ID", Description = "The ID of the glossary to be used for translation"), DataSource(typeof(GlossariesDataHandler))]
     public string? GlossaryId { get; set; }
 
     [Display("Model type", Description = "Specifies which DeepL model should be used for translation"), StaticDataSource(typeof(ModelTypeDataHandler))]
@@ -29,4 +29,10 @@ public class ContentTranslationRequest
 
     [Display("Context")]
     public string? Context { get; set; }
+
+    [Display("Preserve formatting", Description = "Preserves the formatting of the text during translation")]
+    public bool? PreserveFormatting { get; set; }
+
+    [Display("Output file handling", Description = "Determine the format of the output file. The default Blackbird behavior is to convert to XLIFF for future steps."), StaticDataSource(typeof(OutputFileHandlingHandler))]
+    public string? OutputFileHandling { get; set; }
 }
