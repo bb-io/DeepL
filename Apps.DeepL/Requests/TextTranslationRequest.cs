@@ -5,11 +5,11 @@ using Blackbird.Applications.Sdk.Common.Dictionaries;
 using Apps.DeepL.DataSourceHandlers.Enums;
 using Apps.DeepL.Requests.Xliff;
 using Blackbird.Xliff.Utils.Models;
-using Blackbird.Xliff.Utils;
+using Blackbird.Applications.SDK.Blueprints.Interfaces.Translate;
 
 namespace Apps.DeepL.Requests;
 
-public class TextTranslationRequest
+public class TextTranslationRequest : ITranslateTextInput
 {
     [Display("Text", Description = "Text to translate")]
     public string Text { get; set; }
