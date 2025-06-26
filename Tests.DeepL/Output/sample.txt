@@ -1,0 +1,9 @@
+Dit is een eenvoudig tekstbestand.
+Het bevat meerdere regels tekst.
+Dit bestand wordt gebruikt om te testen of de actie TranslateXliff
+niet-XLIFF bestanden goed weigert.
+
+
+
+Hoera, je bent er! De dag is zojuist beter geworden - geniet van de volgende tips!
+Een stuk tekst zoals dit staat bekend als een tekstsegment. Laat je vertalingen nu de pan uit rijzen!

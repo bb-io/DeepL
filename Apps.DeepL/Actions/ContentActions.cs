@@ -1,7 +1,4 @@
-﻿extern alias XliffContent;
-
-using Apps.DeepL.Requests;
-using Apps.DeepL.Responses;
+﻿using Apps.DeepL.Responses;
 using Apps.DeepL.Utils;
 using Blackbird.Applications.Sdk.Common;
 using Blackbird.Applications.Sdk.Common.Actions;
@@ -9,21 +6,12 @@ using Blackbird.Applications.Sdk.Common.Exceptions;
 using Blackbird.Applications.Sdk.Common.Invocation;
 using Blackbird.Applications.SDK.Extensions.FileManagement.Interfaces;
 using Blackbird.Xliff.Utils.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using XliffContent::Blackbird.Xliff.Utils.Models.Content;
-using XliffContent::Blackbird.Xliff.Utils.Constants;
-using XliffContent::Blackbird.Xliff.Utils.Serializers.Xliff2;
-using XliffContent::Blackbird.Xliff.Utils.Extensions;
 using DeepL;
-using DocumentFormat.OpenXml.Office2016.Excel;
-using Blackbird.Xliff.Utils.Constants;
 using Apps.DeepL.Constants;
 using Apps.DeepL.Requests.Content;
-using Microsoft.VisualBasic;
+using Blackbird.Filters.Transformations;
+using Blackbird.Filters.Extensions;
+using Blackbird.Filters.Enums;
 
 namespace Apps.DeepL.Actions;
 
@@ -31,7 +19,7 @@ namespace Apps.DeepL.Actions;
 public class ContentActions(InvocationContext invocationContext, IFileManagementClient fileManagementClient)
     : DeepLInvocable(invocationContext)
 {
-    [Action("Translate content", Description = "Translate content retrieved from a CMS. The output can be used in compatible actions.")]
+    [Action("Translate", Description = "Translate file content retrieved from a CMS or file storage. The output can be used in compatible actions.")]
     public async Task<FileResponse> TranslateContent([ActionParameter] ContentTranslationRequest input)
     {
         if (string.IsNullOrWhiteSpace(input.TargetLanguage))
@@ -46,14 +34,34 @@ public class ContentActions(InvocationContext invocationContext, IFileManagement
         }
 
         var stream = await fileManagementClient.DownloadAsync(input.File);
-        var content = await FileGroup.TryParse(stream);
-        if (content == null) throw new PluginApplicationException("Something went wrong parsing this XLIFF file. Please send a copy of this file to the team for inspection!");
+        try
+        {
+            var content = await Transformation.Parse(stream);
+            return await HandleInteroperableTransformation(content, input);
+        }
+        catch (Exception)
+        {
+            var translationActions = new TranslationActions(InvocationContext, fileManagementClient);
+            return await translationActions.TranslateDocument(new Requests.DocumentTranslationRequest { 
+                File = input.File,  
+                TargetLanguage = input.TargetLanguage,
+                TranslateFileName = false,
+                Formality = input.Formality,
+                GlossaryId = input.GlossaryId,
+                SourceLanguage = input.SourceLanguage,
+            });
+        }  
+        
+    }
+
+    private async Task<FileResponse> HandleInteroperableTransformation(Transformation content, ContentTranslationRequest input)
+    {
         content.SourceLanguage ??= input.SourceLanguage;
         content.TargetLanguage ??= input.TargetLanguage.ToLower();
 
         var options = new TextTranslateOptions
         {
-            PreserveFormatting = true,
+            PreserveFormatting = input.PreserveFormatting.HasValue ? input.PreserveFormatting.Value : true,
             Formality = GetFormality(input.Formality),
             GlossaryId = input.GlossaryId,
             TagHandling = "html",
@@ -61,22 +69,22 @@ public class ContentActions(InvocationContext invocationContext, IFileManagement
             ModelType = GetModelType(input.ModelType)
         };
 
-        var batches = content.IterateSegments().Where(x => !x.Ignorable && x.IsInitial()).Batch(100);
+        var batches = content.GetSegments().Where(x => !x.IsIgnorbale && x.IsInitial).Batch(100);
 
         var sourceLanguages = new List<string>();
 
-        foreach(var batch in batches)
+        foreach (var batch in batches)
         {
             var results = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () =>
                 await Client.TranslateTextAsync(batch.Select(x => x.GetSource()), content.SourceLanguage, input.TargetLanguage, options));
 
             var batchAsArray = batch.ToArray();
-            for(int i = 0; i < results.Length; i++)
+            for (int i = 0; i < results.Length; i++)
             {
                 var segment = batchAsArray[i];
                 var result = results[i];
 
-                segment.SetTarget(result.Text, TagParsing.Html);
+                segment.SetTarget(result.Text);
                 segment.State = SegmentState.Translated;
                 if (!string.IsNullOrEmpty(result.DetectedSourceLanguageCode))
                 {
@@ -85,18 +93,27 @@ public class ContentActions(InvocationContext invocationContext, IFileManagement
             }
         }
 
-        var mostOccuringSourceLanguage = sourceLanguages
+        if (input.OutputFileHandling == null || input.OutputFileHandling == "xliff")
+        {
+            var mostOccuringSourceLanguage = sourceLanguages
             .GroupBy(s => s)
             .OrderByDescending(g => g.Count())
             .First()
             .Key;
 
-        content.SourceLanguage ??= mostOccuringSourceLanguage;
+            content.SourceLanguage ??= mostOccuringSourceLanguage;
 
-        var xliffStream = Xliff2Serializer.Serialize(content).ToStream();
-        var fileName = input.File.Name.EndsWith("xliff") || input.File.Name.EndsWith("xlf") ? input.File.Name : input.File.Name + ".xliff";
-        var uploadedFile = await fileManagementClient.UploadAsync(xliffStream, "application/xliff+xml", fileName);
-        return new FileResponse { File = uploadedFile };
+            var xliffStream = content.Serialize().ToStream();
+            var fileName = input.File.Name.EndsWith("xliff") || input.File.Name.EndsWith("xlf") ? input.File.Name : input.File.Name + ".xliff";
+            var uploadedFile = await fileManagementClient.UploadAsync(xliffStream, "application/xliff+xml", fileName);
+            return new FileResponse { File = uploadedFile };
+        }
+        else
+        {
+            var resultStream = content.Target().Serialize().ToStream();
+            var uploadedFile = await fileManagementClient.UploadAsync(resultStream, "application/xliff+xml", input.File.Name);
+            return new FileResponse { File = uploadedFile };
+        }
     }
 
     private static Formality GetFormality(string? formalityString)

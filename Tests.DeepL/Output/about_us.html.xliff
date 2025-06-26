@@ -1,0 +1,40 @@
+<xliff srcLang="en" trgLang="nl" version="2.2" xmlns="urn:oasis:names:tc:xliff:document:2.2">
+  <file id="f1">
+    <skeleton>&lt;html&gt;&lt;head&gt;&lt;meta name="blackbird-entry-id" content="7kJitxPJtS9krgCF0GnQhd"&gt;&lt;meta name="blackbird-locale" content="en"&gt;&lt;/head&gt;&lt;body&gt;&lt;div data-contentful-entry-id="7kJitxPJtS9krgCF0GnQhd"&gt;&lt;h1 data-contentful-field-type="Symbol" data-contentful-field-id="title"&gt;About Us&lt;/h1&gt;&lt;div data-contentful-field-type="RichText" data-contentful-field-id="blogText"&gt;&lt;p&gt;Argo Translation has been providing exceptional tailored translation solutions for more than 28 years — whether it’s to help companies sell more products to an international audience or to clearly engage with employees through a variety of languages. With a focus on communicating with the client at a personal level, even as technology continues to be more advanced, we continue to uphold the same spirit of great customer service that the company began with as we continue to create understanding in every language around the world.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Our History&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;CEO Peter Argondizzo envisioned Argo Translation during his first job out of college. As a project manager in the foreign language department of a medical device company, he grew frustrated with the translation process—the costs and the lack of accountability among companies offering translation services. “We can do better than that,” he thought. This is a new sentence.&lt;/p&gt;&lt;p&gt;Peter partnered with co-founder Jackie Lucarelli, and together, they grew Argo Translation to more than two dozen full-time employees who coordinate more than 300 translators worldwide. Bringing their combined customer service, translation, and corporate skills together, Peter and Jackie built Argo Translation not just on the constantly advancing technology in the industry but also on the human touch with every project. Personally being involved in every project provides a better relationship with both translators and customers, resulting in the best possible project outcome. Argo Translation continues to work with many of its original customers and is proud to continue to practice these work ethics every single day.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</skeleton>
+    <unit id="u1" name="/html[1]/body[1]/div[1]/h1[1]" p3:tagHandling="html" xmlns:p3="http://blackbird.io/">
+      <segment state="translated">
+        <source>About Us</source>
+        <target>Over ons</target>
+      </segment>
+    </unit>
+    <unit id="u2" name="/html[1]/body[1]/div[1]/div[1]/p[1]" p3:tagHandling="html" xmlns:p3="http://blackbird.io/">
+      <segment state="translated">
+        <source>Argo Translation has been providing exceptional tailored translation solutions for more than 28 years — whether it’s to help companies sell more products to an international audience or to clearly engage with employees through a variety of languages. With a focus on communicating with the client at a personal level, even as technology continues to be more advanced, we continue to uphold the same spirit of great customer service that the company began with as we continue to create understanding in every language around the world.</source>
+        <target>Argo Translation levert al meer dan 28 jaar uitzonderlijke vertaaloplossingen op maat - of het nu is om bedrijven te helpen meer producten te verkopen aan een internationaal publiek of om werknemers duidelijk te benaderen via een verscheidenheid aan talen. Met een focus op het communiceren met de klant op een persoonlijk niveau, zelfs terwijl de technologie steeds geavanceerder wordt, blijven we dezelfde geest van geweldige klantenservice behouden waarmee het bedrijf begon terwijl we doorgaan met het creëren van begrip in elke taal over de hele wereld.</target>
+      </segment>
+    </unit>
+    <unit id="u3" name="/html[1]/body[1]/div[1]/div[1]/p[2]" p3:tagHandling="html" xmlns:p3="http://blackbird.io/">
+      <segment state="translated">
+        <source>
+          <sc id="1" dataRef="d1" />Our History<ec dataRef="d2" /></source>
+        <target>&lt;strong&gt;Onze geschiedenis&lt;/strong&gt;</target>
+      </segment>
+      <originalData>
+        <data id="d1">&lt;strong&gt;</data>
+        <data id="d2">&lt;/strong&gt;</data>
+      </originalData>
+    </unit>
+    <unit id="u4" name="/html[1]/body[1]/div[1]/div[1]/p[3]" p3:tagHandling="html" xmlns:p3="http://blackbird.io/">
+      <segment state="translated">
+        <source>CEO Peter Argondizzo envisioned Argo Translation during his first job out of college. As a project manager in the foreign language department of a medical device company, he grew frustrated with the translation process—the costs and the lack of accountability among companies offering translation services. “We can do better than that,” he thought. This is a new sentence.</source>
+        <target>CEO Peter Argondizzo bedacht Argo Translation tijdens zijn eerste baan na zijn studie. Als projectmanager op de afdeling vreemde talen van een bedrijf voor medische apparatuur raakte hij gefrustreerd door het vertaalproces - de kosten en het gebrek aan verantwoordelijkheid bij bedrijven die vertaaldiensten aanbieden. "We kunnen beter dan dat," dacht hij. Dit is een nieuwe zin.</target>
+      </segment>
+    </unit>
+    <unit id="u5" name="/html[1]/body[1]/div[1]/div[1]/p[4]" p3:tagHandling="html" xmlns:p3="http://blackbird.io/">
+      <segment state="translated">
+        <source>Peter partnered with co-founder Jackie Lucarelli, and together, they grew Argo Translation to more than two dozen full-time employees who coordinate more than 300 translators worldwide. Bringing their combined customer service, translation, and corporate skills together, Peter and Jackie built Argo Translation not just on the constantly advancing technology in the industry but also on the human touch with every project. Personally being involved in every project provides a better relationship with both translators and customers, resulting in the best possible project outcome. Argo Translation continues to work with many of its original customers and is proud to continue to practice these work ethics every single day.</source>
+        <target>Peter ging samenwerken met medeoprichter Jackie Lucarelli en samen groeiden ze Argo Translation uit tot meer dan twee dozijn fulltime medewerkers die wereldwijd meer dan 300 vertalers coördineren. Door hun gecombineerde klantenservice, vertaal- en bedrijfsvaardigheden samen te brengen, bouwden Peter en Jackie Argo Translation niet alleen op de voortdurend voortschrijdende technologie in de sector, maar ook op de menselijke benadering van elk project. Persoonlijk betrokken zijn bij elk project zorgt voor een betere relatie met zowel vertalers als klanten, wat resulteert in het best mogelijke projectresultaat. Argo Translation werkt nog steeds met veel van zijn oorspronkelijke klanten en is er trots op dat het deze werkethiek elke dag blijft toepassen.</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>
