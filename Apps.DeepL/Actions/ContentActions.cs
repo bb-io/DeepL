@@ -14,6 +14,7 @@ using Blackbird.Filters.Extensions;
 using Blackbird.Filters.Enums;
 using DeepL.Model;
 using Microsoft.Extensions.Options;
+using Blackbird.Applications.SDK.Blueprints;
 
 namespace Apps.DeepL.Actions;
 
@@ -21,6 +22,7 @@ namespace Apps.DeepL.Actions;
 public class ContentActions(InvocationContext invocationContext, IFileManagementClient fileManagementClient)
     : DeepLInvocable(invocationContext)
 {
+    [BlueprintActionDefinition(BlueprintAction.TranslateFile)]
     [Action("Translate", Description = "Translate file content retrieved from a CMS or file storage. The output can be used in compatible actions.")]
     public async Task<FileResponse> TranslateContent([ActionParameter] ContentTranslationRequest input)
     {
