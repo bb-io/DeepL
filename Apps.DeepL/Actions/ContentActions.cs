@@ -12,6 +12,8 @@ using Apps.DeepL.Requests.Content;
 using Blackbird.Filters.Transformations;
 using Blackbird.Filters.Extensions;
 using Blackbird.Filters.Enums;
+using DeepL.Model;
+using Microsoft.Extensions.Options;
 
 namespace Apps.DeepL.Actions;
 
@@ -53,7 +55,6 @@ public class ContentActions(InvocationContext invocationContext, IFileManagement
         }  
         
     }
-
     private async Task<FileResponse> HandleInteroperableTransformation(Transformation content, ContentTranslationRequest input)
     {
         content.SourceLanguage ??= input.SourceLanguage;
@@ -69,27 +70,25 @@ public class ContentActions(InvocationContext invocationContext, IFileManagement
             ModelType = GetModelType(input.ModelType)
         };
 
-        var batches = content.GetSegments().Where(x => !x.IsIgnorbale && x.IsInitial).Batch(100);
+        async Task<IEnumerable<TextResult>> BatchTranslate(IEnumerable<Segment> batch)
+        {
+            return await ErrorHandler.ExecuteWithErrorHandlingAsync(async () =>
+                    await Client.TranslateTextAsync(batch.Select(x => x.GetSource()), content.SourceLanguage, input.TargetLanguage, options));
+        }
+
+        var segmentTranslations = await content
+            .GetSegments()
+            .Where(x => !x.IsIgnorbale && x.IsInitial)
+            .Batch(100).Process(BatchTranslate);
 
         var sourceLanguages = new List<string>();
-
-        foreach (var batch in batches)
+        foreach (var (segment, translation) in segmentTranslations)
         {
-            var results = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () =>
-                await Client.TranslateTextAsync(batch.Select(x => x.GetSource()), content.SourceLanguage, input.TargetLanguage, options));
-
-            var batchAsArray = batch.ToArray();
-            for (int i = 0; i < results.Length; i++)
+            segment.SetTarget(translation.Text);
+            segment.State = SegmentState.Translated;
+            if (!string.IsNullOrEmpty(translation.DetectedSourceLanguageCode))
             {
-                var segment = batchAsArray[i];
-                var result = results[i];
-
-                segment.SetTarget(result.Text);
-                segment.State = SegmentState.Translated;
-                if (!string.IsNullOrEmpty(result.DetectedSourceLanguageCode))
-                {
-                    sourceLanguages.Add(result.DetectedSourceLanguageCode.ToLower());
-                }
+                sourceLanguages.Add(translation.DetectedSourceLanguageCode.ToLower());
             }
         }
 
