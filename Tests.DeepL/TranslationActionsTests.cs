@@ -73,7 +73,7 @@ public class TranslationActionsTests : TestBase
             { 
                 File = new Blackbird.Applications.Sdk.Common.Files.FileReference 
                 { 
-                    Name = "testEmpty.txt" 
+                    Name = "contentful.html" 
                 },
                 TargetLanguage = "es"
             });
@@ -89,7 +89,7 @@ public class TranslationActionsTests : TestBase
             { 
                 File = new Blackbird.Applications.Sdk.Common.Files.FileReference 
                 { 
-                    Name = "Localizable.xliff" 
+                    Name = "contentful.html.xliff" 
                 },
                 TargetLanguage = "DE"
             });

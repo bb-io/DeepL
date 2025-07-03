@@ -22,7 +22,7 @@ public class ContentTests : TestBase
         var file = new FileReference { Name = "contentful.html" };
         var result = await actions.TranslateContent(new ContentTranslationRequest() { File = file, SourceLanguage = "en", TargetLanguage = "nl" });
 
-        Assert.AreEqual(result.File.Name, "contentful.html.xliff");
+        Assert.AreEqual(result.File.Name, "contentful.html.xlf");
     }
 
     [TestMethod]
@@ -32,7 +32,7 @@ public class ContentTests : TestBase
         var file = new FileReference { Name = "about_us.html" };
         var result = await actions.TranslateContent(new ContentTranslationRequest() { File = file, SourceLanguage = "en", TargetLanguage = "nl" });
 
-        Assert.AreEqual(result.File.Name, "about_us.html.xliff");
+        Assert.AreEqual(result.File.Name, "about_us.html.xlf");
     }
 
     [TestMethod]
@@ -40,7 +40,7 @@ public class ContentTests : TestBase
     {
         var actions = new ContentActions(InvocationContext, FileManager);
         var file = new FileReference { Name = "sample.txt" };
-        var result = await actions.TranslateContent(new ContentTranslationRequest() { File = file, SourceLanguage = "en", TargetLanguage = "nl" });
+        var result = await actions.TranslateContent(new ContentTranslationRequest() { File = file, SourceLanguage = "en", TargetLanguage = "nl", FileTranslationStrategy = "deepl" });
 
         Assert.AreEqual(result.File.Name, "sample.txt");
     }
@@ -50,7 +50,7 @@ public class ContentTests : TestBase
     {
         var actions = new ContentActions(InvocationContext, FileManager);
         var file = new FileReference { Name = "test_word.docx" };
-        var result = await actions.TranslateContent(new ContentTranslationRequest() { File = file, SourceLanguage = "en", TargetLanguage = "nl" });
+        var result = await actions.TranslateContent(new ContentTranslationRequest() { File = file, SourceLanguage = "en", TargetLanguage = "nl", FileTranslationStrategy = "deepl" });
 
         Assert.AreEqual(result.File.Name, "test_word.docx");
     }

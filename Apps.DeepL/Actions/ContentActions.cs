@@ -15,6 +15,7 @@ using Blackbird.Filters.Enums;
 using DeepL.Model;
 using Microsoft.Extensions.Options;
 using Blackbird.Applications.SDK.Blueprints;
+using Blackbird.Filters.Constants;
 
 namespace Apps.DeepL.Actions;
 
@@ -37,26 +38,39 @@ public class ContentActions(InvocationContext invocationContext, IFileManagement
             throw new PluginMisconfigurationException($"The target language '{input.TargetLanguage}' is not supported. Please select a valid language.");
         }
 
-        var stream = await fileManagementClient.DownloadAsync(input.File);
-        try
-        {
-            var content = await Transformation.Parse(stream);
-            return await HandleInteroperableTransformation(content, input);
-        }
-        catch (Exception)
+        if (input.FileTranslationStrategy == "deepl")
         {
             var translationActions = new TranslationActions(InvocationContext, fileManagementClient);
-            return await translationActions.TranslateDocument(new Requests.DocumentTranslationRequest { 
-                File = input.File,  
+            return await translationActions.TranslateDocument(new Requests.DocumentTranslationRequest
+            {
+                File = input.File,
                 TargetLanguage = input.TargetLanguage,
                 TranslateFileName = false,
                 Formality = input.Formality,
                 GlossaryId = input.GlossaryId,
                 SourceLanguage = input.SourceLanguage,
             });
-        }  
-        
+        } 
+        else
+        {
+            try
+            {
+                var stream = await fileManagementClient.DownloadAsync(input.File);
+                var content = await Transformation.Parse(stream, input.File.Name);
+                return await HandleInteroperableTransformation(content, input);
+            } catch(Exception e)
+            {
+                if (e.Message.Contains("This file format is not supported"))
+                {
+                    throw new PluginMisconfigurationException("The file format is not supported by the Blackbird interoperable setting. Try setting the file translation strategy to DeepL native.");
+                }
+                throw e;
+            }
+          
+        }        
     }
+
+
     private async Task<FileResponse> HandleInteroperableTransformation(Transformation content, ContentTranslationRequest input)
     {
         content.SourceLanguage ??= input.SourceLanguage;
@@ -94,25 +108,24 @@ public class ContentActions(InvocationContext invocationContext, IFileManagement
             }
         }
 
-        if (input.OutputFileHandling == null || input.OutputFileHandling == "xliff")
+        if (input.OutputFileHandling == null || input.OutputFileHandling == MediaTypes.Xliff)
         {
             var mostOccuringSourceLanguage = sourceLanguages
-            .GroupBy(s => s)
-            .OrderByDescending(g => g.Count())
-            .First()
-            .Key;
+                .GroupBy(s => s)
+                .OrderByDescending(g => g.Count())
+                .First()
+                .Key;
 
             content.SourceLanguage ??= mostOccuringSourceLanguage;
+            content.TargetLanguage ??= input.TargetLanguage;
 
-            var xliffStream = content.Serialize().ToStream();
-            var fileName = input.File.Name.EndsWith("xliff") || input.File.Name.EndsWith("xlf") ? input.File.Name : input.File.Name + ".xliff";
-            var uploadedFile = await fileManagementClient.UploadAsync(xliffStream, "application/xliff+xml", fileName);
+            var uploadedFile = await fileManagementClient.UploadAsync(content.Serialize().ToStream(), MediaTypes.Xliff, content.XliffFileName);
             return new FileResponse { File = uploadedFile };
         }
         else
         {
-            var resultStream = content.Target().Serialize().ToStream();
-            var uploadedFile = await fileManagementClient.UploadAsync(resultStream, input.File.ContentType, input.File.Name);
+            var targetContent = content.Target();
+            var uploadedFile = await fileManagementClient.UploadAsync(targetContent.Serialize().ToStream(), targetContent.OriginalMediaType, targetContent.OriginalName);
             return new FileResponse { File = uploadedFile };
         }
     }
