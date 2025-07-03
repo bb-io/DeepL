@@ -64,7 +64,7 @@ public class ContentActions(InvocationContext invocationContext, IFileManagement
                 {
                     throw new PluginMisconfigurationException("The file format is not supported by the Blackbird interoperable setting. Try setting the file translation strategy to DeepL native.");
                 }
-                throw e;
+                throw;
             }
           
         }        
