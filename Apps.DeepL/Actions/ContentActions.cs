@@ -50,24 +50,22 @@ public class ContentActions(InvocationContext invocationContext, IFileManagement
                 GlossaryId = input.GlossaryId,
                 SourceLanguage = input.SourceLanguage,
             });
-        } 
-        else
+        }
+
+        try
         {
-            try
+            var stream = await fileManagementClient.DownloadAsync(input.File);
+            var content = await Transformation.Parse(stream, input.File.Name);
+            return await HandleInteroperableTransformation(content, input);
+        }
+        catch (Exception e)
+        {
+            if (e.Message.Contains("This file format is not supported"))
             {
-                var stream = await fileManagementClient.DownloadAsync(input.File);
-                var content = await Transformation.Parse(stream, input.File.Name);
-                return await HandleInteroperableTransformation(content, input);
-            } catch(Exception e)
-            {
-                if (e.Message.Contains("This file format is not supported"))
-                {
-                    throw new PluginMisconfigurationException("The file format is not supported by the Blackbird interoperable setting. Try setting the file translation strategy to DeepL native.");
-                }
-                throw;
+                throw new PluginMisconfigurationException("The file format is not supported by the Blackbird interoperable setting. Try setting the file translation strategy to DeepL native.");
             }
-          
-        }        
+            throw;
+        }
     }
 
 
