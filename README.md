@@ -30,8 +30,17 @@ Before you can connect you need to make sure that:
 
 ### Translation 
 
-- **Translate** Translate interopability compatible files (today XLIFF 2 and HTML) in Blackbird interoperability mode. Can also be used to translate other file types that DeepL supports.
+- **Translate** Translate interopability compatible files in Blackbird interoperability mode. Can also be used to translate other file types that DeepL supports. If you're only translating text (strings) then use *Translate text* instead. Advanced settings:
+  - **File translation strategy**: Select whether to use DeepL's own file processing capabilities or use Blackbird interoperability mode with DeepL's more advanced models (the latter the the default mode).
+  - **Output file handling**: If using Blackbird's interoperability mode, this determines the format of the output file. The default Blackbird behavior is to convert to XLIFF for future steps. You can change it to output the original file format (if you don't want to continue language operationts after this step).  
+  - **Glossary ID**: Select the DeepL glossary you want to use for this translation.
+  - **Context**: Add additional context to the translation, this can be anything of relevance.
+  - **Preserve formatting**: Whether to preserve the text formatting during translation.
+  - **Formality**: Indicates whether the translation should be formal (depends on the language).
+  - **Model type**: Specifies which DeepL model should be used for translation. You can choose between speed and quality here.
 - **Translate text** Translate a single text string. Useful when translating small messages. For larger content and files use *Translate* instead.
+
+To be deprecated soon:
 - **Translate XLIFF** Translate an XLIFF file using the text translation endpoint. Useful when using the next-generation model for small XLIFF files (support only 1.2 version). Supported file extensions: `.xliff`, `.xlf`, `.mqxliff`, `.mxliff`, `.txlf`. This action will soon be deprecated once Blackbird interoperability mode also supports all these dialects.
 
 ### Write
