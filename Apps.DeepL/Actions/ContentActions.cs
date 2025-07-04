@@ -108,26 +108,28 @@ public class ContentActions(InvocationContext invocationContext, IFileManagement
             }
         }
 
-        if (input.OutputFileHandling == null || input.OutputFileHandling == MediaTypes.Xliff)
+        if (input.OutputFileHandling == "original")
         {
-            var mostOccuringSourceLanguage = sourceLanguages
+            var targetContent = content.Target();
+            return new FileResponse 
+            { 
+                File = await fileManagementClient.UploadAsync(targetContent.Serialize().ToStream(), targetContent.OriginalMediaType, targetContent.OriginalName) 
+            };
+        }
+
+        var mostOccuringSourceLanguage = sourceLanguages
                 .GroupBy(s => s)
                 .OrderByDescending(g => g.Count())
                 .First()
                 .Key;
 
-            content.SourceLanguage ??= mostOccuringSourceLanguage;
-            content.TargetLanguage ??= input.TargetLanguage;
+        content.SourceLanguage ??= mostOccuringSourceLanguage;
+        content.TargetLanguage ??= input.TargetLanguage;
 
-            var uploadedFile = await fileManagementClient.UploadAsync(content.Serialize().ToStream(), MediaTypes.Xliff, content.XliffFileName);
-            return new FileResponse { File = uploadedFile };
-        }
-        else
-        {
-            var targetContent = content.Target();
-            var uploadedFile = await fileManagementClient.UploadAsync(targetContent.Serialize().ToStream(), targetContent.OriginalMediaType, targetContent.OriginalName);
-            return new FileResponse { File = uploadedFile };
-        }
+        return new FileResponse 
+        { 
+            File = await fileManagementClient.UploadAsync(content.Serialize().ToStream(), MediaTypes.Xliff, content.XliffFileName)
+        };
     }
 
     private static Formality GetFormality(string? formalityString)
