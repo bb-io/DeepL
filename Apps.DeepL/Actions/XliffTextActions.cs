@@ -13,7 +13,7 @@ using Blackbird.Xliff.Utils.Models;
 
 namespace Apps.DeepL.Actions;
 
-[ActionList]
+[ActionList("Deprecated")]
 public class XliffTextActions(InvocationContext invocationContext, IFileManagementClient fileManagementClient)
     : DeepLInvocable(invocationContext)
 {

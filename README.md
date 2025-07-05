@@ -90,10 +90,9 @@ To be deprecated soon:
 
 - **Export glossary** Export glossary
 - **Import glossary** Import glossary (.tbx, .csv & .tsv)
-- **Get glossary** Get details of a specific glossary
+- **Get glossary details** Get details of a specific glossary
 - **Get glossary entries** Get glossary entries in a TSV format
-- **List glossaries** List all glossaries
-- **List glossary language pairs** List supported glossary language pairs
+- **Search glossaries** List all glossaries
 - **Delete glossary** Delete a glossary
 - **Import glossary (multilingual)** Import a glossary with multiple language
   pairs.

@@ -6,18 +6,12 @@ using Blackbird.Applications.Sdk.Common;
 using Blackbird.Applications.Sdk.Common.Actions;
 using Blackbird.Applications.Sdk.Common.Exceptions;
 using Blackbird.Applications.Sdk.Common.Invocation;
-using Blackbird.Applications.SDK.Extensions.FileManagement.Interfaces;
 using Newtonsoft.Json;
 using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Apps.DeepL.Actions;
 
-[ActionList]
+[ActionList("Write")]
 public class WriteActions(InvocationContext invocationContext) : DeepLInvocable(invocationContext)
 {
     [Action("Improve text", Description = "Improve a text using DeepL Write")]
