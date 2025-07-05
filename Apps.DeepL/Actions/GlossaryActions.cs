@@ -21,7 +21,7 @@ using System.Text.Encodings.Web;
 
 namespace Apps.DeepL.Actions;
 
-[ActionList]
+[ActionList("Glossaries")]
 public class GlossaryActions(InvocationContext invocationContext, IFileManagementClient fileManagementClient)
     : DeepLInvocable(invocationContext)
 {
@@ -402,32 +402,18 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
 
 
 
-    [Action("List glossaries", Description = "List all glossaries")]
+    [Action("Search glossaries", Description = "Search all glossaries")]
     public async Task<ListGlossariesResponse> ListGlossaries()
     {
         var glossary = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.ListGlossariesAsync());
         return new(glossary.Select(x => new GlossaryEntity(x)));
     }
 
-    [Action("Get glossary", Description = "Get details of a specific glossary")]
+    [Action("Get glossary details", Description = "Get details of a specific glossary")]
     public async Task<GlossaryEntity> GetGlossary([ActionParameter] GlossaryRequest input)
     {
         var glossary = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.GetGlossaryAsync(input.GlossaryId));
         return new(glossary);
-    }
-
-    [Action("List glossary language pairs", Description = "List supported glossary language pairs")]
-    public async Task<ListLanguagePairsResponse> ListGlossaryLanguagePairs()
-    {
-        var glossary = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.GetGlossaryLanguagesAsync());
-        return new()
-        {
-            LanguagePairs = glossary.Select(x => new LanguagePairEntity()
-            {
-                SourceLanguage = x.SourceLanguageCode,
-                TargetLanguage = x.TargetLanguageCode
-            })
-        };
     }
 
     [Action("Get glossary entries", Description = "Get glossary entries in a TSV format")]

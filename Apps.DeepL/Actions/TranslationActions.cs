@@ -1,6 +1,7 @@
 ﻿using System.Xml.Linq;
 using Apps.DeepL.Constants;
 using Apps.DeepL.Requests;
+using Apps.DeepL.Requests.Content;
 using Apps.DeepL.Responses;
 using Apps.DeepL.Utils;
 using Blackbird.Applications.Sdk.Common;
@@ -9,14 +10,19 @@ using Blackbird.Applications.Sdk.Common.Exceptions;
 using Blackbird.Applications.Sdk.Common.Invocation;
 using Blackbird.Applications.SDK.Blueprints;
 using Blackbird.Applications.SDK.Extensions.FileManagement.Interfaces;
+using Blackbird.Filters.Constants;
+using Blackbird.Filters.Enums;
+using Blackbird.Filters.Extensions;
+using Blackbird.Filters.Transformations;
 using Blackbird.Xliff.Utils;
 using Blackbird.Xliff.Utils.Converters;
 using Blackbird.Xliff.Utils.Extensions;
 using DeepL;
+using DeepL.Model;
 
 namespace Apps.DeepL.Actions;
 
-[ActionList]
+[ActionList("Translation")]
 public class TranslationActions(InvocationContext invocationContext, IFileManagementClient fileManagementClient)
     : DeepLInvocable(invocationContext)
 {
@@ -49,9 +55,113 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         };
     }
 
+    [BlueprintActionDefinition(BlueprintAction.TranslateFile)]
+    [Action("Translate", Description = "Translate file content retrieved from a CMS or file storage. The output can be used in compatible actions.")]
+    public async Task<FileResponse> TranslateContent([ActionParameter] ContentTranslationRequest input)
+    {
+        if (string.IsNullOrWhiteSpace(input.TargetLanguage))
+        {
+            throw new PluginMisconfigurationException("The target language can not be empty, please fill the 'Target language' field and make sure it has a valid language code");
+        }
 
-    [Action("Translate document (deprecated)", Description = "Translate a document - DEPRECATED. Use: Translate")]
-    public async Task<FileResponse> TranslateDocument([ActionParameter] DocumentTranslationRequest request)
+        var supportedLanguages = LanguageConstants.TargetLanguages.Keys;
+        if (!supportedLanguages.Contains(input.TargetLanguage.ToUpperInvariant()))
+        {
+            throw new PluginMisconfigurationException($"The target language '{input.TargetLanguage}' is not supported. Please select a valid language.");
+        }
+
+        if (input.FileTranslationStrategy == "deepl")
+        {
+            var translationActions = new TranslationActions(InvocationContext, fileManagementClient);
+            return await translationActions.HandlerNativeTranslateDocument(new DocumentTranslationRequest
+            {
+                File = input.File,
+                TargetLanguage = input.TargetLanguage,
+                TranslateFileName = false,
+                Formality = input.Formality,
+                GlossaryId = input.GlossaryId,
+                SourceLanguage = input.SourceLanguage,
+            });
+        }
+
+        try
+        {
+            var stream = await fileManagementClient.DownloadAsync(input.File);
+            var content = await Transformation.Parse(stream, input.File.Name);
+            return await HandleInteroperableTransformation(content, input);
+        }
+        catch (Exception e)
+        {
+            if (e.Message.Contains("This file format is not supported"))
+            {
+                throw new PluginMisconfigurationException("The file format is not supported by the Blackbird interoperable setting. Try setting the file translation strategy to DeepL native.");
+            }
+            throw;
+        }
+    }
+
+    private async Task<FileResponse> HandleInteroperableTransformation(Transformation content, ContentTranslationRequest input)
+    {
+        content.SourceLanguage ??= input.SourceLanguage;
+        content.TargetLanguage ??= input.TargetLanguage.ToLower();
+
+        var options = new TextTranslateOptions
+        {
+            PreserveFormatting = input.PreserveFormatting.HasValue ? input.PreserveFormatting.Value : true,
+            Formality = GetFormality(input.Formality),
+            GlossaryId = input.GlossaryId,
+            TagHandling = "html",
+            Context = input.Context,
+            ModelType = GetModelType(input.ModelType)
+        };
+
+        async Task<IEnumerable<TextResult>> BatchTranslate(IEnumerable<Segment> batch)
+        {
+            return await ErrorHandler.ExecuteWithErrorHandlingAsync(async () =>
+                    await Client.TranslateTextAsync(batch.Select(x => x.GetSource()), content.SourceLanguage, input.TargetLanguage, options));
+        }
+
+        var segmentTranslations = await content
+            .GetSegments()
+            .Where(x => !x.IsIgnorbale && x.IsInitial)
+            .Batch(100).Process(BatchTranslate);
+
+        var sourceLanguages = new List<string>();
+        foreach (var (segment, translation) in segmentTranslations)
+        {
+            segment.SetTarget(translation.Text);
+            segment.State = SegmentState.Translated;
+            if (!string.IsNullOrEmpty(translation.DetectedSourceLanguageCode))
+            {
+                sourceLanguages.Add(translation.DetectedSourceLanguageCode.ToLower());
+            }
+        }
+
+        if (input.OutputFileHandling == "original")
+        {
+            var targetContent = content.Target();
+            return new FileResponse
+            {
+                File = await fileManagementClient.UploadAsync(targetContent.Serialize().ToStream(), targetContent.OriginalMediaType, targetContent.OriginalName)
+            };
+        }
+
+        var mostOccuringSourceLanguage = sourceLanguages
+                .GroupBy(s => s)
+                .OrderByDescending(g => g.Count())
+                .First()
+                .Key;
+
+        content.SourceLanguage ??= mostOccuringSourceLanguage;
+        content.TargetLanguage ??= input.TargetLanguage;
+
+        return new FileResponse
+        {
+            File = await fileManagementClient.UploadAsync(content.Serialize().ToStream(), MediaTypes.Xliff, content.XliffFileName)
+        };
+    }
+
+    private async Task<FileResponse> HandlerNativeTranslateDocument([ActionParameter] DocumentTranslationRequest request)
     {
         if (string.IsNullOrWhiteSpace(request.TargetLanguage))
         {
