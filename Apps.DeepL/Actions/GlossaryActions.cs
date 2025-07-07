@@ -67,32 +67,45 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
     [Action("Import glossary", Description = "Import glossary")] //Create glossary v2
     public async Task<NewGlossaryResponse> ImportGlossary([ActionParameter] ImportGlossaryRequest request)
     {
-        request.TargetLanguageCode = request.TargetLanguageCode.ToLower();
-        request.SourceLanguageCode = request.SourceLanguageCode.ToLower();
-        await using var glossaryStream = await fileManagementClient.DownloadAsync(request.File);
-        var fileExtension = Path.GetExtension(request.File.Name);
+        if (request == null || request.File == null)
+            throw new PluginMisconfigurationException("Request or file cannot be null.");
 
-        var (glossaryEntries, glossaryTitle) = fileExtension switch
+        return await ErrorHandler.ExecuteWithErrorHandlingAsync(async () =>
         {
-            ".tbx" => await GetEntriesFromTbx(request, glossaryStream),
-            ".csv" => GetEntriesFromCsv(request, glossaryStream),
-            ".tsv" => GetEntriesFromTsv(request, glossaryStream),
-            _ => throw new PluginMisconfigurationException($"Glossary format not supported ({fileExtension})." +
-                                     "Supported file extensions include .tbx, .csv & .tsv")
-        };
+            request.TargetLanguageCode = request.TargetLanguageCode.ToLower();
+            request.SourceLanguageCode = request.SourceLanguageCode.ToLower();
+            await using var glossaryStream = await fileManagementClient.DownloadAsync(request.File);
+            var fileExtension = Path.GetExtension(request.File.Name);
 
-        var result = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.CreateGlossaryAsync(glossaryTitle,
-            request.SourceLanguageCode, request.TargetLanguageCode, glossaryEntries));
-        await await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => Client.WaitUntilGlossaryReadyAsync(result.GlossaryId));
+            var (glossaryEntries, glossaryTitle) = fileExtension switch
+            {
+                ".tbx" => await GetEntriesFromTbx(request, glossaryStream),
+                ".csv" => GetEntriesFromCsv(request, glossaryStream),
+                ".tsv" => GetEntriesFromTsv(request, glossaryStream),
+                _ => throw new PluginMisconfigurationException($"Glossary format not supported ({fileExtension})." +
+                                         "Supported file extensions include .tbx, .csv & .tsv")
+            };
 
-        return new NewGlossaryResponse
-        {
-            GossaryId = result.GlossaryId,
-            Name = result.Name,
-            SourceLanguageCode = result.SourceLanguageCode,
-            TargetLanguageCode = result.TargetLanguageCode,
-            EntryCount = result.EntryCount,
-        };
+            var entriesDict = glossaryEntries.ToDictionary();
+
+            if (glossaryEntries == null || entriesDict.Count == 0)
+            {
+                throw new PluginMisconfigurationException("Glossary file has no entires, please check your input and try again");
+            }
+
+            var result = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.CreateGlossaryAsync(glossaryTitle,
+                request.SourceLanguageCode, request.TargetLanguageCode, glossaryEntries));
+            await await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => Client.WaitUntilGlossaryReadyAsync(result.GlossaryId));
+
+            return new NewGlossaryResponse
+            {
+                GossaryId = result.GlossaryId,
+                Name = result.Name,
+                SourceLanguageCode = result.SourceLanguageCode,
+                TargetLanguageCode = result.TargetLanguageCode,
+                EntryCount = result.EntryCount,
+            };
+        });
     }
 
     [Action("Import glossary (multilingual)", Description = "Import multilingual glossary")]
@@ -101,126 +114,130 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         if (request == null || request.File == null)
             throw new PluginMisconfigurationException("Request or file cannot be null.");
 
-        await using var stream = await fileManagementClient.DownloadAsync(request.File);
-        await using var memStream = new MemoryStream();
-        await stream.CopyToAsync(memStream).ConfigureAwait(false);
-        var fileBytes = memStream.ToArray();
-
-        var ext = Path.GetExtension(request.File.Name).ToLowerInvariant();
-        string glossaryName;
-        var dictionariesPayload = new List<object>();
-
-        if (ext == ".tbx")
+        return await ErrorHandler.ExecuteWithErrorHandlingAsync(async () =>
         {
-            var xdoc = XDocument.Load(new MemoryStream(fileBytes));
-            XNamespace ns = xdoc.Root.GetDefaultNamespace();
 
-            glossaryName = string.IsNullOrWhiteSpace(request.Name)
-                ? xdoc.Descendants(ns + "title").FirstOrDefault()?.Value
-                  ?? Path.GetFileNameWithoutExtension(request.File.Name)
-                : request.Name;
+            await using var stream = await fileManagementClient.DownloadAsync(request.File);
+            await using var memStream = new MemoryStream();
+            await stream.CopyToAsync(memStream).ConfigureAwait(false);
+            var fileBytes = memStream.ToArray();
 
-            var langs = xdoc
-                .Descendants(ns + "langSec")
-                .Attributes(XNamespace.Xml + "lang")
-                .Select(a => a.Value.ToLower())
-                .Distinct()
-                .ToList();
+            var ext = Path.GetExtension(request.File.Name).ToLowerInvariant();
+            string glossaryName;
+            var dictionariesPayload = new List<object>();
 
-            var pivotLang = xdoc.Root.Attribute(XNamespace.Xml + "lang")?.Value.ToLower()
-                            ?? langs.First();
-
-            foreach (var targetLang in langs.Where(l => l != pivotLang))
+            if (ext == ".tbx")
             {
-                var reqPair = new ImportGlossaryRequest
-                {
-                    File = request.File,
-                    SourceLanguageCode = pivotLang,
-                    TargetLanguageCode = targetLang,
-                    Name = request.Name
-                };
-                await using var pairStream = new MemoryStream(fileBytes);
-                var (entriesPair, _) = await GetEntriesFromTbx(reqPair, pairStream);
-                var tsvPair = entriesPair.ToTsv();
+                var xdoc = XDocument.Load(new MemoryStream(fileBytes));
+                XNamespace ns = xdoc.Root.GetDefaultNamespace();
 
-                dictionariesPayload.Add(new
+                glossaryName = string.IsNullOrWhiteSpace(request.Name)
+                    ? xdoc.Descendants(ns + "title").FirstOrDefault()?.Value
+                      ?? Path.GetFileNameWithoutExtension(request.File.Name)
+                    : request.Name;
+
+                var langs = xdoc
+                    .Descendants(ns + "langSec")
+                    .Attributes(XNamespace.Xml + "lang")
+                    .Select(a => a.Value.ToLower())
+                    .Distinct()
+                    .ToList();
+
+                var pivotLang = xdoc.Root.Attribute(XNamespace.Xml + "lang")?.Value.ToLower()
+                                ?? langs.First();
+
+                foreach (var targetLang in langs.Where(l => l != pivotLang))
                 {
-                    source_lang = pivotLang,
-                    target_lang = targetLang,
-                    entries = tsvPair,
-                    entries_format = "tsv"
-                });
+                    var reqPair = new ImportGlossaryRequest
+                    {
+                        File = request.File,
+                        SourceLanguageCode = pivotLang,
+                        TargetLanguageCode = targetLang,
+                        Name = request.Name
+                    };
+                    await using var pairStream = new MemoryStream(fileBytes);
+                    var (entriesPair, _) = await GetEntriesFromTbx(reqPair, pairStream);
+                    var tsvPair = entriesPair.ToTsv();
+
+                    dictionariesPayload.Add(new
+                    {
+                        source_lang = pivotLang,
+                        target_lang = targetLang,
+                        entries = tsvPair,
+                        entries_format = "tsv"
+                    });
+                }
             }
-        }
-        else if (ext == ".csv" || ext == ".tsv")
-        {
-            await using var cueStream = new MemoryStream(fileBytes);
-            using var reader = new StreamReader(cueStream);
-            var header = (await reader.ReadLineAsync())?.Split(ext == ".csv" ? ',' : '\t');
-            if (header == null || header.Length < 2)
-                throw new PluginMisconfigurationException("File must contain at least two language codes in header.");
-
-            var langs = header.Select(l => l.ToLower().Trim('"')).ToList();
-            var pivotLang = langs[0].Trim('"');
-            glossaryName = string.IsNullOrWhiteSpace(request.Name) ? Path.GetFileNameWithoutExtension(request.File.Name) : request.Name;
-
-            var entries = new List<string[]>();
-            string? line;
-            while ((line = await reader.ReadLineAsync()) != null)
+            else if (ext == ".csv" || ext == ".tsv")
             {
-                var parts = line.Split(ext == ".csv" ? ',' : '\t').Select(p => p.Trim('"')).ToArray();
-                if (parts.Length == header.Length)
-                    entries.Add(parts);
-            }
+                await using var cueStream = new MemoryStream(fileBytes);
+                using var reader = new StreamReader(cueStream);
+                var header = (await reader.ReadLineAsync())?.Split(ext == ".csv" ? ',' : '\t');
+                if (header == null || header.Length < 2)
+                    throw new PluginMisconfigurationException("File must contain at least two language codes in header.");
 
-            foreach (var targetLang in langs.Skip(1))
-            {
-                var tsvContent = string.Join("\n", entries.Select(e => $"{e[0]}\t{e[langs.IndexOf(targetLang)]}"));
-                dictionariesPayload.Add(new
+                var langs = header.Select(l => l.ToLower().Trim('"')).ToList();
+                var pivotLang = langs[0].Trim('"');
+                glossaryName = string.IsNullOrWhiteSpace(request.Name) ? Path.GetFileNameWithoutExtension(request.File.Name) : request.Name;
+
+                var entries = new List<string[]>();
+                string? line;
+                while ((line = await reader.ReadLineAsync()) != null)
                 {
-                    source_lang = pivotLang,
-                    target_lang = targetLang.Trim('"'),
-                    entries = tsvContent,
-                    entries_format = "tsv"
-                });
+                    var parts = line.Split(ext == ".csv" ? ',' : '\t').Select(p => p.Trim('"')).ToArray();
+                    if (parts.Length == header.Length)
+                        entries.Add(parts);
+                }
+
+                foreach (var targetLang in langs.Skip(1))
+                {
+                    var tsvContent = string.Join("\n", entries.Select(e => $"{e[0]}\t{e[langs.IndexOf(targetLang)]}"));
+                    dictionariesPayload.Add(new
+                    {
+                        source_lang = pivotLang,
+                        target_lang = targetLang.Trim('"'),
+                        entries = tsvContent,
+                        entries_format = "tsv"
+                    });
+                }
             }
-        }
-        else
-        {
-            throw new PluginMisconfigurationException($"Unsupported format: {ext}");
-        }
+            else
+            {
+                throw new PluginMisconfigurationException($"Unsupported format: {ext}");
+            }
 
-        var body = new
-        {
-            name = glossaryName,
-            glossaryRequestParameters = new { },
-            dictionaries = dictionariesPayload.ToArray()
-        };
+            var body = new
+            {
+                name = glossaryName,
+                glossaryRequestParameters = new { },
+                dictionaries = dictionariesPayload.ToArray()
+            };
 
-        var jsonBody = JsonSerializer.Serialize(body, new JsonSerializerOptions
-        {
-            WriteIndented = true,
-            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping 
+            var jsonBody = JsonSerializer.Serialize(body, new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+            });
+
+            var restReq = new RestRequest("https://api.deepl.com/v3/glossaries", Method.Post)
+                .AddParameter("application/json", jsonBody, ParameterType.RequestBody);
+
+            var resp = await RestClient.ExecuteAsync<CreateGlossaryV3Result>(restReq).ConfigureAwait(false);
+            if (!resp.IsSuccessful)
+                throw new PluginApplicationException($" {resp.StatusCode} – {resp.Content}");
+
+            var result = resp.Data!;
+
+            var info = result.Dictionaries.First();
+            return new NewGlossaryResponse
+            {
+                GossaryId = result.GlossaryId,
+                Name = result.Name,
+                SourceLanguageCode = info.SourceLang,
+                TargetLanguageCode = info.TargetLang,
+                EntryCount = info.EntryCount
+            };
         });
-
-        var restReq = new RestRequest("https://api.deepl.com/v3/glossaries", Method.Post)
-            .AddParameter("application/json", jsonBody, ParameterType.RequestBody);
-
-        var resp = await RestClient.ExecuteAsync<CreateGlossaryV3Result>(restReq).ConfigureAwait(false);
-        if (!resp.IsSuccessful)
-            throw new PluginApplicationException($" {resp.StatusCode} – {resp.Content}");
-
-        var result = resp.Data!;
-
-        var info = result.Dictionaries.First();
-        return new NewGlossaryResponse
-        {
-            GossaryId = result.GlossaryId,
-            Name = result.Name,
-            SourceLanguageCode = info.SourceLang,
-            TargetLanguageCode = info.TargetLang,
-            EntryCount = info.EntryCount
-        };
     }
 
     [Action("Update dictionary (multilingual)", Description = "Updates multilingual dictionary")]
