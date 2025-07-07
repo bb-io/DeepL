@@ -67,39 +67,45 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
     [Action("Import glossary", Description = "Import glossary")] //Create glossary v2
     public async Task<NewGlossaryResponse> ImportGlossary([ActionParameter] ImportGlossaryRequest request)
     {
-        request.TargetLanguageCode = request.TargetLanguageCode.ToLower();
-        request.SourceLanguageCode = request.SourceLanguageCode.ToLower();
-        await using var glossaryStream = await fileManagementClient.DownloadAsync(request.File);
-        var fileExtension = Path.GetExtension(request.File.Name);
+        if (request == null || request.File == null)
+            throw new PluginMisconfigurationException("Request or file cannot be null.");
 
-        var (glossaryEntries, glossaryTitle) = fileExtension switch
+        return await ErrorHandler.ExecuteWithErrorHandlingAsync(async () =>
         {
-            ".tbx" => await GetEntriesFromTbx(request, glossaryStream),
-            ".csv" => GetEntriesFromCsv(request, glossaryStream),
-            ".tsv" => GetEntriesFromTsv(request, glossaryStream),
-            _ => throw new PluginMisconfigurationException($"Glossary format not supported ({fileExtension})." +
-                                     "Supported file extensions include .tbx, .csv & .tsv")
-        };
+            request.TargetLanguageCode = request.TargetLanguageCode.ToLower();
+            request.SourceLanguageCode = request.SourceLanguageCode.ToLower();
+            await using var glossaryStream = await fileManagementClient.DownloadAsync(request.File);
+            var fileExtension = Path.GetExtension(request.File.Name);
 
-        var entriesDict = glossaryEntries.ToDictionary();
+            var (glossaryEntries, glossaryTitle) = fileExtension switch
+            {
+                ".tbx" => await GetEntriesFromTbx(request, glossaryStream),
+                ".csv" => GetEntriesFromCsv(request, glossaryStream),
+                ".tsv" => GetEntriesFromTsv(request, glossaryStream),
+                _ => throw new PluginMisconfigurationException($"Glossary format not supported ({fileExtension})." +
+                                         "Supported file extensions include .tbx, .csv & .tsv")
+            };
 
-        if (glossaryEntries == null || entriesDict.Count == 0)
-        {
-            throw new PluginMisconfigurationException("Glossary file has no entires, please check your input and try again");
-        }
+            var entriesDict = glossaryEntries.ToDictionary();
 
-        var result = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.CreateGlossaryAsync(glossaryTitle,
-            request.SourceLanguageCode, request.TargetLanguageCode, glossaryEntries));
-        await await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => Client.WaitUntilGlossaryReadyAsync(result.GlossaryId));
+            if (glossaryEntries == null || entriesDict.Count == 0)
+            {
+                throw new PluginMisconfigurationException("Glossary file has no entires, please check your input and try again");
+            }
 
-        return new NewGlossaryResponse
-        {
-            GossaryId = result.GlossaryId,
-            Name = result.Name,
-            SourceLanguageCode = result.SourceLanguageCode,
-            TargetLanguageCode = result.TargetLanguageCode,
-            EntryCount = result.EntryCount,
-        };
+            var result = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.CreateGlossaryAsync(glossaryTitle,
+                request.SourceLanguageCode, request.TargetLanguageCode, glossaryEntries));
+            await await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => Client.WaitUntilGlossaryReadyAsync(result.GlossaryId));
+
+            return new NewGlossaryResponse
+            {
+                GossaryId = result.GlossaryId,
+                Name = result.Name,
+                SourceLanguageCode = result.SourceLanguageCode,
+                TargetLanguageCode = result.TargetLanguageCode,
+                EntryCount = result.EntryCount,
+            };
+        });
     }
 
     [Action("Import glossary (multilingual)", Description = "Import multilingual glossary")]
