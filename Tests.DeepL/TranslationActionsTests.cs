@@ -1,5 +1,6 @@
 ﻿using Apps.DeepL.Actions;
 using Apps.DeepL.Requests;
+using Apps.DeepL.Requests.Content;
 using Tests.DeepL.Base;
 
 namespace Tests.DeepL;
@@ -68,8 +69,8 @@ public class TranslationActionsTests : TestBase
     [TestMethod]
     public async Task TranslateDocument_WithValidFile_ReturnsTranslatedDocument()
     {
-        var result = await _actions.TranslateDocument(
-            new DocumentTranslationRequest 
+        var result = await _actions.TranslateContent(
+            new ContentTranslationRequest
             { 
                 File = new Blackbird.Applications.Sdk.Common.Files.FileReference 
                 { 
@@ -84,8 +85,8 @@ public class TranslationActionsTests : TestBase
     [TestMethod]
     public async Task TranslateDocument_WithValidXliffFile_ReturnsTranslatedDocument()
     {
-        var result = await _actions.TranslateDocument(
-            new DocumentTranslationRequest 
+        var result = await _actions.TranslateContent(
+            new ContentTranslationRequest
             { 
                 File = new Blackbird.Applications.Sdk.Common.Files.FileReference 
                 { 
@@ -98,10 +99,26 @@ public class TranslationActionsTests : TestBase
     }
 
     [TestMethod]
+    public async Task Translate_Zendesk_return_html()
+    {
+        var result = await _actions.TranslateContent(
+            new ContentTranslationRequest
+            {
+                File = new Blackbird.Applications.Sdk.Common.Files.FileReference
+                {
+                    Name = "zendesk.html",
+                },
+                TargetLanguage = "NL",
+            });
+
+        Assert.IsNotNull(result);
+    }
+
+    [TestMethod]
     public async Task TranslateDocument_WithValidUnsupported20XliffVersion_ThrowsPluginMisconfigurationException()
     {
-        var task = _actions.TranslateDocument(
-            new DocumentTranslationRequest 
+        var task = _actions.TranslateContent(
+            new ContentTranslationRequest
             { 
                 File = new Blackbird.Applications.Sdk.Common.Files.FileReference 
                 { 
