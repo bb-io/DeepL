@@ -2,10 +2,11 @@
   <file id="f1">
     <mda:metadata>
       <mda:metaGroup category="blackbird">
+        <mda:meta type="original-name">contentful.html</mda:meta>
         <mda:meta type="original-media-type">text/html</mda:meta>
       </mda:metaGroup>
     </mda:metadata>
-    <skeleton href="contentful.html">&lt;html&gt;
+    <skeleton>&lt;html&gt;
   &lt;head&gt;
     &lt;meta name="blackbird-entry-id" content="5746dLKTkEZjOQX21HX2KI" /&gt;
     &lt;meta name="blackbird-locale" content="en-US" /&gt;
@@ -234,7 +235,7 @@
           cultivated just a few miles away.
         </source>
         <target>
-         <sc id="2" dataRef="d1" />Mediodía: Almuerzo en Blois<ec dataRef="d2" /> A poca distancia en coche, la ciudad de Blois ofrece una muestra del encanto por excelencia del Valle del Loira. Explore su centro medieval, sus sinuosas callejuelas y el regio Castillo de Blois, conocido por su ecléctica mezcla de estilos arquitectónicos. Para comer, deténgase en un bistró local donde podrá saborear especialidades del Loira como la tartine de queso de cabra o las rillettes. Acompáñelo con una copa del crujiente vino de Sancerre, cultivado a pocos kilómetros        </target>
+         <sc id="2" dataRef="d1" />Mediodía: Almuerzo en Blois<ec dataRef="d2" /> A poca distancia en coche, la ciudad de Blois ofrece una muestra del encanto por excelencia del Valle del Loira. Explore su centro medieval, sus sinuosas callejuelas y el regio Castillo de Blois, conocido por su ecléctica mezcla de estilos arquitectónicos. Para comer, deténgase en un bistró local donde podrá saborear especialidades del Loira como tartine de queso de cabra o rillettes. Acompáñelo con una copa del crujiente vino de Sancerre, cultivado a pocos kilómetros        </target>
       </segment>
       <originalData>
         <data id="d1">&lt;strong&gt;</data>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tbx type="TBX-Core" style="dca" xml:lang="en" xmlns="urn:iso:std:iso:30042:ed-2">
+  <tbxHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>MultilingualTEST</title>
+      </titleStmt>
+    </fileDesc>
+  </tbxHeader>
+  <text>
+    <body>
+      <conceptEntry id="0">
+        <langSec xml:lang="en">
+          <termSec>
+            <term>Friend</term>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="de">
+          <termSec>
+            <term>Freund</term>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="nl">
+          <termSec>
+            <term>Vriend</term>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="fr">
+          <termSec>
+            <term>Ami</term>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="uk">
+          <termSec>
+            <term>Друг</term>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="es">
+          <termSec>
+            <term>Mik</term>
+          </termSec>
+        </langSec>
+      </conceptEntry>
+      <conceptEntry id="1">
+        <langSec xml:lang="en">
+          <termSec>
+            <term>House</term>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="de">
+          <termSec>
+            <term>Haus</term>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="nl">
+          <termSec>
+            <term>Huis</term>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="fr">
+          <termSec>
+            <term>Maison</term>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="uk">
+          <termSec>
+            <term>Дім</term>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="es">
+          <termSec>
+            <term>Shtëpi</term>
+          </termSec>
+        </langSec>
+      </conceptEntry>
+      <conceptEntry id="2">
+        <langSec xml:lang="en">
+          <termSec>
+            <term>Water</term>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="de">
+          <termSec>
+            <term>Wasser</term>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="nl">
+          <termSec>
+            <term>Water</term>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="fr">
+          <termSec>
+            <term>Eau</term>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="uk">
+          <termSec>
+            <term>Вода</term>
+          </termSec>
+        </langSec>
+        <langSec xml:lang="es">
+          <termSec>
+            <term>Ujë</term>
+          </termSec>
+        </langSec>
+      </conceptEntry>
+    </body>
+  </text>
+</tbx>
