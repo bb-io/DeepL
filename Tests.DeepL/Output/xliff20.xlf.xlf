@@ -1,0 +1,409 @@
+<xliff srcLang="en" trgLang="de" version="2.2" xmlns:mda="urn:oasis:names:tc:xliff:metadata:2.0" xmlns="urn:oasis:names:tc:xliff:document:2.2">
+  <file id="f1">
+    <mda:metadata>
+      <mda:metaGroup category="blackbird">
+        <mda:meta type="original-name">xliff20.xlf</mda:meta>
+        <mda:meta type="original-media-type">text/plain</mda:meta>
+      </mda:metaGroup>
+    </mda:metadata>
+    <skeleton>&lt;?xml version="1.0"?&gt;
+&lt;xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="es" xmlns:its="http://www.w3.org/2005/11/its" xmlns:itsxlf="http://www.w3.org/ns/its-xliff/" its:version="2.0"&gt;
+ &lt;file id="f1" original="/C:/Users/terales/Desktop/okapi-get-tm-matches-locked/source.html"&gt;
+  &lt;unit id="tu1" type="okp:title"&gt;
+   &lt;segment&gt;
+    &lt;source&gt;Two Paragraphs&lt;/source&gt;
+    &lt;target&gt;&lt;/target&gt;
+   &lt;/segment&gt;
+  &lt;/unit&gt;
+  &lt;unit id="tu2" type="okp:paragraph"&gt;
+   &lt;mtc:matches xmlns:mtc="urn:oasis:names:tc:xliff:matches:2.0"&gt;
+   &lt;mtc:match ref="#1" type="tm" subType="okp:EXACT" similarity="100.0" matchSuitability="100.0" origin="okapi-connector-bitext9147617078968745190"&gt;
+   &lt;source&gt;Welcome to our new product launch event.&lt;/source&gt;
+   &lt;target&gt;Bienvenidos a nuestro evento de lanzamiento de producto.&lt;/target&gt;
+   &lt;/mtc:match&gt;
+&lt;/mtc:matches&gt;
+   &lt;segment&gt;
+    &lt;source&gt;&lt;mrk id="1" type="mtc:match"&gt;Welcome to our new product launch event.&lt;/mrk&gt;&lt;/source&gt;
+    &lt;target&gt;Bienvenidos a nuestro evento de lanzamiento de producto.&lt;/target&gt;
+   &lt;/segment&gt;
+   &lt;ignorable&gt;
+    &lt;source&gt; &lt;/source&gt;
+   &lt;/ignorable&gt;
+   &lt;segment&gt;
+    &lt;source&gt;It contains some basic text to demonstrate HTML paragraph elements.&lt;/source&gt;
+    &lt;target&gt;&lt;/target&gt;
+   &lt;/segment&gt;
+   &lt;ignorable&gt;
+    &lt;source&gt; &lt;/source&gt;
+   &lt;/ignorable&gt;
+   &lt;segment&gt;
+    &lt;source&gt;Paragraphs are fundamental building blocks of web content that help organize text into readable chunks.&lt;/source&gt;
+    &lt;target&gt;&lt;/target&gt;
+   &lt;/segment&gt;
+  &lt;/unit&gt;
+  &lt;unit id="tu3" type="okp:paragraph"&gt;
+   &lt;segment&gt;
+    &lt;source&gt;Here is the second paragraph.&lt;/source&gt;
+    &lt;target&gt;&lt;/target&gt;
+   &lt;/segment&gt;
+   &lt;ignorable&gt;
+    &lt;source&gt; &lt;/source&gt;
+   &lt;/ignorable&gt;
+   &lt;segment&gt;
+    &lt;source&gt;Adding multiple paragraphs helps improve readability by creating visual separation between different thoughts or sections of content.&lt;/source&gt;
+    &lt;target&gt;&lt;/target&gt;
+   &lt;/segment&gt;
+   &lt;ignorable&gt;
+    &lt;source&gt; &lt;/source&gt;
+   &lt;/ignorable&gt;
+   &lt;segment&gt;
+    &lt;source&gt;This makes the document easier to scan and understand.&lt;/source&gt;
+    &lt;target&gt;&lt;/target&gt;
+   &lt;/segment&gt;
+  &lt;/unit&gt;
+ &lt;/file&gt;
+&lt;/xliff&gt;</skeleton>
+    <unit id="u1" name="">
+      <segment state="translated">
+        <source>&lt;?xml version="1.0"?&gt;</source>
+        <target>&lt;?xml version="1.0"?&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u2" name="">
+      <segment state="translated">
+        <source>&lt;xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="es" xmlns:its="http://www.w3.org/2005/11/its" xmlns:itsxlf="http://www.w3.org/ns/its-xliff/" its:version="2.0"&gt;</source>
+        <target>&lt;xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="es" xmlns:its="http://www.w3.org/2005/11/its" xmlns:itsxlf="http://www.w3.org/ns/its-xliff/" its:version="2.0"&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u3" name="">
+      <segment state="translated">
+        <source> &lt;file id="f1" original="/C:/Users/terales/Desktop/okapi-get-tm-matches-locked/source.html"&gt;</source>
+        <target> &lt;file id="f1" original="/C:/Users/terales/Desktop/okapi-get-tm-matches-locked/source.html"&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u4" name="">
+      <segment state="translated">
+        <source>  &lt;unit id="tu1" type="okp:title"&gt;</source>
+        <target>  &lt;unit id="tu1" type="okp:title"&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u5" name="">
+      <segment state="translated">
+        <source>   &lt;segment&gt;</source>
+        <target>   &lt;segment&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u6" name="">
+      <segment state="translated">
+        <source>    &lt;source&gt;Two Paragraphs&lt;/source&gt;</source>
+        <target>    &lt;source&gt;Zwei Absätze&lt;/source&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u7" name="">
+      <segment state="translated">
+        <source>    &lt;target&gt;&lt;/target&gt;</source>
+        <target>    &lt;target&gt;&lt;/target&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u8" name="">
+      <segment state="translated">
+        <source>   &lt;/segment&gt;</source>
+        <target>   &lt;/segment&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u9" name="">
+      <segment state="translated">
+        <source>  &lt;/unit&gt;</source>
+        <target>  &lt;/unit&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u10" name="">
+      <segment state="translated">
+        <source>  &lt;unit id="tu2" type="okp:paragraph"&gt;</source>
+        <target>  &lt;unit id="tu2" type="okp:paragraph"&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u11" name="">
+      <segment state="translated">
+        <source>   &lt;mtc:matches xmlns:mtc="urn:oasis:names:tc:xliff:matches:2.0"&gt;</source>
+        <target>   &lt;mtc:matches xmlns:mtc="urn:oasis:names:tc:xliff:matches:2.0"&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u12" name="">
+      <segment state="translated">
+        <source>   &lt;mtc:match ref="#1" type="tm" subType="okp:EXACT" similarity="100.0" matchSuitability="100.0" origin="okapi-connector-bitext9147617078968745190"&gt;</source>
+        <target>   &lt;mtc:match ref="#1" type="tm" subType="okp:EXACT" similarity="100.0" matchSuitability="100.0" origin="okapi-connector-bitext9147617078968745190"&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u13" name="">
+      <segment state="translated">
+        <source>   &lt;source&gt;Welcome to our new product launch event.&lt;/source&gt;</source>
+        <target>   &lt;source&gt;Willkommen zu unserer Veranstaltung zur Einführung neuer Produkte.&lt;/source&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u14" name="">
+      <segment state="translated">
+        <source>   &lt;target&gt;Bienvenidos a nuestro evento de lanzamiento de producto.&lt;/target&gt;</source>
+        <target>   &lt;target&gt;Willkommen zu unserer Produkteinführungsveranstaltung.&lt;/target&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u15" name="">
+      <segment state="translated">
+        <source>   &lt;/mtc:match&gt;</source>
+        <target>   &lt;/mtc:match&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u16" name="">
+      <segment state="translated">
+        <source>&lt;/mtc:matches&gt;</source>
+        <target>&lt;/mtc:matches&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u17" name="">
+      <segment state="translated">
+        <source>   &lt;segment&gt;</source>
+        <target>   &lt;segment&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u18" name="">
+      <segment state="translated">
+        <source>    &lt;source&gt;&lt;mrk id="1" type="mtc:match"&gt;Welcome to our new product launch event.&lt;/mrk&gt;&lt;/source&gt;</source>
+        <target>    &lt;source&gt;&lt;mrk id="1" type="mtc:match"&gt;Willkommen zu unserer Veranstaltung zur Einführung neuer Produkte.&lt;/mrk&gt;&lt;/source&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u19" name="">
+      <segment state="translated">
+        <source>    &lt;target&gt;Bienvenidos a nuestro evento de lanzamiento de producto.&lt;/target&gt;</source>
+        <target>    &lt;target&gt;Willkommen zu unserer Produkteinführungsveranstaltung.&lt;/target&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u20" name="">
+      <segment state="translated">
+        <source>   &lt;/segment&gt;</source>
+        <target>   &lt;/segment&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u21" name="">
+      <segment state="translated">
+        <source>   &lt;ignorable&gt;</source>
+        <target>   &lt;ignorable&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u22" name="">
+      <segment state="translated">
+        <source>    &lt;source&gt; &lt;/source&gt;</source>
+        <target>    &lt;source&gt; &lt;/source&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u23" name="">
+      <segment state="translated">
+        <source>   &lt;/ignorable&gt;</source>
+        <target>   &lt;/ignorable&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u24" name="">
+      <segment state="translated">
+        <source>   &lt;segment&gt;</source>
+        <target>   &lt;segment&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u25" name="">
+      <segment state="translated">
+        <source>    &lt;source&gt;It contains some basic text to demonstrate HTML paragraph elements.&lt;/source&gt;</source>
+        <target>    &lt;source&gt;Sie enthält einige grundlegende Texte zur Veranschaulichung der HTML-Absatzelemente.&lt;/source&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u26" name="">
+      <segment state="translated">
+        <source>    &lt;target&gt;&lt;/target&gt;</source>
+        <target>    &lt;target&gt;&lt;/target&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u27" name="">
+      <segment state="translated">
+        <source>   &lt;/segment&gt;</source>
+        <target>   &lt;/segment&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u28" name="">
+      <segment state="translated">
+        <source>   &lt;ignorable&gt;</source>
+        <target>   &lt;ignorable&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u29" name="">
+      <segment state="translated">
+        <source>    &lt;source&gt; &lt;/source&gt;</source>
+        <target>    &lt;source&gt; &lt;/source&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u30" name="">
+      <segment state="translated">
+        <source>   &lt;/ignorable&gt;</source>
+        <target>   &lt;/ignorable&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u31" name="">
+      <segment state="translated">
+        <source>   &lt;segment&gt;</source>
+        <target>   &lt;segment&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u32" name="">
+      <segment state="translated">
+        <source>    &lt;source&gt;Paragraphs are fundamental building blocks of web content that help organize text into readable chunks.&lt;/source&gt;</source>
+        <target>    &lt;source&gt;Absätze sind grundlegende Bausteine von Webinhalten, die helfen, Text in lesbare Abschnitte zu gliedern.&lt;/source&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u33" name="">
+      <segment state="translated">
+        <source>    &lt;target&gt;&lt;/target&gt;</source>
+        <target>    &lt;target&gt;&lt;/target&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u34" name="">
+      <segment state="translated">
+        <source>   &lt;/segment&gt;</source>
+        <target>   &lt;/segment&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u35" name="">
+      <segment state="translated">
+        <source>  &lt;/unit&gt;</source>
+        <target>  &lt;/unit&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u36" name="">
+      <segment state="translated">
+        <source>  &lt;unit id="tu3" type="okp:paragraph"&gt;</source>
+        <target>  &lt;unit id="tu3" type="okp:paragraph"&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u37" name="">
+      <segment state="translated">
+        <source>   &lt;segment&gt;</source>
+        <target>   &lt;segment&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u38" name="">
+      <segment state="translated">
+        <source>    &lt;source&gt;Here is the second paragraph.&lt;/source&gt;</source>
+        <target>    &lt;source&gt;Hier ist der zweite Absatz.&lt;/source&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u39" name="">
+      <segment state="translated">
+        <source>    &lt;target&gt;&lt;/target&gt;</source>
+        <target>    &lt;target&gt;&lt;/target&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u40" name="">
+      <segment state="translated">
+        <source>   &lt;/segment&gt;</source>
+        <target>   &lt;/segment&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u41" name="">
+      <segment state="translated">
+        <source>   &lt;ignorable&gt;</source>
+        <target>   &lt;ignorable&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u42" name="">
+      <segment state="translated">
+        <source>    &lt;source&gt; &lt;/source&gt;</source>
+        <target>    &lt;source&gt; &lt;/source&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u43" name="">
+      <segment state="translated">
+        <source>   &lt;/ignorable&gt;</source>
+        <target>   &lt;/ignorable&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u44" name="">
+      <segment state="translated">
+        <source>   &lt;segment&gt;</source>
+        <target>   &lt;segment&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u45" name="">
+      <segment state="translated">
+        <source>    &lt;source&gt;Adding multiple paragraphs helps improve readability by creating visual separation between different thoughts or sections of content.&lt;/source&gt;</source>
+        <target>    &lt;source&gt;Das Hinzufügen mehrerer Absätze verbessert die Lesbarkeit, indem es eine visuelle Trennung zwischen verschiedenen Gedanken oder Abschnitten des Inhalts schafft.&lt;/source&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u46" name="">
+      <segment state="translated">
+        <source>    &lt;target&gt;&lt;/target&gt;</source>
+        <target>    &lt;target&gt;&lt;/target&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u47" name="">
+      <segment state="translated">
+        <source>   &lt;/segment&gt;</source>
+        <target>   &lt;/segment&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u48" name="">
+      <segment state="translated">
+        <source>   &lt;ignorable&gt;</source>
+        <target>   &lt;ignorable&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u49" name="">
+      <segment state="translated">
+        <source>    &lt;source&gt; &lt;/source&gt;</source>
+        <target>    &lt;source&gt; &lt;/source&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u50" name="">
+      <segment state="translated">
+        <source>   &lt;/ignorable&gt;</source>
+        <target>   &lt;/ignorable&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u51" name="">
+      <segment state="translated">
+        <source>   &lt;segment&gt;</source>
+        <target>   &lt;segment&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u52" name="">
+      <segment state="translated">
+        <source>    &lt;source&gt;This makes the document easier to scan and understand.&lt;/source&gt;</source>
+        <target>    &lt;source&gt;Dadurch wird das Dokument leichter zu scannen und zu verstehen.&lt;/source&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u53" name="">
+      <segment state="translated">
+        <source>    &lt;target&gt;&lt;/target&gt;</source>
+        <target>    &lt;target&gt;&lt;/target&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u54" name="">
+      <segment state="translated">
+        <source>   &lt;/segment&gt;</source>
+        <target>   &lt;/segment&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u55" name="">
+      <segment state="translated">
+        <source>  &lt;/unit&gt;</source>
+        <target>  &lt;/unit&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u56" name="">
+      <segment state="translated">
+        <source> &lt;/file&gt;</source>
+        <target> &lt;/file&gt;</target>
+      </segment>
+    </unit>
+    <unit id="u57" name="">
+      <segment state="translated">
+        <source>&lt;/xliff&gt;</source>
+        <target>&lt;/xliff&gt;</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

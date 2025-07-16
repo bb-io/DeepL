@@ -99,7 +99,7 @@ public class TranslationActionsTests : TestBase
     }
 
     [TestMethod]
-    public async Task Translate_Zendesk_return_html()
+    public async Task Translate_Zendesk_return_xliff()
     {
         var result = await _actions.TranslateContent(
             new ContentTranslationRequest
@@ -108,7 +108,7 @@ public class TranslationActionsTests : TestBase
                 {
                     Name = "zendesk.html",
                 },
-                TargetLanguage = "NL",
+                TargetLanguage = "DE",
             });
 
         Assert.IsNotNull(result);

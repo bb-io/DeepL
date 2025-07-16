@@ -1,4 +1,4 @@
-<xliff srcLang="en" trgLang="nl" version="2.2" xmlns:mda="urn:oasis:names:tc:xliff:metadata:2.0" xmlns="urn:oasis:names:tc:xliff:document:2.2">
+<xliff srcLang="en" trgLang="de" version="2.2" xmlns:mda="urn:oasis:names:tc:xliff:metadata:2.0" xmlns="urn:oasis:names:tc:xliff:document:2.2">
   <file id="f1">
     <mda:metadata>
       <mda:metaGroup category="blackbird">
@@ -12,13 +12,13 @@
     <unit id="u1" name="/html[1]/head[1]/title[1]">
       <segment state="translated">
         <source>Taking Flight: How Blackbird is Changing the Language Space!</source>
-        <target>Taking Flight: Hoe Blackbird de taalruimte verandert!</target>
+        <target>Taking Flight: Wie Blackbird den Sprachraum verändert!</target>
       </segment>
     </unit>
     <unit id="u2" name="/html[1]/body[1]/p[1]">
       <segment state="translated">
         <source>Leaders at language services providers and internal localization teams are scratching their heads trying to formulate a winning AI strategy. One that is cost-effective, turnkey, long-lasting, and scalable. And any winning strategy requires a winner. How about one that took First Place as <sc id="1" dataRef="d1" />Innovator of the Year<ec dataRef="d2" /> during the Process Innovation Challenge at LocWorld 49?</source>
-        <target>Leiders van taaldienstverleners en interne lokalisatieteams krabben zich achter de oren bij het formuleren van een winnende AI-strategie. Een strategie die kosteneffectief, kant-en-klaar, duurzaam en schaalbaar is. En voor elke winnende strategie is een winnaar nodig. Wat dacht je van een strategie die de eerste plaats in de wacht sleepte als <sc id="2" dataRef="d1" />Innovator of the Year<ec dataRef="d2" /> tijdens de Process Innovation Challenge op LocWorld 49?</target>
+        <target>Die Führungskräfte von Sprachdienstleistern und internen Lokalisierungsteams zerbrechen sich den Kopf über die Formulierung einer erfolgreichen KI-Strategie. Eine, die kosteneffizient, schlüsselfertig, langlebig und skalierbar ist. Und jede erfolgreiche Strategie erfordert einen Gewinner. Wie wäre es mit einer, die bei der Process Innovation Challenge auf der LocWorld 49 den ersten Platz als <sc id="2" dataRef="d1" />Innovator des Jahres<ec dataRef="d2" /> belegt hat?</target>
       </segment>
       <originalData>
         <data id="d1">&lt;a style="box-sizing: border-box; color: #0096d9; text-decoration: none; background-color: transparent;" href="https://pic.locworld.com/brunobitter-wins-the-14th-process-innovation-challenge/#:~:text=5-,Bruno%20Bitter%20Wins%20LocWorld's%2014th%20Process%20Innovation%20Challenge,at%20LocWorld49%20in%20Malm%C3%B6%2C%20Sweden." target="_blank" rel="noreferrer noopener"&gt;</data>
@@ -30,7 +30,7 @@
         <source>
           <sc id="1" dataRef="d1" />Blackbird.io<ec dataRef="d2" /> is an orchestration, automation, and AI enablement platform that just into its second year in the marketplace is enjoying the accolades that most companies take a decade to earn. One of Slator’s <sc id="2" dataRef="d3" />50 Under 50<ec dataRef="d2" /> Language AI list, the subject of a CSA Research briefing, an article and an interview in MultiLingual, and a finalist at the Process Innovation Challenge at LocWorld50 for prompt chaining and AI orchestration, Blackbird.io has garnered the language industry’s attention for a number of good reasons that resonate with technologists, strategists, and operations managers alike.</source>
         <target>
-          <sc id="3" dataRef="d1" />Blackbird.io<ec dataRef="d2" /> is een orkestratie-, automatiserings- en AI-platform dat nog maar net in zijn tweede jaar op de markt is en nu al de lofbetuigingen krijgt die de meeste bedrijven pas na tien jaar krijgen. Blackbird.io staat op de Slator's <sc id="4" dataRef="d3" />50 Under 50<ec dataRef="d2" /> Language AI lijst, het onderwerp van een CSA Research briefing, een artikel en een interview in MultiLingual, en een finalist bij de Process Innovation Challenge op LocWorld50 voor prompt chaining en AI orkestratie. Blackbird.io heeft de aandacht van de taalindustrie getrokken om een aantal goede redenen die aanslaan bij zowel technologen, strategen als operations managers.</target>
+          <sc id="3" dataRef="d1" />Blackbird.io<ec dataRef="d2" /> ist eine Orchestrierungs-, Automatisierungs- und KI-Plattform, die gerade erst im zweiten Jahr ihres Bestehens auf dem Markt ist und die Auszeichnungen genießt, für die die meisten Unternehmen ein Jahrzehnt brauchen. Blackbird.io ist auf der Slator-Liste <sc id="4" dataRef="d3" />"50 Under 50<ec dataRef="d2" /> Language AI" aufgeführt, war Gegenstand eines CSA Research-Briefings, eines Artikels und eines Interviews in MultiLingual und ist Finalist bei der Process Innovation Challenge auf der LocWorld50 für Prompt Chaining und KI-Orchestrierung. Blackbird.io hat die Aufmerksamkeit der Sprachindustrie aus einer Reihe guter Gründe auf sich gezogen, die bei Technologen, Strategen und Betriebsleitern gleichermaßen Anklang finden.</target>
       </segment>
       <originalData>
         <data id="d1">&lt;a style="box-sizing: border-box; color: #0096d9; text-decoration: none; background-color: transparent;" href="https://www.blackbird.io/" target="_blank" rel="noreferrer noopener"&gt;</data>
@@ -41,7 +41,7 @@
     <unit id="u4" name="/html[1]/body[1]/p[3]">
       <segment state="translated">
         <source>In a really good orchestration platform, all that’s near and dear to these decision makers, across multiple content management functions (accounting, vendor management, client relations, communications, translation, and other processes), lives in a single cloud. And it does so visibly and transparently. <sc id="1" dataRef="d1" />Blackbird.io is that and more<ec dataRef="d2" />.</source>
-        <target>In een echt goed orkestratieplatform leeft alles wat deze besluitvormers na aan het hart ligt, over meerdere contentmanagementfuncties (boekhouding, leveranciersbeheer, klantenrelaties, communicatie, vertaling en andere processen), in één enkele cloud. En dat zichtbaar en transparant. <sc id="2" dataRef="d1" />Blackbird.io is dat en meer<ec dataRef="d2" />.</target>
+        <target>In einer wirklich guten Orchestrierungsplattform werden alle für diese Entscheidungsträger wichtigen Informationen über mehrere Content-Management-Funktionen (Buchhaltung, Lieferantenmanagement, Kundenbeziehungen, Kommunikation, Übersetzung und andere Prozesse) in einer einzigen Cloud gespeichert. Und das auf sichtbare und transparente Weise. <sc id="2" dataRef="d1" />Blackbird.io ist das und mehr<ec dataRef="d2" />.</target>
       </segment>
       <originalData>
         <data id="d1">&lt;strong style="box-sizing: border-box; font-weight: bolder;"&gt;</data>

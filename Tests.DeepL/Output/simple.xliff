@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="sample.properties" datatype="plaintext" xml:space="preserve" source-language="en" target-language="DE">
+		<header>
+			<tool tool-id="lokalise.com" tool-name="Lokalise"></tool>
+		</header>
+		<body>
+			<trans-unit id="1">
+				<source xml:lang="en">Hooray, you're here! The day just got better - enjoy the following tips!</source>
+				<target xml:lang="DE">Hurra, Sie sind da! Der Tag wurde gerade noch besser - viel Spaß mit den folgenden Tipps!</target>
+			</trans-unit>
+			<trans-unit id="2">
+				<source xml:lang="en">A section of text like this is known as a text segment. Start rockin' your translations now!</source>
+				<target xml:lang="DE">Ein solcher Textabschnitt wird als Textsegment bezeichnet. Fangen Sie jetzt an, Ihre Übersetzungen zu rocken!</target>
+			</trans-unit>
+			<trans-unit id="3">
+				<source xml:lang="en">Arriba, Arriba! Andale, Andale! Be fast as Speedy Gonzales. Just hit TAB to save and go to the next text segment, once you're done.</source>
+				<target xml:lang="DE">Arriba, Arriba! Andale, Andale! Sei schnell wie Speedy Gonzales. Drücke einfach TAB, um zu speichern und zum nächsten Textabschnitt zu gehen, wenn du fertig bist.</target>
+			</trans-unit>
+			<trans-unit id="6">
+				<source xml:lang="en">We just like to see you happy, that's why LingoChecks automatically check translations for predetermined criteria.\n    Among other checks LingoHub verifies if &amp;quot;%@" used in the original text are also present in translated texts.</source>
+				<target xml:lang="DE">Wir möchten, dass Sie zufrieden sind, deshalb prüft LingoChecks die Übersetzungen automatisch auf vorher festgelegte Kriterien.\n Neben anderen Prüfungen verifiziert LingoHub, ob &amp;quot;%@", die im Originaltext verwendet werden, auch in den übersetzten Texten vorhanden sind.</target>
+			</trans-unit>
+			<trans-unit id="9">
+				<source xml:lang="en">Made with ❤</source>
+				<target xml:lang="DE">Hergestellt mit ❤</target>
+				<note>lh-check { min: 10, max: 15 }</note>
+				<note>lh-check { min: 10, max: 15 }</note>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
