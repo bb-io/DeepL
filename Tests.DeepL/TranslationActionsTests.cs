@@ -99,6 +99,22 @@ public class TranslationActionsTests : TestBase
     }
 
     [TestMethod]
+    public async Task TranslateDocument_WithPreleveragedFile_ReturnsSameDocument()
+    {
+        var result = await _actions.TranslateContent(
+            new ContentTranslationRequest
+            {
+                File = new Blackbird.Applications.Sdk.Common.Files.FileReference
+                {
+                    Name = "preleveraged.xlf"
+                },
+                TargetLanguage = "nl"
+            });
+
+        Assert.IsNotNull(result);
+    }
+
+    [TestMethod]
     public async Task Translate_Zendesk_return_xliff()
     {
         var result = await _actions.TranslateContent(

@@ -146,11 +146,12 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             };
         }
 
-        var mostOccuringSourceLanguage = sourceLanguages
-                .GroupBy(s => s)
-                .OrderByDescending(g => g.Count())
-                .First()
-                .Key;
+        var mostOccuringSourceLanguage = sourceLanguages.Any() ? sourceLanguages
+            .GroupBy(s => s)
+            .OrderByDescending(g => g.Count())
+            .First()
+            .Key : null;
+
 
         content.SourceLanguage ??= mostOccuringSourceLanguage;
         content.TargetLanguage ??= input.TargetLanguage;
