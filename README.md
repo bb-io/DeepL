@@ -75,7 +75,7 @@ To be deprecated soon:
 
 - **Translate XLIFF** Translate an XLIFF file using the text translation
   endpoint. Useful when using the next-generation model for small XLIFF files
-  (support only 1.2 version). Supported file extensions: `.xliff`, `.xlf`,
+  (supports only 1.2 version). Supported file extensions: `.xliff`, `.xlf`,
   `.mqxliff`, `.mxliff`, `.txlf`. This action will soon be deprecated once
   Blackbird interoperability mode also supports all these dialects.
 
