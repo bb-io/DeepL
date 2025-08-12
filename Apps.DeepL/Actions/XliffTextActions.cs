@@ -51,31 +51,34 @@ public class XliffTextActions(InvocationContext invocationContext, IFileManageme
     private async Task ProcessTranslationUnits(XliffDocument xliffDocument, XliffTranslationRequest request)
     {
         var translationActions = new TranslationActions(InvocationContext, fileManagementClient);
-        
+
         var validTranslationUnits = xliffDocument.TranslationUnits
-            .Where(unit => !string.IsNullOrEmpty(unit.Source))
-            .ToList();
-            
-        var useBatches = request.UseBatches ?? false;
-        if (useBatches)
+            .Where(unit => !string.IsNullOrEmpty(unit.Source));
+
+        if (request.TranslateOnlyEmptyUnits == true)
         {
-            await ProcessBatchTranslations(validTranslationUnits, xliffDocument, request, translationActions);
+            validTranslationUnits = validTranslationUnits
+                .Where(unit => string.IsNullOrEmpty(unit.Target));
+        }
+
+        if (request.UseBatches == true)
+        {
+            await ProcessBatchTranslations(validTranslationUnits, request, translationActions);
         }
         else
         {
-            await ProcessIndividualTranslations(validTranslationUnits, xliffDocument, request, translationActions);
+            await ProcessIndividualTranslations(validTranslationUnits, request, translationActions);
         }
     }
     
-    private async Task ProcessBatchTranslations(
-        List<TranslationUnit> units, 
-        XliffDocument xliffDocument, 
+    private static async Task ProcessBatchTranslations(
+        IEnumerable<TranslationUnit> units,
         XliffTranslationRequest request,
         TranslationActions translationActions)
     {
         const int batchSize = 100;
         
-        for (int i = 0; i < units.Count; i += batchSize)
+        for (int i = 0; i < units.Count(); i += batchSize)
         {
             var batch = units.Skip(i).Take(batchSize).ToList();
             var batchTexts = batch.Select(unit => unit.Source!).ToList();
@@ -96,14 +99,13 @@ public class XliffTextActions(InvocationContext invocationContext, IFileManageme
             }
             else
             {
-                await ProcessIndividualTranslations(batch, xliffDocument, request, translationActions);
+                await ProcessIndividualTranslations(batch, request, translationActions);
             }
         }
     }
     
-    private async Task ProcessIndividualTranslations(
-        List<TranslationUnit> units, 
-        XliffDocument xliffDocument, 
+    private static async Task ProcessIndividualTranslations(
+        IEnumerable<TranslationUnit> units,
         XliffTranslationRequest request,
         TranslationActions translationActions)
     {

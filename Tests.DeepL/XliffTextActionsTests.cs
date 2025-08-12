@@ -115,4 +115,27 @@ public class XliffTextActionsTests : TestBase
         // Act & Assert
         await Assert.ThrowsExceptionAsync<PluginMisconfigurationException>(async () => await actions.TranslateXliff(request));
     }
+
+    [TestMethod]
+    public async Task TranslateXliff_OnlyEmptyTargets_PreservesExistingTargets()
+    {
+        // Arrange
+        var actions = new XliffTextActions(InvocationContext, FileManager);
+        var request = new XliffTranslationRequest
+        {
+            File = new FileReference
+            {
+                Name = "simple_pretranslated.xliff"
+            },
+            ModelType = "latency_optimized",
+            TargetLanguage = "DE",
+            TranslateOnlyEmptyUnits = true,
+        };
+
+        // Act
+        var result = await actions.TranslateXliff(request);
+
+        // Assert
+        Assert.AreEqual("simple_pretranslated.xliff", result.File.Name);
+    }
 }

@@ -51,4 +51,7 @@ public class XliffTranslationRequest
     
     [Display("Use batch processing", Description = "Process translation units in batches if enabled, otherwise process one by one")]
     public bool? UseBatches { get; set; }
+
+    [Display("Translate only empty units (off by default)", Description = "When enabled, only units without existing translations will be processed.")]
+    public bool? TranslateOnlyEmptyUnits { get; set; }
 }

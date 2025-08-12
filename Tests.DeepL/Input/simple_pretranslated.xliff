@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+	<file original="sample.properties" datatype="plaintext" xml:space="preserve" source-language="en" target-language="DE">
+		<header>
+			<tool tool-id="lokalise.com" tool-name="Lokalise"></tool>
+		</header>
+		<body>
+			<trans-unit id="1">
+				<source>Hooray, you're here! The day just got better - enjoy the following tips!</source>
+				<target>Pretranslated as XXX</target>
+			</trans-unit>
+			<trans-unit id="2">
+				<source>A section of text like this is known as a text segment. Start rockin' your translations now!</source>
+				<target>Pretranslated as YYY</target>
+			</trans-unit>
+			<trans-unit id="3">
+				<source>Arriba, Arriba! Andale, Andale! Be fast as Speedy Gonzales. Just hit TAB to save and go to the next text segment, once you're done.</source>
+				<target>Pretranslated as ZZZ</target>
+			</trans-unit>
+			<trans-unit id="6">
+				<source>We just like to see you happy, that's why LingoChecks automatically check translations for predetermined criteria.\n    Among other checks LingoHub verifies if &quot;%@&quot; used in the original text are also present in translated texts.</source>
+				<target></target>
+			</trans-unit>
+			<trans-unit id="9">
+				<source>Made with ❤</source>
+				<target></target>
+				<note>lh-check { min: 10, max: 15 }</note>
+				<note>lh-check { min: 10, max: 15 }</note>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
