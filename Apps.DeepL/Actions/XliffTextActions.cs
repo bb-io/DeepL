@@ -27,6 +27,11 @@ public class XliffTextActions(InvocationContext invocationContext, IFileManageme
             throw new PluginMisconfigurationException("Target language is null or empty. Please provide a valid target language.");
         }
 
+        if (!string.IsNullOrEmpty(request.GlossaryId) && string.IsNullOrEmpty(request.SourceLanguage))
+        {
+            throw new PluginMisconfigurationException("Glossary ID is provided but source language is not set. Please provide a source language explicitly.");
+        }
+
         if(!SupportedFileExtensions.Contains(Path.GetExtension(request.File.Name)))
         {
             throw new PluginMisconfigurationException("This action only supports XLIFF files and it seems that the file you provided is not an XLIFF file." +
