@@ -14,6 +14,7 @@ using Blackbird.Filters.Constants;
 using Blackbird.Filters.Enums;
 using Blackbird.Filters.Extensions;
 using Blackbird.Filters.Transformations;
+using Blackbird.Filters.Xliff.Xliff1;
 using Blackbird.Xliff.Utils;
 using Blackbird.Xliff.Utils.Converters;
 using Blackbird.Xliff.Utils.Extensions;
@@ -143,6 +144,14 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             return new FileResponse
             {
                 File = await fileManagementClient.UploadAsync(targetContent.Serialize().ToStream(), targetContent.OriginalMediaType, targetContent.OriginalName)
+            };
+        }
+        else if (input.OutputFileHandling == "xliff1")
+        {
+            var xliff1String = Xliff1Serializer.Serialize(content);
+            return new FileResponse
+            {
+                File = await fileManagementClient.UploadAsync(xliff1String.ToStream(), MediaTypes.Xliff, content.XliffFileName)
             };
         }
 
