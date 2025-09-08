@@ -4,7 +4,7 @@ using Blackbird.Applications.Sdk.Common;
 using Blackbird.Applications.Sdk.Common.Actions;
 using Blackbird.Applications.Sdk.Common.Invocation;
 using Blackbird.Applications.Sdk.Glossaries.Utils.Converters;
-using Blackbird.Applications.Sdk.Glossaries.Utils.Models.Dtos;
+using Blackbird.Applications.Sdk.Glossaries.Utils.Dtos;
 using Blackbird.Applications.SDK.Extensions.FileManagement.Interfaces;
 using DeepL;
 using System.Net.Mime;
@@ -56,7 +56,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         {
             Title = glossaryDetails.Name
         };
-        await using var stream = blackbirdGlossary.ConvertToTBX();
+        await using var stream = blackbirdGlossary.ConvertToTbx();
         return new ExportGlossaryResponse()
         {
             File = await fileManagementClient.UploadAsync(stream, MediaTypeNames.Application.Xml,
@@ -407,7 +407,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         {
             Title = metadata.Name
         };
-        await using var tbxStream = blackbirdGlossary.ConvertToTBX();
+        await using var tbxStream = blackbirdGlossary.ConvertToTbx();
         return new ExportGlossaryResponse
         {
             File = await fileManagementClient.UploadAsync(
@@ -460,7 +460,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
     private async Task<(GlossaryEntries entries, string name)> GetEntriesFromTbx(ImportGlossaryRequest request,
         Stream glossaryStream)
     {
-        var blackbirdGlossary = await glossaryStream.ConvertFromTBX();
+        var blackbirdGlossary = await glossaryStream.ConvertFromTbx();
         var glossaryValues = new List<KeyValuePair<string, string>>();
         foreach (var entry in blackbirdGlossary.ConceptEntries)
         {
