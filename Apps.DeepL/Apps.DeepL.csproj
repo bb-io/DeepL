@@ -5,17 +5,17 @@
         <Nullable>enable</Nullable>
         <Product>DeepL</Product>
         <Description>The NMT service</Description>
-        <Version>1.2.9</Version>
+        <Version>1.2.10</Version>
         <AssemblyName>Apps.DeepL</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Blackbird.Applications.SDK.Blueprints" Version="1.0.0" />
         <PackageReference Include="Blackbird.Applications.SDK.Extensions.FileManagement" Version="1.0.1" />
-        <PackageReference Include="Blackbird.Applications.Sdk.Glossaries.Utils" Version="1.0.0-alpha2" />
+        <PackageReference Include="Blackbird.Applications.Sdk.Glossaries.Utils" Version="1.0.1" />
         <PackageReference Include="Blackbird.Applications.Sdk.Utils" Version="1.0.26" />
-        <PackageReference Include="Blackbird.Filters" Version="1.1.15" />
-        <PackageReference Include="Blackbird.Xliff.Utils" Version="1.1.12">
+        <PackageReference Include="Blackbird.Filters" Version="1.1.20" />
+        <PackageReference Include="Blackbird.Xliff.Utils" Version="1.1.14">
           <Aliases></Aliases>
         </PackageReference>
         <PackageReference Include="DeepL.net" Version="1.15.0" />
