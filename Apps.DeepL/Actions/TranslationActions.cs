@@ -119,7 +119,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         async Task<IEnumerable<TextResult>> BatchTranslate(IEnumerable<Segment> batch)
         {
             return await ErrorHandler.ExecuteWithErrorHandlingAsync(async () =>
-                    await Client.TranslateTextAsync(batch.Select(x => x.GetSource()), content.SourceLanguage, input.TargetLanguage, options));
+                    await Client.TranslateTextAsync(batch.Select(x => x.GetSource()), input.SourceLanguage, input.TargetLanguage, options));
         }
 
         var segmentTranslations = await content
