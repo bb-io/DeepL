@@ -116,26 +116,29 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             ModelType = GetModelType(input.ModelType)
         };
 
-        async Task<IEnumerable<TextResult>> BatchTranslate(IEnumerable<Segment> batch)
+        async Task<IEnumerable<TextResult>> BatchTranslate(IEnumerable<(Unit Unit, Segment Segment)> batch)
         {
             return await ErrorHandler.ExecuteWithErrorHandlingAsync(async () =>
-                    await Client.TranslateTextAsync(batch.Select(x => x.GetSource()), input.SourceLanguage, input.TargetLanguage, options));
+                    await Client.TranslateTextAsync(batch.Select(x => x.Segment.GetSource()), input.SourceLanguage, input.TargetLanguage, options));
         }
 
-        var segmentTranslations = await content
-            .GetSegments()
-            .Where(x => !x.IsIgnorbale && x.IsInitial)
-            .Batch(100).Process(BatchTranslate);
+        var translations = await content.GetUnits().Batch(100, x => !x.IsIgnorbale && x.IsInitial).Process(BatchTranslate);
 
         var sourceLanguages = new List<string>();
-        foreach (var (segment, translation) in segmentTranslations)
+        foreach (var (unit, results) in translations)
         {
-            segment.SetTarget(translation.Text);
-            segment.State = SegmentState.Translated;
-            if (!string.IsNullOrEmpty(translation.DetectedSourceLanguageCode))
+            foreach (var (segment, result) in results)
             {
-                sourceLanguages.Add(translation.DetectedSourceLanguageCode.ToLower());
+                segment.SetTarget(result.Text);
+                segment.State = SegmentState.Translated;
+
+                if (!string.IsNullOrEmpty(result.DetectedSourceLanguageCode))
+                {
+                    sourceLanguages.Add(result.DetectedSourceLanguageCode.ToLower());
+                }
             }
+            unit.Provenance.Translation.Tool = "DeepL";
+            unit.Provenance.Translation.ToolReference = "https://www.deepl.com/";
         }
 
         if (input.OutputFileHandling == "original")
