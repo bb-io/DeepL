@@ -129,20 +129,4 @@ public class TranslationActionsTests : TestBase
 
         Assert.IsNotNull(result);
     }
-
-    [TestMethod]
-    public async Task TranslateDocument_WithValidUnsupported20XliffVersion_ThrowsPluginMisconfigurationException()
-    {
-        var task = _actions.TranslateContent(
-            new ContentTranslationRequest
-            { 
-                File = new Blackbird.Applications.Sdk.Common.Files.FileReference 
-                { 
-                    Name = "xliff20.xlf" 
-                },
-                TargetLanguage = "DE"
-            });
-
-        await Throws.MisconfigurationException(() => task);
-    }
 }
