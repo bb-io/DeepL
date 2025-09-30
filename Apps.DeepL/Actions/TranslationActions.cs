@@ -49,10 +49,12 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
 
         var result = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => 
             await Client.TranslateTextAsync(request.Text, request.SourceLanguage, request.TargetLanguage, CreateTextTranslateOptions(request)));
+
         return new TextResponse
         {
             TranslatedText = result.Text,
-            DetectedSourceLanguage = result.DetectedSourceLanguageCode
+            DetectedSourceLanguage = result.DetectedSourceLanguageCode,
+            BilledCharacters = result.BilledCharacters,
         };
     }
 
@@ -125,12 +127,14 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         var translations = await content.GetUnits().Batch(100, x => !x.IsIgnorbale && x.IsInitial).Process(BatchTranslate);
 
         var sourceLanguages = new List<string>();
+        int billedCharacters = 0;
         foreach (var (unit, results) in translations)
         {
             foreach (var (segment, result) in results)
             {
                 segment.SetTarget(result.Text);
                 segment.State = SegmentState.Translated;
+                billedCharacters += result.BilledCharacters;
 
                 if (!string.IsNullOrEmpty(result.DetectedSourceLanguageCode))
                 {
@@ -146,7 +150,8 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             var targetContent = content.Target();
             return new FileResponse
             {
-                File = await fileManagementClient.UploadAsync(targetContent.Serialize().ToStream(), targetContent.OriginalMediaType, targetContent.OriginalName)
+                File = await fileManagementClient.UploadAsync(targetContent.Serialize().ToStream(), targetContent.OriginalMediaType, targetContent.OriginalName),
+                BilledCharacters = billedCharacters,
             };
         }
         else if (input.OutputFileHandling == "xliff1")
@@ -154,7 +159,8 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             var xliff1String = Xliff1Serializer.Serialize(content);
             return new FileResponse
             {
-                File = await fileManagementClient.UploadAsync(xliff1String.ToStream(), MediaTypes.Xliff, content.XliffFileName)
+                File = await fileManagementClient.UploadAsync(xliff1String.ToStream(), MediaTypes.Xliff, content.XliffFileName),
+                BilledCharacters = billedCharacters,
             };
         }
 
@@ -170,7 +176,8 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
 
         return new FileResponse
         {
-            File = await fileManagementClient.UploadAsync(content.Serialize().ToStream(), MediaTypes.Xliff, content.XliffFileName)
+            File = await fileManagementClient.UploadAsync(content.Serialize().ToStream(), MediaTypes.Xliff, content.XliffFileName),
+            BilledCharacters = billedCharacters,
         };
     }
 
@@ -217,7 +224,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
                 var xliff12 = Xliff21To12Converter.Convert(memoryStream.ToXliffDocument());
                 var finalFileStream = xliff12.ToStream();
                 var uploadedFinalFile = await fileManagementClient.UploadAsync(finalFileStream, request.File.ContentType, newFileName);
-                return new FileResponse { File = uploadedFinalFile };
+                return new FileResponse { File = uploadedFinalFile, BilledCharacters = null };
             }
             
             var xliffDocument21 = memoryStream.ToXliffDocument();
@@ -226,7 +233,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
 
         await using var outputFileStream = result?.ToStream() ?? memoryStream;
         var uploadedFile = await fileManagementClient.UploadAsync(outputFileStream, request.File.ContentType, newFileName);
-        return new FileResponse { File = uploadedFile };
+        return new FileResponse { File = uploadedFile, BilledCharacters = null };
     }
     
     private TextTranslateOptions CreateTextTranslateOptions(TextTranslationRequest request)
