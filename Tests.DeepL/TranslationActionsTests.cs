@@ -27,6 +27,8 @@ public class TranslationActionsTests : TestBase
         });
         
         Assert.IsNotNull(result.TranslatedText);
+        Console.WriteLine(result.BilledCharacters);
+        Assert.IsTrue(result.BilledCharacters > 0);
     }
     
     [TestMethod]
@@ -40,6 +42,8 @@ public class TranslationActionsTests : TestBase
         });
         
         Assert.IsNotNull(result.TranslatedText);
+        Console.WriteLine(result.BilledCharacters);
+        Assert.IsTrue(result.BilledCharacters > 0);
     }
 
     [TestMethod]
@@ -53,6 +57,8 @@ public class TranslationActionsTests : TestBase
         });
         
         Assert.IsNotNull(result.TranslatedText);
+        Console.WriteLine(result.BilledCharacters);
+        Assert.IsTrue(result.BilledCharacters > 0);
     }
 
     [TestMethod]
@@ -80,6 +86,8 @@ public class TranslationActionsTests : TestBase
             });
 
         Assert.IsNotNull(result);
+        Console.WriteLine(result.BilledCharacters);
+        Assert.IsTrue(result.BilledCharacters > 0);
     }
 
     [TestMethod]
@@ -96,6 +104,8 @@ public class TranslationActionsTests : TestBase
             });
 
         Assert.IsNotNull(result);
+        Console.WriteLine(result.BilledCharacters);
+        Assert.IsTrue(result.BilledCharacters > 0);
     }
 
     [TestMethod]
@@ -112,6 +122,8 @@ public class TranslationActionsTests : TestBase
             });
 
         Assert.IsNotNull(result);
+        Console.WriteLine(result.BilledCharacters);
+        Assert.IsTrue(result.BilledCharacters == 0);
     }
 
     [TestMethod]
@@ -128,5 +140,7 @@ public class TranslationActionsTests : TestBase
             });
 
         Assert.IsNotNull(result);
+        Console.WriteLine(result.BilledCharacters);
+        Assert.IsTrue(result.BilledCharacters > 0);
     }
 }
