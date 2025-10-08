@@ -23,7 +23,28 @@ public class GlossaryLanguageDataHandler : IStaticDataSourceItemHandler
         { "ru", "Russian" },
         { "zh", "Chinese" },
         { "zh-hans", "Chinese (simplified)" },
-        { "zh-hant", "Chinese (traditional)" }
+        { "zh-hant", "Chinese (traditional)" },{ "ar", "Arabic" },
+        { "bg", "Bulgarian" },
+        { "cs", "Czech" },
+        { "da", "Danish" },
+        { "el", "Greek" },
+        { "et", "Estonian" },
+        { "fi", "Finnish" },
+        { "he", "Hebrew" },
+        { "hu", "Hungarian" },
+        { "id", "Indonesian" },
+        { "ko", "Korean" },
+        { "lt", "Lithuanian" },
+        { "lv", "Latvian" },
+        { "nb", "Norwegian Bokmål" },
+        { "ro", "Romanian" },
+        { "sk", "Slovak" },
+        { "sl", "Slovenian" },
+        { "sv", "Swedish" },
+        { "th", "Thai" },
+        { "tr", "Turkish" },
+        { "uk", "Ukrainian" },
+        { "vi", "Vietnamese" }
     };
     
     public IEnumerable<DataSourceItem> GetData()
