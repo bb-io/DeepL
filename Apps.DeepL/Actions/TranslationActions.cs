@@ -67,6 +67,11 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             throw new PluginMisconfigurationException("The target language can not be empty, please fill the 'Target language' field and make sure it has a valid language code");
         }
 
+        if (string.IsNullOrEmpty(input.SourceLanguage) && !string.IsNullOrEmpty(input.GlossaryId))
+        {
+            throw new PluginMisconfigurationException("When using a glossary, the source language must be specified. Please fill in the 'Source language' field.");
+        }
+
         var supportedLanguages = LanguageConstants.TargetLanguages.Keys;
         if (!supportedLanguages.Contains(input.TargetLanguage.ToUpperInvariant()))
         {
