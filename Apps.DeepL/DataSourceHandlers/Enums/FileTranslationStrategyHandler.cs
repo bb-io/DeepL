@@ -8,8 +8,8 @@ public class FileTranslationStrategyHandler : IStaticDataSourceItemHandler
     {
         return new List<DataSourceItem>()
         {
-            new DataSourceItem("blackbird", "Blackbird interoperable (default)"),
-            new DataSourceItem("deepl", "DeepL native"),
+            new("blackbird", "Blackbird interoperable (default)"),
+            new("deepl", "DeepL native"),
         };
     }
 }

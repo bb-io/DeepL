@@ -153,9 +153,19 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         if (input.OutputFileHandling == "original")
         {
             var targetContent = content.Target();
+            Stream originalStream;
+            try
+            {
+                originalStream = targetContent.Serialize().ToStream();
+            }
+            catch (Exception e) when(e.Message.Contains("Cannot convert to content, no original data found"))
+            {
+                throw new PluginMisconfigurationException("The original file content could not be retrieved because it's supported only for html files. Please change the 'Output file handling' field to 'Interoperable XLIFF (default)' or use DeepL native file translation strategy.");
+            }
+            
             return new FileResponse
             {
-                File = await fileManagementClient.UploadAsync(targetContent.Serialize().ToStream(), targetContent.OriginalMediaType, targetContent.OriginalName),
+                File = await fileManagementClient.UploadAsync(originalStream, targetContent.OriginalMediaType, targetContent.OriginalName),
                 BilledCharacters = billedCharacters,
             };
         }
