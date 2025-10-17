@@ -15,6 +15,10 @@ public static class ErrorHandler
         {
             throw new PluginMisconfigurationException("Your DeepL API credentials are invalid. Please check your credentials or account status.");
         }
+        catch (ArgumentException ex)
+        {
+            throw new PluginApplicationException(ex.Message);
+        }
         catch (DeepLException ex)
         {
             throw new PluginApplicationException(ex.Message);
@@ -29,7 +33,12 @@ public static class ErrorHandler
         }
         catch (AuthorizationException)
         {
-            throw new PluginMisconfigurationException("Your DeepL API credentials are invalid. Please check your credentials or account status.");
+            throw new PluginMisconfigurationException(
+                "Your DeepL API credentials are invalid. Please check your credentials or account status.");
+        }
+        catch (ArgumentException ex)
+        {
+            throw new PluginApplicationException(ex.Message);
         }
         catch (DeepLException ex)
         {

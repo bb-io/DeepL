@@ -67,6 +67,11 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             throw new PluginMisconfigurationException("The target language can not be empty, please fill the 'Target language' field and make sure it has a valid language code");
         }
 
+        if (string.IsNullOrEmpty(input.SourceLanguage) && !string.IsNullOrEmpty(input.GlossaryId))
+        {
+            throw new PluginMisconfigurationException("When using a glossary, the source language must be specified. Please fill in the 'Source language' field.");
+        }
+
         var supportedLanguages = LanguageConstants.TargetLanguages.Keys;
         if (!supportedLanguages.Contains(input.TargetLanguage.ToUpperInvariant()))
         {
@@ -148,9 +153,19 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         if (input.OutputFileHandling == "original")
         {
             var targetContent = content.Target();
+            Stream originalStream;
+            try
+            {
+                originalStream = targetContent.Serialize().ToStream();
+            }
+            catch (Exception e) when(e.Message.Contains("Cannot convert to content, no original data found"))
+            {
+                throw new PluginMisconfigurationException("The original file content could not be retrieved because it's supported only for html files. Please change the 'Output file handling' field to 'Interoperable XLIFF (default)' or use DeepL native file translation strategy.");
+            }
+            
             return new FileResponse
             {
-                File = await fileManagementClient.UploadAsync(targetContent.Serialize().ToStream(), targetContent.OriginalMediaType, targetContent.OriginalName),
+                File = await fileManagementClient.UploadAsync(originalStream, targetContent.OriginalMediaType, targetContent.OriginalName),
                 BilledCharacters = billedCharacters,
             };
         }
