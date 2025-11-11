@@ -78,9 +78,10 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             throw new PluginMisconfigurationException($"The target language '{input.TargetLanguage}' is not supported. Please select a valid language.");
         }
 
+        var translationActions = new TranslationActions(InvocationContext, fileManagementClient);
+
         if (input.FileTranslationStrategy == "deepl")
-        {
-            var translationActions = new TranslationActions(InvocationContext, fileManagementClient);
+        {            
             return await translationActions.HandlerNativeTranslateDocument(new DocumentTranslationRequest
             {
                 File = input.File,
@@ -100,11 +101,15 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         }
         catch (Exception e)
         {
-            if (e.Message.Contains("This file format is not supported"))
+            return await translationActions.HandlerNativeTranslateDocument(new DocumentTranslationRequest
             {
-                throw new PluginMisconfigurationException("The file format is not supported by the Blackbird interoperable setting. Try setting the file translation strategy to DeepL native.");
-            }
-            throw;
+                File = input.File,
+                TargetLanguage = input.TargetLanguage,
+                TranslateFileName = false,
+                Formality = input.Formality,
+                GlossaryId = input.GlossaryId,
+                SourceLanguage = input.SourceLanguage,
+            });
         }
     }
 

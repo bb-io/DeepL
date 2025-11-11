@@ -127,6 +127,24 @@ public class TranslationActionsTests : TestBase
     }
 
     [TestMethod]
+    public async Task Translate_Contentful_return_xliff()
+    {
+        var result = await _actions.TranslateContent(
+            new ContentTranslationRequest
+            {
+                File = new Blackbird.Applications.Sdk.Common.Files.FileReference
+                {
+                    Name = "The Loire Valley_en-US.html",
+                },
+                TargetLanguage = "nl",
+            });
+
+        Assert.IsNotNull(result);
+        Console.WriteLine(result.BilledCharacters);
+        Assert.IsTrue(result.BilledCharacters > 0);
+    }
+
+    [TestMethod]
     public async Task Translate_Zendesk_return_xliff()
     {
         var result = await _actions.TranslateContent(
@@ -134,9 +152,9 @@ public class TranslationActionsTests : TestBase
             {
                 File = new Blackbird.Applications.Sdk.Common.Files.FileReference
                 {
-                    Name = "zendesk.html",
+                    Name = "Multilingual AI Roundtable 2025 in Malmö!.html",
                 },
-                TargetLanguage = "DE",
+                TargetLanguage = "nl",
             });
 
         Assert.IsNotNull(result);
