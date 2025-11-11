@@ -18,7 +18,7 @@
         <PackageReference Include="Blackbird.Xliff.Utils" Version="1.1.14">
           <Aliases></Aliases>
         </PackageReference>
-        <PackageReference Include="DeepL.net" Version="1.15.0" />
+        <PackageReference Include="DeepL.net" Version="1.16.0" />
         <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="112.1.0" />
     </ItemGroup>
 

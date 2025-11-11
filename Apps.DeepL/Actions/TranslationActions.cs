@@ -266,7 +266,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             TagHandling = request.TagHandling,
             OutlineDetection = request.OutlineDetection == null || (bool)request.OutlineDetection,
             Context = request.Context,
-            ModelType = GetModelType(request.ModelType)
+            ModelType = GetModelType(request.ModelType),
         };
 
         AddTagsToOptions(options, request);

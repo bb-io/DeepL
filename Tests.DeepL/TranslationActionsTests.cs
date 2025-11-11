@@ -27,10 +27,26 @@ public class TranslationActionsTests : TestBase
         });
         
         Assert.IsNotNull(result.TranslatedText);
+        Console.WriteLine(result.TranslatedText);
         Console.WriteLine(result.BilledCharacters);
         Assert.IsTrue(result.BilledCharacters > 0);
     }
-    
+
+    [TestMethod]
+    public async Task Translate_Vietnamese()
+    {
+        var result = await _actions.Translate(new TextTranslationRequest
+        {
+            Text = ExampleText,
+            TargetLanguage = "VI"
+        });
+
+        Assert.IsNotNull(result.TranslatedText);
+        Console.WriteLine(result.TranslatedText);
+        Console.WriteLine(result.BilledCharacters);
+        Assert.IsTrue(result.BilledCharacters > 0);
+    }
+
     [TestMethod]
     public async Task Translate_WithLatencyOptimizedModel_ReturnsTranslatedText()
     {

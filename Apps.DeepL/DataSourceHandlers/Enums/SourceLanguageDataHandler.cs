@@ -18,6 +18,7 @@ public class SourceLanguageDataHandler : IStaticDataSourceItemHandler
         { "ET", "Estonian" },
         { "FI", "Finnish" },
         { "FR", "French" },
+        { "HE", "Hebrew" },
         { "HU", "Hungarian" },
         { "ID", "Indonesian" },
         { "IT", "Italian" },
@@ -34,8 +35,10 @@ public class SourceLanguageDataHandler : IStaticDataSourceItemHandler
         { "SK", "Slovak" },
         { "SL", "Slovenian" },
         { "SV", "Swedish" },
+        { "TH", "Thai" },
         { "TR", "Turkish" },
         { "UK", "Ukrainian" },
+        { "VI", "Vietnamese" },
         { "ZH", "Chinese" },
     };
     
