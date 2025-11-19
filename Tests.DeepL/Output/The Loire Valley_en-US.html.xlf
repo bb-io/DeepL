@@ -112,7 +112,7 @@
           <source>
             <sc id="1" dataRef="d1" fs:fs="strong" />Afternoon: Amboise and the Legacy of Leonardo da Vinci<ec dataRef="d2" fs:fs="strong" startRef="1" /> Head to the Château d’Amboise, perched dramatically over the Loire River, once home to kings and visionaries alike. Stroll through royal apartments, visit the Gothic chapel where Leonardo da Vinci is buried, and soak in panoramic views of the river and town below. Just up the hill, the Clos Lucé mansion was Da Vinci’s residence for his final years. Inside, you’ll find intricate models of his inventions, bringing the genius of the Renaissance to life.</source>
           <target>
-            <sc id="1" dataRef="d1" fs:fs="strong" />Namiddag: Amboise en de nalatenschap van Leonardo da Vinci<ec dataRef="d2" fs:fs="strong" startRef="1" /> Ga naar het Château d'Amboise, dat dramatisch boven de rivier de Loire uittorent en ooit de thuisbasis was van koningen en visionairs. Wandel door de koninklijke appartementen, bezoek de gotische kapel waar Leonardo da Vinci begraven ligt en geniet van het panoramische uitzicht op de rivier en de stad beneden. Iets hoger op de heuvel ligt het herenhuis Clos Lucé waar Da Vinci zijn laatste jaren woonde. Binnen vind je ingewikkelde modellen van zijn uitvindingen, die het genie van de Renaissance tot leven brengen.</target>
+            <sc id="1" dataRef="d1" fs:fs="strong" />Namiddag: Amboise en de erfenis van Leonardo da Vinci<ec dataRef="d2" fs:fs="strong" startRef="1" /> Ga naar het Château d'Amboise, dat dramatisch boven de rivier de Loire uittorent en ooit de thuisbasis was van koningen en visionairs. Wandel door de koninklijke appartementen, bezoek de gotische kapel waar Leonardo da Vinci begraven ligt en geniet van het panoramische uitzicht op de rivier en de stad beneden. Iets hoger op de heuvel ligt het herenhuis Clos Lucé waar Da Vinci zijn laatste jaren woonde. Binnen vind je ingewikkelde modellen van zijn uitvindingen, die het genie van de Renaissance tot leven brengen.</target>
         </segment>
       </unit>
       <unit id="u9" name="/html[1]/body[1]/div[3]/div[1]/p[4]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
@@ -233,7 +233,7 @@
       <unit id="u19" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[1]/p[2]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
         <segment state="translated">
           <source>Spring and autumn offer pleasant weather and fewer crowds, while summer brings the region to life with festivals and outdoor concerts.</source>
-          <target>De lente en de herfst bieden aangenaam weer en minder mensenmassa's, terwijl de zomer de regio tot leven brengt met festivals en openluchtconcerten.</target>
+          <target>De lente en herfst bieden aangenaam weer en minder mensenmassa's, terwijl de zomer de regio tot leven brengt met festivals en openluchtconcerten.</target>
         </segment>
       </unit>
       <unit id="u20" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[2]/p[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">

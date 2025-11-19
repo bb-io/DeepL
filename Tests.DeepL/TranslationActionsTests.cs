@@ -177,4 +177,21 @@ public class TranslationActionsTests : TestBase
         Console.WriteLine(result.BilledCharacters);
         Assert.IsTrue(result.BilledCharacters > 0);
     }
+
+    [TestMethod]
+    public async Task Translate_word()
+    {
+        var result = await _actions.TranslateContent(
+            new ContentTranslationRequest
+            {
+                File = new Blackbird.Applications.Sdk.Common.Files.FileReference
+                {
+                    Name = "test_word.docx",
+                },
+                TargetLanguage = "nl",
+            });
+
+        Assert.IsNotNull(result);
+        Console.WriteLine(result.BilledCharacters);
+    }
 }
