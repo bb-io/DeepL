@@ -78,19 +78,19 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             throw new PluginMisconfigurationException($"The target language '{input.TargetLanguage}' is not supported. Please select a valid language.");
         }
 
-        var translationActions = new TranslationActions(InvocationContext, fileManagementClient);
+        var documentTranslationRequest = new DocumentTranslationRequest
+        {
+            File = input.File,
+            TargetLanguage = input.TargetLanguage,
+            TranslateFileName = false,
+            Formality = input.Formality,
+            GlossaryId = input.GlossaryId,
+            SourceLanguage = input.SourceLanguage,
+        };
 
         if (input.FileTranslationStrategy == "deepl")
         {            
-            return await translationActions.HandlerNativeTranslateDocument(new DocumentTranslationRequest
-            {
-                File = input.File,
-                TargetLanguage = input.TargetLanguage,
-                TranslateFileName = false,
-                Formality = input.Formality,
-                GlossaryId = input.GlossaryId,
-                SourceLanguage = input.SourceLanguage,
-            });
+            return await HandlerNativeTranslateDocument(documentTranslationRequest);
         }
 
         try
@@ -99,17 +99,9 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             var content = await Transformation.Parse(stream, input.File.Name);
             return await HandleInteroperableTransformation(content, input);
         }
-        catch (Exception e)
+        catch (NotImplementedException e)
         {
-            return await translationActions.HandlerNativeTranslateDocument(new DocumentTranslationRequest
-            {
-                File = input.File,
-                TargetLanguage = input.TargetLanguage,
-                TranslateFileName = false,
-                Formality = input.Formality,
-                GlossaryId = input.GlossaryId,
-                SourceLanguage = input.SourceLanguage,
-            });
+            return await HandlerNativeTranslateDocument(documentTranslationRequest);
         }
     }
 
