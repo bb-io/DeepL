@@ -281,9 +281,10 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
     {
         return modelTypeString switch
         {
+            "latency_optimized" => ModelType.LatencyOptimized,
             "quality_optimized" => ModelType.QualityOptimized,
             "prefer_quality_optimized" => ModelType.PreferQualityOptimized,
-            _ => ModelType.LatencyOptimized
+            _ => ModelType.PreferQualityOptimized
         };
     }
 

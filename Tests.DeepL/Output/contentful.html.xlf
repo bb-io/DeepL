@@ -161,19 +161,19 @@
     <unit id="u1" name="/html[1]/body[1]/div[1]/h1[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="h1">
       <segment state="translated">
         <source>The Loire Valley</source>
-        <target>Valle del Loira</target>
+        <target>El valle del Loira</target>
       </segment>
     </unit>
     <unit id="u2" name="/html[1]/body[1]/div[2]/h1[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="h1">
       <segment state="translated">
         <source>Ready to Discover the Magic of the Loire Valley for Yourself?</source>
-        <target>¿Está listo para descubrir la magia del Valle del Loira?</target>
+        <target>¿Listo para descubrir por ti mismo la magia del valle del Loira?</target>
       </segment>
     </unit>
     <unit id="u3" name="/html[1]/body[1]/div[2]/div[1]/p[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
       <segment state="translated">
         <source>Embark on an unforgettable journey through France's most enchanting countryside. Wander through majestic châteaux, savor the finest Loire wines, and lose yourself in picturesque villages. Whether you're a history buff, a wine enthusiast, or simply a lover of beautiful landscapes, the Loire Valley offers a travel experience unlike any other.</source>
-        <target>Embárquese en un viaje inolvidable por los paisajes más encantadores de Francia. Pasee por majestuosos castillos, saboree los mejores vinos del Loira y piérdase en pintorescos pueblos. Tanto si es un aficionado a la historia, un entusiasta del vino o simplemente un amante de los bellos paisajes, el Valle del Loira le ofrece una experiencia de viaje inigualable.</target>
+        <target>Embárcate en un viaje inolvidable por los paisajes más encantadores de Francia. Pasea por majestuosos castillos, saborea los mejores vinos del Loira y piérdete en pintorescos pueblos. Tanto si eres un apasionado de la historia, un entusiasta del vino o simplemente un amante de los hermosos paisajes, el valle del Loira te ofrece una experiencia de viaje sin igual.</target>
       </segment>
     </unit>
     <unit id="u4" name="/html[1]/body[1]/div[2]/div[1]/p[2]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
@@ -185,7 +185,7 @@
         <source>
           <sc id="1" dataRef="d1" fs:fs="strong" />Book your Loire Valley adventure today and step into a world where fairytales come to life! <ec dataRef="d2" fs:fs="strong" startRef="1" /></source>
         <target>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Reserve hoy mismo su aventura por el Valle del Loira y entre en un mundo donde los cuentos de hadas cobran vida <ec dataRef="d2" fs:fs="strong" startRef="1" /></target>
+          <sc id="1" dataRef="d1" fs:fs="strong" />¡Reserva hoy mismo tu aventura en el valle del Loira y adéntrate en un mundo donde los cuentos de hadas cobran vida! <ec dataRef="d2" fs:fs="strong" startRef="1" /></target>
       </segment>
     </unit>
     <unit id="u5" name="/html[1]/body[1]/div[3]/h1[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="h1">
@@ -203,7 +203,7 @@
         <source>
           <sc id="1" dataRef="d1" fs:fs="strong" />Morning: Château de Chambord<ec dataRef="d2" fs:fs="strong" startRef="1" /> Begin your day with a visit to the legendary Château de Chambord, a masterpiece of French Renaissance architecture. This sprawling castle, with its 400 rooms, iconic double-helix staircase, and forested grounds, was designed for King Francis I as a hunting lodge. Wander the grand halls and rooftop terraces, where you’ll find sweeping views of the Loire landscape. Arrive early to enjoy the castle’s peaceful grandeur before the crowds arrive.</source>
         <target>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Por la mañana: Château de Ch<ec dataRef="d2" fs:fs="strong" startRef="1" /> ambord Comience el día con una visita al legendario Château de Chambord, una obra maestra de la arquitectura renacentista francesa. Este extenso castillo, con sus 400 habitaciones, su emblemática escalera de doble hélice y sus terrenos boscosos, fue diseñado para el rey Francisco I como pabellón de caza. Pasee por los grandes salones y las terrazas de la azotea, desde donde disfrutará de unas vistas impresionantes del paisaje del Loira. Llegue temprano para disfrutar de la apacible grandeza del castillo antes de que lleguen las multitudes.</target>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Por la mañana: Castillo de Chambord<ec dataRef="d2" fs:fs="strong" startRef="1" /> Comience el día con una visita al legendario Castillo de Chambord, una obra maestra de la arquitectura renacentista francesa. Este extenso castillo, con sus 400 habitaciones, su emblemática escalera de doble hélice y sus terrenos boscosos, fue diseñado para el rey Francisco I como pabellón de caza. Pasee por los grandes salones y las terrazas de la azotea, desde donde podrá disfrutar de unas vistas panorámicas del paisaje del Loira. Llegue temprano para disfrutar de la tranquila grandeza del castillo antes de que lleguen las multitudes.</target>
       </segment>
     </unit>
     <unit id="u7" name="/html[1]/body[1]/div[3]/div[1]/p[2]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
@@ -215,7 +215,7 @@
         <source>
           <sc id="1" dataRef="d1" fs:fs="strong" />Midday: Lunch in Blois<ec dataRef="d2" fs:fs="strong" startRef="1" /> Just a short drive away, the town of Blois offers a taste of quintessential Loire Valley charm. Explore its medieval center, winding alleyways, and the regal Château de Blois, known for its eclectic mix of architectural styles. For lunch, stop by a local bistro where you can savor Loire specialties like goat cheese tartine or rillettes. Pair it with a glass of crisp Sancerre wine, cultivated just a few miles away.</source>
         <target>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Mediodía: Almuerzo en Blois<ec dataRef="d2" fs:fs="strong" startRef="1" /> A poca distancia en coche, la ciudad de Blois ofrece una muestra del encanto por excelencia del Valle del Loira. Explore su centro medieval, sus sinuosas callejuelas y el regio Castillo de Blois, conocido por su ecléctica mezcla de estilos arquitectónicos. Para comer, deténgase en un bistró local donde podrá saborear especialidades del Loira como tartine de queso de cabra o rillettes. Acompáñelo con una copa del crujiente vino de Sancerre, cultivado a pocos kilómetros.</target>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Mediodía: Almuerzo en Blois<ec dataRef="d2" fs:fs="strong" startRef="1" /> A poca distancia en coche, la ciudad de Blois ofrece una muestra del encanto típico del valle del Loira. Explore su centro medieval, sus sinuosas callejuelas y el majestuoso castillo de Blois, conocido por su ecléctica mezcla de estilos arquitectónicos. Para almorzar, haga una parada en un bistró local donde podrá saborear especialidades del Loira, como tartines de queso de cabra o rillettes. Acompáñelo con una copa de vino Sancerre, cultivado a pocos kilómetros de distancia.</target>
       </segment>
     </unit>
     <unit id="u8" name="/html[1]/body[1]/div[3]/div[1]/p[3]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
@@ -227,13 +227,13 @@
         <source>
           <sc id="1" dataRef="d1" fs:fs="strong" />Afternoon: Amboise and the Legacy of Leonardo da Vinci<ec dataRef="d2" fs:fs="strong" startRef="1" /> Head to the Château d’Amboise, perched dramatically over the Loire River, once home to kings and visionaries alike. Stroll through royal apartments, visit the Gothic chapel where Leonardo da Vinci is buried, and soak in panoramic views of the river and town below. Just up the hill, the Clos Lucé mansion was Da Vinci’s residence for his final years. Inside, you’ll find intricate models of his inventions, bringing the genius of the Renaissance to life.</source>
         <target>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Por la tarde: Amboise y el legado de Leonardo da Vinci<ec dataRef="d2" fs:fs="strong" startRef="1" /> Diríjase al Château d'Amboise, encaramado espectacularmente sobre el río Loira, antaño hogar de reyes y visionarios por igual. Pasee por los aposentos reales, visite la capilla gótica donde está enterrado Leonardo da Vinci y disfrute de las vistas panorámicas del río y la ciudad. Subiendo la colina, la mansión de Clos Lucé fue la residencia de Da Vinci durante sus últimos años. En su interior, encontrará intrincados modelos de sus inventos, que dan vida al genio del Renacimiento.</target>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Tarde: Amboise y el legado de Leonardo da Vinci<ec dataRef="d2" fs:fs="strong" startRef="1" /> Diríjase al castillo de Amboise, situado en lo alto del río Loira, que en su día fue hogar de reyes y visionarios. Pasee por los aposentos reales, visite la capilla gótica donde está enterrado Leonardo da Vinci y disfrute de las vistas panorámicas del río y la ciudad. Justo arriba de la colina, la mansión Clos Lucé fue la residencia de Da Vinci durante sus últimos años. En su interior, encontrará intrincados modelos de sus inventos, que dan vida al genio del Renacimiento.</target>
       </segment>
     </unit>
     <unit id="u9" name="/html[1]/body[1]/div[3]/div[1]/p[4]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
       <segment state="translated">
         <source>You can read more about the Loire valley in this book:</source>
-        <target>Puede leer más sobre el valle del Loira en este libro:</target>
+        <target>Puedes leer más sobre el valle del Loira en este libro:</target>
       </segment>
     </unit>
     <unit id="u10" name="/html[1]/body[1]/div[4]/div[1]/p[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
@@ -243,7 +243,7 @@
       </originalData>
       <segment state="translated">
         <source>Embark on a journey through <sc id="1" dataRef="d1" fs:fs="i" />France Unveiled: A Journey Through Culture, Cuisine, and Countryside<ec dataRef="d2" fs:fs="i" startRef="1" />, a unique travel guide that weaves together the romantic charm of Paris, the sun-soaked allure of Provence, and the vineyard-laden trails of Bordeaux. This guide goes beyond the usual tourist stops to introduce you to hidden villages, local markets, and timeworn chateaux where history and modern French life blend seamlessly.</source>
-        <target>Embárquese en un viaje a través de <sc id="1" dataRef="d1" fs:fs="i" />France Unveiled: Un viaje a través de la cultura, la gastronomía y el campo<ec dataRef="d2" fs:fs="i" startRef="1" />, una guía de viaje única que entrelaza el encanto romántico de París, el encanto bañado por el sol de la Provenza y los senderos repletos de viñedos de Burdeos. Esta guía va más allá de las paradas turísticas habituales para presentarle pueblos recónditos, mercados locales y castillos con solera donde la historia y la vida moderna francesa se mezclan a la perfección.</target>
+        <target>Embárcate en un viaje por <sc id="1" dataRef="d1" fs:fs="i" />Francia al descubierto: un viaje a través de la cultura, la gastronomía y el campo,<ec dataRef="d2" fs:fs="i" startRef="1" /> una guía de viaje única que entrelaza el encanto romántico de París, el atractivo soleado de la Provenza y los senderos repletos de viñedos de Burdeos. Esta guía va más allá de las paradas turísticas habituales para presentarte pueblos escondidos, mercados locales y castillos antiguos donde la historia y la vida francesa moderna se mezclan a la perfección.</target>
       </segment>
     </unit>
     <unit id="u11" name="/html[1]/body[1]/div[4]/div[1]/p[2]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
@@ -253,7 +253,7 @@
       </originalData>
       <segment state="translated">
         <source>Whether sipping coffee in a quiet Marais café, wandering through medieval streets in Alsace, or savoring fresh seafood along the Côte d'Azur, <sc id="1" dataRef="d1" fs:fs="i" />France Unveiled<ec dataRef="d2" fs:fs="i" startRef="1" /> offers insights, local tips, and immersive experiences for travelers who want to explore like a local. Packed with detailed itineraries, insider recommendations, and stories that bring each region to life, this guide will help you uncover the heart of France—from its iconic sites to its best-kept secrets.</source>
-        <target>Ya sea tomando un café en un tranquilo café del Marais, paseando por las calles medievales de Alsacia o saboreando marisco fresco en la Costa Azul, <sc id="1" dataRef="d1" fs:fs="i" />France Unveiled<ec dataRef="d2" fs:fs="i" startRef="1" /> ofrece información, consejos locales y experiencias de inmersión para los viajeros que desean explorar como un lugareño. Esta guía, repleta de itinerarios detallados, recomendaciones de expertos e historias que dan vida a cada región, le ayudará a descubrir el corazón de Francia, desde sus lugares más emblemáticos hasta sus secretos mejor guardados.</target>
+        <target>Ya sea tomando un café en una tranquila cafetería del Marais, paseando por las calles medievales de Alsacia o saboreando marisco fresco en la Costa Azul, <sc id="1" dataRef="d1" fs:fs="i" />France Unveiled<ec dataRef="d2" fs:fs="i" startRef="1" /> ofrece información, consejos locales y experiencias inmersivas para los viajeros que desean explorar como un lugareño. Repleta de itinerarios detallados, recomendaciones de expertos y relatos que dan vida a cada región, esta guía le ayudará a descubrir el corazón de Francia, desde sus lugares emblemáticos hasta sus secretos mejor guardados.</target>
       </segment>
     </unit>
     <unit id="u12" name="/html[1]/body[1]/div[4]/div[1]/p[3]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
@@ -265,7 +265,7 @@
         <source>
           <sc id="1" dataRef="d1" fs:fs="i" />Perfect for first-time visitors and seasoned Francophiles alike, this guide will make every trip unforgettable<ec dataRef="d2" fs:fs="i" startRef="1" /></source>
         <target>
-          <sc id="1" dataRef="d1" fs:fs="i" />Perfecta tanto para quienes visitan Francia por primera vez como para los francófilos más experimentados, esta guía hará que cada viaje sea inolvidable<ec dataRef="d2" fs:fs="i" startRef="1" /></target>
+          <sc id="1" dataRef="d1" fs:fs="i" />Perfecta tanto para quienes visitan Francia por primera vez como para los francófilos más experimentados, esta guía hará que cada viaje sea inolvidable.<ec dataRef="d2" fs:fs="i" startRef="1" /></target>
       </segment>
     </unit>
     <unit id="u13" name="/html[1]/body[1]/div[4]/img[1]/@alt[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="img" fs:subFs="src,https://images.ctfassets.net/12ktqqmw656e/7jS4PhCf07nFGDbM2Xj5fT/513a21df5f6493964373bf152a6fd2bb/tower.jfif\alt,Eiffel tower">
@@ -277,19 +277,19 @@
     <unit id="u14" name="/html[1]/body[1]/div[4]/h1[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="h1">
       <segment state="translated">
         <source>France Unveiled: A Journey Through Culture, Cuisine, and Countryside</source>
-        <target>Francia al descubierto: Un viaje a través de la cultura, la cocina y el campo</target>
+        <target>Francia al descubierto: un viaje por la cultura, la gastronomía y el campo</target>
       </segment>
     </unit>
     <unit id="u15" name="/html[1]/body[1]/div[5]/h1[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="h1">
       <segment state="translated">
         <source>Exploring Loire Valley Wines</source>
-        <target>Explorar los vinos del Loira</target>
+        <target>Explorando los vinos del valle del Loira</target>
       </segment>
     </unit>
     <unit id="u16" name="/html[1]/body[1]/div[5]/div[1]/p[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
       <segment state="translated">
         <source>The Loire Valley is known for its diverse wine offerings, from crisp whites to delicate reds. To experience the region’s viniculture, stop by a local winery in the Vouvray or Chinon area, where family-run vineyards offer tastings and tours. Here, you can sample Loire’s famous Chenin Blancs, earthy Cabernet Francs, and refreshing Rosés, often accompanied by local cheeses and bread. It’s a truly immersive way to connect with the region’s rich agricultural traditions and taste the terroir of the Loire Valley.</source>
-        <target>El Valle del Loira es conocido por su variada oferta vinícola, desde blancos frescos a tintos delicados. Para conocer la viticultura de la región, haga una parada en una bodega local de la zona de Vouvray o Chinon, donde los viñedos familiares ofrecen catas y visitas guiadas. Aquí podrá degustar los famosos Chenin Blancs, los terrosos Cabernet Francs y los refrescantes Rosés del Loira, a menudo acompañados de pan y quesos locales. Es una forma realmente envolvente de conectar con las ricas tradiciones agrícolas de la región y saborear el terruño del Valle del Loira.</target>
+        <target>El valle del Loira es conocido por su variada oferta de vinos, desde blancos frescos hasta tintos delicados. Para descubrir la viticultura de la región, visite una bodega local en la zona de Vouvray o Chinon, donde los viñedos familiares ofrecen catas y visitas guiadas. Aquí podrá degustar los famosos Chenin Blancs del Loira, los terrosos Cabernet Francs y los refrescantes Rosés, a menudo acompañados de quesos y pan locales. Es una forma realmente inmersiva de conectar con las ricas tradiciones agrícolas de la región y degustar el terruño del valle del Loira.</target>
       </segment>
     </unit>
     <unit id="u17" name="/html[1]/body[1]/div[5]/div[1]/h3[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="h3">
@@ -301,7 +301,7 @@
         <source>
           <sc id="1" dataRef="d1" fs:fs="strong" />Local Tips for Exploring the Loire Valley<ec dataRef="d2" fs:fs="strong" startRef="1" /></source>
         <target>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Consejos locales para explorar el Valle del Loira<ec dataRef="d2" fs:fs="strong" startRef="1" /></target>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Consejos locales para explorar el valle del Loira<ec dataRef="d2" fs:fs="strong" startRef="1" /></target>
       </segment>
     </unit>
     <unit id="u18" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[1]/p[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
@@ -313,13 +313,13 @@
         <source>
           <sc id="1" dataRef="d1" fs:fs="strong" />Best Time to Visit:<ec dataRef="d2" fs:fs="strong" startRef="1" /></source>
         <target>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Mejor época para visitarlo:<ec dataRef="d2" fs:fs="strong" startRef="1" /></target>
+          <sc id="1" dataRef="d1" fs:fs="strong" />La mejor época para visitarlo:<ec dataRef="d2" fs:fs="strong" startRef="1" /></target>
       </segment>
     </unit>
     <unit id="u19" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[1]/p[2]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
       <segment state="translated">
         <source>Spring and autumn offer pleasant weather and fewer crowds, while summer brings the region to life with festivals and outdoor concerts.</source>
-        <target>La primavera y el otoño ofrecen un clima agradable y menos aglomeraciones, mientras que el verano anima la región con festivales y conciertos al aire libre.</target>
+        <target>La primavera y el otoño ofrecen un clima agradable y menos aglomeraciones, mientras que el verano llena la región de vida con festivales y conciertos al aire libre.</target>
       </segment>
     </unit>
     <unit id="u20" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[2]/p[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
@@ -337,7 +337,7 @@
     <unit id="u21" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[2]/p[2]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
       <segment state="translated">
         <source>Renting a bike is a great way to explore the scenic Loire à Vélo cycling routes, which connect many of the region’s major sights.</source>
-        <target>Alquilar una bicicleta es una forma estupenda de explorar las pintorescas rutas ciclistas Loire à Vélo, que conectan muchos de los principales lugares de interés de la región.</target>
+        <target>Alquilar una bicicleta es una forma estupenda de explorar las pintorescas rutas ciclistas de Loire à Vélo, que conectan muchos de los principales lugares de interés de la región.</target>
       </segment>
     </unit>
     <unit id="u22" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[3]/p[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
@@ -355,7 +355,7 @@
     <unit id="u23" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[3]/p[2]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
       <segment state="translated">
         <source>Don’t miss the lesser-known Château de Villandry, celebrated for its Renaissance gardens. Spend a serene afternoon wandering through its maze of perfectly manicured flowerbeds, orchards, and ornamental vegetable plots.</source>
-        <target>No se pierda el menos conocido Château de Villandry, famoso por sus jardines renacentistas. Pase una tarde tranquila paseando por su laberinto de parterres perfectamente cuidados, huertos y jardines ornamentales.</target>
+        <target>No se pierda el menos conocido Château de Villandry, famoso por sus jardines renacentistas. Pase una tranquila tarde paseando por su laberinto de parterres perfectamente cuidados, huertos y parcelas ornamentales.</target>
       </segment>
     </unit>
   </file>
