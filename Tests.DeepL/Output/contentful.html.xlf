@@ -183,9 +183,9 @@
       </originalData>
       <segment state="translated">
         <source>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Book your Loire Valley adventure today and step into a world where fairytales come to life! <ec dataRef="d2" fs:fs="strong" startRef="1" /></source>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Book your Loire Valley adventure today and step into a world where fairytales come to life! <ec dataRef="d2" startRef="1" /></source>
         <target>
-          <sc id="1" dataRef="d1" fs:fs="strong" />¡Reserva hoy mismo tu aventura en el valle del Loira y adéntrate en un mundo donde los cuentos de hadas cobran vida! <ec dataRef="d2" fs:fs="strong" startRef="1" /></target>
+          <sc id="1" dataRef="d1" fs:fs="strong" />¡Reserva hoy mismo tu aventura en el valle del Loira y adéntrate en un mundo donde los cuentos de hadas cobran vida! <ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
     <unit id="u5" name="/html[1]/body[1]/div[3]/h1[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="h1">
@@ -201,9 +201,9 @@
       </originalData>
       <segment state="translated">
         <source>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Morning: Château de Chambord<ec dataRef="d2" fs:fs="strong" startRef="1" /> Begin your day with a visit to the legendary Château de Chambord, a masterpiece of French Renaissance architecture. This sprawling castle, with its 400 rooms, iconic double-helix staircase, and forested grounds, was designed for King Francis I as a hunting lodge. Wander the grand halls and rooftop terraces, where you’ll find sweeping views of the Loire landscape. Arrive early to enjoy the castle’s peaceful grandeur before the crowds arrive.</source>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Morning: Château de Chambord<ec dataRef="d2" startRef="1" /> Begin your day with a visit to the legendary Château de Chambord, a masterpiece of French Renaissance architecture. This sprawling castle, with its 400 rooms, iconic double-helix staircase, and forested grounds, was designed for King Francis I as a hunting lodge. Wander the grand halls and rooftop terraces, where you’ll find sweeping views of the Loire landscape. Arrive early to enjoy the castle’s peaceful grandeur before the crowds arrive.</source>
         <target>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Por la mañana: Castillo de Chambord<ec dataRef="d2" fs:fs="strong" startRef="1" /> Comience el día con una visita al legendario Castillo de Chambord, una obra maestra de la arquitectura renacentista francesa. Este extenso castillo, con sus 400 habitaciones, su emblemática escalera de doble hélice y sus terrenos boscosos, fue diseñado para el rey Francisco I como pabellón de caza. Pasee por los grandes salones y las terrazas de la azotea, desde donde podrá disfrutar de unas vistas panorámicas del paisaje del Loira. Llegue temprano para disfrutar de la tranquila grandeza del castillo antes de que lleguen las multitudes.</target>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Por la mañana: Castillo de Chambord<ec dataRef="d2" startRef="1" /> Comience el día con una visita al legendario Castillo de Chambord, una obra maestra de la arquitectura renacentista francesa. Este extenso castillo, con sus 400 habitaciones, su emblemática escalera de doble hélice y sus terrenos boscosos, fue diseñado para el rey Francisco I como pabellón de caza. Pasee por los grandes salones y las terrazas de la azotea, desde donde podrá disfrutar de unas vistas panorámicas del paisaje del Loira. Llegue temprano para disfrutar de la tranquila grandeza del castillo antes de que lleguen las multitudes.</target>
       </segment>
     </unit>
     <unit id="u7" name="/html[1]/body[1]/div[3]/div[1]/p[2]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
@@ -213,9 +213,9 @@
       </originalData>
       <segment state="translated">
         <source>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Midday: Lunch in Blois<ec dataRef="d2" fs:fs="strong" startRef="1" /> Just a short drive away, the town of Blois offers a taste of quintessential Loire Valley charm. Explore its medieval center, winding alleyways, and the regal Château de Blois, known for its eclectic mix of architectural styles. For lunch, stop by a local bistro where you can savor Loire specialties like goat cheese tartine or rillettes. Pair it with a glass of crisp Sancerre wine, cultivated just a few miles away.</source>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Midday: Lunch in Blois<ec dataRef="d2" startRef="1" /> Just a short drive away, the town of Blois offers a taste of quintessential Loire Valley charm. Explore its medieval center, winding alleyways, and the regal Château de Blois, known for its eclectic mix of architectural styles. For lunch, stop by a local bistro where you can savor Loire specialties like goat cheese tartine or rillettes. Pair it with a glass of crisp Sancerre wine, cultivated just a few miles away.</source>
         <target>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Mediodía: Almuerzo en Blois<ec dataRef="d2" fs:fs="strong" startRef="1" /> A poca distancia en coche, la ciudad de Blois ofrece una muestra del encanto típico del valle del Loira. Explore su centro medieval, sus sinuosas callejuelas y el majestuoso castillo de Blois, conocido por su ecléctica mezcla de estilos arquitectónicos. Para almorzar, haga una parada en un bistró local donde podrá saborear especialidades del Loira, como tartines de queso de cabra o rillettes. Acompáñelo con una copa de vino Sancerre, cultivado a pocos kilómetros de distancia.</target>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Mediodía: Almuerzo en Blois<ec dataRef="d2" startRef="1" /> A poca distancia en coche, la ciudad de Blois ofrece una muestra del encanto típico del valle del Loira. Explore su centro medieval, sus sinuosas callejuelas y el majestuoso castillo de Blois, conocido por su ecléctica mezcla de estilos arquitectónicos. Para almorzar, haga una parada en un bistró local donde podrá saborear especialidades del Loira, como tartines de queso de cabra o rillettes. Acompáñelas con una copa de vino Sancerre, cultivado a pocos kilómetros de distancia.</target>
       </segment>
     </unit>
     <unit id="u8" name="/html[1]/body[1]/div[3]/div[1]/p[3]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
@@ -225,9 +225,9 @@
       </originalData>
       <segment state="translated">
         <source>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Afternoon: Amboise and the Legacy of Leonardo da Vinci<ec dataRef="d2" fs:fs="strong" startRef="1" /> Head to the Château d’Amboise, perched dramatically over the Loire River, once home to kings and visionaries alike. Stroll through royal apartments, visit the Gothic chapel where Leonardo da Vinci is buried, and soak in panoramic views of the river and town below. Just up the hill, the Clos Lucé mansion was Da Vinci’s residence for his final years. Inside, you’ll find intricate models of his inventions, bringing the genius of the Renaissance to life.</source>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Afternoon: Amboise and the Legacy of Leonardo da Vinci<ec dataRef="d2" startRef="1" /> Head to the Château d’Amboise, perched dramatically over the Loire River, once home to kings and visionaries alike. Stroll through royal apartments, visit the Gothic chapel where Leonardo da Vinci is buried, and soak in panoramic views of the river and town below. Just up the hill, the Clos Lucé mansion was Da Vinci’s residence for his final years. Inside, you’ll find intricate models of his inventions, bringing the genius of the Renaissance to life.</source>
         <target>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Tarde: Amboise y el legado de Leonardo da Vinci<ec dataRef="d2" fs:fs="strong" startRef="1" /> Diríjase al castillo de Amboise, situado en lo alto del río Loira, que en su día fue hogar de reyes y visionarios. Pasee por los aposentos reales, visite la capilla gótica donde está enterrado Leonardo da Vinci y disfrute de las vistas panorámicas del río y la ciudad. Justo arriba de la colina, la mansión Clos Lucé fue la residencia de Da Vinci durante sus últimos años. En su interior, encontrará intrincados modelos de sus inventos, que dan vida al genio del Renacimiento.</target>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Tarde: Amboise y el legado de Leonardo da Vinci<ec dataRef="d2" startRef="1" /> Diríjase al castillo de Amboise, situado en lo alto del río Loira, que en su día fue hogar de reyes y visionarios. Pasee por los aposentos reales, visite la capilla gótica donde está enterrado Leonardo da Vinci y disfrute de las vistas panorámicas del río y la ciudad. Justo arriba de la colina, la mansión Clos Lucé fue la residencia de Da Vinci durante sus últimos años. En su interior, encontrará intrincados modelos de sus inventos, que dan vida al genio del Renacimiento.</target>
       </segment>
     </unit>
     <unit id="u9" name="/html[1]/body[1]/div[3]/div[1]/p[4]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
@@ -242,8 +242,8 @@
         <data id="d2">&lt;/i&gt;</data>
       </originalData>
       <segment state="translated">
-        <source>Embark on a journey through <sc id="1" dataRef="d1" fs:fs="i" />France Unveiled: A Journey Through Culture, Cuisine, and Countryside<ec dataRef="d2" fs:fs="i" startRef="1" />, a unique travel guide that weaves together the romantic charm of Paris, the sun-soaked allure of Provence, and the vineyard-laden trails of Bordeaux. This guide goes beyond the usual tourist stops to introduce you to hidden villages, local markets, and timeworn chateaux where history and modern French life blend seamlessly.</source>
-        <target>Embárcate en un viaje por <sc id="1" dataRef="d1" fs:fs="i" />Francia al descubierto: un viaje a través de la cultura, la gastronomía y el campo,<ec dataRef="d2" fs:fs="i" startRef="1" /> una guía de viaje única que entrelaza el encanto romántico de París, el atractivo soleado de la Provenza y los senderos repletos de viñedos de Burdeos. Esta guía va más allá de las paradas turísticas habituales para presentarte pueblos escondidos, mercados locales y castillos antiguos donde la historia y la vida francesa moderna se mezclan a la perfección.</target>
+        <source>Embark on a journey through <sc id="1" dataRef="d1" fs:fs="i" />France Unveiled: A Journey Through Culture, Cuisine, and Countryside<ec dataRef="d2" startRef="1" />, a unique travel guide that weaves together the romantic charm of Paris, the sun-soaked allure of Provence, and the vineyard-laden trails of Bordeaux. This guide goes beyond the usual tourist stops to introduce you to hidden villages, local markets, and timeworn chateaux where history and modern French life blend seamlessly.</source>
+        <target>Embárcate en un viaje por <sc id="1" dataRef="d1" fs:fs="i" />Francia al descubierto: un viaje a través de la cultura, la gastronomía y el campo<ec dataRef="d2" startRef="1" />, una guía de viaje única que entrelaza el encanto romántico de París, el atractivo soleado de la Provenza y los senderos repletos de viñedos de Burdeos. Esta guía va más allá de las paradas turísticas habituales para presentarte pueblos escondidos, mercados locales y castillos antiguos donde la historia y la vida francesa moderna se mezclan a la perfección.</target>
       </segment>
     </unit>
     <unit id="u11" name="/html[1]/body[1]/div[4]/div[1]/p[2]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
@@ -252,8 +252,8 @@
         <data id="d2">&lt;/i&gt;</data>
       </originalData>
       <segment state="translated">
-        <source>Whether sipping coffee in a quiet Marais café, wandering through medieval streets in Alsace, or savoring fresh seafood along the Côte d'Azur, <sc id="1" dataRef="d1" fs:fs="i" />France Unveiled<ec dataRef="d2" fs:fs="i" startRef="1" /> offers insights, local tips, and immersive experiences for travelers who want to explore like a local. Packed with detailed itineraries, insider recommendations, and stories that bring each region to life, this guide will help you uncover the heart of France—from its iconic sites to its best-kept secrets.</source>
-        <target>Ya sea tomando un café en una tranquila cafetería del Marais, paseando por las calles medievales de Alsacia o saboreando marisco fresco en la Costa Azul, <sc id="1" dataRef="d1" fs:fs="i" />France Unveiled<ec dataRef="d2" fs:fs="i" startRef="1" /> ofrece información, consejos locales y experiencias inmersivas para los viajeros que desean explorar como un lugareño. Repleta de itinerarios detallados, recomendaciones de expertos y relatos que dan vida a cada región, esta guía le ayudará a descubrir el corazón de Francia, desde sus lugares emblemáticos hasta sus secretos mejor guardados.</target>
+        <source>Whether sipping coffee in a quiet Marais café, wandering through medieval streets in Alsace, or savoring fresh seafood along the Côte d'Azur, <sc id="1" dataRef="d1" fs:fs="i" />France Unveiled<ec dataRef="d2" startRef="1" /> offers insights, local tips, and immersive experiences for travelers who want to explore like a local. Packed with detailed itineraries, insider recommendations, and stories that bring each region to life, this guide will help you uncover the heart of France—from its iconic sites to its best-kept secrets.</source>
+        <target>Ya sea tomando un café en una tranquila cafetería del Marais, paseando por las calles medievales de Alsacia o saboreando marisco fresco en la Costa Azul, <sc id="1" dataRef="d1" fs:fs="i" />France Unveiled<ec dataRef="d2" startRef="1" /> ofrece información, consejos locales y experiencias inmersivas para los viajeros que desean explorar como un lugareño. Repleta de itinerarios detallados, recomendaciones de expertos y relatos que dan vida a cada región, esta guía le ayudará a descubrir el corazón de Francia, desde sus lugares emblemáticos hasta sus secretos mejor guardados.</target>
       </segment>
     </unit>
     <unit id="u12" name="/html[1]/body[1]/div[4]/div[1]/p[3]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
@@ -263,9 +263,9 @@
       </originalData>
       <segment state="translated">
         <source>
-          <sc id="1" dataRef="d1" fs:fs="i" />Perfect for first-time visitors and seasoned Francophiles alike, this guide will make every trip unforgettable<ec dataRef="d2" fs:fs="i" startRef="1" /></source>
+          <sc id="1" dataRef="d1" fs:fs="i" />Perfect for first-time visitors and seasoned Francophiles alike, this guide will make every trip unforgettable<ec dataRef="d2" startRef="1" /></source>
         <target>
-          <sc id="1" dataRef="d1" fs:fs="i" />Perfecta tanto para quienes visitan Francia por primera vez como para los francófilos más experimentados, esta guía hará que cada viaje sea inolvidable.<ec dataRef="d2" fs:fs="i" startRef="1" /></target>
+          <sc id="1" dataRef="d1" fs:fs="i" />Perfecta tanto para quienes visitan Francia por primera vez como para los francófilos más experimentados, esta guía hará que cada viaje sea inolvidable.<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
     <unit id="u13" name="/html[1]/body[1]/div[4]/img[1]/@alt[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="img" fs:subFs="src,https://images.ctfassets.net/12ktqqmw656e/7jS4PhCf07nFGDbM2Xj5fT/513a21df5f6493964373bf152a6fd2bb/tower.jfif\alt,Eiffel tower">
@@ -299,9 +299,9 @@
       </originalData>
       <segment state="translated">
         <source>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Local Tips for Exploring the Loire Valley<ec dataRef="d2" fs:fs="strong" startRef="1" /></source>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Local Tips for Exploring the Loire Valley<ec dataRef="d2" startRef="1" /></source>
         <target>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Consejos locales para explorar el valle del Loira<ec dataRef="d2" fs:fs="strong" startRef="1" /></target>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Consejos locales para explorar el valle del Loira<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
     <unit id="u18" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[1]/p[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
@@ -311,9 +311,9 @@
       </originalData>
       <segment state="translated">
         <source>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Best Time to Visit:<ec dataRef="d2" fs:fs="strong" startRef="1" /></source>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Best Time to Visit:<ec dataRef="d2" startRef="1" /></source>
         <target>
-          <sc id="1" dataRef="d1" fs:fs="strong" />La mejor época para visitarlo:<ec dataRef="d2" fs:fs="strong" startRef="1" /></target>
+          <sc id="1" dataRef="d1" fs:fs="strong" />La mejor época para visitarlo:<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
     <unit id="u19" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[1]/p[2]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
@@ -329,9 +329,9 @@
       </originalData>
       <segment state="translated">
         <source>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Getting Around:<ec dataRef="d2" fs:fs="strong" startRef="1" /></source>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Getting Around:<ec dataRef="d2" startRef="1" /></source>
         <target>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Cómo desplazarse:<ec dataRef="d2" fs:fs="strong" startRef="1" /></target>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Cómo desplazarse:<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
     <unit id="u21" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[2]/p[2]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
@@ -347,9 +347,9 @@
       </originalData>
       <segment state="translated">
         <source>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Hidden Gem:<ec dataRef="d2" fs:fs="strong" startRef="1" /></source>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Hidden Gem:<ec dataRef="d2" startRef="1" /></source>
         <target>
-          <sc id="1" dataRef="d1" fs:fs="strong" />Gema oculta:<ec dataRef="d2" fs:fs="strong" startRef="1" /></target>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Gema oculta:<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
     <unit id="u23" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[3]/p[2]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">

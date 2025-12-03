@@ -1,0 +1,56 @@
+<xliff srcLang="en-us" trgLang="de" version="2.2" xmlns:mda="urn:oasis:names:tc:xliff:metadata:2.0" xmlns:its="http://www.w3.org/2005/11/its" xmlns:fs="urn:oasis:names:tc:xliff:fs:2.0" xmlns="urn:oasis:names:tc:xliff:document:2.2">
+  <file id="f1" its:revPerson="Mattia Doneda" its:revTool="Zendesk" its:revToolRef="https://www.zendesk.com">
+    <skeleton>&lt;html lang="en-us"&gt;&lt;head&gt;&lt;title data-blackbird-key="24006501814428 -title"&gt;Test Blackbird Workflow&lt;/title&gt;&lt;meta name="blackbird-reference-id" content="24006501814428 "&gt;&lt;meta name="blackbird-ucid" content="24006501814428 "&gt;&lt;meta name="blackbird-content-name" content="Test Blackbird Workflow"&gt;&lt;meta name="blackbird-admin-url" content="https://deepl.zendesk.com/knowledge/editor/24006501814428 /en-us"&gt;&lt;meta name="blackbird-public-url" content="https://support.deepl.com/hc/en-us/articles/24006501814428"&gt;&lt;meta name="blackbird-system-name" content="Zendesk"&gt;&lt;meta name="blackbird-system-ref" content="https://www.zendesk.com"&gt;&lt;/head&gt;&lt;body its-rev-tool="Zendesk" its-rev-tool-ref="https://www.zendesk.com" its-rev-person="Mattia Doneda" &gt;
+    &lt;div class="panel-plan"&gt;Required plan: &lt;strong&gt;DeepL Voice for Conversations &lt;/strong&gt;&lt;/div&gt;
+     &lt;div class="custom-tab"&gt;
+        &lt;button id="defaultOpen" class="custom-tablinks" onclick="openTab(event, 'tab01')"&gt;iOS&lt;/button&gt;
+        &lt;button class="custom-tablinks" onclick="openTab(event, 'tab02')"&gt;Android&lt;/button&gt;
+     &lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;</skeleton>
+    <mda:metadata>
+      <mda:metaGroup category="blackbird">
+        <mda:meta type="original-name">Button_test.html</mda:meta>
+        <mda:meta type="original-media-type">text/html</mda:meta>
+        <mda:meta type="source-ucid">24006501814428 </mda:meta>
+        <mda:meta type="source-content-name">Test Blackbird Workflow</mda:meta>
+        <mda:meta type="source-admin-url">https://deepl.zendesk.com/knowledge/editor/24006501814428 /en-us</mda:meta>
+        <mda:meta type="source-public-url">https://support.deepl.com/hc/en-us/articles/24006501814428</mda:meta>
+        <mda:meta type="source-system-name">Zendesk</mda:meta>
+        <mda:meta type="source-system-ref">https://www.zendesk.com</mda:meta>
+      </mda:metaGroup>
+    </mda:metadata>
+    <unit id="u1" name="/html[1]/head[1]/title[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="title">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:meta type="key">24006501814428 -title</mda:meta>
+        </mda:metaGroup>
+      </mda:metadata>
+      <segment state="translated">
+        <source>Test Blackbird Workflow</source>
+        <target>Test Blackbird-Workflow</target>
+      </segment>
+    </unit>
+    <unit id="u2" name="/html[1]/body[1]/div[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="div" fs:subFs="class,panel-plan">
+      <originalData>
+        <data id="d1">&lt;strong&gt;</data>
+        <data id="d2">&lt;/strong&gt;</data>
+      </originalData>
+      <segment state="translated">
+        <source>Required plan: <sc id="1" dataRef="d1" fs:fs="strong" />DeepL Voice for Conversations <ec dataRef="d2" startRef="1" /></source>
+        <target>Erforderlicher Plan: <sc id="1" dataRef="d1" fs:fs="strong" />DeepL Voice für Konversationen <ec dataRef="d2" startRef="1" /></target>
+      </segment>
+    </unit>
+    <unit id="u3" name="/html[1]/body[1]/div[2]/button[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="button" fs:subFs="id,defaultOpen\class,custom-tablinks\onclick,openTab(event\, 'tab01')">
+      <segment state="translated">
+        <source>iOS</source>
+        <target>iOS</target>
+      </segment>
+    </unit>
+    <unit id="u4" name="/html[1]/body[1]/div[2]/button[2]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="button" fs:subFs="class,custom-tablinks\onclick,openTab(event\, 'tab02')">
+      <segment state="translated">
+        <source>Android</source>
+        <target>Android</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

@@ -257,7 +257,7 @@
       </originalData>
       <segment id="11" state="translated">
         <source>Embark on a journey through <sc id="1" dataRef="d1" />France Unveiled: A Journey Through Culture, Cuisine, and Countryside<ec dataRef="d2" startRef="1" />, a unique travel guide that weaves together the romantic charm of Paris, the sun-soaked allure of Provence, and the vineyard-laden trails of Bordeaux. This guide goes beyond the usual tourist stops to introduce you to hidden villages, local markets, and timeworn chateaux where history and modern French life blend seamlessly.</source>
-        <target>Begeben Sie sich auf eine Reise durch &lt;i&gt;Frankreich&lt;/i&gt; mit &lt;i&gt;„France Unveiled: A Journey Through Culture, Cuisine, and Countryside“&lt;/i&gt;, einem einzigartigen Reiseführer, der den romantischen Charme von Paris, die sonnenverwöhnte Provence und die von Weinbergen gesäumten Wege von Bordeaux miteinander verbindet. Dieser Reiseführer geht über die üblichen Touristenattraktionen hinaus und stellt Ihnen versteckte Dörfer, lokale Märkte und alte Schlösser vor, in denen Geschichte und modernes französisches Leben nahtlos ineinander übergehen.</target>
+        <target>Begeben Sie sich auf eine Reise durch „France Unveiled: A Journey Through Culture, Cuisine, and Countryside“ (Frankreich enthüllt: Eine Reise durch Kultur, Küche und Landschaft), einen einzigartigen Reiseführer, der den romantischen Charme von Paris, den sonnenverwöhnten Reiz der Provence und die von Weinbergen gesäumten Wege von Bordeaux miteinander verbindet. Dieser Reiseführer geht über die üblichen Touristenattraktionen hinaus und stellt Ihnen versteckte Dörfer, lokale Märkte und alte Schlösser vor, in denen Geschichte und modernes französisches Leben nahtlos miteinander verschmelzen.</target>
       </segment>
     </unit>
     <unit id="u12" name="/html[1]/body[1]/div[4]/div[1]/p[2]" its:tool="DeepL" its:toolRef="https://www.deepl.com/">
@@ -278,7 +278,7 @@
       <segment id="13" state="translated">
         <source>
           <sc id="1" dataRef="d1" />Perfect for first-time visitors and seasoned Francophiles alike, this guide will make every trip unforgettable<ec dataRef="d2" startRef="1" /></source>
-        <target>&lt;i&gt;Dieser Reiseführer ist sowohl für Erstbesucher als auch für erfahrene Frankophile perfekt geeignet und macht jede Reise unvergesslich.&lt;/i&gt;</target>
+        <target>&lt;i&gt;Dieser Reiseführer ist sowohl für Erstbesucher als auch für erfahrene Frankophile ideal und macht jede Reise zu einem unvergesslichen Erlebnis.</target>
       </segment>
     </unit>
     <unit id="u14" name="/html[1]/body[1]/div[4]/img[1]/@alt[1]">

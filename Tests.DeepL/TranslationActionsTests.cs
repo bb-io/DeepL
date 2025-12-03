@@ -1,6 +1,7 @@
 ﻿using Apps.DeepL.Actions;
 using Apps.DeepL.Requests;
 using Apps.DeepL.Requests.Content;
+using DeepL;
 using Tests.DeepL.Base;
 
 namespace Tests.DeepL;
@@ -171,6 +172,24 @@ public class TranslationActionsTests : TestBase
                     Name = "Multilingual AI Roundtable 2025 in Malmö!.html",
                 },
                 TargetLanguage = "nl",
+            });
+
+        Assert.IsNotNull(result);
+        Console.WriteLine(result.BilledCharacters);
+        Assert.IsTrue(result.BilledCharacters > 0);
+    }
+
+    [TestMethod]
+    public async Task Translate_Buttons()
+    {
+        var result = await _actions.TranslateContent(
+            new ContentTranslationRequest
+            {
+                File = new Blackbird.Applications.Sdk.Common.Files.FileReference
+                {
+                    Name = "Button_test.html",
+                },
+                TargetLanguage = "de",
             });
 
         Assert.IsNotNull(result);
