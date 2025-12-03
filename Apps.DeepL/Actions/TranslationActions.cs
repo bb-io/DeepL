@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System.Net.Mime;
+using System.Xml.Linq;
 using Apps.DeepL.Constants;
 using Apps.DeepL.Requests;
 using Apps.DeepL.Requests.Content;
@@ -11,6 +12,7 @@ using Blackbird.Applications.Sdk.Common.Invocation;
 using Blackbird.Applications.SDK.Blueprints;
 using Blackbird.Applications.SDK.Extensions.FileManagement.Interfaces;
 using Blackbird.Filters.Constants;
+using Blackbird.Filters.Content;
 using Blackbird.Filters.Enums;
 using Blackbird.Filters.Extensions;
 using Blackbird.Filters.Transformations;
@@ -110,18 +112,19 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         content.SourceLanguage ??= input.SourceLanguage;
         content.TargetLanguage ??= input.TargetLanguage.ToLower();
 
-        var options = new TextTranslateOptions
-        {
-            PreserveFormatting = input.PreserveFormatting.HasValue ? input.PreserveFormatting.Value : true,
-            Formality = GetFormality(input.Formality),
-            GlossaryId = input.GlossaryId,
-            TagHandling = "html",
-            Context = input.Context,
-            ModelType = GetModelType(input.ModelType)
-        };
 
         async Task<IEnumerable<TextResult>> BatchTranslate(IEnumerable<(Unit Unit, Segment Segment)> batch)
         {
+            var options = new TextTranslateOptions
+            {
+                PreserveFormatting = input.PreserveFormatting.HasValue ? input.PreserveFormatting.Value : true,
+                Formality = GetFormality(input.Formality),
+                GlossaryId = input.GlossaryId,
+                Context = input.Context,
+                ModelType = GetModelType(input.ModelType),
+                TagHandling = batch.FirstOrDefault().Unit.ContentCoder.SupportedMediaTypes.Contains(MediaTypeNames.Text.Html) ? "html" : null,
+            };
+
             return await ErrorHandler.ExecuteWithErrorHandlingAsync(async () =>
                     await Client.TranslateTextAsync(batch.Select(x => x.Segment.GetSource()), input.SourceLanguage, input.TargetLanguage, options));
         }
@@ -149,10 +152,11 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
 
         if (input.OutputFileHandling == "original")
         {
-            var targetContent = content.Target();
+            CodedContent targetContent;
             Stream originalStream;
             try
             {
+                targetContent = content.Target();
                 originalStream = targetContent.Serialize().ToStream();
             }
             catch (Exception e) when(e.Message.Contains("Cannot convert to content, no original data found"))
