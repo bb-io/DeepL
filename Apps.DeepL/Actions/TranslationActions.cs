@@ -1,6 +1,4 @@
-﻿using System.Net.Mime;
-using System.Xml.Linq;
-using Apps.DeepL.Constants;
+﻿using Apps.DeepL.Constants;
 using Apps.DeepL.Requests;
 using Apps.DeepL.Requests.Content;
 using Apps.DeepL.Responses;
@@ -22,6 +20,9 @@ using Blackbird.Xliff.Utils.Converters;
 using Blackbird.Xliff.Utils.Extensions;
 using DeepL;
 using DeepL.Model;
+using System.Net;
+using System.Net.Mime;
+using System.Xml.Linq;
 
 namespace Apps.DeepL.Actions;
 
@@ -122,14 +123,19 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
                 GlossaryId = input.GlossaryId,
                 Context = input.Context,
                 ModelType = GetModelType(input.ModelType),
-                TagHandling = batch.FirstOrDefault().Unit.ContentCoder.SupportedMediaTypes.Contains(MediaTypeNames.Text.Html) ? "html" : null,
+                TagHandling = batch.FirstOrDefault().Unit.ContentCoder.SupportedMediaTypes.Contains(MediaTypeNames.Text.Html) ? "html" : null,  
             };
+
+            if (GetModelType(input.ModelType) != ModelType.LatencyOptimized)
+            {
+                options.ExtraBodyParameters = new Dictionary<string, string> { { "tag_handling_version", "v2" } };
+            }
 
             return await ErrorHandler.ExecuteWithErrorHandlingAsync(async () =>
                     await Client.TranslateTextAsync(batch.Select(x => x.Segment.GetSource()), input.SourceLanguage, input.TargetLanguage, options));
         }
 
-        var translations = await content.GetUnits().Batch(100, x => !x.IsIgnorbale && x.IsInitial).Process(BatchTranslate);
+        var translations = await content.GetUnits().Batch(100, x => !x.IsIgnorbale && x.IsInitial && !string.IsNullOrEmpty(x.GetSource())).Process(BatchTranslate);
 
         var sourceLanguages = new List<string>();
         int billedCharacters = 0;
@@ -137,7 +143,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         {
             foreach (var (segment, result) in results)
             {
-                segment.SetTarget(result.Text);
+                segment.SetTarget(WebUtility.HtmlDecode(result.Text));
                 segment.State = SegmentState.Translated;
                 billedCharacters += result.BilledCharacters;
 
