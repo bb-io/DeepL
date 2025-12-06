@@ -1,5 +1,5 @@
 <xliff srcLang="en-us" trgLang="nl" version="2.2" xmlns:mda="urn:oasis:names:tc:xliff:metadata:2.0" xmlns:its="http://www.w3.org/2005/11/its" xmlns:fs="urn:oasis:names:tc:xliff:fs:2.0" xmlns="urn:oasis:names:tc:xliff:document:2.2">
-  <file id="f1" its:revPerson="Bruno" its:revTool="Zendesk" its:revToolRef="https://www.zendesk.com">
+  <file id="f1" its:revPerson="Bruno" its:revTool="Zendesk">
     <skeleton>&lt;html lang="en-us"&gt;&lt;head&gt;&lt;title data-blackbird-key="35514709559825-title"&gt;Multilingual AI Roundtable 2025 in Malmö!&lt;/title&gt;&lt;meta name="blackbird-reference-id" content="35514709559825"&gt;&lt;meta name="blackbird-ucid" content="35514709559825"&gt;&lt;meta name="blackbird-content-name" content="Multilingual AI Roundtable 2025 in Malmö!"&gt;&lt;meta name="blackbird-admin-url" content="https://d3v-blackbird.zendesk.com/knowledge/editor/35514709559825/en-us"&gt;&lt;meta name="blackbird-public-url" content="https://d3v-blackbird.zendesk.com/hc/en-us/articles/35514709559825"&gt;&lt;meta name="blackbird-system-name" content="Zendesk"&gt;&lt;meta name="blackbird-system-ref" content="https://www.zendesk.com"&gt;&lt;/head&gt;&lt;body its-rev-tool="Zendesk" its-rev-tool-ref="https://www.zendesk.com" its-rev-person="Bruno" &gt;&lt;p&gt;&lt;strong&gt;&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;"&gt;Transition in localization – From Automation to Agentic AI&lt;/span&gt;&lt;/strong&gt;&lt;br style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"&gt;&lt;br style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"&gt;&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;The emergence of AI Agents has disrupted the localization industry, redefining its scope on the macro level, as well as in the details of daily operations. Developing into sophisticated systems with the capability to make autonomous decisions, these agents are becoming active participants in localization workflows. Within this context, it is crucial for localizers to clarify what AI Agents can and cannot do. With careful stewardship, well-designed applications of AI agents have the potential to become invaluable human allies, to foster innovation, as well as improve efficiency and productivity. The seventh Multilingual AI roundtable will focus on key components of this transition, such as AI-driven workflow orchestration, Retrieval Augmented Generation (RAG)-based MT with Large Language Models (LLMs) , as well as possible applications and unique challenges of working with LLM agents.&lt;/span&gt;&lt;br style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"&gt;&lt;br style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"&gt;&lt;strong&gt;&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;"&gt;Topics to be discussed:&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;RAG-based MT with LLMs&lt;/span&gt;&lt;/li&gt;
@@ -40,10 +40,16 @@
         <mda:meta type="source-system-ref">https://www.zendesk.com</mda:meta>
       </mda:metaGroup>
     </mda:metadata>
-    <unit id="u1" name="/html[1]/head[1]/title[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="title">
+    <unit id="u1" name="/html[1]/head[1]/title[1]" its:tool="DeepL" fs:fs="title">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
           <mda:meta type="key">35514709559825-title</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">41</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <segment state="translated">
@@ -51,7 +57,17 @@
         <target>Meertalige AI-rondetafelconferentie 2025 in Malmö!</target>
       </segment>
     </unit>
-    <unit id="u2" name="/html[1]/body[1]/p[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="p">
+    <unit id="u2" name="/html[1]/body[1]/p[1]" its:tool="DeepL" fs:fs="p">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">977</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;strong&gt;</data>
         <data id="d2">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;"&gt;</data>
@@ -66,10 +82,20 @@
           <sc id="2" dataRef="d2" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />Transition in localization – From Automation to Agentic AI<ec dataRef="d3" startRef="2" /><ec dataRef="d4" startRef="1" /><ph id="3" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="4" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="5" dataRef="d6" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />The emergence of AI Agents has disrupted the localization industry, redefining its scope on the macro level, as well as in the details of daily operations. Developing into sophisticated systems with the capability to make autonomous decisions, these agents are becoming active participants in localization workflows. Within this context, it is crucial for localizers to clarify what AI Agents can and cannot do. With careful stewardship, well-designed applications of AI agents have the potential to become invaluable human allies, to foster innovation, as well as improve efficiency and productivity. The seventh Multilingual AI roundtable will focus on key components of this transition, such as AI-driven workflow orchestration, Retrieval Augmented Generation (RAG)-based MT with Large Language Models (LLMs) , as well as possible applications and unique challenges of working with LLM agents.<ec dataRef="d3" startRef="5" /><ph id="6" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="7" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="8" dataRef="d1" fs:fs="strong" /><sc id="9" dataRef="d2" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />Topics to be discussed:<ec dataRef="d3" startRef="9" /><ec dataRef="d4" startRef="8" /></source>
         <target>
           <sc id="1" dataRef="d1" fs:fs="strong" />
-          <sc id="2" dataRef="d2" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />Transitie in lokalisatie – Van automatisering naar agentische AI<ec dataRef="d3" startRef="2" /><ec dataRef="d4" startRef="1" /><ph id="3" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="4" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="5" dataRef="d6" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />De opkomst van AI-agenten heeft de lokalisatie-industrie ontwricht en de reikwijdte ervan op macroniveau en in de details van de dagelijkse werkzaamheden opnieuw gedefinieerd. Deze agents ontwikkelen zich tot geavanceerde systemen die autonome beslissingen kunnen nemen en worden steeds actiever betrokken bij lokalisatieworkflows. In deze context is het voor lokalisatiebedrijven van cruciaal belang om duidelijk te maken wat AI-agents wel en niet kunnen. Bij zorgvuldig beheer kunnen goed ontworpen AI-agents waardevolle bondgenoten worden die innovatie stimuleren en de efficiëntie en productiviteit verbeteren. De zevende Multilingual AI-rondetafelconferentie zal zich richten op de belangrijkste componenten van deze transitie, zoals AI-gestuurde workflow-orkestratie, op Retrieval Augmented Generation (RAG) gebaseerde MT met Large Language Models (LLM's), evenals mogelijke toepassingen en unieke uitdagingen van het werken met LLM-agenten.<ec dataRef="d3" startRef="5" /><sc id="8" dataRef="d1" fs:fs="strong" /><sc id="9" dataRef="d2" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />Te<ec dataRef="d3" startRef="9" /><ec dataRef="d4" startRef="8" /><ph id="6" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="7" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="10" dataRef="d1" fs:fs="strong" /><sc id="11" dataRef="d2" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />bespreken onderwerpen:<ec dataRef="d3" startRef="11" /><ec dataRef="d4" startRef="10" /></target>
+          <sc id="2" dataRef="d2" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />Transitie in lokalisatie – Van automatisering naar agentische AI<ec dataRef="d3" startRef="2" /><ec dataRef="d4" startRef="1" /><ph id="3" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="4" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="5" dataRef="d6" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />De opkomst van AI-agenten heeft de lokalisatie-industrie ontwricht en de reikwijdte ervan op macroniveau en in de details van de dagelijkse werkzaamheden opnieuw gedefinieerd. Deze agents ontwikkelen zich tot geavanceerde systemen die autonome beslissingen kunnen nemen en worden steeds actiever betrokken bij lokalisatieworkflows. In deze context is het voor lokalisatiebedrijven van cruciaal belang om duidelijk te maken wat AI-agents wel en niet kunnen. Met zorgvuldig beheer kunnen goed ontworpen toepassingen van AI-agents waardevolle bondgenoten van de mens worden, innovatie bevorderen en de efficiëntie en productiviteit verbeteren. De zevende Multilingual AI-rondetafelconferentie zal zich richten op de belangrijkste componenten van deze transitie, zoals AI-gestuurde workflow-orkestratie, op Retrieval Augmented Generation (RAG) gebaseerde MT met Large Language Models (LLM's), evenals mogelijke toepassingen en unieke uitdagingen van het werken met LLM-agenten.<ec dataRef="d3" startRef="5" /><sc id="8" dataRef="d1" fs:fs="strong" /><sc id="9" dataRef="d2" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />Te<ec dataRef="d3" startRef="9" /><ec dataRef="d4" startRef="8" /><ph id="6" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="7" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="10" dataRef="d1" fs:fs="strong" /><sc id="11" dataRef="d2" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />bespreken onderwerpen:<ec dataRef="d3" startRef="11" /><ec dataRef="d4" startRef="10" /></target>
       </segment>
     </unit>
-    <unit id="u3" name="/html[1]/body[1]/ul[1]/li[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u3" name="/html[1]/body[1]/ul[1]/li[1]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">22</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>
@@ -81,7 +107,17 @@
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />RAG-gebaseerde MT met LLMs<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
-    <unit id="u4" name="/html[1]/body[1]/ul[1]/li[2]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u4" name="/html[1]/body[1]/ul[1]/li[2]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">38</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>
@@ -93,7 +129,17 @@
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />AI-gestuurd systeem voor contentcoördinatie<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
-    <unit id="u5" name="/html[1]/body[1]/ul[1]/li[3]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u5" name="/html[1]/body[1]/ul[1]/li[3]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">46</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>
@@ -105,7 +151,17 @@
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Intelligente meertalige informatieverzameling<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
-    <unit id="u6" name="/html[1]/body[1]/ul[1]/li[4]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u6" name="/html[1]/body[1]/ul[1]/li[4]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">69</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>
@@ -117,7 +173,17 @@
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Automatische lokalisatiekwaliteitsborging (LQA) en kwaliteitsbeoordeling (QE)<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
-    <unit id="u7" name="/html[1]/body[1]/ul[1]/li[5]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u7" name="/html[1]/body[1]/ul[1]/li[5]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">64</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>
@@ -129,7 +195,17 @@
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Sturende agentische AI: de rol van de mens en samenwerking tussen mens en computer<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
-    <unit id="u8" name="/html[1]/body[1]/ul[1]/li[6]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u8" name="/html[1]/body[1]/ul[1]/li[6]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">39</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>
@@ -141,7 +217,17 @@
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Kennisgrafieken en AI-gegevensbeheer<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
-    <unit id="u9" name="/html[1]/body[1]/ul[1]/li[7]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u9" name="/html[1]/body[1]/ul[1]/li[7]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">73</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>
@@ -157,7 +243,17 @@
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Toepassingen en risico's van AI-agenten<ec dataRef="d2" startRef="1" /><ph id="2" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="3" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="4" dataRef="d4" fs:fs="strong" /><sc id="5" dataRef="d5" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />Door deel te nemen aan deze rondetafelgesprek, zult u:<ec dataRef="d2" startRef="5" /><ec dataRef="d6" startRef="4" /><ph id="6" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="7" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /></target>
       </segment>
     </unit>
-    <unit id="u10" name="/html[1]/body[1]/ul[1]/li[8]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u10" name="/html[1]/body[1]/ul[1]/li[8]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">43</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>
@@ -169,7 +265,17 @@
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Begrijp wat AI-agenten wel en niet kunnen doen<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
-    <unit id="u11" name="/html[1]/body[1]/ul[1]/li[9]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u11" name="/html[1]/body[1]/ul[1]/li[9]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">69</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>
@@ -181,7 +287,17 @@
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Verzamel inzichten om AI-agenten op bedrijfsniveau toe te passen en te beheren<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
-    <unit id="u12" name="/html[1]/body[1]/ul[1]/li[10]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u12" name="/html[1]/body[1]/ul[1]/li[10]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">78</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>
@@ -193,7 +309,17 @@
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Ontwerp een vernieuwde lokalisatieworkflow met AI-agenten als actieve deelnemers<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
-    <unit id="u13" name="/html[1]/body[1]/ul[1]/li[11]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u13" name="/html[1]/body[1]/ul[1]/li[11]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">67</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>
@@ -205,7 +331,17 @@
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Bespreek best practices uit de sector voor het managen van zowel mensen als AI-agenten.<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
-    <unit id="u14" name="/html[1]/body[1]/ul[1]/li[12]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u14" name="/html[1]/body[1]/ul[1]/li[12]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">38</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>
@@ -217,7 +353,17 @@
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Houd rekening met toekomstige trends op het gebied van AI<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
-    <unit id="u15" name="/html[1]/body[1]/ul[1]/li[13]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u15" name="/html[1]/body[1]/ul[1]/li[13]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">72</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>
@@ -233,7 +379,17 @@
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Bouw waardevolle relaties op met collega's uit de<ec dataRef="d2" startRef="1" /><ph id="2" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="3" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="8" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />sector<ec dataRef="d2" startRef="8" /><sc id="4" dataRef="d4" fs:fs="strong" /><sc id="5" dataRef="d5" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />Deze rondetafel is bedoeld voor:<ec dataRef="d2" startRef="5" /><ec dataRef="d6" startRef="4" /><ph id="6" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="7" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /></target>
       </segment>
     </unit>
-    <unit id="u16" name="/html[1]/body[1]/ul[1]/li[14]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u16" name="/html[1]/body[1]/ul[1]/li[14]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">79</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>
@@ -245,7 +401,17 @@
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Besluitvormers die AI zowel op strategisch als operationeel niveau willen inzetten<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
-    <unit id="u17" name="/html[1]/body[1]/ul[1]/li[15]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u17" name="/html[1]/body[1]/ul[1]/li[15]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">44</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>
@@ -257,7 +423,17 @@
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Kopers die meertalige AI willen implementeren<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
-    <unit id="u18" name="/html[1]/body[1]/ul[1]/li[16]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u18" name="/html[1]/body[1]/ul[1]/li[16]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">59</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>
@@ -269,7 +445,17 @@
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Projectmanagers die belast zijn met de implementatie van een MT/AI-oplossing<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
-    <unit id="u19" name="/html[1]/body[1]/ul[1]/li[17]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u19" name="/html[1]/body[1]/ul[1]/li[17]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">63</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>
@@ -281,7 +467,17 @@
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Leveranciers die MT/AI willen inzetten om aan de behoeften van hun klanten te voldoen<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
-    <unit id="u20" name="/html[1]/body[1]/ul[1]/li[18]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u20" name="/html[1]/body[1]/ul[1]/li[18]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">49</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>
@@ -293,7 +489,17 @@
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />IT-professionals die betrokken zijn bij de implementatie van MT/AI<ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
-    <unit id="u21" name="/html[1]/body[1]/ul[1]/li[19]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="li">
+    <unit id="u21" name="/html[1]/body[1]/ul[1]/li[19]" its:tool="DeepL" fs:fs="li">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">228</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;span style="color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"&gt;</data>
         <data id="d2">&lt;/span&gt;</data>

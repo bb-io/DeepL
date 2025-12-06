@@ -141,11 +141,13 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         int billedCharacters = 0;
         foreach (var (unit, results) in translations)
         {
+            var localBilledCharacters = 0;
             foreach (var (segment, result) in results)
             {
                 segment.SetTarget(WebUtility.HtmlDecode(result.Text));
                 segment.State = SegmentState.Translated;
                 billedCharacters += result.BilledCharacters;
+                localBilledCharacters += result.BilledCharacters;
 
                 if (!string.IsNullOrEmpty(result.DetectedSourceLanguageCode))
                 {
@@ -153,7 +155,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
                 }
             }
             unit.Provenance.Translation.Tool = "DeepL";
-            unit.Provenance.Translation.ToolReference = "https://www.deepl.com/";
+            unit.AddUsage("DeepL", localBilledCharacters, UsageUnit.Characters);
         }
 
         if (input.OutputFileHandling == "original")

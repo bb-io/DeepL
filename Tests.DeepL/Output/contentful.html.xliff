@@ -1,4 +1,4 @@
-<xliff srcLang="en-US" trgLang="nl" version="2.2" xmlns:its="http://www.w3.org/2005/11/its" xmlns="urn:oasis:names:tc:xliff:document:2.2">
+<xliff srcLang="en-US" trgLang="nl" version="2.2" xmlns:mda="urn:oasis:names:tc:xliff:metadata:2.0" xmlns:its="http://www.w3.org/2005/11/its" xmlns="urn:oasis:names:tc:xliff:document:2.2">
   <file id="f1">
     <skeleton>&lt;html&gt;
   &lt;head&gt;
@@ -250,27 +250,57 @@
         </target>
       </segment>
     </unit>
-    <unit id="u11" name="/html[1]/body[1]/div[4]/div[1]/p[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/">
+    <unit id="u11" name="/html[1]/body[1]/div[4]/div[1]/p[1]" its:tool="DeepL">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">430</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;i&gt;</data>
         <data id="d2">&lt;/i&gt;</data>
       </originalData>
       <segment id="11" state="translated">
         <source>Embark on a journey through <sc id="1" dataRef="d1" />France Unveiled: A Journey Through Culture, Cuisine, and Countryside<ec dataRef="d2" startRef="1" />, a unique travel guide that weaves together the romantic charm of Paris, the sun-soaked allure of Provence, and the vineyard-laden trails of Bordeaux. This guide goes beyond the usual tourist stops to introduce you to hidden villages, local markets, and timeworn chateaux where history and modern French life blend seamlessly.</source>
-        <target>Begeben Sie sich auf eine Reise durch „France Unveiled: A Journey Through Culture, Cuisine, and Countryside“ (Frankreich enthüllt: Eine Reise durch Kultur, Küche und Landschaft), einen einzigartigen Reiseführer, der den romantischen Charme von Paris, den sonnenverwöhnten Reiz der Provence und die von Weinbergen gesäumten Wege von Bordeaux miteinander verbindet. Dieser Reiseführer geht über die üblichen Touristenattraktionen hinaus und stellt Ihnen versteckte Dörfer, lokale Märkte und alte Schlösser vor, in denen Geschichte und modernes französisches Leben nahtlos miteinander verschmelzen.</target>
+        <target>Begeben Sie sich auf eine Reise durch „France Unveiled: A Journey Through Culture, Cuisine, and Countryside“ (Frankreich enthüllt: Eine Reise durch Kultur, Küche und Landschaft), einen einzigartigen Reiseführer, der den romantischen Charme von Paris, den sonnenverwöhnten Reiz der Provence und die von Weinbergen gesäumten Wege von Bordeaux miteinander verbindet. Dieser Reiseführer geht über die üblichen Touristenattraktionen hinaus und stellt Ihnen versteckte Dörfer, lokale Märkte und alte Schlösser vor, in denen Geschichte und modernes französisches Leben nahtlos ineinander übergehen.</target>
       </segment>
     </unit>
-    <unit id="u12" name="/html[1]/body[1]/div[4]/div[1]/p[2]" its:tool="DeepL" its:toolRef="https://www.deepl.com/">
+    <unit id="u12" name="/html[1]/body[1]/div[4]/div[1]/p[2]" its:tool="DeepL">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">471</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;i&gt;</data>
         <data id="d2">&lt;/i&gt;</data>
       </originalData>
       <segment id="12" state="translated">
         <source>Whether sipping coffee in a quiet Marais café, wandering through medieval streets in Alsace, or savoring fresh seafood along the Côte d'Azur, <sc id="1" dataRef="d1" />France Unveiled<ec dataRef="d2" startRef="1" /> offers insights, local tips, and immersive experiences for travelers who want to explore like a local. Packed with detailed itineraries, insider recommendations, and stories that bring each region to life, this guide will help you uncover the heart of France—from its iconic sites to its best-kept secrets.</source>
-        <target>Ob Sie in einem ruhigen Café im Marais einen Kaffee trinken, durch mittelalterliche Straßen im Elsass schlendern oder frische Meeresfrüchte an der Côte d'Azur genießen – &lt;i&gt;France Unveiled&lt;/i&gt; bietet Einblicke, lokale Tipps und eindringliche Erlebnisse für Reisende, die wie Einheimische auf Entdeckungstour gehen möchten. Mit detaillierten Reiserouten, Insider-Empfehlungen und Geschichten, die jede Region zum Leben erwecken, hilft Ihnen dieser Reiseführer dabei, das Herz Frankreichs zu entdecken – von seinen berühmten Sehenswürdigkeiten bis hin zu seinen bestgehüteten Geheimnissen.</target>
+        <target>Ob Sie in einem ruhigen Café im Marais-Viertel einen Kaffee trinken, durch mittelalterliche Straßen im Elsass schlendern oder frische Meeresfrüchte an der Côte d'Azur genießen – &lt;i&gt;France Unveiled&lt;/i&gt; bietet Einblicke, lokale Tipps und eindringliche Erlebnisse für Reisende, die wie Einheimische auf Entdeckungsreise gehen möchten. Mit detaillierten Reiserouten, Insider-Empfehlungen und Geschichten, die jede Region zum Leben erwecken, hilft Ihnen dieser Reiseführer dabei, das Herz Frankreichs zu entdecken – von seinen berühmten Sehenswürdigkeiten bis hin zu seinen bestgehüteten Geheimnissen.</target>
       </segment>
     </unit>
-    <unit id="u13" name="/html[1]/body[1]/div[4]/div[1]/p[3]" its:tool="DeepL" its:toolRef="https://www.deepl.com/">
+    <unit id="u13" name="/html[1]/body[1]/div[4]/div[1]/p[3]" its:tool="DeepL">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">117</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;i&gt;</data>
         <data id="d2">&lt;/i&gt;</data>
@@ -299,7 +329,17 @@
         <target>Ontdek de Wijnen van de Loirevallei</target>
       </segment>
     </unit>
-    <unit id="u17" name="/html[1]/body[1]/div[5]/div[1]/p[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/">
+    <unit id="u17" name="/html[1]/body[1]/div[5]/div[1]/p[1]" its:tool="DeepL">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">511</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <segment id="17" state="translated">
         <source>The Loire Valley is known for its diverse wine offerings, from crisp whites to delicate reds. To experience the region’s viniculture, stop by a local winery in the Vouvray or Chinon area, where family-run vineyards offer tastings and tours. Here, you can sample Loire’s famous Chenin Blancs, earthy Cabernet Francs, and refreshing Rosés, often accompanied by local cheeses and bread. It’s a truly immersive way to connect with the region’s rich agricultural traditions and taste the terroir of the Loire Valley.</source>
         <target>Das Loire-Tal ist bekannt für sein vielfältiges Weinangebot, das von spritzigen Weißweinen bis hin zu delikaten Rotweinen reicht. Um die Weinbaukultur der Region kennenzulernen, sollten Sie bei einem lokalen Weingut in der Gegend von Vouvray oder Chinon vorbeischauen, wo familiengeführte Weingüter Verkostungen und Führungen anbieten. Hier können Sie die berühmten Chenin Blancs der Loire, erdige Cabernet Francs und erfrischende Rosés probieren, oft begleitet von lokalem Käse und Brot. Dies ist eine wirklich eindrucksvolle Möglichkeit, die reichen landwirtschaftlichen Traditionen der Region kennenzulernen und das Terroir des Loire-Tals zu kosten.</target>

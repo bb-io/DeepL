@@ -1,5 +1,5 @@
 <xliff srcLang="en-us" trgLang="de" version="2.2" xmlns:mda="urn:oasis:names:tc:xliff:metadata:2.0" xmlns:its="http://www.w3.org/2005/11/its" xmlns:fs="urn:oasis:names:tc:xliff:fs:2.0" xmlns="urn:oasis:names:tc:xliff:document:2.2">
-  <file id="f1" its:revPerson="Mattia Doneda" its:revTool="Zendesk" its:revToolRef="https://www.zendesk.com">
+  <file id="f1" its:revPerson="Mattia Doneda" its:revTool="Zendesk">
     <skeleton>&lt;html lang="en-us"&gt;&lt;head&gt;&lt;title data-blackbird-key="24006501814428 -title"&gt;Test Blackbird Workflow&lt;/title&gt;&lt;meta name="blackbird-reference-id" content="24006501814428 "&gt;&lt;meta name="blackbird-ucid" content="24006501814428 "&gt;&lt;meta name="blackbird-content-name" content="Test Blackbird Workflow"&gt;&lt;meta name="blackbird-admin-url" content="https://deepl.zendesk.com/knowledge/editor/24006501814428 /en-us"&gt;&lt;meta name="blackbird-public-url" content="https://support.deepl.com/hc/en-us/articles/24006501814428"&gt;&lt;meta name="blackbird-system-name" content="Zendesk"&gt;&lt;meta name="blackbird-system-ref" content="https://www.zendesk.com"&gt;&lt;/head&gt;&lt;body its-rev-tool="Zendesk" its-rev-tool-ref="https://www.zendesk.com" its-rev-person="Mattia Doneda" &gt;
     &lt;div class="panel-plan"&gt;Required plan: &lt;strong&gt;DeepL Voice for Conversations &lt;/strong&gt;&lt;/div&gt;
      &lt;div class="custom-tab"&gt;
@@ -19,10 +19,16 @@
         <mda:meta type="source-system-ref">https://www.zendesk.com</mda:meta>
       </mda:metaGroup>
     </mda:metadata>
-    <unit id="u1" name="/html[1]/head[1]/title[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="title">
+    <unit id="u1" name="/html[1]/head[1]/title[1]" its:tool="DeepL" fs:fs="title">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
           <mda:meta type="key">24006501814428 -title</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">23</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <segment state="translated">
@@ -30,7 +36,17 @@
         <target>Test Blackbird-Workflow</target>
       </segment>
     </unit>
-    <unit id="u2" name="/html[1]/body[1]/div[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="div" fs:subFs="class,panel-plan">
+    <unit id="u2" name="/html[1]/body[1]/div[1]" its:tool="DeepL" fs:fs="div" fs:subFs="class,panel-plan">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">45</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <originalData>
         <data id="d1">&lt;strong&gt;</data>
         <data id="d2">&lt;/strong&gt;</data>
@@ -40,13 +56,33 @@
         <target>Erforderlicher Plan: <sc id="1" dataRef="d1" fs:fs="strong" />DeepL Voice für Konversationen <ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
-    <unit id="u3" name="/html[1]/body[1]/div[2]/button[1]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="button" fs:subFs="id,defaultOpen\class,custom-tablinks\onclick,openTab(event\, 'tab01')">
+    <unit id="u3" name="/html[1]/body[1]/div[2]/button[1]" its:tool="DeepL" fs:fs="button" fs:subFs="id,defaultOpen\class,custom-tablinks\onclick,openTab(event\, 'tab01')">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">3</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <segment state="translated">
         <source>iOS</source>
         <target>iOS</target>
       </segment>
     </unit>
-    <unit id="u4" name="/html[1]/body[1]/div[2]/button[2]" its:tool="DeepL" its:toolRef="https://www.deepl.com/" fs:fs="button" fs:subFs="class,custom-tablinks\onclick,openTab(event\, 'tab02')">
+    <unit id="u4" name="/html[1]/body[1]/div[2]/button[2]" its:tool="DeepL" fs:fs="button" fs:subFs="class,custom-tablinks\onclick,openTab(event\, 'tab02')">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">7</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
+        </mda:metaGroup>
+      </mda:metadata>
       <segment state="translated">
         <source>Android</source>
         <target>Android</target>
