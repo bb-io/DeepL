@@ -155,8 +155,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
                 }
             }
             unit.Provenance.Translation.Tool = "DeepL";
-            unit.Usage = localBilledCharacters;
-            unit.UsageUnit = UsageUnit.Characters;
+            unit.AddUsage("DeepL", localBilledCharacters, UsageUnit.Characters);
         }
 
         if (input.OutputFileHandling == "original")

@@ -44,8 +44,12 @@
       <mda:metadata>
         <mda:metaGroup category="blackbird">
           <mda:meta type="key">35514709559825-title</mda:meta>
-          <mda:meta type="usage">41</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">41</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <segment state="translated">
@@ -56,8 +60,12 @@
     <unit id="u2" name="/html[1]/body[1]/p[1]" its:tool="DeepL" fs:fs="p">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">977</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">977</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -74,14 +82,18 @@
           <sc id="2" dataRef="d2" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />Transition in localization – From Automation to Agentic AI<ec dataRef="d3" startRef="2" /><ec dataRef="d4" startRef="1" /><ph id="3" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="4" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="5" dataRef="d6" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />The emergence of AI Agents has disrupted the localization industry, redefining its scope on the macro level, as well as in the details of daily operations. Developing into sophisticated systems with the capability to make autonomous decisions, these agents are becoming active participants in localization workflows. Within this context, it is crucial for localizers to clarify what AI Agents can and cannot do. With careful stewardship, well-designed applications of AI agents have the potential to become invaluable human allies, to foster innovation, as well as improve efficiency and productivity. The seventh Multilingual AI roundtable will focus on key components of this transition, such as AI-driven workflow orchestration, Retrieval Augmented Generation (RAG)-based MT with Large Language Models (LLMs) , as well as possible applications and unique challenges of working with LLM agents.<ec dataRef="d3" startRef="5" /><ph id="6" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="7" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="8" dataRef="d1" fs:fs="strong" /><sc id="9" dataRef="d2" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />Topics to be discussed:<ec dataRef="d3" startRef="9" /><ec dataRef="d4" startRef="8" /></source>
         <target>
           <sc id="1" dataRef="d1" fs:fs="strong" />
-          <sc id="2" dataRef="d2" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />Transitie in lokalisatie – Van automatisering naar agentische AI<ec dataRef="d3" startRef="2" /><ec dataRef="d4" startRef="1" /><ph id="3" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="4" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="5" dataRef="d6" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />De opkomst van AI-agenten heeft de lokalisatie-industrie ontwricht en de reikwijdte ervan op macroniveau en in de details van de dagelijkse werkzaamheden opnieuw gedefinieerd. Deze agents ontwikkelen zich tot geavanceerde systemen die autonome beslissingen kunnen nemen en worden steeds actiever betrokken bij lokalisatieworkflows. In deze context is het voor lokalisatiebedrijven van cruciaal belang om duidelijk te maken wat AI-agents wel en niet kunnen. Bij zorgvuldig beheer kunnen goed ontworpen AI-agents waardevolle bondgenoten worden die innovatie stimuleren en de efficiëntie en productiviteit verbeteren. De zevende Multilingual AI-rondetafelconferentie zal zich richten op de belangrijkste componenten van deze transitie, zoals AI-gestuurde workflow-orkestratie, op Retrieval Augmented Generation (RAG) gebaseerde MT met Large Language Models (LLM's), evenals mogelijke toepassingen en unieke uitdagingen van het werken met LLM-agenten.<ec dataRef="d3" startRef="5" /><sc id="8" dataRef="d1" fs:fs="strong" /><sc id="9" dataRef="d2" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />Te<ec dataRef="d3" startRef="9" /><ec dataRef="d4" startRef="8" /><ph id="6" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="7" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="10" dataRef="d1" fs:fs="strong" /><sc id="11" dataRef="d2" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />bespreken onderwerpen:<ec dataRef="d3" startRef="11" /><ec dataRef="d4" startRef="10" /></target>
+          <sc id="2" dataRef="d2" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />Transitie in lokalisatie – Van automatisering naar agentische AI<ec dataRef="d3" startRef="2" /><ec dataRef="d4" startRef="1" /><ph id="3" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="4" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="5" dataRef="d6" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />De opkomst van AI-agenten heeft de lokalisatie-industrie ontwricht en de reikwijdte ervan op macroniveau en in de details van de dagelijkse werkzaamheden opnieuw gedefinieerd. Deze agents ontwikkelen zich tot geavanceerde systemen die autonome beslissingen kunnen nemen en worden steeds actiever betrokken bij lokalisatieworkflows. In deze context is het voor lokalisatiebedrijven van cruciaal belang om duidelijk te maken wat AI-agents wel en niet kunnen. Met zorgvuldig beheer kunnen goed ontworpen toepassingen van AI-agents waardevolle bondgenoten van de mens worden, innovatie bevorderen en de efficiëntie en productiviteit verbeteren. De zevende Multilingual AI-rondetafelconferentie zal zich richten op de belangrijkste componenten van deze transitie, zoals AI-gestuurde workflow-orkestratie, op Retrieval Augmented Generation (RAG) gebaseerde MT met Large Language Models (LLM's), evenals mogelijke toepassingen en unieke uitdagingen van het werken met LLM-agenten.<ec dataRef="d3" startRef="5" /><sc id="8" dataRef="d1" fs:fs="strong" /><sc id="9" dataRef="d2" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />Te<ec dataRef="d3" startRef="9" /><ec dataRef="d4" startRef="8" /><ph id="6" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="7" dataRef="d5" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="10" dataRef="d1" fs:fs="strong" /><sc id="11" dataRef="d2" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />bespreken onderwerpen:<ec dataRef="d3" startRef="11" /><ec dataRef="d4" startRef="10" /></target>
       </segment>
     </unit>
     <unit id="u3" name="/html[1]/body[1]/ul[1]/li[1]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">22</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">22</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -98,8 +110,12 @@
     <unit id="u4" name="/html[1]/body[1]/ul[1]/li[2]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">38</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">38</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -116,8 +132,12 @@
     <unit id="u5" name="/html[1]/body[1]/ul[1]/li[3]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">46</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">46</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -134,8 +154,12 @@
     <unit id="u6" name="/html[1]/body[1]/ul[1]/li[4]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">69</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">69</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -152,8 +176,12 @@
     <unit id="u7" name="/html[1]/body[1]/ul[1]/li[5]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">64</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">64</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -170,8 +198,12 @@
     <unit id="u8" name="/html[1]/body[1]/ul[1]/li[6]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">39</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">39</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -188,8 +220,12 @@
     <unit id="u9" name="/html[1]/body[1]/ul[1]/li[7]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">73</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">73</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -210,8 +246,12 @@
     <unit id="u10" name="/html[1]/body[1]/ul[1]/li[8]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">43</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">43</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -228,8 +268,12 @@
     <unit id="u11" name="/html[1]/body[1]/ul[1]/li[9]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">69</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">69</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -246,8 +290,12 @@
     <unit id="u12" name="/html[1]/body[1]/ul[1]/li[10]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">78</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">78</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -264,8 +312,12 @@
     <unit id="u13" name="/html[1]/body[1]/ul[1]/li[11]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">67</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">67</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -282,8 +334,12 @@
     <unit id="u14" name="/html[1]/body[1]/ul[1]/li[12]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">38</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">38</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -300,8 +356,12 @@
     <unit id="u15" name="/html[1]/body[1]/ul[1]/li[13]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">72</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">72</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -322,8 +382,12 @@
     <unit id="u16" name="/html[1]/body[1]/ul[1]/li[14]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">79</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">79</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -340,8 +404,12 @@
     <unit id="u17" name="/html[1]/body[1]/ul[1]/li[15]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">44</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">44</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -358,8 +426,12 @@
     <unit id="u18" name="/html[1]/body[1]/ul[1]/li[16]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">59</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">59</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -376,8 +448,12 @@
     <unit id="u19" name="/html[1]/body[1]/ul[1]/li[17]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">63</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">63</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -394,8 +470,12 @@
     <unit id="u20" name="/html[1]/body[1]/ul[1]/li[18]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">49</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">49</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -412,8 +492,12 @@
     <unit id="u21" name="/html[1]/body[1]/ul[1]/li[19]" its:tool="DeepL" fs:fs="li">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">228</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">228</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -428,7 +512,7 @@
         <source>
           <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Content Managers responsible for global content<ec dataRef="d2" startRef="1" /><ph id="2" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="3" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="4" dataRef="d4" fs:fs="strong" /><sc id="5" dataRef="d5" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />Pre-roundtable webinar<ec dataRef="d2" startRef="5" /><ec dataRef="d6" startRef="4" /><ph id="6" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="7" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="8" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />This roundtable will provide a webinar to address potential technological knowledge gaps to help participants prepare for the in-person roundtable discussions.<ec dataRef="d2" startRef="8" /></source>
         <target>
-          <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Contentmanagers verantwoordelijk voor wereldwijde content<ec dataRef="d2" startRef="1" /><sc id="4" dataRef="d4" fs:fs="strong" /><sc id="5" dataRef="d5" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />Webinar<ec dataRef="d2" startRef="5" /><ec dataRef="d6" startRef="4" /><ph id="2" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="3" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="9" dataRef="d4" fs:fs="strong" /><sc id="10" dataRef="d5" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />voorafgaand aan de<ec dataRef="d2" startRef="10" /><ec dataRef="d6" startRef="9" /><ph id="6" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="7" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="11" dataRef="d4" fs:fs="strong" /><sc id="12" dataRef="d5" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />rondetafelgesprekken<ec dataRef="d2" startRef="12" /><ec dataRef="d6" startRef="11" /><sc id="8" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Deze rondetafelgesprekken worden voorafgegaan door een webinar waarin mogelijke technologische kennislacunes worden behandeld, zodat deelnemers zich kunnen voorbereiden op de persoonlijke rondetafelgesprekken.<ec dataRef="d2" startRef="8" /></target>
+          <sc id="1" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Contentmanagers verantwoordelijk voor wereldwijde content<ec dataRef="d2" startRef="1" /><sc id="4" dataRef="d4" fs:fs="strong" /><sc id="5" dataRef="d5" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />Webinar<ec dataRef="d2" startRef="5" /><ec dataRef="d6" startRef="4" /><ph id="2" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="3" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="9" dataRef="d4" fs:fs="strong" /><sc id="10" dataRef="d5" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />voorafgaand aan de<ec dataRef="d2" startRef="10" /><ec dataRef="d6" startRef="9" /><ph id="6" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><ph id="7" dataRef="d3" fs:fs="br" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" /><sc id="11" dataRef="d4" fs:fs="strong" /><sc id="12" dataRef="d5" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;" />rondetafelgesprekken<ec dataRef="d2" startRef="12" /><ec dataRef="d6" startRef="11" /><sc id="8" dataRef="d1" fs:fs="span" fs:subFs="style,color: #222222; font-family: Arial\, Helvetica\, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" />Deze rondetafelgesprekken worden voorafgegaan door een webinar waarin mogelijke technologische kennislacunes worden besproken, zodat deelnemers zich kunnen voorbereiden op de persoonlijke rondetafelgesprekken.<ec dataRef="d2" startRef="8" /></target>
       </segment>
     </unit>
   </file>

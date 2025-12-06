@@ -19,8 +19,12 @@
       <mda:metadata>
         <mda:metaGroup category="blackbird">
           <mda:meta type="key">5746dLKTkEZjOQX21HX2KI-title</mda:meta>
-          <mda:meta type="usage">16</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">16</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <segment state="translated">
@@ -32,8 +36,12 @@
       <mda:metadata>
         <mda:metaGroup category="blackbird">
           <mda:meta type="key">6eZfQFZIjT5p5uHqYqMGQZ-title</mda:meta>
-          <mda:meta type="usage">61</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">61</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <segment state="translated">
@@ -50,8 +58,12 @@
       <unit id="u3" name="/html[1]/body[1]/div[2]/div[1]/p[1]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">342</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">342</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <segment state="translated">
@@ -62,8 +74,12 @@
       <unit id="u4" name="/html[1]/body[1]/div[2]/div[1]/p[2]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">92</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">92</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <originalData>
@@ -82,8 +98,12 @@
       <mda:metadata>
         <mda:metaGroup category="blackbird">
           <mda:meta type="key">4avSNl953GJYUmIZ8cJg6S-title</mda:meta>
-          <mda:meta type="usage">51</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">51</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <segment state="translated">
@@ -100,8 +120,12 @@
       <unit id="u6" name="/html[1]/body[1]/div[3]/div[1]/p[1]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">473</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">473</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <originalData>
@@ -112,14 +136,18 @@
           <source>
             <sc id="1" dataRef="d1" fs:fs="strong" />Morning: Château de Chambord<ec dataRef="d2" startRef="1" /> Begin your day with a visit to the legendary Château de Chambord, a masterpiece of French Renaissance architecture. This sprawling castle, with its 400 rooms, iconic double-helix staircase, and forested grounds, was designed for King Francis I as a hunting lodge. Wander the grand halls and rooftop terraces, where you’ll find sweeping views of the Loire landscape. Arrive early to enjoy the castle’s peaceful grandeur before the crowds arrive.</source>
           <target>
-            <sc id="1" dataRef="d1" fs:fs="strong" />Ochtend: Château de Chambord<ec dataRef="d2" startRef="1" /> Begin uw dag met een bezoek aan het legendarische Château de Chambord, een meesterwerk van de Franse renaissancearchitectuur. Dit uitgestrekte kasteel, met zijn 400 kamers, iconische dubbele wenteltrap en beboste terreinen, werd ontworpen voor koning Frans I als jachthuis. Dwaal door de grote zalen en dakterrassen, waar u een prachtig uitzicht heeft over het landschap van de Loire. Kom vroeg om te genieten van de rustige grandeur van het kasteel voordat de drukte begint.</target>
+            <sc id="1" dataRef="d1" fs:fs="strong" />Ochtend: Château de Chambord<ec dataRef="d2" startRef="1" /> Begin uw dag met een bezoek aan het legendarische Château de Chambord, een meesterwerk van de Franse renaissancearchitectuur. Dit uitgestrekte kasteel, met zijn 400 kamers, iconische dubbele wenteltrap en bosrijke omgeving, werd ontworpen voor koning Frans I als jachthuis. Dwaal door de grote zalen en dakterrassen, waar u een prachtig uitzicht heeft over het landschap van de Loire. Kom vroeg om te genieten van de rustige grandeur van het kasteel voordat de drukte begint.</target>
         </segment>
       </unit>
       <unit id="u7" name="/html[1]/body[1]/div[3]/div[1]/p[2]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">440</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">440</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <originalData>
@@ -130,14 +158,18 @@
           <source>
             <sc id="1" dataRef="d1" fs:fs="strong" />Midday: Lunch in Blois<ec dataRef="d2" startRef="1" /> Just a short drive away, the town of Blois offers a taste of quintessential Loire Valley charm. Explore its medieval center, winding alleyways, and the regal Château de Blois, known for its eclectic mix of architectural styles. For lunch, stop by a local bistro where you can savor Loire specialties like goat cheese tartine or rillettes. Pair it with a glass of crisp Sancerre wine, cultivated just a few miles away.</source>
           <target>
-            <sc id="1" dataRef="d1" fs:fs="strong" />Middag: Lunch in Blois<ec dataRef="d2" startRef="1" /> Op slechts een klein eindje rijden ligt het stadje Blois, waar u kunt proeven van de typische charme van de Loirevallei. Verken het middeleeuwse centrum, de kronkelende steegjes en het koninklijke Château de Blois, dat bekend staat om zijn eclectische mix van architecturale stijlen. Ga voor de lunch naar een lokale bistro waar u kunt genieten van specialiteiten uit de Loire, zoals tartine met geitenkaas of rillettes. Combineer dit met een glas frisse Sancerre-wijn, die slechts enkele kilometers verderop wordt verbouwd.</target>
+            <sc id="1" dataRef="d1" fs:fs="strong" />Middag: Lunch in Blois<ec dataRef="d2" startRef="1" /> Op slechts een klein eindje rijden ligt het stadje Blois, waar u kunt proeven van de typische charme van de Loirevallei. Verken het middeleeuwse centrum, de kronkelende steegjes en het koninklijke Château de Blois, bekend om zijn eclectische mix van architecturale stijlen. Stop voor de lunch bij een lokale bistro waar u kunt genieten van specialiteiten uit de Loire, zoals tartine met geitenkaas of rillettes. Combineer dit met een glas frisse Sancerre-wijn, die slechts enkele kilometers verderop wordt verbouwd.</target>
         </segment>
       </unit>
       <unit id="u8" name="/html[1]/body[1]/div[3]/div[1]/p[3]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">509</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">509</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <originalData>
@@ -154,8 +186,12 @@
       <unit id="u9" name="/html[1]/body[1]/div[3]/div[1]/p[4]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">54</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">54</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <segment state="translated">
@@ -173,8 +209,12 @@
       <unit id="u10" name="/html[1]/body[1]/div[4]/div[1]/p[1]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">423</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">423</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <originalData>
@@ -189,8 +229,12 @@
       <unit id="u11" name="/html[1]/body[1]/div[4]/div[1]/p[2]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">464</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">464</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <originalData>
@@ -199,14 +243,18 @@
         </originalData>
         <segment state="translated">
           <source>Whether sipping coffee in a quiet Marais café, wandering through medieval streets in Alsace, or savoring fresh seafood along the Côte d'Azur, <sc id="1" dataRef="d1" fs:fs="i" />France Unveiled<ec dataRef="d2" startRef="1" /> offers insights, local tips, and immersive experiences for travelers who want to explore like a local. Packed with detailed itineraries, insider recommendations, and stories that bring each region to life, this guide will help you uncover the heart of France—from its iconic sites to its best-kept secrets.</source>
-          <target>Of u nu koffie drinkt in een rustig café in de Marais, door middeleeuwse straatjes in de Elzas slentert of geniet van verse zeevruchten aan de Côte d'Azur, <sc id="1" dataRef="d1" fs:fs="i" />France Unveiled<ec dataRef="d2" startRef="1" /> biedt inzichten, lokale tips en meeslepende ervaringen voor reizigers die het land willen verkennen als een local. Deze gids staat boordevol gedetailleerde reisroutes, aanbevelingen van insiders en verhalen die elke regio tot leven brengen, en helpt u het hart van Frankrijk te ontdekken – van iconische bezienswaardigheden tot de best bewaarde geheimen.</target>
+          <target>Of u nu koffie drinkt in een rustig café in de Marais, door middeleeuwse straatjes in de Elzas slentert of geniet van verse zeevruchten aan de Côte d'Azur, <sc id="1" dataRef="d1" fs:fs="i" />France Unveiled<ec dataRef="d2" startRef="1" /> biedt inzichten, lokale tips en meeslepende ervaringen voor reizigers die het land willen verkennen als een local. Deze gids staat boordevol gedetailleerde reisroutes, insider-aanbevelingen en verhalen die elke regio tot leven brengen, en helpt u het hart van Frankrijk te ontdekken – van iconische bezienswaardigheden tot de best bewaarde geheimen.</target>
         </segment>
       </unit>
       <unit id="u12" name="/html[1]/body[1]/div[4]/div[1]/p[3]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">110</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">110</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <originalData>
@@ -225,8 +273,12 @@
       <mda:metadata>
         <mda:metaGroup category="blackbird">
           <mda:meta type="key">3MvZ2M38zOBdztgQJAzw0B-file</mda:meta>
-          <mda:meta type="usage">12</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">12</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <segment state="translated">
@@ -238,8 +290,12 @@
       <mda:metadata>
         <mda:metaGroup category="blackbird">
           <mda:meta type="key">3MvZ2M38zOBdztgQJAzw0B-title</mda:meta>
-          <mda:meta type="usage">68</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">68</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <segment state="translated">
@@ -251,8 +307,12 @@
       <mda:metadata>
         <mda:metaGroup category="blackbird">
           <mda:meta type="key">Tp9LF4pw5n3ydWs58YvOc-title</mda:meta>
-          <mda:meta type="usage">28</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">28</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <segment state="translated">
@@ -269,20 +329,28 @@
       <unit id="u16" name="/html[1]/body[1]/div[5]/div[1]/p[2]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">511</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">511</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <segment state="translated">
           <source>The Loire Valley is known for its diverse wine offerings, from crisp whites to delicate reds. To experience the region’s viniculture, stop by a local winery in the Vouvray or Chinon area, where family-run vineyards offer tastings and tours. Here, you can sample Loire’s famous Chenin Blancs, earthy Cabernet Francs, and refreshing Rosés, often accompanied by local cheeses and bread. It’s a truly immersive way to connect with the region’s rich agricultural traditions and taste the terroir of the Loire Valley.</source>
-          <target>De Loirevallei staat bekend om zijn gevarieerde wijnassortiment, van frisse witte wijnen tot delicate rode wijnen. Om de wijncultuur van de regio te ervaren, kunt u een bezoek brengen aan een lokale wijnmakerij in de omgeving van Vouvray of Chinon, waar familiebedrijven proeverijen en rondleidingen aanbieden. Hier kunt u de beroemde Chenin Blancs, aardse Cabernet Francs en verfrissende roséwijnen van de Loire proeven, vaak vergezeld van lokale kazen en brood. Het is een echt meeslepende manier om kennis te maken met de rijke agrarische tradities van de regio en het terroir van de Loirevallei te proeven.</target>
+          <target>De Loirevallei staat bekend om zijn gevarieerde wijnassortiment, van frisse witte wijnen tot delicate rode wijnen. Om de wijncultuur van de regio te ervaren, kunt u een bezoek brengen aan een lokale wijnmakerij in de omgeving van Vouvray of Chinon, waar familiebedrijven proeverijen en rondleidingen aanbieden. Hier kunt u de beroemde Chenin Blancs, aardse Cabernet Francs en verfrissende rosés van de Loire proeven, vaak vergezeld van lokale kazen en brood. Het is een echt meeslepende manier om kennis te maken met de rijke agrarische tradities van de regio en het terroir van de Loirevallei te proeven.</target>
         </segment>
       </unit>
       <unit id="u17" name="/html[1]/body[1]/div[5]/div[1]/h3[1]" its:tool="DeepL" fs:fs="h3">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">41</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">41</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <originalData>
@@ -299,8 +367,12 @@
       <unit id="u18" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[1]/p[1]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">19</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">19</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <originalData>
@@ -317,8 +389,12 @@
       <unit id="u19" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[1]/p[2]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">134</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">134</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <segment state="translated">
@@ -329,8 +405,12 @@
       <unit id="u20" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[2]/p[1]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">15</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">15</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <originalData>
@@ -347,8 +427,12 @@
       <unit id="u21" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[2]/p[2]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">131</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">131</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <segment state="translated">
@@ -359,8 +443,12 @@
       <unit id="u22" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[3]/p[1]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">11</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">11</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <originalData>
@@ -377,8 +465,12 @@
       <unit id="u23" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[3]/p[2]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">218</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">218</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <segment state="translated">
@@ -389,8 +481,12 @@
       <unit id="u24" name="/html[1]/body[1]/div[5]/div[1]/p[3]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">0</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">0</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <segment state="translated">
@@ -401,8 +497,12 @@
       <unit id="u25" name="/html[1]/body[1]/div[5]/div[1]/p[4]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
-            <mda:meta type="usage">248</mda:meta>
-            <mda:meta type="usage-unit">characters</mda:meta>
+            <mda:metaGroup category="usage">
+              <mda:metaGroup category="DeepL">
+                <mda:meta type="value">248</mda:meta>
+                <mda:meta type="unit">characters</mda:meta>
+              </mda:metaGroup>
+            </mda:metaGroup>
           </mda:metaGroup>
         </mda:metadata>
         <segment state="translated">

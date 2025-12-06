@@ -23,8 +23,12 @@
       <mda:metadata>
         <mda:metaGroup category="blackbird">
           <mda:meta type="key">24006501814428 -title</mda:meta>
-          <mda:meta type="usage">23</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">23</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <segment state="translated">
@@ -35,8 +39,12 @@
     <unit id="u2" name="/html[1]/body[1]/div[1]" its:tool="DeepL" fs:fs="div" fs:subFs="class,panel-plan">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">45</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">45</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <originalData>
@@ -51,8 +59,12 @@
     <unit id="u3" name="/html[1]/body[1]/div[2]/button[1]" its:tool="DeepL" fs:fs="button" fs:subFs="id,defaultOpen\class,custom-tablinks\onclick,openTab(event\, 'tab01')">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">3</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">3</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <segment state="translated">
@@ -63,8 +75,12 @@
     <unit id="u4" name="/html[1]/body[1]/div[2]/button[2]" its:tool="DeepL" fs:fs="button" fs:subFs="class,custom-tablinks\onclick,openTab(event\, 'tab02')">
       <mda:metadata>
         <mda:metaGroup category="blackbird">
-          <mda:meta type="usage">7</mda:meta>
-          <mda:meta type="usage-unit">characters</mda:meta>
+          <mda:metaGroup category="usage">
+            <mda:metaGroup category="DeepL">
+              <mda:meta type="value">7</mda:meta>
+              <mda:meta type="unit">characters</mda:meta>
+            </mda:metaGroup>
+          </mda:metaGroup>
         </mda:metaGroup>
       </mda:metadata>
       <segment state="translated">
