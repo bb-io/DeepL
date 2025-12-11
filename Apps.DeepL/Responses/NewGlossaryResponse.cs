@@ -7,6 +7,7 @@ public class NewGlossaryResponse
     [Display("Glossary ID")]
     public string GossaryId { get; set; }
 
+    [Display("Name")]
     public string Name { get; set; }
 
     [Display("Source language")]
@@ -17,4 +18,7 @@ public class NewGlossaryResponse
 
     [Display("Entry count")]
     public int EntryCount { get; set; }
+
+    [Display("Warnings")]
+    public List<string> Warnings { get; set; } = new List<string>();
 }
