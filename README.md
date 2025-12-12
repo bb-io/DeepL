@@ -88,6 +88,8 @@ To be deprecated soon:
 
 ### Glossaries
 
+**Note**: DeepL supports only two-letter base locale codes for glossaries (e.g., `fr` instead of `fr-FR`). The app automatically normalizes all language codes to their two-letter form. If multiple locales with different region codes are provided (e.g., `se-sv` and `se-fi`), the first one will be used and the rest will be ignored. Unfortunately, this is a limitation of the DeepL API.
+
 - **Export glossary** Export glossary
 - **Import glossary** Import glossary (.tbx, .csv & .tsv)
 - **Get glossary details** Get details of a specific glossary

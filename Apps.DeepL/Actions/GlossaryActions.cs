@@ -114,37 +114,84 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         if (request == null || request.File == null)
             throw new PluginMisconfigurationException("Request or file cannot be null.");
 
-        return await ErrorHandler.ExecuteWithErrorHandlingAsync(async () =>
+        var (fileBytes, ext) = await DownloadGlossaryFile(request.File);
+
+        var (glossaryName, rawPivotLang, fileLangs) = await ParseGlossaryMetadata(
+            fileBytes, ext, request.Name, request.File.Name
+        );
+
+        var validPivotLang = NormalizeAndValidateLang(rawPivotLang)
+            ?? throw new PluginMisconfigurationException(
+                    $"The source language '{rawPivotLang}' is not supported by DeepL Glossaries."
+                );
+
+        var dictionariesPayload = new List<object>();
+        var warnings = new List<string>();
+
+        var processedTargetLangs = new HashSet<string>();
+
+        foreach (var rawTargetLang in fileLangs.Where(l => !string.Equals(l, rawPivotLang, StringComparison.OrdinalIgnoreCase)))
         {
-            var (fileBytes, ext) = await DownloadGlossaryFile(request.File);
+            var validTargetLang = NormalizeAndValidateLang(rawTargetLang);
 
-            var (glossaryName, rawPivotLang, fileLangs) = await ParseGlossaryMetadata(
-                fileBytes, ext, request.Name, request.File.Name
-            );
-
-            var validPivotLang = NormalizeAndValidateLang(rawPivotLang)
-                ?? throw new PluginMisconfigurationException(
-                        $"The source language '{rawPivotLang}' is not supported by DeepL Glossaries."
-                    );
-
-            var (dictionaries, warnings) = await BuildDictionariesPayload(
-                fileBytes, ext, rawPivotLang, validPivotLang, fileLangs, request
-            );
-
-            var result = await CreateGlossary(glossaryName, dictionaries, warnings);
-            var info = result.Dictionaries.FirstOrDefault()
-                       ?? new DictionaryInfo { SourceLang = validPivotLang, TargetLang = "mixed", EntryCount = 0 };
-
-            return new NewGlossaryResponse
+            if (validTargetLang == null)
             {
-                GossaryId = result.GlossaryId,
-                Name = result.Name,
-                SourceLanguageCode = info.SourceLang,
-                TargetLanguageCode = info.TargetLang,
-                EntryCount = info.EntryCount,
-                Warnings = warnings
-            };
-        });
+                warnings.Add($"Language '{rawTargetLang}' is not supported by DeepL Glossaries and was ignored.");
+                continue;
+            }
+
+            if (processedTargetLangs.Contains(validTargetLang))
+            {
+                warnings.Add($"Language '{rawTargetLang}' normalizes to '{validTargetLang}', which was already imported from a previous column. To avoid API duplication errors, '{rawTargetLang}' was skipped.");
+                continue;
+            }
+
+            processedTargetLangs.Add(validTargetLang);
+
+            if (!string.Equals(rawTargetLang, validTargetLang, StringComparison.OrdinalIgnoreCase))
+                warnings.Add($"Language '{rawTargetLang}' was normalized to '{validTargetLang}'.");
+
+            string? tsvContent = await ExtractPairContent(fileBytes, ext, rawPivotLang, rawTargetLang, request);
+            if (!string.IsNullOrWhiteSpace(tsvContent))
+            {
+                dictionariesPayload.Add(new
+                {
+                    source_lang = validPivotLang,
+                    target_lang = validTargetLang,
+                    entries = tsvContent,
+                    entries_format = "tsv"
+                });
+            }
+            else
+            {
+                warnings.Add(
+                    $"Language '{rawTargetLang}' had no valid matching entries with source '{rawPivotLang}' " +
+                    $"and was skipped."
+                );
+            }
+        }
+
+        if (dictionariesPayload.Count == 0)
+        {
+            throw new PluginMisconfigurationException(
+                $"No valid glossary dictionaries could be created. Warnings: {string.Join("; ", warnings)}"
+            );
+        }
+
+        var result = await CreateGlossary(glossaryName, dictionariesPayload, warnings);
+
+        var info = result.Dictionaries.FirstOrDefault()
+                    ?? new DictionaryInfo { SourceLang = validPivotLang, TargetLang = "mixed", EntryCount = 0 };
+
+        return new NewGlossaryResponse
+        {
+            GossaryId = result.GlossaryId,
+            Name = result.Name,
+            SourceLanguageCode = info.SourceLang,
+            TargetLanguageCode = info.TargetLang,
+            EntryCount = info.EntryCount,
+            Warnings = warnings
+        };
     }
 
     [Action("Update dictionary (multilingual)", Description = "Updates multilingual dictionary")]
@@ -522,52 +569,6 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
             throw new PluginMisconfigurationException($"Unsupported format: {ext}");
 
         return (glossaryName, rawPivotLang, fileLangs);
-    }
-
-    private async Task<(List<object> Payload, List<string> Warnings)> BuildDictionariesPayload(
-        byte[] fileBytes, string ext, string rawPivotLang, string validPivotLang,
-        List<string> fileLangs, ImportMultilingualGlossaryRequest request)
-    {
-        var payloads = new List<object>();
-        var warnings = new List<string>();
-
-        foreach (var rawTargetLang in fileLangs.Where(l => !string.Equals(l, rawPivotLang, StringComparison.OrdinalIgnoreCase)))
-        {
-            var validTargetLang = NormalizeAndValidateLang(rawTargetLang);
-
-            if (validTargetLang == null)
-            {
-                warnings.Add($"Language '{rawTargetLang}' is not supported by DeepL Glossaries and was ignored.");
-                continue;
-            }
-
-            if (!string.Equals(rawTargetLang, validTargetLang, StringComparison.OrdinalIgnoreCase))
-                warnings.Add($"Language '{rawTargetLang}' was normalized to '{validTargetLang}'.");
-
-            string? tsvContent = await ExtractPairContent(fileBytes, ext, rawPivotLang, rawTargetLang, request);
-
-            if (!string.IsNullOrWhiteSpace(tsvContent))
-            {
-                payloads.Add(new
-                {
-                    source_lang = validPivotLang,
-                    target_lang = validTargetLang,
-                    entries = tsvContent,
-                    entries_format = "tsv"
-                });
-            }
-            else
-            {
-                warnings.Add(
-                    $"Language '{rawTargetLang}' had no valid matching entries with source '{rawPivotLang}' and was skipped."
-                );
-            }
-        }
-
-        if (payloads.Count == 0)
-            throw new PluginMisconfigurationException($"No valid glossary dictionaries could be created. Warnings: {string.Join("; ", warnings)}");
-
-        return (payloads, warnings);
     }
 
     private async Task<string?> ExtractPairContent(
