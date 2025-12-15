@@ -142,7 +142,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
 
             if (processedTargetLangs.Contains(validTargetLang))
             {
-                warnings.Add($"Language '{rawTargetLang}' normalizes to '{validTargetLang}', which was already imported from a previous column. To avoid API duplication errors, '{rawTargetLang}' was skipped.");
+                warnings.Add($"Language '{rawTargetLang}' normalizes to '{validTargetLang}', which was already imported from a previous column. To avoid duplication errors, '{rawTargetLang}' was skipped.");
                 continue;
             }
 
@@ -404,12 +404,12 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.DeleteGlossaryAsync(input.GlossaryId));
     }
 
-    private string CleanText(string input)
+    private static string CleanText(string input)
     {
         return input.Replace("\r", "").Replace("\n", " ").Replace("\u2028", "");
     }
 
-    private async Task<(GlossaryEntries entries, string name)> GetEntriesFromTbx(ImportGlossaryRequest request,
+    private static async Task<(GlossaryEntries entries, string name)> GetEntriesFromTbx(ImportGlossaryRequest request,
         Stream glossaryStream)
     {
         var blackbirdGlossary = await glossaryStream.ConvertFromTbx();
@@ -417,14 +417,14 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         foreach (var entry in blackbirdGlossary.ConceptEntries)
         {
             var langSectionSource =
-                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.ToLower() == request.SourceLanguageCode);
+                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.Equals(request.SourceLanguageCode, StringComparison.CurrentCultureIgnoreCase));
             if (langSectionSource is null && request.SourceLanguageCode == "en") 
             {
                 langSectionSource =
-                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.ToLower() == "en-us" || x.LanguageCode.ToLower() == "en-gb");
+                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.Equals("en-us", StringComparison.CurrentCultureIgnoreCase) || x.LanguageCode.ToLower() == "en-gb");
             }
             var langSectionTarget =
-                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.ToLower() == request.TargetLanguageCode);
+                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.Equals(request.TargetLanguageCode, StringComparison.CurrentCultureIgnoreCase));
             if (langSectionTarget is null)
             {
                 langSectionTarget =
@@ -447,7 +447,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
             request.Name ?? blackbirdGlossary.Title!);
     }
 
-    private (GlossaryEntries entries, string name) GetEntriesFromCsv(ImportGlossaryRequest request,
+    private static (GlossaryEntries entries, string name) GetEntriesFromCsv(ImportGlossaryRequest request,
         Stream glossaryStream)
     {
         var lines = new List<string>();
@@ -468,7 +468,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         return (new GlossaryEntries(entries.DistinctBy(x => x.Key)), request.Name ?? request.File.Name);
     }
 
-    private (GlossaryEntries entries, string name) GetEntriesFromTsv(ImportGlossaryRequest request,
+    private static (GlossaryEntries entries, string name) GetEntriesFromTsv(ImportGlossaryRequest request,
         Stream glossaryStream)
     {
         var tsvLines = new List<string>();
@@ -525,7 +525,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         return (bytes, ext);
     }
 
-    private async Task<(string Name, string PivotLang, List<string> Langs)> ParseGlossaryMetadata(
+    private static async Task<(string Name, string PivotLang, List<string> Langs)> ParseGlossaryMetadata(
         byte[] fileBytes, string ext, string? requestName, string fileName)
     {
         string glossaryName;
@@ -571,7 +571,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         return (glossaryName, rawPivotLang, fileLangs);
     }
 
-    private async Task<string?> ExtractPairContent(
+    private static async Task<string?> ExtractPairContent(
         byte[] fileBytes, string ext, string rawPivot, string rawTarget,
         ImportMultilingualGlossaryRequest request)
     {
@@ -616,13 +616,8 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
             .AddParameter("application/json", jsonBody, ParameterType.RequestBody);
 
         var resp = await RestClient.ExecuteAsync<CreateGlossaryV3Result>(restReq).ConfigureAwait(false);
-
         if (!resp.IsSuccessful)
-        {
-            throw new PluginApplicationException(
-                $"DeepL API Error: {resp.StatusCode} – {resp.Content}. (Internal Warnings: {string.Join("; ", warnings)})"
-            );
-        }
+            throw new PluginApplicationException($" {resp.StatusCode} – {resp.Content}");
 
         return resp.Data!;
     }
