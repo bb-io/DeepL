@@ -114,37 +114,84 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         if (request == null || request.File == null)
             throw new PluginMisconfigurationException("Request or file cannot be null.");
 
-        return await ErrorHandler.ExecuteWithErrorHandlingAsync(async () =>
+        var (fileBytes, ext) = await DownloadGlossaryFile(request.File);
+
+        var (glossaryName, rawPivotLang, fileLangs) = await ParseGlossaryMetadata(
+            fileBytes, ext, request.Name, request.File.Name
+        );
+
+        var validPivotLang = NormalizeAndValidateLang(rawPivotLang)
+            ?? throw new PluginMisconfigurationException(
+                    $"The source language '{rawPivotLang}' is not supported by DeepL Glossaries."
+                );
+
+        var dictionariesPayload = new List<object>();
+        var warnings = new List<string>();
+
+        var processedTargetLangs = new HashSet<string>();
+
+        foreach (var rawTargetLang in fileLangs.Where(l => !string.Equals(l, rawPivotLang, StringComparison.OrdinalIgnoreCase)))
         {
-            var (fileBytes, ext) = await DownloadGlossaryFile(request.File);
+            var validTargetLang = NormalizeAndValidateLang(rawTargetLang);
 
-            var (glossaryName, rawPivotLang, fileLangs) = await ParseGlossaryMetadata(
-                fileBytes, ext, request.Name, request.File.Name
-            );
-
-            var validPivotLang = NormalizeAndValidateLang(rawPivotLang)
-                ?? throw new PluginMisconfigurationException(
-                        $"The source language '{rawPivotLang}' is not supported by DeepL Glossaries."
-                    );
-
-            var (dictionaries, warnings) = await BuildDictionariesPayload(
-                fileBytes, ext, rawPivotLang, validPivotLang, fileLangs, request
-            );
-
-            var result = await CreateGlossary(glossaryName, dictionaries, warnings);
-            var info = result.Dictionaries.FirstOrDefault()
-                       ?? new DictionaryInfo { SourceLang = validPivotLang, TargetLang = "mixed", EntryCount = 0 };
-
-            return new NewGlossaryResponse
+            if (validTargetLang == null)
             {
-                GossaryId = result.GlossaryId,
-                Name = result.Name,
-                SourceLanguageCode = info.SourceLang,
-                TargetLanguageCode = info.TargetLang,
-                EntryCount = info.EntryCount,
-                Warnings = warnings
-            };
-        });
+                warnings.Add($"Language '{rawTargetLang}' is not supported by DeepL Glossaries and was ignored.");
+                continue;
+            }
+
+            if (processedTargetLangs.Contains(validTargetLang))
+            {
+                warnings.Add($"Language '{rawTargetLang}' normalizes to '{validTargetLang}', which was already imported from a previous column. To avoid duplication errors, '{rawTargetLang}' was skipped.");
+                continue;
+            }
+
+            processedTargetLangs.Add(validTargetLang);
+
+            if (!string.Equals(rawTargetLang, validTargetLang, StringComparison.OrdinalIgnoreCase))
+                warnings.Add($"Language '{rawTargetLang}' was normalized to '{validTargetLang}'.");
+
+            string? tsvContent = await ExtractPairContent(fileBytes, ext, rawPivotLang, rawTargetLang, request);
+            if (!string.IsNullOrWhiteSpace(tsvContent))
+            {
+                dictionariesPayload.Add(new
+                {
+                    source_lang = validPivotLang,
+                    target_lang = validTargetLang,
+                    entries = tsvContent,
+                    entries_format = "tsv"
+                });
+            }
+            else
+            {
+                warnings.Add(
+                    $"Language '{rawTargetLang}' had no valid matching entries with source '{rawPivotLang}' " +
+                    $"and was skipped."
+                );
+            }
+        }
+
+        if (dictionariesPayload.Count == 0)
+        {
+            throw new PluginMisconfigurationException(
+                $"No valid glossary dictionaries could be created. Warnings: {string.Join("; ", warnings)}"
+            );
+        }
+
+        var result = await CreateGlossary(glossaryName, dictionariesPayload, warnings);
+
+        var info = result.Dictionaries.FirstOrDefault()
+                    ?? new DictionaryInfo { SourceLang = validPivotLang, TargetLang = "mixed", EntryCount = 0 };
+
+        return new NewGlossaryResponse
+        {
+            GossaryId = result.GlossaryId,
+            Name = result.Name,
+            SourceLanguageCode = info.SourceLang,
+            TargetLanguageCode = info.TargetLang,
+            EntryCount = info.EntryCount,
+            Warnings = warnings
+        };
     }
 
     [Action("Update dictionary (multilingual)", Description = "Updates multilingual dictionary")]
@@ -357,12 +404,12 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.DeleteGlossaryAsync(input.GlossaryId));
     }
 
-    private string CleanText(string input)
+    private static string CleanText(string input)
     {
         return input.Replace("\r", "").Replace("\n", " ").Replace("\u2028", "");
     }
 
-    private async Task<(GlossaryEntries entries, string name)> GetEntriesFromTbx(ImportGlossaryRequest request,
+    private static async Task<(GlossaryEntries entries, string name)> GetEntriesFromTbx(ImportGlossaryRequest request,
         Stream glossaryStream)
     {
         var blackbirdGlossary = await glossaryStream.ConvertFromTbx();
@@ -370,14 +417,14 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         foreach (var entry in blackbirdGlossary.ConceptEntries)
         {
             var langSectionSource =
-                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.ToLower() == request.SourceLanguageCode);
+                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.Equals(request.SourceLanguageCode, StringComparison.CurrentCultureIgnoreCase));
             if (langSectionSource is null && request.SourceLanguageCode == "en") 
             {
                 langSectionSource =
-                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.ToLower() == "en-us" || x.LanguageCode.ToLower() == "en-gb");
+                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.Equals("en-us", StringComparison.CurrentCultureIgnoreCase) || x.LanguageCode.ToLower() == "en-gb");
             }
             var langSectionTarget =
-                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.ToLower() == request.TargetLanguageCode);
+                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.Equals(request.TargetLanguageCode, StringComparison.CurrentCultureIgnoreCase));
             if (langSectionTarget is null)
             {
                 langSectionTarget =
@@ -400,7 +447,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
             request.Name ?? blackbirdGlossary.Title!);
     }
 
-    private (GlossaryEntries entries, string name) GetEntriesFromCsv(ImportGlossaryRequest request,
+    private static (GlossaryEntries entries, string name) GetEntriesFromCsv(ImportGlossaryRequest request,
         Stream glossaryStream)
     {
         var lines = new List<string>();
@@ -421,7 +468,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         return (new GlossaryEntries(entries.DistinctBy(x => x.Key)), request.Name ?? request.File.Name);
     }
 
-    private (GlossaryEntries entries, string name) GetEntriesFromTsv(ImportGlossaryRequest request,
+    private static (GlossaryEntries entries, string name) GetEntriesFromTsv(ImportGlossaryRequest request,
         Stream glossaryStream)
     {
         var tsvLines = new List<string>();
@@ -478,7 +525,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         return (bytes, ext);
     }
 
-    private async Task<(string Name, string PivotLang, List<string> Langs)> ParseGlossaryMetadata(
+    private static async Task<(string Name, string PivotLang, List<string> Langs)> ParseGlossaryMetadata(
         byte[] fileBytes, string ext, string? requestName, string fileName)
     {
         string glossaryName;
@@ -524,53 +571,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         return (glossaryName, rawPivotLang, fileLangs);
     }
 
-    private async Task<(List<object> Payload, List<string> Warnings)> BuildDictionariesPayload(
-        byte[] fileBytes, string ext, string rawPivotLang, string validPivotLang,
-        List<string> fileLangs, ImportMultilingualGlossaryRequest request)
-    {
-        var payloads = new List<object>();
-        var warnings = new List<string>();
-
-        foreach (var rawTargetLang in fileLangs.Where(l => !string.Equals(l, rawPivotLang, StringComparison.OrdinalIgnoreCase)))
-        {
-            var validTargetLang = NormalizeAndValidateLang(rawTargetLang);
-
-            if (validTargetLang == null)
-            {
-                warnings.Add($"Language '{rawTargetLang}' is not supported by DeepL Glossaries and was ignored.");
-                continue;
-            }
-
-            if (!string.Equals(rawTargetLang, validTargetLang, StringComparison.OrdinalIgnoreCase))
-                warnings.Add($"Language '{rawTargetLang}' was normalized to '{validTargetLang}'.");
-
-            string? tsvContent = await ExtractPairContent(fileBytes, ext, rawPivotLang, rawTargetLang, request);
-
-            if (!string.IsNullOrWhiteSpace(tsvContent))
-            {
-                payloads.Add(new
-                {
-                    source_lang = validPivotLang,
-                    target_lang = validTargetLang,
-                    entries = tsvContent,
-                    entries_format = "tsv"
-                });
-            }
-            else
-            {
-                warnings.Add(
-                    $"Language '{rawTargetLang}' had no valid matching entries with source '{rawPivotLang}' and was skipped."
-                );
-            }
-        }
-
-        if (payloads.Count == 0)
-            throw new PluginMisconfigurationException($"No valid glossary dictionaries could be created. Warnings: {string.Join("; ", warnings)}");
-
-        return (payloads, warnings);
-    }
-
-    private async Task<string?> ExtractPairContent(
+    private static async Task<string?> ExtractPairContent(
         byte[] fileBytes, string ext, string rawPivot, string rawTarget,
         ImportMultilingualGlossaryRequest request)
     {
@@ -615,13 +616,8 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
             .AddParameter("application/json", jsonBody, ParameterType.RequestBody);
 
         var resp = await RestClient.ExecuteAsync<CreateGlossaryV3Result>(restReq).ConfigureAwait(false);
-
         if (!resp.IsSuccessful)
-        {
-            throw new PluginApplicationException(
-                $"DeepL API Error: {resp.StatusCode} – {resp.Content}. (Internal Warnings: {string.Join("; ", warnings)})"
-            );
-        }
+            throw new PluginApplicationException($" {resp.StatusCode} – {resp.Content}");
 
         return resp.Data!;
     }

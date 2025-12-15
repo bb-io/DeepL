@@ -17,7 +17,7 @@ public class GlossaryActionsTests :TestBase
         var action = new GlossaryActions(InvocationContext, FileManager);
         var input = new ImportMultilingualGlossaryRequest
         {
-            File = new FileReference { Name = "test.tsv" },
+            File = new FileReference { Name = "test1.tbx" },
         };
 
         // Act
