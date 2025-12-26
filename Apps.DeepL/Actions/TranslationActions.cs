@@ -144,7 +144,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             var localBilledCharacters = 0;
             foreach (var (segment, result) in results)
             {
-                segment.SetTarget(WebUtility.HtmlDecode(result.Text));
+                segment.SetTarget(result.Text);
                 segment.State = SegmentState.Translated;
                 billedCharacters += result.BilledCharacters;
                 localBilledCharacters += result.BilledCharacters;
