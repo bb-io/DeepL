@@ -11,13 +11,33 @@ namespace Tests.DeepL;
 public class GlossaryActionsTests :TestBase
 {
     [TestMethod]
+    public async Task ImportGlossary_IsSuccess()
+    {
+        // Arrange
+        var action = new GlossaryActions(InvocationContext, FileManager);
+        var input = new ImportGlossaryRequest 
+        { 
+            File = new FileReference { Name = "samplev2.tbx" },
+            SourceLanguageCode = "en",
+            TargetLanguageCode = "fr"
+        };
+
+        // Act
+        var result = await action.ImportGlossary(input);
+
+        // Assert
+        Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+        Assert.IsNotNull(result);
+    }
+
+    [TestMethod]
     public async Task ImportGlossaryV3_IsSuccess()
     {
         // Arrange
         var action = new GlossaryActions(InvocationContext, FileManager);
         var input = new ImportMultilingualGlossaryRequest
         {
-            File = new FileReference { Name = "test1.tbx" },
+            File = new FileReference { Name = "samplev3.tbx" },
         };
 
         // Act
@@ -33,7 +53,7 @@ public class GlossaryActionsTests :TestBase
     {
         var action = new GlossaryActions(InvocationContext, FileManager);
 
-        var result = await action.ExportGlossary(new GlossaryRequest { GlossaryId= "75266ac6-fafa-43e4-8f2d-4520feb7b379",
+        var result = await action.ExportGlossary(new GlossaryRequest { GlossaryId= "3730b484-8876-4236-bad5-05d426c85389",
 
         });
 
