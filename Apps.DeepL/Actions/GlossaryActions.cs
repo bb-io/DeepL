@@ -19,6 +19,7 @@ using System.Net.Mime;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace Apps.DeepL.Actions;
@@ -402,6 +403,483 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
     public async Task DeleteGlossary([ActionParameter] GlossaryRequest input)
     {
         await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.DeleteGlossaryAsync(input.GlossaryId));
+    }
+
+
+    [Action("Import glossary (new)", Description = "Import glossary from TBX v2/v3 or CSV/TSV (bilingual or multilingual). Creates glossary via DeepL v3 endpoint.")]
+    public async Task<NewGlossaryResponse> ImportGlossaryUniversal([ActionParameter] ImportUniversalGlossaryRequest request)
+    {
+        if (request?.File == null)
+            throw new PluginMisconfigurationException("Request or file cannot be null.");
+
+        var (fileBytes, ext) = await DownloadGlossaryFile(request.File);
+        ext = ext.ToLowerInvariant();
+
+        var warnings = new List<string>();
+        var dictionariesPayload = new List<object>();
+
+        var glossaryName = string.IsNullOrWhiteSpace(request.Name)
+            ? Path.GetFileNameWithoutExtension(request.File.Name)
+            : request.Name.Trim();
+
+        if (ext == ".tbx")
+        {
+            var glossary = await ParseTbxAnyVersionToGlossary(fileBytes, glossaryName);
+
+            var pivotRaw = request.PivotLanguageCode ?? request.SourceLanguageCode;
+            var pivot = !string.IsNullOrWhiteSpace(pivotRaw)
+                ? NormalizeAndValidateLang(pivotRaw!)
+                : InferPivotFromGlossary(glossary);
+
+            if (pivot == null)
+                throw new PluginMisconfigurationException("Unable to determine source language from TBX. Provide SourceLanguageCode.");
+
+            var allLangs = ExtractAllLanguages(glossary);
+            if (allLangs.Count < 2)
+                throw new PluginMisconfigurationException("TBX must contain at least two languages to import into DeepL glossaries.");
+
+            var requestedTarget = string.IsNullOrWhiteSpace(request.TargetLanguageCode)
+                ? null
+                : NormalizeAndValidateLang(request.TargetLanguageCode);
+
+            List<string> targets = requestedTarget != null
+                ? new List<string> { requestedTarget }
+                : allLangs.Where(l => !string.Equals(l, pivot, StringComparison.OrdinalIgnoreCase))
+                         .Distinct(StringComparer.OrdinalIgnoreCase)
+                         .ToList();
+
+            foreach (var target in targets)
+            {
+                var tsv = BuildTsvFromGlossary(glossary, pivot, target);
+                if (string.IsNullOrWhiteSpace(tsv))
+                {
+                    warnings.Add($"No valid entries found for pair {pivot}->{target}; dictionary skipped.");
+                    continue;
+                }
+
+                dictionariesPayload.Add(new
+                {
+                    source_lang = pivot,
+                    target_lang = target,
+                    entries = tsv,
+                    entries_format = "tsv"
+                });
+            }
+        }
+        else if (ext == ".csv" || ext == ".tsv")
+        {
+            var delimiter = ext == ".csv" ? ',' : '\t';
+
+            using var ms = new MemoryStream(fileBytes);
+            using var reader = new StreamReader(ms, Encoding.UTF8, detectEncodingFromByteOrderMarks: true, leaveOpen: true);
+
+            var firstLine = await reader.ReadLineAsync();
+            if (string.IsNullOrWhiteSpace(firstLine))
+                throw new PluginMisconfigurationException("CSV/TSV file is empty.");
+
+            var firstRow = SplitDelimitedLine(firstLine, delimiter);
+
+            bool isHeader;
+            if (request.ForceHeaderRow == true)
+            {
+                isHeader = true;
+            }
+            else
+            {
+                isHeader = firstRow.Count >= 2 && firstRow.All(c => NormalizeAndValidateLang(c) != null);
+            }
+
+            if (isHeader)
+            {
+                if (firstRow.Count < 2)
+                    throw new PluginMisconfigurationException("Header must contain at least two language codes.");
+
+                var pivotRaw = request.PivotLanguageCode ?? firstRow[0];
+                var pivot = NormalizeAndValidateLang(pivotRaw);
+                if (pivot == null)
+                    throw new PluginMisconfigurationException($"Pivot language '{pivotRaw}' is not supported by DeepL glossaries.");
+
+                var targets = new List<(string Normalized, int Index)>();
+                for (int i = 1; i < firstRow.Count; i++)
+                {
+                    var raw = firstRow[i];
+                    var norm = NormalizeAndValidateLang(raw);
+                    if (norm == null)
+                    {
+                        warnings.Add($"Language '{raw}' is not supported by DeepL glossaries and was ignored.");
+                        continue;
+                    }
+
+                    targets.Add((norm, i));
+                }
+
+                if (targets.Count == 0)
+                    throw new PluginMisconfigurationException("No valid target languages found in header.");
+
+                var linesPerTarget = targets
+                    .Select(t => t.Normalized)
+                    .Distinct(StringComparer.OrdinalIgnoreCase)
+                    .ToDictionary(t => t, _ => new List<string>(), StringComparer.OrdinalIgnoreCase);
+
+                string? line;
+                while ((line = await reader.ReadLineAsync()) != null)
+                {
+                    if (string.IsNullOrWhiteSpace(line)) continue;
+
+                    var row = SplitDelimitedLine(line, delimiter);
+                    if (row.Count < firstRow.Count) continue;
+
+                    var source = CleanText(row[0]);
+                    if (string.IsNullOrWhiteSpace(source)) continue;
+
+                    foreach (var t in targets)
+                    {
+                        if (t.Index >= row.Count) continue;
+
+                        var trg = CleanText(row[t.Index]);
+                        if (string.IsNullOrWhiteSpace(trg)) continue;
+
+                        linesPerTarget[t.Normalized].Add($"{source}\t{trg}");
+                    }
+                }
+
+                foreach (var kv in linesPerTarget)
+                {
+                    var target = kv.Key;
+
+                    var requestedTarget = string.IsNullOrWhiteSpace(request.TargetLanguageCode)
+                        ? null
+                        : NormalizeAndValidateLang(request.TargetLanguageCode);
+
+                    if (requestedTarget != null &&
+                        !string.Equals(requestedTarget, target, StringComparison.OrdinalIgnoreCase))
+                        continue;
+
+                    var tsv = string.Join("\n", kv.Value.Where(x => !string.IsNullOrWhiteSpace(x)));
+
+                    if (string.IsNullOrWhiteSpace(tsv))
+                    {
+                        warnings.Add($"No valid entries found for pair {pivot}->{target}; dictionary skipped.");
+                        continue;
+                    }
+
+                    dictionariesPayload.Add(new
+                    {
+                        source_lang = pivot,
+                        target_lang = target,
+                        entries = tsv,
+                        entries_format = "tsv"
+                    });
+                }
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(request.SourceLanguageCode) || string.IsNullOrWhiteSpace(request.TargetLanguageCode))
+                    throw new PluginMisconfigurationException("For CSV/TSV without header, SourceLanguageCode and TargetLanguageCode are required.");
+
+                var pivot = NormalizeAndValidateLang(request.SourceLanguageCode)
+                            ?? throw new PluginMisconfigurationException($"Source language '{request.SourceLanguageCode}' is not supported by DeepL glossaries.");
+                var target = NormalizeAndValidateLang(request.TargetLanguageCode)
+                            ?? throw new PluginMisconfigurationException($"Target language '{request.TargetLanguageCode}' is not supported by DeepL glossaries.");
+
+                ms.Position = 0;
+                using var reader2 = new StreamReader(ms, Encoding.UTF8, detectEncodingFromByteOrderMarks: true, leaveOpen: true);
+
+                var pairs = new List<string>();
+                string? line;
+                while ((line = await reader2.ReadLineAsync()) != null)
+                {
+                    if (string.IsNullOrWhiteSpace(line)) continue;
+
+                    var row = SplitDelimitedLine(line, delimiter);
+                    if (row.Count < 2) continue;
+
+                    var src = CleanText(row[0]);
+                    var trg = CleanText(row[1]);
+
+                    if (string.IsNullOrWhiteSpace(src) || string.IsNullOrWhiteSpace(trg)) continue;
+
+                    pairs.Add($"{src}\t{trg}");
+                }
+
+                var tsv = string.Join("\n", pairs);
+                if (string.IsNullOrWhiteSpace(tsv))
+                    throw new PluginMisconfigurationException("CSV/TSV file has no valid entries.");
+
+                dictionariesPayload.Add(new
+                {
+                    source_lang = pivot,
+                    target_lang = target,
+                    entries = tsv,
+                    entries_format = "tsv"
+                });
+            }
+        }
+        else
+        {
+            throw new PluginMisconfigurationException($"Glossary format not supported ({ext}). Supported: .tbx, .csv, .tsv");
+        }
+
+        if (dictionariesPayload.Count == 0)
+            throw new PluginMisconfigurationException($"No valid glossary dictionaries could be created. Warnings: {string.Join("; ", warnings)}");
+
+        var result = await CreateGlossary(glossaryName, dictionariesPayload, warnings);
+
+        var info = result.Dictionaries.FirstOrDefault()
+                   ?? new DictionaryInfo { SourceLang = "unknown", TargetLang = "mixed", EntryCount = 0 };
+
+        return new NewGlossaryResponse
+        {
+            GossaryId = result.GlossaryId,
+            Name = result.Name,
+            SourceLanguageCode = info.SourceLang,
+            TargetLanguageCode = info.TargetLang,
+            EntryCount = info.EntryCount,
+            Warnings = warnings
+        };
+    }
+
+    [Action("Export glossary (new)", Description = "Export glossary to TBX v3 (default) or TBX v2.")]
+    public async Task<ExportGlossaryResponse> ExportGlossaryUniversal([ActionParameter] ExportUniversalGlossaryRequest request)
+    {
+        if (string.IsNullOrWhiteSpace(request.GlossaryId))
+            throw new PluginMisconfigurationException("GlossaryId is required.");
+
+        var metaReq = new RestRequest($"https://api.deepl.com/v3/glossaries/{request.GlossaryId}", Method.Get);
+        var metaResp = await RestClient.ExecuteAsync<GetGlossaryMetadataResult>(metaReq).ConfigureAwait(false);
+        if (!metaResp.IsSuccessful)
+            throw new PluginApplicationException($"Error: {metaResp.StatusCode} – {metaResp.Content}");
+
+        var metadata = metaResp.Data!;
+        if (metadata.Dictionaries == null || metadata.Dictionaries.Count() == 0)
+            throw new PluginApplicationException("Glossary metadata contains no dictionaries.");
+
+        var pivotLang = metadata.Dictionaries.First().SourceLang;
+
+        var termMap = new Dictionary<string, Dictionary<string, string>>(StringComparer.OrdinalIgnoreCase);
+
+        foreach (var dictInfo in metadata.Dictionaries)
+        {
+            var entriesReq = new RestRequest(
+                $"https://api.deepl.com/v3/glossaries/{request.GlossaryId}/entries?source_lang={pivotLang}&target_lang={dictInfo.TargetLang}",
+                Method.Get);
+
+            var entriesResp = await RestClient.ExecuteAsync<GetGlossaryEntriesResult>(entriesReq).ConfigureAwait(false);
+            if (!entriesResp.IsSuccessful)
+                throw new PluginApplicationException($"Entries error: {entriesResp.StatusCode} – {entriesResp.Content}");
+
+            var dictData = entriesResp.Data!.Dictionaries.First();
+            var entries = GlossaryEntries.FromTsv(dictData.Entries, skipChecks: true).ToDictionary();
+
+            foreach (var kvp in entries)
+            {
+                if (!termMap.ContainsKey(kvp.Key))
+                {
+                    termMap[kvp.Key] = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+                    {
+                        [pivotLang] = kvp.Key
+                    };
+                }
+
+                termMap[kvp.Key][dictInfo.TargetLang] = kvp.Value;
+            }
+        }
+
+        var conceptEntries = new List<GlossaryConceptEntry>();
+        int id = 0;
+
+        foreach (var kv in termMap)
+        {
+            var sections = kv.Value
+                .Select(pair => new GlossaryLanguageSection(pair.Key,
+                    new List<GlossaryTermSection> { new GlossaryTermSection(pair.Value) }))
+                .ToList();
+
+            conceptEntries.Add(new GlossaryConceptEntry((id++).ToString(), sections));
+        }
+
+        var glossary = new Glossary(conceptEntries) { Title = metadata.Name };
+
+        await using var tbxV3Stream = glossary.ConvertToTbx();
+
+        var version = string.IsNullOrWhiteSpace(request.Version)
+            ? "v3"
+            : request.Version.Trim().ToLowerInvariant();
+
+        Stream outputStream;
+        var fileName = $"{metadata.Name}.tbx";
+
+        if (version == "v3")
+        {
+            outputStream = new MemoryStream();
+            tbxV3Stream.Position = 0;
+            await tbxV3Stream.CopyToAsync(outputStream);
+            outputStream.Position = 0;
+        }
+        else if (version == "v2")
+        {
+            tbxV3Stream.Position = 0;
+            outputStream = await tbxV3Stream.ConvertFromTbxV3ToV2();
+        }
+        else
+        {
+            throw new PluginMisconfigurationException($"Unsupported TBX version: {request.Version}. Allowed: v3, v2");
+        }
+
+        var uploaded = await fileManagementClient.UploadAsync(
+            outputStream,
+            MediaTypeNames.Application.Xml,
+            fileName);
+
+        return new ExportGlossaryResponse { File = uploaded };
+    }
+
+    private static async Task<Glossary> ParseTbxAnyVersionToGlossary(byte[] fileBytes, string glossaryName)
+    {
+        var root = DetectTbxRoot(fileBytes);
+
+        if (string.Equals(root, "martif", StringComparison.OrdinalIgnoreCase))
+        {
+            await using var v2Stream = new MemoryStream(fileBytes);
+            var v3Stream = await v2Stream.ConvertFromTbxV2ToV3(glossaryName);
+            return await v3Stream.ConvertFromTbx();
+        }
+
+        if (string.Equals(root, "tbx", StringComparison.OrdinalIgnoreCase))
+        {
+            await using var v3Stream = new MemoryStream(fileBytes);
+            return await v3Stream.ConvertFromTbx();
+        }
+
+        await using var fallback = new MemoryStream(fileBytes);
+        return await fallback.ConvertFromTbx();
+    }
+
+    private static string DetectTbxRoot(byte[] bytes)
+    {
+        using var ms = new MemoryStream(bytes);
+        using var xr = XmlReader.Create(ms, new XmlReaderSettings
+        {
+            DtdProcessing = DtdProcessing.Ignore,
+            IgnoreComments = true,
+            IgnoreWhitespace = true
+        });
+
+        while (xr.Read())
+        {
+            if (xr.NodeType == XmlNodeType.Element)
+                return xr.LocalName;
+        }
+
+        return string.Empty;
+    }
+
+    private static string? InferPivotFromGlossary(Glossary g)
+    {
+        var first = g.ConceptEntries.FirstOrDefault();
+        var lang = first?.LanguageSections?.FirstOrDefault()?.LanguageCode;
+        return string.IsNullOrWhiteSpace(lang) ? null : lang.ToLowerInvariant().Split('-')[0];
+    }
+
+    private static List<string> ExtractAllLanguages(Glossary g)
+    {
+        return g.ConceptEntries
+            .SelectMany(e => e.LanguageSections)
+            .Select(s => s.LanguageCode)
+            .Where(s => !string.IsNullOrWhiteSpace(s))
+            .Select(s => s.ToLowerInvariant().Trim())
+            .Select(s => s.Split('-')[0])
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToList();
+    }
+
+    private static string BuildTsvFromGlossary(Glossary glossary, string pivot, string target)
+    {
+        var lines = new List<string>();
+        var pivotBase = pivot.ToLowerInvariant();
+        var targetBase = target.ToLowerInvariant();
+
+        foreach (var entry in glossary.ConceptEntries)
+        {
+            var srcSec = FindLanguageSection(entry, pivotBase);
+            var trgSec = FindLanguageSection(entry, targetBase);
+
+            if (srcSec == null || trgSec == null) continue;
+
+            var src = srcSec.Terms.FirstOrDefault()?.Term;
+            var trg = trgSec.Terms.FirstOrDefault()?.Term;
+
+            if (string.IsNullOrWhiteSpace(src) || string.IsNullOrWhiteSpace(trg)) continue;
+
+            src = CleanText(src);
+            trg = CleanText(trg);
+
+            if (string.IsNullOrWhiteSpace(src) || string.IsNullOrWhiteSpace(trg)) continue;
+
+            lines.Add($"{src}\t{trg}");
+        }
+
+        var dedup = lines
+            .Select(l => l.Split('\t'))
+            .Where(p => p.Length == 2)
+            .GroupBy(p => p[0], StringComparer.OrdinalIgnoreCase)
+            .Select(g => $"{g.Key}\t{g.First()[1]}")
+            .ToList();
+
+        return dedup.Count == 0 ? "" : string.Join("\n", dedup);
+    }
+
+    private static GlossaryLanguageSection? FindLanguageSection(GlossaryConceptEntry entry, string langBase)
+    {
+        var exact = entry.LanguageSections
+            .FirstOrDefault(s => string.Equals(s.LanguageCode, langBase, StringComparison.OrdinalIgnoreCase));
+        if (exact != null) return exact;
+
+        return entry.LanguageSections.FirstOrDefault(s =>
+        {
+            var code = s.LanguageCode?.ToLowerInvariant();
+            if (string.IsNullOrWhiteSpace(code)) return false;
+            var baseCode = code.Split('-')[0];
+            return string.Equals(baseCode, langBase, StringComparison.OrdinalIgnoreCase);
+        });
+    }
+
+    private static List<string> SplitDelimitedLine(string line, char delimiter)
+    {
+        var result = new List<string>();
+        var sb = new StringBuilder();
+        bool inQuotes = false;
+
+        for (int i = 0; i < line.Length; i++)
+        {
+            var c = line[i];
+
+            if (c == '"' && delimiter == ',')
+            {
+                if (inQuotes && i + 1 < line.Length && line[i + 1] == '"')
+                {
+                    sb.Append('"');
+                    i++;
+                }
+                else
+                {
+                    inQuotes = !inQuotes;
+                }
+                continue;
+            }
+
+            if (c == delimiter && !inQuotes)
+            {
+                result.Add(sb.ToString().Trim().Trim('"'));
+                sb.Clear();
+                continue;
+            }
+
+            sb.Append(c);
+        }
+
+        result.Add(sb.ToString().Trim().Trim('"'));
+        return result;
     }
 
     private static string CleanText(string input)

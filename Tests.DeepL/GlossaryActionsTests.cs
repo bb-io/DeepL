@@ -61,6 +61,41 @@ public class GlossaryActionsTests :TestBase
     }
 
     [TestMethod]
+    public async Task ExportGlossaryNEW_IssSuccess()
+    {
+        var action = new GlossaryActions(InvocationContext, FileManager);
+
+        var result = await action.ExportGlossaryUniversal(new ExportUniversalGlossaryRequest
+        {
+            GlossaryId = "af7a5c66-5264-4ca2-9408-52577b039b17",
+             //Version= "v2"
+        });
+
+        Assert.IsNotNull(result);
+    }
+
+    [TestMethod]
+    public async Task ImportGlossaryNEW_IsSuccess()
+    {
+        // Arrange
+        var action = new GlossaryActions(InvocationContext, FileManager);
+        var input = new ImportUniversalGlossaryRequest
+        {
+            File = new FileReference { Name = "sample.csv" },
+            SourceLanguageCode = "en",
+            TargetLanguageCode = "es",
+            Name = "Test Glossary from CSV 1401",
+        };
+
+        // Act
+        var result = await action.ImportGlossaryUniversal(input);
+
+        // Assert
+        Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+        Assert.IsNotNull(result);
+    }
+
+    [TestMethod]
     public async Task UpdatetGlossaryV3_IssSuccess()
     {
         var action = new GlossaryActions(InvocationContext, FileManager);

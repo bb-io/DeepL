@@ -100,6 +100,8 @@ To be deprecated soon:
   pairs.
 - **Update dictionary (multilingual)** Updates multilingual dictionary
 - **Export glossary (multilingual)** Export multilingual glossary
+- **Export glossary (new)** Export glossary to TBX v3 (default) or TBX v2.
+- **Import glossary (new)** Import glossary from TBX v2/v3 or CSV/TSV (bilingual or multilingual). Creates glossary via DeepL v3 endpoint
 
 ## Example
 
