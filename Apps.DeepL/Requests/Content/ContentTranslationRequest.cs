@@ -29,6 +29,9 @@ public class ContentTranslationRequest : ITranslateFileInput
     [Display("Model type", Description = "Specifies which DeepL model should be used for translation"), StaticDataSource(typeof(ModelTypeDataHandler))]
     public string? ModelType { get; set; }
 
+    [Display("Tag handling", Description = "Specifies how tags in the text should be handled during translation"), StaticDataSource(typeof(TagHandlingDataHandler))]
+    public string? TagHandling { get; set; }
+
     [Display("Context")]
     public string? Context { get; set; }
 

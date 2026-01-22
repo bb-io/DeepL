@@ -22,6 +22,7 @@ using DeepL;
 using DeepL.Model;
 using System.Net;
 using System.Net.Mime;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace Apps.DeepL.Actions;
@@ -123,7 +124,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
                 GlossaryId = input.GlossaryId,
                 Context = input.Context,
                 ModelType = GetModelType(input.ModelType),
-                TagHandling = batch.FirstOrDefault().Unit.ContentCoder.SupportedMediaTypes.Contains(MediaTypeNames.Text.Html) ? "html" : null,  
+                TagHandling = input.TagHandling ?? (batch.FirstOrDefault().Unit.ContentCoder.SupportedMediaTypes.Contains(MediaTypeNames.Text.Html) ? "html" : null),  
             };
 
             if (GetModelType(input.ModelType) != ModelType.LatencyOptimized)
@@ -144,7 +145,15 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             var localBilledCharacters = 0;
             foreach (var (segment, result) in results)
             {
-                segment.SetTarget(result.Text);
+                try
+                {
+                    segment.SetTarget(result.Text);
+                }
+                catch (XmlException e)
+                {
+                    throw new PluginApplicationException($"Looks like the translated segment contains malformed XML: {e.Message}. Please try adjusting 'Tag handling' setting.");
+                }
+                
                 segment.State = SegmentState.Translated;
                 billedCharacters += result.BilledCharacters;
                 localBilledCharacters += result.BilledCharacters;
