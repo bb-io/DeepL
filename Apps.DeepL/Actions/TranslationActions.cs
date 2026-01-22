@@ -117,6 +117,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
 
         async Task<IEnumerable<TextResult>> BatchTranslate(IEnumerable<(Unit Unit, Segment Segment)> batch)
         {
+            var tagHandling = (batch.FirstOrDefault().Unit.ContentCoder.SupportedMediaTypes.Contains(MediaTypeNames.Text.Html) ? "html" : "xml");
             var options = new TextTranslateOptions
             {
                 PreserveFormatting = input.PreserveFormatting.HasValue ? input.PreserveFormatting.Value : true,
@@ -124,7 +125,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
                 GlossaryId = input.GlossaryId,
                 Context = input.Context,
                 ModelType = GetModelType(input.ModelType),
-                TagHandling = input.TagHandling ?? (batch.FirstOrDefault().Unit.ContentCoder.SupportedMediaTypes.Contains(MediaTypeNames.Text.Html) ? "html" : null),  
+                TagHandling = input.TagHandling ?? tagHandling,  
             };
 
             if (GetModelType(input.ModelType) != ModelType.LatencyOptimized)
