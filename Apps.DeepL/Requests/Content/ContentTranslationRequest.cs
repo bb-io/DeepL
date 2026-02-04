@@ -4,7 +4,6 @@ using Blackbird.Applications.Sdk.Common;
 using Blackbird.Applications.Sdk.Common.Dictionaries;
 using Blackbird.Applications.Sdk.Common.Dynamic;
 using Blackbird.Applications.Sdk.Common.Files;
-using Blackbird.Applications.SDK.Blueprints.Handlers;
 using Blackbird.Applications.SDK.Blueprints.Interfaces.Translate;
 
 namespace Apps.DeepL.Requests.Content;
@@ -25,6 +24,9 @@ public class ContentTranslationRequest : ITranslateFileInput
 
     [Display("Glossary ID", Description = "The ID of the glossary to be used for translation"), DataSource(typeof(GlossariesDataHandler))]
     public string? GlossaryId { get; set; }
+
+    [Display("Style rules", Description = "The ID of the style rules to be used for translation"), DataSource(typeof(StyleRuleDataHandler))]
+    public string? StyleRuleId { get; set; }
 
     [Display("Model type", Description = "Specifies which DeepL model should be used for translation"), StaticDataSource(typeof(ModelTypeDataHandler))]
     public string? ModelType { get; set; }

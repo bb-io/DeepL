@@ -34,6 +34,22 @@ public class TranslationActionsTests : TestBase
     }
 
     [TestMethod]
+    public async Task Translate_WithStyleRules()
+    {
+        var result = await _actions.Translate(new TextTranslationRequest
+        {
+            Text = "The date is January 2nd, 2025",
+            TargetLanguage = "de",
+            StyleRuleId = "45566084-1fbb-42cb-b6f7-f76aa9165116"
+        });
+
+        Assert.IsNotNull(result.TranslatedText);
+        Console.WriteLine(result.TranslatedText);
+        Console.WriteLine(result.BilledCharacters);
+        Assert.IsTrue(result.BilledCharacters > 0);
+    }
+
+    [TestMethod]
     public async Task Translate_Vietnamese()
     {
         var result = await _actions.Translate(new TextTranslationRequest

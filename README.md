@@ -52,7 +52,7 @@ Before you can connect you need to make sure that:
   text_ instead. Advanced settings:
   - **File translation strategy**: Select whether to use DeepL's own file
     processing capabilities or use Blackbird interoperability mode with DeepL's
-    more advanced models (the latter the default mode).
+    more advanced models and features (the latter the recommended and default mode).
   - **Output file handling**: If using Blackbird's interoperability mode, this
     determines the format of the output file. The default Blackbird behavior is
     to convert to XLIFF for future steps. You can change it to output the
@@ -60,6 +60,7 @@ Before you can connect you need to make sure that:
     after this step).
   - **Glossary ID**: Select the DeepL glossary you want to use for this
     translation.
+  - **Style rules**: Select the DeepL style rules you want to use for this translation. Note: The target language should match.
   - **Context**: Add additional context to the translation, this can be anything
     of relevance.
   - **Preserve formatting**: Whether to preserve the text formatting during
@@ -70,14 +71,6 @@ Before you can connect you need to make sure that:
     You can choose between speed and quality here.
 - **Translate text** Translate a single text string. Useful when translating
   small messages. For larger content and files use _Translate_ instead.
-
-To be deprecated soon:
-
-- **Translate XLIFF** Translate an XLIFF file using the text translation
-  endpoint. Useful when using the next-generation model for small XLIFF files
-  (supports only 1.2 version). Supported file extensions: `.xliff`, `.xlf`,
-  `.mqxliff`, `.mxliff`, `.txlf`. This action will soon be deprecated once
-  Blackbird interoperability mode also supports all these dialects.
 
 ### Write
 

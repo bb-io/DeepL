@@ -33,7 +33,7 @@
       </mda:metadata>
       <segment state="translated">
         <source>Test Blackbird Workflow</source>
-        <target>Test Blackbird-Workflow</target>
+        <target>Test Blackbird Workflow</target>
       </segment>
     </unit>
     <unit id="u2" name="/html[1]/body[1]/div[1]" its:tool="DeepL" fs:fs="div" fs:subFs="class,panel-plan">
