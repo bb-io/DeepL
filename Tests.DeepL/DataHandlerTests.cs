@@ -21,4 +21,19 @@ public class DataHandlerTests : TestBase
             Console.WriteLine($"{item.Value} - {item.DisplayName}");
         Assert.IsNotNull(result);
     }
+
+    [TestMethod]
+    public async Task StyleRulesDataHandler_ReturnsStyleRules()
+    {
+        // Arrange
+        var handler = new StyleRuleDataHandler(InvocationContext);
+
+        // Act
+        var result = await handler.GetDataAsync(new DataSourceContext { SearchString = "" }, CancellationToken.None);
+
+        // Assert
+        foreach (var item in result)
+            Console.WriteLine($"{item.Value} - {item.DisplayName}");
+        Assert.IsNotNull(result);
+    }
 }

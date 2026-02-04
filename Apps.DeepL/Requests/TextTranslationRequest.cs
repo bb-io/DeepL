@@ -26,6 +26,9 @@ public class TextTranslationRequest : ITranslateTextInput
     [Display("Glossary", Description = "The ID of the glossary to be used for translation"), DataSource(typeof(GlossariesDataHandler))]
     public string? GlossaryId { get; set; }
 
+    [Display("Style rules", Description = "The ID of the style rules to be used for translation"), DataSource(typeof(StyleRuleDataHandler))]
+    public string? StyleRuleId { get; set; }
+
     [Display("Tag handling",
         Description = "Specifies how tags in the text should be handled during translation")]
     public string? TagHandling { get; set; }
