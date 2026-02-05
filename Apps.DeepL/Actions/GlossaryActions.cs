@@ -398,11 +398,19 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
                 $"{input.GlossaryId}.tsv")
         };
     }
-    
+
     [Action("Delete glossary", Description = "Delete a glossary")]
     public async Task DeleteGlossary([ActionParameter] GlossaryRequest input)
     {
-        await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.DeleteGlossaryAsync(input.GlossaryId));
+        var request = new RestRequest(
+            $"https://api.deepl.com/v3/glossaries/{input.GlossaryId}",
+            Method.Delete);
+
+        var response = await RestClient.ExecuteAsync(request).ConfigureAwait(false);
+
+        if (!response.IsSuccessful)
+            throw new PluginApplicationException(
+                $"Delete glossary error: {response.StatusCode} – {response.Content}");
     }
 
 
