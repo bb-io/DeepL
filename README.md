@@ -46,7 +46,7 @@ Before you can connect you need to make sure that:
 
 ### Translation
 
-- **Translate text** Translate text using DeepL. Outputs translated text, detected source language, and billed characters. Advanced settings:
+- **Translate text** Translate text and output translated text, detected source language, and billed characters. Advanced settings:
   - **Source language**: Set the original language when you do not want automatic detection.
   - **Formality**: Control how formal the output text should be when supported.
   - **Glossary**: Apply a glossary to enforce preferred terminology.
@@ -59,14 +59,14 @@ Before you can connect you need to make sure that:
   - **Splitting tags**: Provide tags that may be split.
   - **Ignore tags**: Provide tags that should not be translated.
   - **Context**: Add extra context to improve output quality.
-- **Translate** Translate a file using DeepL and output the translated file for downstream actions. Supports glossary, style rules, and output file settings. Advanced settings:
+- **Translate** Translate a file and output the translated file for downstream actions. Supports glossary, style rules, and output file settings. Advanced settings:
   - **Glossary ID**: Apply a specific glossary by ID.
   - **Output file handling**: Choose whether the output stays interoperable or follows original format handling.
   - **File translation strategy**: Choose DeepL native file handling or Blackbird interoperability mode.
 
 ### Write
 
-- **Improve text** Rewrite text with DeepL Write and output improved text with language information. Advanced settings:
+- **Improve text** Rewrite text and output improved text with language information. Advanced settings:
   - **Language**: Set the output language variant for the rewrite.
   - **Writing style**: Choose the writing style for the rewritten text.
   - **Tone**: Choose the tone for the rewritten text.
@@ -76,18 +76,18 @@ Before you can connect you need to make sure that:
 **Note**: DeepL supports only two-letter base locale codes for glossaries (e.g., `fr` instead of `fr-FR`). The app automatically normalizes all language codes to their two-letter form. If multiple locales with different region codes are provided (e.g., `se-sv` and `se-fi`), the first one will be used and the rest will be ignored. Unfortunately, this is a limitation of the DeepL API.
 
 - **Export glossary** Export a selected glossary as a TBX file.
-- **Import glossary** Import a bilingual glossary file (TBX, CSV, or TSV) and create a DeepL glossary. Advanced settings:
+- **Import glossary** Import a bilingual glossary file (TBX, CSV, or TSV) and create a glossary. Advanced settings:
   - **New glossary name**: Override the glossary name from the imported file.
 - **Get glossary details** Get metadata for a selected glossary.
 - **Get glossary entries** Download entries from a selected glossary as a TSV file.
 - **Search glossaries** Search all available glossaries.
 - **Delete glossary** Delete a selected glossary.
-- **Import glossary (multilingual)** Import a multilingual glossary file and create a DeepL v3 glossary with multiple language pairs.
+- **Import glossary (multilingual)** Import a multilingual glossary file and create a v3 glossary with multiple language pairs.
 - **Update dictionary (multilingual)** Update dictionaries in an existing multilingual glossary from a TBX, CSV, or TSV file.
 - **Export glossary (multilingual)** Export a multilingual glossary as a TBX file.
 - **Export glossary (new)** Export a glossary as TBX v3 or TBX v2. Advanced settings:
   - **TBX export version**: Choose whether the export file is TBX v3 or TBX v2.
-- **Import glossary (new)** Import TBX/CSV/TSV glossary files (bilingual or multilingual) into a DeepL v3 glossary. Advanced settings:
+- **Import glossary (new)** Import TBX, CSV, or TSV glossary files (bilingual or multilingual) into a v3 glossary. Advanced settings:
   - **Name**: Set a custom name for the new glossary.
   - **Pivot language code**: Set the pivot language used for multilingual import.
   - **Source language code**: Set a specific source language code.
