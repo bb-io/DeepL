@@ -46,56 +46,53 @@ Before you can connect you need to make sure that:
 
 ### Translation
 
-- **Translate** Translate interopability compatible files in Blackbird
-  interoperability mode. Can also be used to translate other file types that
-  DeepL supports. If you're only translating text (strings) then use _Translate
-  text_ instead. Advanced settings:
-  - **File translation strategy**: Select whether to use DeepL's own file
-    processing capabilities or use Blackbird interoperability mode with DeepL's
-    more advanced models and features (the latter the recommended and default mode).
-  - **Output file handling**: If using Blackbird's interoperability mode, this
-    determines the format of the output file. The default Blackbird behavior is
-    to convert to XLIFF for future steps. You can change it to output the
-    original file format (if you don't want to continue language operationts
-    after this step).
-  - **Glossary ID**: Select the DeepL glossary you want to use for this
-    translation.
-  - **Style rules**: Select the DeepL style rules you want to use for this translation. Note: The target language should match.
-  - **Context**: Add additional context to the translation, this can be anything
-    of relevance.
-  - **Preserve formatting**: Whether to preserve the text formatting during
-    translation.
-  - **Formality**: Indicates whether the translation should be formal (depends
-    on the language).
-  - **Model type**: Specifies which DeepL model should be used for translation.
-    You can choose between speed and quality here.
-- **Translate text** Translate a single text string. Useful when translating
-  small messages. For larger content and files use _Translate_ instead.
+- **Translate text** Translate text using DeepL. Outputs translated text, detected source language, and billed characters. Advanced settings:
+  - **Source language**: Set the original language when you do not want automatic detection.
+  - **Formality**: Control how formal the output text should be when supported.
+  - **Glossary**: Apply a glossary to enforce preferred terminology.
+  - **Style rules**: Apply a style rule to guide phrasing in the output.
+  - **Tag handling**: Control how tags are interpreted during translation.
+  - **Model type**: Choose the DeepL model behavior for the translation.
+  - **Preserve formatting**: Keep formatting in the output text.
+  - **Outline detection**: Preserve outline structure in tagged content.
+  - **Non-splitting tags**: Provide tags that must stay intact.
+  - **Splitting tags**: Provide tags that may be split.
+  - **Ignore tags**: Provide tags that should not be translated.
+  - **Context**: Add extra context to improve output quality.
+- **Translate** Translate a file using DeepL and output the translated file for downstream actions. Supports glossary, style rules, and output file settings. Advanced settings:
+  - **Glossary ID**: Apply a specific glossary by ID.
+  - **Output file handling**: Choose whether the output stays interoperable or follows original format handling.
+  - **File translation strategy**: Choose DeepL native file handling or Blackbird interoperability mode.
 
 ### Write
 
-- **Improve text** improve a text using DeepL Write, set writing style or tone.
-  Currently only supports some of the languages. Can also be used to change
-  locale from f.e. American English to British English. For more details see
-  [DeepL's write documentation](https://developers.deepl.com/docs/api-reference/improve-text).
+- **Improve text** Rewrite text with DeepL Write and output improved text with language information. Advanced settings:
+  - **Language**: Set the output language variant for the rewrite.
+  - **Writing style**: Choose the writing style for the rewritten text.
+  - **Tone**: Choose the tone for the rewritten text.
 
 ### Glossaries
 
 **Note**: DeepL supports only two-letter base locale codes for glossaries (e.g., `fr` instead of `fr-FR`). The app automatically normalizes all language codes to their two-letter form. If multiple locales with different region codes are provided (e.g., `se-sv` and `se-fi`), the first one will be used and the rest will be ignored. Unfortunately, this is a limitation of the DeepL API.
 
-- **Export glossary** Export glossary
-- **Import glossary** Import glossary (.tbx, .csv & .tsv)
-- **Get glossary details** Get details of a specific glossary
-- **Get glossary entries** Get glossary entries in a TSV format
-- **Search glossaries** List all glossaries
-- **Delete glossary** Delete a glossary
-- **Import glossary (multilingual)** Import a glossary with multiple language
-  pairs.
-- **Update dictionary (multilingual)** Updates multilingual dictionary
-- **Export glossary (multilingual)** Export multilingual glossary
-- **Export glossary (new)** Export glossary to TBX v3 (default) or TBX v2.
-- **Import glossary (new)** Import glossary from TBX v2/v3 or CSV/TSV (bilingual or multilingual). Creates glossary via DeepL v3 endpoint
-
+- **Export glossary** Export a selected glossary as a TBX file.
+- **Import glossary** Import a bilingual glossary file (TBX, CSV, or TSV) and create a DeepL glossary. Advanced settings:
+  - **New glossary name**: Override the glossary name from the imported file.
+- **Get glossary details** Get metadata for a selected glossary.
+- **Get glossary entries** Download entries from a selected glossary as a TSV file.
+- **Search glossaries** Search all available glossaries.
+- **Delete glossary** Delete a selected glossary.
+- **Import glossary (multilingual)** Import a multilingual glossary file and create a DeepL v3 glossary with multiple language pairs.
+- **Update dictionary (multilingual)** Update dictionaries in an existing multilingual glossary from a TBX, CSV, or TSV file.
+- **Export glossary (multilingual)** Export a multilingual glossary as a TBX file.
+- **Export glossary (new)** Export a glossary as TBX v3 or TBX v2. Advanced settings:
+  - **TBX export version**: Choose whether the export file is TBX v3 or TBX v2.
+- **Import glossary (new)** Import TBX/CSV/TSV glossary files (bilingual or multilingual) into a DeepL v3 glossary. Advanced settings:
+  - **Name**: Set a custom name for the new glossary.
+  - **Pivot language code**: Set the pivot language used for multilingual import.
+  - **Source language code**: Set a specific source language code.
+  - **Target language code**: Set a specific target language code.
+  - **Force header row (CSV/TSV)**: Force CSV/TSV parsing to treat the first row as a header.
 ## Example
 
 ![DeepLExample](image/README/DeepLExample.png)
@@ -113,3 +110,8 @@ out to us using the [established channels](https://www.blackbird.io/) or create
 an issue.
 
 <!-- end docs -->
+
+
+
+
+

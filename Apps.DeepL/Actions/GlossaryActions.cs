@@ -1,4 +1,4 @@
-ï»¿using Apps.DeepL.Constants;
+using Apps.DeepL.Constants;
 using Apps.DeepL.Entities;
 using Apps.DeepL.Models;
 using Apps.DeepL.Requests;
@@ -28,7 +28,7 @@ namespace Apps.DeepL.Actions;
 public class GlossaryActions(InvocationContext invocationContext, IFileManagementClient fileManagementClient)
     : DeepLInvocable(invocationContext)
 {
-    [Action("Export glossary", Description = "Export glossary")]
+    [Action("Export glossary", Description = "Export a selected glossary as a TBX file.")]
     public async Task<ExportGlossaryResponse> ExportGlossary([ActionParameter] GlossaryRequest request)
     {
         var glossaryDetails = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.GetGlossaryAsync(request.GlossaryId));
@@ -65,7 +65,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         };
     }
 
-    [Action("Import glossary", Description = "Import glossary")] //Create glossary v2
+    [Action("Import glossary", Description = "Import a bilingual glossary file (TBX, CSV, or TSV) and create a DeepL glossary.")] //Create glossary v2
     public async Task<NewGlossaryResponse> ImportGlossary([ActionParameter] ImportGlossaryRequest request)
     {
         if (request == null || request.File == null)
@@ -109,7 +109,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         });
     }
 
-    [Action("Import glossary (multilingual)", Description = "Import multilingual glossary")]
+    [Action("Import glossary (multilingual)", Description = "Import a multilingual glossary file and create a DeepL v3 glossary with multiple language pairs.")]
     public async Task<NewGlossaryResponse> ImportGlossaryV3([ActionParameter] ImportMultilingualGlossaryRequest request)
     {
         if (request == null || request.File == null)
@@ -195,7 +195,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         };
     }
 
-    [Action("Update dictionary (multilingual)", Description = "Updates multilingual dictionary")]
+    [Action("Update dictionary (multilingual)", Description = "Update dictionaries in an existing multilingual glossary from a TBX, CSV, or TSV file.")]
     public async Task<NewGlossaryResponse> UpdateDictionaryV3([ActionParameter] UpdateGlossaryRequest request)
     {
         await using var stream = await fileManagementClient.DownloadAsync(request.File);
@@ -239,7 +239,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
                     .AddJsonBody(body);
                 var resp = await RestClient.ExecuteAsync<AddOrReplaceDictionaryResult>(restReq).ConfigureAwait(false);
                 if (!resp.IsSuccessful)
-                    throw new PluginApplicationException($"Error: {resp.StatusCode} â€“ {resp.Content}");
+                    throw new PluginApplicationException($"Error: {resp.StatusCode} – {resp.Content}");
                 var data = resp.Data!;
                 lastSource = data.SourceLang;
                 lastTarget = data.TargetLang;
@@ -291,7 +291,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
                     .AddJsonBody(body);
                 var resp = await RestClient.ExecuteAsync<AddOrReplaceDictionaryResult>(restReq).ConfigureAwait(false);
                 if (!resp.IsSuccessful)
-                    throw new PluginApplicationException($"Multilingual dictionary error: {resp.StatusCode} â€“ {resp.Content}");
+                    throw new PluginApplicationException($"Multilingual dictionary error: {resp.StatusCode} – {resp.Content}");
                 var dataRes = resp.Data!;
                 lastSource = dataRes.SourceLang;
                 lastTarget = dataRes.TargetLang;
@@ -313,13 +313,13 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         };
     }
 
-    [Action("Export glossary (multilingual)", Description = "Export multilingual glossary")]
+    [Action("Export glossary (multilingual)", Description = "Export a multilingual glossary as a TBX file.")]
     public async Task<ExportGlossaryResponse> ExportGlossaryV3([ActionParameter] GlossaryRequest request)
     {
         var metaReq = new RestRequest($"https://api.deepl.com/v3/glossaries/{request.GlossaryId}", Method.Get);
         var metaResp = await RestClient.ExecuteAsync<GetGlossaryMetadataResult>(metaReq).ConfigureAwait(false);
         if (!metaResp.IsSuccessful)
-            throw new PluginApplicationException($"Error: {metaResp.StatusCode} â€“ {metaResp.Content}");
+            throw new PluginApplicationException($"Error: {metaResp.StatusCode} – {metaResp.Content}");
         var metadata = metaResp.Data!;
 
         var pivotLang = metadata.Dictionaries.First().SourceLang;
@@ -332,7 +332,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
                 Method.Get);
             var entriesResp = await RestClient.ExecuteAsync<GetGlossaryEntriesResult>(entriesReq).ConfigureAwait(false);
             if (!entriesResp.IsSuccessful)
-                throw new PluginApplicationException($"Multilingual entries error: {entriesResp.StatusCode} â€“ {entriesResp.Content}");
+                throw new PluginApplicationException($"Multilingual entries error: {entriesResp.StatusCode} – {entriesResp.Content}");
             var dictData = entriesResp.Data!.Dictionaries.First();
             var entries = GlossaryEntries.FromTsv(dictData.Entries, skipChecks: true).ToDictionary();
 
@@ -372,21 +372,21 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         };
     }
 
-    [Action("Search glossaries", Description = "Search all glossaries")]
+    [Action("Search glossaries", Description = "Search all available glossaries.")]
     public async Task<ListGlossariesResponse> ListGlossaries()
     {
         var glossary = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.ListGlossariesAsync());
         return new(glossary.Select(x => new GlossaryEntity(x)));
     }
 
-    [Action("Get glossary details", Description = "Get details of a specific glossary")]
+    [Action("Get glossary details", Description = "Get metadata for a selected glossary.")]
     public async Task<GlossaryEntity> GetGlossary([ActionParameter] GlossaryRequest input)
     {
         var glossary = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.GetGlossaryAsync(input.GlossaryId));
         return new(glossary);
     }
 
-    [Action("Get glossary entries", Description = "Get glossary entries in a TSV format")]
+    [Action("Get glossary entries", Description = "Download entries from a selected glossary as a TSV file.")]
     public async Task<FileResponse> GetGlossaryEntries([ActionParameter] GlossaryRequest input)
     {
         var entries = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.GetGlossaryEntriesAsync(input.GlossaryId));
@@ -399,7 +399,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         };
     }
 
-    [Action("Delete glossary", Description = "Delete a glossary")]
+    [Action("Delete glossary", Description = "Delete a selected glossary.")]
     public async Task DeleteGlossary([ActionParameter] GlossaryRequest input)
     {
         var request = new RestRequest(
@@ -410,11 +410,11 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
 
         if (!response.IsSuccessful)
             throw new PluginApplicationException(
-                $"Delete glossary error: {response.StatusCode} â€“ {response.Content}");
+                $"Delete glossary error: {response.StatusCode} – {response.Content}");
     }
 
 
-    [Action("Import glossary (new)", Description = "Import glossary from TBX v2/v3 or CSV/TSV (bilingual or multilingual). Creates glossary via DeepL v3 endpoint.")]
+    [Action("Import glossary (new)", Description = "Import TBX/CSV/TSV glossary files (bilingual or multilingual) into a DeepL v3 glossary.")]
     public async Task<NewGlossaryResponse> ImportGlossaryUniversal([ActionParameter] ImportUniversalGlossaryRequest request)
     {
         if (request?.File == null)
@@ -647,7 +647,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         };
     }
 
-    [Action("Export glossary (new)", Description = "Export glossary to TBX v3 (default) or TBX v2.")]
+    [Action("Export glossary (new)", Description = "Export a glossary as TBX v3 or TBX v2.")]
     public async Task<ExportGlossaryResponse> ExportGlossaryUniversal([ActionParameter] ExportUniversalGlossaryRequest request)
     {
         if (string.IsNullOrWhiteSpace(request.GlossaryId))
@@ -656,7 +656,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         var metaReq = new RestRequest($"https://api.deepl.com/v3/glossaries/{request.GlossaryId}", Method.Get);
         var metaResp = await RestClient.ExecuteAsync<GetGlossaryMetadataResult>(metaReq).ConfigureAwait(false);
         if (!metaResp.IsSuccessful)
-            throw new PluginApplicationException($"Error: {metaResp.StatusCode} â€“ {metaResp.Content}");
+            throw new PluginApplicationException($"Error: {metaResp.StatusCode} – {metaResp.Content}");
 
         var metadata = metaResp.Data!;
         if (metadata.Dictionaries == null || metadata.Dictionaries.Count() == 0)
@@ -674,7 +674,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
 
             var entriesResp = await RestClient.ExecuteAsync<GetGlossaryEntriesResult>(entriesReq).ConfigureAwait(false);
             if (!entriesResp.IsSuccessful)
-                throw new PluginApplicationException($"Entries error: {entriesResp.StatusCode} â€“ {entriesResp.Content}");
+                throw new PluginApplicationException($"Entries error: {entriesResp.StatusCode} – {entriesResp.Content}");
 
             var dictData = entriesResp.Data!.Dictionaries.First();
             var entries = GlossaryEntries.FromTsv(dictData.Entries, skipChecks: true).ToDictionary();
@@ -1103,7 +1103,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
 
         var resp = await RestClient.ExecuteAsync<CreateGlossaryV3Result>(restReq).ConfigureAwait(false);
         if (!resp.IsSuccessful)
-            throw new PluginApplicationException($" {resp.StatusCode} â€“ {resp.Content}");
+            throw new PluginApplicationException($" {resp.StatusCode} – {resp.Content}");
 
         return resp.Data!;
     }
@@ -1153,3 +1153,5 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         return entries.Count != 0 ? string.Join("\n", entries) : null;
     }
 }
+
+

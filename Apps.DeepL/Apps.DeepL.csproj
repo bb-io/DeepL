@@ -5,7 +5,7 @@
         <Nullable>enable</Nullable>
         <Product>DeepL</Product>
         <Description>The NMT service</Description>
-        <Version>1.2.38</Version>
+        <Version>1.2.39</Version>
         <AssemblyName>Apps.DeepL</AssemblyName>
     </PropertyGroup>
 
@@ -27,8 +27,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\README.md">
+      <EmbeddedResource Include="..\README.md">
         <Link>README.md</Link>
-      </Content>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
     </ItemGroup>
 </Project>
