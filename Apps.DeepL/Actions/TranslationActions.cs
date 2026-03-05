@@ -1,4 +1,4 @@
-﻿using Apps.DeepL.Constants;
+using Apps.DeepL.Constants;
 using Apps.DeepL.Requests;
 using Apps.DeepL.Requests.Content;
 using Apps.DeepL.Responses;
@@ -32,7 +32,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
     : DeepLInvocable(invocationContext)
 {
     [BlueprintActionDefinition(BlueprintAction.TranslateText)]
-    [Action("Translate text", Description = "Translate a single simple text string")]
+    [Action("Translate text", Description = "Translate text using DeepL. Outputs translated text, detected source language, and billed characters.")]
     public async Task<TextResponse> Translate([ActionParameter] TextTranslationRequest request)
     {
         if (string.IsNullOrWhiteSpace(request.TargetLanguage))
@@ -63,7 +63,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
     }
 
     [BlueprintActionDefinition(BlueprintAction.TranslateFile)]
-    [Action("Translate", Description = "Translate file content retrieved from a CMS or file storage. The output can be used in compatible actions.")]
+    [Action("Translate", Description = "Translate a file using DeepL and output the translated file for downstream actions. Supports glossary, style rules, and output file settings.")]
     public async Task<FileResponse> TranslateContent([ActionParameter] ContentTranslationRequest input)
     {
         if (string.IsNullOrWhiteSpace(input.TargetLanguage))
@@ -388,3 +388,9 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         return (memoryStream, null);
     }
 }
+
+
+
+
+
+
