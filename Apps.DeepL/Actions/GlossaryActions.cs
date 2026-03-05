@@ -65,7 +65,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         };
     }
 
-    [Action("Import glossary", Description = "Import a bilingual glossary file (TBX, CSV, or TSV) and create a DeepL glossary.")] //Create glossary v2
+    [Action("Import glossary", Description = "Import a bilingual glossary file (TBX, CSV, or TSV) and create a glossary.")] //Create glossary v2
     public async Task<NewGlossaryResponse> ImportGlossary([ActionParameter] ImportGlossaryRequest request)
     {
         if (request == null || request.File == null)
@@ -109,7 +109,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         });
     }
 
-    [Action("Import glossary (multilingual)", Description = "Import a multilingual glossary file and create a DeepL v3 glossary with multiple language pairs.")]
+    [Action("Import glossary (multilingual)", Description = "Import a multilingual glossary file and create a v3 glossary with multiple language pairs.")]
     public async Task<NewGlossaryResponse> ImportGlossaryV3([ActionParameter] ImportMultilingualGlossaryRequest request)
     {
         if (request == null || request.File == null)
@@ -414,7 +414,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
     }
 
 
-    [Action("Import glossary (new)", Description = "Import TBX/CSV/TSV glossary files (bilingual or multilingual) into a DeepL v3 glossary.")]
+    [Action("Import glossary (new)", Description = "Import TBX, CSV, or TSV glossary files (bilingual or multilingual) into a v3 glossary.")]
     public async Task<NewGlossaryResponse> ImportGlossaryUniversal([ActionParameter] ImportUniversalGlossaryRequest request)
     {
         if (request?.File == null)

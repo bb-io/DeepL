@@ -14,7 +14,7 @@ namespace Apps.DeepL.Actions;
 [ActionList("Write")]
 public class WriteActions(InvocationContext invocationContext) : DeepLInvocable(invocationContext)
 {
-    [Action("Improve text", Description = "Rewrite text with DeepL Write and output improved text with language information.")]
+    [Action("Improve text", Description = "Rewrite text and output improved text with language information.")]
     public async Task<ImproveResponse> Improve([ActionParameter] ImproveRequest input)
     {
         var supportedLanguages = LanguageConstants.WriteLanguages.Keys;
