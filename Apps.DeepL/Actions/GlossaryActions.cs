@@ -73,10 +73,10 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
 
         return await ErrorHandler.ExecuteWithErrorHandlingAsync(async () =>
         {
-            request.TargetLanguageCode = request.TargetLanguageCode.ToLower();
-            request.SourceLanguageCode = request.SourceLanguageCode.ToLower();
-            await using var glossaryStream = await fileManagementClient.DownloadAsync(request.File);
-            var fileExtension = Path.GetExtension(request.File.Name);
+            var (fileBytes, fileExtension) = await DownloadGlossaryFile(request.File);
+            var (sourceLanguageCode, targetLanguageCode) =
+                await ResolveBilingualImportLanguages(fileBytes, fileExtension, request);
+            await using var glossaryStream = new MemoryStream(fileBytes);
 
             var (glossaryEntries, glossaryTitle) = fileExtension switch
             {
@@ -87,15 +87,17 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
                                          "Supported file extensions include .tbx, .csv & .tsv")
             };
 
-            var entriesDict = glossaryEntries.ToDictionary();
-
-            if (glossaryEntries == null || entriesDict.Count == 0)
+            if (glossaryEntries == null)
             {
-                throw new PluginMisconfigurationException("Glossary file has no entires, please check your input and try again");
+                throw new PluginMisconfigurationException("Glossary file has no entries for the selected language pair. Check the source and target languages and try again.");
             }
 
+            var entriesDict = glossaryEntries.ToDictionary();
+            if (entriesDict.Count == 0)
+                throw new PluginMisconfigurationException("Glossary file has no entries for the selected language pair. Check the source and target languages and try again.");
+
             var result = await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => await Client.CreateGlossaryAsync(glossaryTitle,
-                request.SourceLanguageCode, request.TargetLanguageCode, glossaryEntries));
+                sourceLanguageCode, targetLanguageCode, glossaryEntries));
             await await ErrorHandler.ExecuteWithErrorHandlingAsync(async () => Client.WaitUntilGlossaryReadyAsync(result.GlossaryId));
 
             return new NewGlossaryResponse
@@ -198,12 +200,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
     [Action("Update dictionary (multilingual)", Description = "Update dictionaries in an existing multilingual glossary from a TBX, CSV, or TSV file.")]
     public async Task<NewGlossaryResponse> UpdateDictionaryV3([ActionParameter] UpdateGlossaryRequest request)
     {
-        await using var stream = await fileManagementClient.DownloadAsync(request.File);
-        await using var memStream = new MemoryStream();
-        await stream.CopyToAsync(memStream).ConfigureAwait(false);
-        var fileBytes = memStream.ToArray();
-
-        var ext = Path.GetExtension(request.File.Name).ToLowerInvariant();
+        var (fileBytes, ext) = await DownloadGlossaryFile(request.File);
         string lastSource = null, lastTarget = null;
         int lastCount = 0;
         string format;
@@ -239,7 +236,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
                     .AddJsonBody(body);
                 var resp = await RestClient.ExecuteAsync<AddOrReplaceDictionaryResult>(restReq).ConfigureAwait(false);
                 if (!resp.IsSuccessful)
-                    throw new PluginApplicationException($"Error: {resp.StatusCode} – {resp.Content}");
+                    throw new PluginApplicationException($"Error: {resp.StatusCode} â€“ {resp.Content}");
                 var data = resp.Data!;
                 lastSource = data.SourceLang;
                 lastTarget = data.TargetLang;
@@ -291,7 +288,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
                     .AddJsonBody(body);
                 var resp = await RestClient.ExecuteAsync<AddOrReplaceDictionaryResult>(restReq).ConfigureAwait(false);
                 if (!resp.IsSuccessful)
-                    throw new PluginApplicationException($"Multilingual dictionary error: {resp.StatusCode} – {resp.Content}");
+                    throw new PluginApplicationException($"Multilingual dictionary error: {resp.StatusCode} â€“ {resp.Content}");
                 var dataRes = resp.Data!;
                 lastSource = dataRes.SourceLang;
                 lastTarget = dataRes.TargetLang;
@@ -319,7 +316,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         var metaReq = new RestRequest($"https://api.deepl.com/v3/glossaries/{request.GlossaryId}", Method.Get);
         var metaResp = await RestClient.ExecuteAsync<GetGlossaryMetadataResult>(metaReq).ConfigureAwait(false);
         if (!metaResp.IsSuccessful)
-            throw new PluginApplicationException($"Error: {metaResp.StatusCode} – {metaResp.Content}");
+            throw new PluginApplicationException($"Error: {metaResp.StatusCode} â€“ {metaResp.Content}");
         var metadata = metaResp.Data!;
 
         var pivotLang = metadata.Dictionaries.First().SourceLang;
@@ -332,7 +329,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
                 Method.Get);
             var entriesResp = await RestClient.ExecuteAsync<GetGlossaryEntriesResult>(entriesReq).ConfigureAwait(false);
             if (!entriesResp.IsSuccessful)
-                throw new PluginApplicationException($"Multilingual entries error: {entriesResp.StatusCode} – {entriesResp.Content}");
+                throw new PluginApplicationException($"Multilingual entries error: {entriesResp.StatusCode} â€“ {entriesResp.Content}");
             var dictData = entriesResp.Data!.Dictionaries.First();
             var entries = GlossaryEntries.FromTsv(dictData.Entries, skipChecks: true).ToDictionary();
 
@@ -410,7 +407,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
 
         if (!response.IsSuccessful)
             throw new PluginApplicationException(
-                $"Delete glossary error: {response.StatusCode} – {response.Content}");
+                $"Delete glossary error: {response.StatusCode} â€“ {response.Content}");
     }
 
 
@@ -656,7 +653,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         var metaReq = new RestRequest($"https://api.deepl.com/v3/glossaries/{request.GlossaryId}", Method.Get);
         var metaResp = await RestClient.ExecuteAsync<GetGlossaryMetadataResult>(metaReq).ConfigureAwait(false);
         if (!metaResp.IsSuccessful)
-            throw new PluginApplicationException($"Error: {metaResp.StatusCode} – {metaResp.Content}");
+            throw new PluginApplicationException($"Error: {metaResp.StatusCode} â€“ {metaResp.Content}");
 
         var metadata = metaResp.Data!;
         if (metadata.Dictionaries == null || metadata.Dictionaries.Count() == 0)
@@ -674,7 +671,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
 
             var entriesResp = await RestClient.ExecuteAsync<GetGlossaryEntriesResult>(entriesReq).ConfigureAwait(false);
             if (!entriesResp.IsSuccessful)
-                throw new PluginApplicationException($"Entries error: {entriesResp.StatusCode} – {entriesResp.Content}");
+                throw new PluginApplicationException($"Entries error: {entriesResp.StatusCode} â€“ {entriesResp.Content}");
 
             var dictData = entriesResp.Data!.Dictionaries.First();
             var entries = GlossaryEntries.FromTsv(dictData.Entries, skipChecks: true).ToDictionary();
@@ -902,35 +899,104 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         var glossaryValues = new List<KeyValuePair<string, string>>();
         foreach (var entry in blackbirdGlossary.ConceptEntries)
         {
-            var langSectionSource =
-                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.Equals(request.SourceLanguageCode, StringComparison.CurrentCultureIgnoreCase));
-            if (langSectionSource is null && request.SourceLanguageCode == "en") 
+            var langSectionSource = FindLanguageSection(entry, request.SourceLanguageCode);
+            if (langSectionSource is null && request.SourceLanguageCode == "en")
             {
-                langSectionSource =
-                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.Equals("en-us", StringComparison.CurrentCultureIgnoreCase) || x.LanguageCode.ToLower() == "en-gb");
+                langSectionSource = entry.LanguageSections.FirstOrDefault(x =>
+                    string.Equals(x.LanguageCode, "en-us", StringComparison.CurrentCultureIgnoreCase) ||
+                    string.Equals(x.LanguageCode, "en-gb", StringComparison.CurrentCultureIgnoreCase));
             }
-            var langSectionTarget =
-                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.Equals(request.TargetLanguageCode, StringComparison.CurrentCultureIgnoreCase));
-            if (langSectionTarget is null)
-            {
-                langSectionTarget =
-                entry.LanguageSections.FirstOrDefault(x => x.LanguageCode.ToLower().Substring(0, 2) == request.TargetLanguageCode.Substring(0, 2));
-            }
+
+            var langSectionTarget = FindLanguageSection(entry, request.TargetLanguageCode);
             if (langSectionSource == null || langSectionTarget == null)
             {
                 continue;
             }
 
-            var cleanTermSource = CleanText(langSectionSource.Terms.First().Term);
-            var cleanTermTarget = CleanText(langSectionTarget.Terms.First().Term);
-                glossaryValues.Add(new KeyValuePair<string, string>(cleanTermSource, cleanTermTarget));
-            }
+            var sourceTerm = langSectionSource.Terms?.FirstOrDefault()?.Term;
+            var targetTerm = langSectionTarget.Terms?.FirstOrDefault()?.Term;
+
+            if (string.IsNullOrWhiteSpace(sourceTerm) || string.IsNullOrWhiteSpace(targetTerm))
+                continue;
+
+            var cleanTermSource = CleanText(sourceTerm);
+            var cleanTermTarget = CleanText(targetTerm);
+
+            if (string.IsNullOrWhiteSpace(cleanTermSource) || string.IsNullOrWhiteSpace(cleanTermTarget))
+                continue;
+
+            glossaryValues.Add(new KeyValuePair<string, string>(cleanTermSource, cleanTermTarget));
+        }
 
         if (glossaryValues.Count == 0)
             return (null, request.Name ?? blackbirdGlossary.Title!);
 
         return (new GlossaryEntries(glossaryValues.DistinctBy(x => x.Key), skipChecks: true),
             request.Name ?? blackbirdGlossary.Title!);
+    }
+
+    private static async Task<(string SourceLanguageCode, string TargetLanguageCode)> ResolveBilingualImportLanguages(
+        byte[] fileBytes, string fileExtension, ImportGlossaryRequest request)
+    {
+        var sourceLanguageCode = NormalizeAndValidateLang(request.SourceLanguageCode);
+        var targetLanguageCode = NormalizeAndValidateLang(request.TargetLanguageCode);
+
+        if (sourceLanguageCode != null && targetLanguageCode != null)
+        {
+            if (string.Equals(sourceLanguageCode, targetLanguageCode, StringComparison.OrdinalIgnoreCase))
+                throw new PluginMisconfigurationException("Source language and target language must be different.");
+
+            request.SourceLanguageCode = sourceLanguageCode;
+            request.TargetLanguageCode = targetLanguageCode;
+            return (sourceLanguageCode, targetLanguageCode);
+        }
+
+        var (_, rawPivotLang, fileLangs) = await ParseGlossaryMetadata(fileBytes, fileExtension, request.Name, request.File.Name);
+        var normalizedFileLangs = fileLangs
+            .Select(NormalizeAndValidateLang)
+            .Where(x => !string.IsNullOrWhiteSpace(x))
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .Cast<string>()
+            .ToList();
+
+        if (sourceLanguageCode == null && targetLanguageCode == null)
+        {
+            if (normalizedFileLangs.Count == 2)
+            {
+                sourceLanguageCode = NormalizeAndValidateLang(rawPivotLang) ?? normalizedFileLangs[0];
+                targetLanguageCode = normalizedFileLangs
+                    .FirstOrDefault(x => !string.Equals(x, sourceLanguageCode, StringComparison.OrdinalIgnoreCase));
+            }
+            else
+            {
+                throw new PluginMisconfigurationException(
+                    "Source language and target language are required for bilingual glossary import when the file contains more than two languages. Provide both language codes or use 'Import glossary (multilingual)'/'Import glossary (new)'.");
+            }
+        }
+        else if (sourceLanguageCode == null)
+        {
+            sourceLanguageCode = NormalizeAndValidateLang(rawPivotLang);
+            if (sourceLanguageCode == null || string.Equals(sourceLanguageCode, targetLanguageCode, StringComparison.OrdinalIgnoreCase))
+            {
+                sourceLanguageCode = normalizedFileLangs
+                    .FirstOrDefault(x => !string.Equals(x, targetLanguageCode, StringComparison.OrdinalIgnoreCase));
+            }
+        }
+        else
+        {
+            targetLanguageCode = normalizedFileLangs
+                .FirstOrDefault(x => !string.Equals(x, sourceLanguageCode, StringComparison.OrdinalIgnoreCase));
+        }
+
+        if (sourceLanguageCode == null || targetLanguageCode == null)
+            throw new PluginMisconfigurationException("Unable to determine a valid source/target language pair for the glossary file. Provide both language codes explicitly.");
+
+        if (string.Equals(sourceLanguageCode, targetLanguageCode, StringComparison.OrdinalIgnoreCase))
+            throw new PluginMisconfigurationException("Source language and target language must be different.");
+
+        request.SourceLanguageCode = sourceLanguageCode;
+        request.TargetLanguageCode = targetLanguageCode;
+        return (sourceLanguageCode, targetLanguageCode);
     }
 
     private static (GlossaryEntries entries, string name) GetEntriesFromCsv(ImportGlossaryRequest request,
@@ -1008,7 +1074,18 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         var bytes = memStream.ToArray();
         var ext = Path.GetExtension(file.Name).ToLowerInvariant();
 
+        if (ext == ".tbx")
+            bytes = StripUtf8Bom(bytes);
+
         return (bytes, ext);
+    }
+
+    private static byte[] StripUtf8Bom(byte[] bytes)
+    {
+        if (bytes.Length >= 3 && bytes[0] == 0xEF && bytes[1] == 0xBB && bytes[2] == 0xBF)
+            return bytes[3..];
+
+        return bytes;
     }
 
     private static async Task<(string Name, string PivotLang, List<string> Langs)> ParseGlossaryMetadata(
@@ -1103,7 +1180,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
 
         var resp = await RestClient.ExecuteAsync<CreateGlossaryV3Result>(restReq).ConfigureAwait(false);
         if (!resp.IsSuccessful)
-            throw new PluginApplicationException($" {resp.StatusCode} – {resp.Content}");
+            throw new PluginApplicationException($" {resp.StatusCode} â€“ {resp.Content}");
 
         return resp.Data!;
     }
