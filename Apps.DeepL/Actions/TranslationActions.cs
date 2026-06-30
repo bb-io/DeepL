@@ -6,15 +6,15 @@ using Apps.DeepL.Utils;
 using Blackbird.Applications.Sdk.Common;
 using Blackbird.Applications.Sdk.Common.Actions;
 using Blackbird.Applications.Sdk.Common.Exceptions;
+using Blackbird.Applications.Sdk.Common.Files;
 using Blackbird.Applications.Sdk.Common.Invocation;
 using Blackbird.Applications.SDK.Blueprints;
 using Blackbird.Applications.SDK.Extensions.FileManagement.Interfaces;
+using Blackbird.Filters.Bilingual.Xliff1;
 using Blackbird.Filters.Constants;
-using Blackbird.Filters.Content;
 using Blackbird.Filters.Enums;
 using Blackbird.Filters.Extensions;
 using Blackbird.Filters.Transformations;
-using Blackbird.Filters.Xliff.Xliff1;
 using Blackbird.Xliff.Utils;
 using Blackbird.Xliff.Utils.Converters;
 using Blackbird.Xliff.Utils.Extensions;
@@ -99,11 +99,17 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
 
         try
         {
-            var stream = await fileManagementClient.DownloadAsync(input.File);
-            var content = await Transformation.Parse(stream, input.File.Name);
+            await using var stream = await fileManagementClient.DownloadAsync(input.File);
+            var loadResult = Transformation.Load(stream, input.File.Name, input.File.ContentType);
+            if (!loadResult.Success)
+            {
+                return await HandlerNativeTranslateDocument(documentTranslationRequest);
+            }
+
+            var content = loadResult.Value;
             return await HandleInteroperableTransformation(content, input);
         }
-        catch (NotImplementedException e)
+        catch (NotImplementedException)
         {
             return await HandlerNativeTranslateDocument(documentTranslationRequest);
         }
@@ -117,7 +123,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
 
         async Task<IEnumerable<TextResult>> BatchTranslate(IEnumerable<(Unit Unit, Segment Segment)> batch)
         {
-            var tagHandling = (batch.FirstOrDefault().Unit.ContentCoder.SupportedMediaTypes.Contains(MediaTypeNames.Text.Html) ? "html" : "xml");
+            var tagHandling = GetDefaultTagHandling(input.File);
             var options = new TextTranslateOptions
             {
                 PreserveFormatting = input.PreserveFormatting.HasValue ? input.PreserveFormatting.Value : true,
@@ -171,21 +177,16 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
 
         if (input.OutputFileHandling == "original")
         {
-            CodedContent targetContent;
-            Stream originalStream;
-            try
+            var targetContentResult = content.Target();
+            if (!targetContentResult.Success)
             {
-                targetContent = content.Target();
-                originalStream = targetContent.Serialize().ToStream();
+                throw new PluginMisconfigurationException(targetContentResult.Error);
             }
-            catch (Exception e) when(e.Message.Contains("Cannot convert to content, no original data found"))
-            {
-                throw new PluginMisconfigurationException("The original file content could not be retrieved because it's supported only for html files. Please change the 'Output file handling' field to 'Interoperable XLIFF (default)' or use DeepL native file translation strategy.");
-            }
-            
+
+            var targetContent = targetContentResult.Value;
             return new FileResponse
             {
-                File = await fileManagementClient.UploadAsync(originalStream, targetContent.OriginalMediaType, targetContent.OriginalName),
+                File = await fileManagementClient.UploadAsync(targetContent.ToStream(), targetContent.OriginalMediaType, targetContent.OriginalName),
                 BilledCharacters = billedCharacters,
             };
         }
@@ -194,7 +195,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
             var xliff1String = Xliff1Serializer.Serialize(content);
             return new FileResponse
             {
-                File = await fileManagementClient.UploadAsync(xliff1String.ToStream(), MediaTypes.Xliff, content.XliffFileName),
+                File = await fileManagementClient.UploadAsync(xliff1String.ToStream(), MediaTypes.Xliff1, content.BilingualFileName),
                 BilledCharacters = billedCharacters,
             };
         }
@@ -211,9 +212,23 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
 
         return new FileResponse
         {
-            File = await fileManagementClient.UploadAsync(content.Serialize().ToStream(), MediaTypes.Xliff, content.XliffFileName),
+            File = await fileManagementClient.UploadAsync(content.ToStream(), MediaTypes.Xliff2, content.BilingualFileName),
             BilledCharacters = billedCharacters,
         };
+    }
+
+    private static string GetDefaultTagHandling(FileReference file)
+    {
+        if (file.ContentType?.Contains(MediaTypeNames.Text.Html, StringComparison.OrdinalIgnoreCase) == true)
+        {
+            return "html";
+        }
+
+        var extension = Path.GetExtension(file.Name);
+        return extension.Equals(".html", StringComparison.OrdinalIgnoreCase) ||
+               extension.Equals(".htm", StringComparison.OrdinalIgnoreCase)
+            ? "html"
+            : "xml";
     }
 
     private async Task<FileResponse> HandlerNativeTranslateDocument([ActionParameter] DocumentTranslationRequest request)
