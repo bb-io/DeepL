@@ -21,6 +21,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Xml;
 using System.Xml.Linq;
+using Apps.DeepL.Extensions;
 
 namespace Apps.DeepL.Actions;
 
@@ -131,6 +132,7 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         var dictionariesPayload = new List<object>();
         var warnings = new List<string>();
 
+        var supportedPairs = await Client.GetSupportedGlossaryPairs();
         var processedTargetLangs = new HashSet<string>();
 
         foreach (var rawTargetLang in fileLangs.Where(l => !string.Equals(l, rawPivotLang, StringComparison.OrdinalIgnoreCase)))
@@ -142,10 +144,22 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
                 warnings.Add($"Language '{rawTargetLang}' is not supported by DeepL Glossaries and was ignored.");
                 continue;
             }
+            
+            if (string.Equals(validTargetLang, validPivotLang, StringComparison.OrdinalIgnoreCase))
+            {
+                warnings.Add($"Language '{rawTargetLang}' matches the source language after normalization and was skipped.");
+                continue;
+            }
 
             if (processedTargetLangs.Contains(validTargetLang))
             {
                 warnings.Add($"Language '{rawTargetLang}' normalizes to '{validTargetLang}', which was already imported from a previous column. To avoid duplication errors, '{rawTargetLang}' was skipped.");
+                continue;
+            }
+            
+            if (!supportedPairs.Contains(GlossaryPairEntity.Of(validPivotLang, validTargetLang)))
+            {
+                warnings.Add($"DeepL glossaries don't support the pair '{validPivotLang}' -> '{validTargetLang}'. Language '{rawTargetLang}' was skipped.");
                 continue;
             }
 
