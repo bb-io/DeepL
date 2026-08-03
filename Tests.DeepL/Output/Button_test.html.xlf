@@ -53,7 +53,7 @@
       </originalData>
       <segment state="translated">
         <source>Required plan: <sc id="1" dataRef="d1" fs:fs="strong" />DeepL Voice for Conversations <ec dataRef="d2" startRef="1" /></source>
-        <target>Erforderlicher Plan: <sc id="1" dataRef="d1" fs:fs="strong" />DeepL Voice für Konversationen <ec dataRef="d2" startRef="1" /></target>
+        <target>Erforderlicher Tarif: <sc id="1" dataRef="d1" fs:fs="strong" />DeepL Voice for Conversations <ec dataRef="d2" startRef="1" /></target>
       </segment>
     </unit>
     <unit id="u3" name="/html[1]/body[1]/div[2]/button[1]" its:tool="DeepL" fs:fs="button" fs:subFs="id,defaultOpen\class,custom-tablinks\onclick,openTab(event\, 'tab01')">

@@ -22,6 +22,7 @@ using DeepL;
 using DeepL.Model;
 using System.Net;
 using System.Net.Mime;
+using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -115,6 +116,21 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         }
     }
 
+    private string BuildContext(Unit unit)
+    {
+        var sb = new StringBuilder();
+
+        if (!string.IsNullOrWhiteSpace(unit.GetSource().GetPlainText()))
+            sb.Append(unit.GetSource().GetPlainText() + ":");
+
+        foreach(var note in unit.Notes)
+        {
+            sb.Append(note.Text);
+        }
+
+        return sb.ToString();
+    }
+
     private async Task<FileResponse> HandleInteroperableTransformation(Transformation content, ContentTranslationRequest input)
     {
         content.SourceLanguage ??= input.SourceLanguage;
@@ -125,7 +141,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         {
             var tagHandling = GetDefaultTagHandling(input.File);
 
-            var notesContext = string.Join('\n', batch.SelectMany(x => x.Unit.Notes.Select(y => y.Text)));
+            var notesContext = string.Join('\n', batch.Select(x => BuildContext(x.Unit)));
 
             var options = new TextTranslateOptions
             {
