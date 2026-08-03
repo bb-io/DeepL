@@ -124,13 +124,16 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         async Task<IEnumerable<TextResult>> BatchTranslate(IEnumerable<(Unit Unit, Segment Segment)> batch)
         {
             var tagHandling = GetDefaultTagHandling(input.File);
+
+            var notesContext = string.Join('\n', batch.SelectMany(x => x.Unit.Notes.Select(y => y.Text)));
+
             var options = new TextTranslateOptions
             {
                 PreserveFormatting = input.PreserveFormatting.HasValue ? input.PreserveFormatting.Value : true,
                 Formality = GetFormality(input.Formality),
                 GlossaryId = input.GlossaryId,
                 StyleId = input.StyleRuleId,
-                Context = input.Context,
+                Context = input.Context + notesContext,
                 ModelType = GetModelType(input.ModelType),
                 TagHandling = input.TagHandling ?? tagHandling,  
             };

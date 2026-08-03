@@ -46,7 +46,7 @@
       </mda:metadata>
       <segment state="translated">
         <source>Ready to Discover the Magic of the Loire Valley for Yourself?</source>
-        <target>Klaar om zelf de magie van de Loirevallei te ontdekken?</target>
+        <target>Ben je klaar om de betovering van de Loirevallei zelf te ontdekken?</target>
       </segment>
     </unit>
     <group id="g1">
@@ -58,6 +58,7 @@
       <unit id="u3" name="/html[1]/body[1]/div[2]/div[1]/p[1]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">6eZfQFZIjT5p5uHqYqMGQZ-text</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">342</mda:meta>
@@ -68,12 +69,13 @@
         </mda:metadata>
         <segment state="translated">
           <source>Embark on an unforgettable journey through France's most enchanting countryside. Wander through majestic châteaux, savor the finest Loire wines, and lose yourself in picturesque villages. Whether you're a history buff, a wine enthusiast, or simply a lover of beautiful landscapes, the Loire Valley offers a travel experience unlike any other.</source>
-          <target>Ga op een onvergetelijke reis door het meest betoverende landschap van Frankrijk. Dwaal door majestueuze kastelen, proef de beste Loire-wijnen en verdwaal in pittoreske dorpjes. Of u nu een geschiedenisliefhebber, een wijnkenner of gewoon een liefhebber van prachtige landschappen bent, de Loirevallei biedt een reiservaring als geen ander.</target>
+          <target>Ga op een onvergetelijke reis door het meest betoverende platteland van Frankrijk. Bezoek majestueuze kastelen, proef de beste wijnen uit de Loire en laat je meeslepen door pittoreske dorpjes. Of je nu een geschiedenisliefhebber bent, een wijnliefhebber of gewoon houdt van prachtige landschappen: de Loirevallei biedt een reiservaring die zijn weerga niet kent.</target>
         </segment>
       </unit>
       <unit id="u4" name="/html[1]/body[1]/div[2]/div[1]/p[2]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">6eZfQFZIjT5p5uHqYqMGQZ-text</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">92</mda:meta>
@@ -90,7 +92,7 @@
           <source>
             <sc id="1" dataRef="d1" fs:fs="strong" />Book your Loire Valley adventure today and step into a world where fairytales come to life! <ec dataRef="d2" startRef="1" /></source>
           <target>
-            <sc id="1" dataRef="d1" fs:fs="strong" />Boek vandaag nog uw avontuur in de Loirevallei en stap binnen in een wereld waar sprookjes tot leven komen! <ec dataRef="d2" startRef="1" /></target>
+            <sc id="1" dataRef="d1" fs:fs="strong" />Boek vandaag nog je avontuur in de Loirevallei en stap een wereld binnen waar sprookjes tot leven komen! <ec dataRef="d2" startRef="1" /></target>
         </segment>
       </unit>
     </group>
@@ -120,6 +122,7 @@
       <unit id="u6" name="/html[1]/body[1]/div[3]/div[1]/p[1]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">4avSNl953GJYUmIZ8cJg6S-text</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">473</mda:meta>
@@ -136,12 +139,13 @@
           <source>
             <sc id="1" dataRef="d1" fs:fs="strong" />Morning: Château de Chambord<ec dataRef="d2" startRef="1" /> Begin your day with a visit to the legendary Château de Chambord, a masterpiece of French Renaissance architecture. This sprawling castle, with its 400 rooms, iconic double-helix staircase, and forested grounds, was designed for King Francis I as a hunting lodge. Wander the grand halls and rooftop terraces, where you’ll find sweeping views of the Loire landscape. Arrive early to enjoy the castle’s peaceful grandeur before the crowds arrive.</source>
           <target>
-            <sc id="1" dataRef="d1" fs:fs="strong" />Ochtend: Château de Chambord<ec dataRef="d2" startRef="1" /> Begin uw dag met een bezoek aan het legendarische Château de Chambord, een meesterwerk van de Franse renaissancearchitectuur. Dit uitgestrekte kasteel, met zijn 400 kamers, iconische dubbele wenteltrap en bosrijke omgeving, werd ontworpen voor koning Frans I als jachthuis. Dwaal door de grote zalen en dakterrassen, waar u een prachtig uitzicht heeft over het landschap van de Loire. Kom vroeg om te genieten van de rustige grandeur van het kasteel voordat de drukte begint.</target>
+            <sc id="1" dataRef="d1" fs:fs="strong" />Ochtend: Château de Chambord<ec dataRef="d2" startRef="1" /> Begin je dag met een bezoek aan het legendarische Château de Chambord, een meesterwerk van de Franse renaissancearchitectuur. Dit uitgestrekte kasteel, met zijn 400 kamers, iconische dubbele spiraaltrap en bosrijke terrein, werd ontworpen voor koning Frans I als jachthuis. Dwaal door de grootse zalen en over de dakterrassen, waar je een weids uitzicht hebt op het landschap van de Loire. Kom vroeg, zodat u nog kunt genieten van de vredige grandeur van het kasteel voordat de drukte begint.</target>
         </segment>
       </unit>
       <unit id="u7" name="/html[1]/body[1]/div[3]/div[1]/p[2]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">4avSNl953GJYUmIZ8cJg6S-text</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">440</mda:meta>
@@ -158,12 +162,13 @@
           <source>
             <sc id="1" dataRef="d1" fs:fs="strong" />Midday: Lunch in Blois<ec dataRef="d2" startRef="1" /> Just a short drive away, the town of Blois offers a taste of quintessential Loire Valley charm. Explore its medieval center, winding alleyways, and the regal Château de Blois, known for its eclectic mix of architectural styles. For lunch, stop by a local bistro where you can savor Loire specialties like goat cheese tartine or rillettes. Pair it with a glass of crisp Sancerre wine, cultivated just a few miles away.</source>
           <target>
-            <sc id="1" dataRef="d1" fs:fs="strong" />Middag: Lunch in Blois<ec dataRef="d2" startRef="1" /> Op slechts een klein eindje rijden ligt het stadje Blois, waar u kunt proeven van de typische charme van de Loirevallei. Verken het middeleeuwse centrum, de kronkelende steegjes en het koninklijke Château de Blois, bekend om zijn eclectische mix van architecturale stijlen. Stop voor de lunch bij een lokale bistro waar u kunt genieten van specialiteiten uit de Loire, zoals tartine met geitenkaas of rillettes. Combineer dit met een glas frisse Sancerre-wijn, die slechts enkele kilometers verderop wordt verbouwd.</target>
+            <sc id="1" dataRef="d1" fs:fs="strong" />Middag: Lunch in Blois<ec dataRef="d2" startRef="1" /> Op slechts een klein eindje rijden ligt het stadje Blois, waar u de typische charme van de Loirevallei kunt proeven. Verken het middeleeuwse centrum, de kronkelende steegjes en het vorstelijke Château de Blois, dat bekend staat om zijn eclectische mix van bouwstijlen. Ga voor de lunch naar een lokale bistro waar u kunt genieten van specialiteiten uit de Loire, zoals een tartine met geitenkaas of rillettes. Combineer dit met een glas frisse Sancerre-wijn, die op slechts een paar mijl afstand wordt verbouwd.</target>
         </segment>
       </unit>
       <unit id="u8" name="/html[1]/body[1]/div[3]/div[1]/p[3]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">4avSNl953GJYUmIZ8cJg6S-text</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">509</mda:meta>
@@ -180,12 +185,13 @@
           <source>
             <sc id="1" dataRef="d1" fs:fs="strong" />Afternoon: Amboise and the Legacy of Leonardo da Vinci<ec dataRef="d2" startRef="1" /> Head to the Château d’Amboise, perched dramatically over the Loire River, once home to kings and visionaries alike. Stroll through royal apartments, visit the Gothic chapel where Leonardo da Vinci is buried, and soak in panoramic views of the river and town below. Just up the hill, the Clos Lucé mansion was Da Vinci’s residence for his final years. Inside, you’ll find intricate models of his inventions, bringing the genius of the Renaissance to life.</source>
           <target>
-            <sc id="1" dataRef="d1" fs:fs="strong" />Middag: Amboise en de nalatenschap van Leonardo da Vinci<ec dataRef="d2" startRef="1" /> Ga naar het Château d'Amboise, dat dramatisch boven de Loire-rivier uittorent en ooit de thuisbasis was van koningen en visionairs. Wandel door de koninklijke vertrekken, bezoek de gotische kapel waar Leonardo da Vinci begraven ligt en geniet van het panoramische uitzicht op de rivier en de stad beneden. Net boven de heuvel ligt het landhuis Clos Lucé, waar Da Vinci zijn laatste jaren doorbracht. Binnen vindt u gedetailleerde modellen van zijn uitvindingen, die het genie van de renaissance tot leven brengen.</target>
+            <sc id="1" dataRef="d1" fs:fs="strong" />Middag: Amboise en de nalatenschap van Leonardo da Vinci<ec dataRef="d2" startRef="1" /> Bezoek het Château d’Amboise, dat op spectaculaire wijze boven de Loire uittorent en ooit de thuisbasis was van zowel koningen als visionairs. Wandel door de koninklijke vertrekken, bezoek de gotische kapel waar Leonardo da Vinci begraven ligt en geniet van het panoramische uitzicht op de rivier en de stad beneden. Iets hoger op de heuvel ligt het landhuis Clos Lucé, waar Da Vinci zijn laatste jaren doorbracht. Binnen vind je gedetailleerde modellen van zijn uitvindingen, die het genie van de Renaissance tot leven brengen.</target>
         </segment>
       </unit>
       <unit id="u9" name="/html[1]/body[1]/div[3]/div[1]/p[4]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">4avSNl953GJYUmIZ8cJg6S-text</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">54</mda:meta>
@@ -196,7 +202,7 @@
         </mda:metadata>
         <segment state="translated">
           <source>You can read more about the Loire valley in this book:</source>
-          <target>Je kunt meer lezen over de Loirevallei in dit boek:</target>
+          <target>In dit boek kun je meer lezen over de Loirevallei:</target>
         </segment>
       </unit>
     </group>
@@ -209,6 +215,7 @@
       <unit id="u10" name="/html[1]/body[1]/div[4]/div[1]/p[1]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">3MvZ2M38zOBdztgQJAzw0B-description</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">423</mda:meta>
@@ -223,12 +230,13 @@
         </originalData>
         <segment state="translated">
           <source>Embark on a journey through <sc id="1" dataRef="d1" fs:fs="i" />France Unveiled: A Journey Through Culture, Cuisine, and Countryside<ec dataRef="d2" startRef="1" />, a unique travel guide that weaves together the romantic charm of Paris, the sun-soaked allure of Provence, and the vineyard-laden trails of Bordeaux. This guide goes beyond the usual tourist stops to introduce you to hidden villages, local markets, and timeworn chateaux where history and modern French life blend seamlessly.</source>
-          <target>Ga op reis door <sc id="1" dataRef="d1" fs:fs="i" />Frankrijk met France Unveiled: A Journey Through Culture, Cuisine, and Countryside<ec dataRef="d2" startRef="1" />, een unieke reisgids die de romantische charme van Parijs, de zonovergoten allure van de Provence en de met wijngaarden bezaaide paden van Bordeaux met elkaar verweeft. Deze gids gaat verder dan de gebruikelijke toeristische trekpleisters en laat u kennismaken met verborgen dorpjes, lokale markten en door de tijd getekende kastelen waar geschiedenis en het moderne Franse leven naadloos in elkaar overvloeien.</target>
+          <target>Ga mee op reis met <sc id="1" dataRef="d1" fs:fs="i" />*France Unveiled: A Journey Through Culture, Cuisine, and Countryside*<ec dataRef="d2" startRef="1" />, een unieke reisgids die de romantische charme van Parijs, de zonovergoten allure van de Provence en de met wijngaarden omzoomde routes van Bordeaux met elkaar verweeft. Deze gids gaat verder dan de gebruikelijke toeristische trekpleisters en laat je kennismaken met verborgen dorpjes, lokale markten en eeuwenoude kastelen waar geschiedenis en het moderne Franse leven naadloos in elkaar overvloeien.</target>
         </segment>
       </unit>
       <unit id="u11" name="/html[1]/body[1]/div[4]/div[1]/p[2]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">3MvZ2M38zOBdztgQJAzw0B-description</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">464</mda:meta>
@@ -243,12 +251,13 @@
         </originalData>
         <segment state="translated">
           <source>Whether sipping coffee in a quiet Marais café, wandering through medieval streets in Alsace, or savoring fresh seafood along the Côte d'Azur, <sc id="1" dataRef="d1" fs:fs="i" />France Unveiled<ec dataRef="d2" startRef="1" /> offers insights, local tips, and immersive experiences for travelers who want to explore like a local. Packed with detailed itineraries, insider recommendations, and stories that bring each region to life, this guide will help you uncover the heart of France—from its iconic sites to its best-kept secrets.</source>
-          <target>Of u nu koffie drinkt in een rustig café in de Marais, door middeleeuwse straatjes in de Elzas slentert of geniet van verse zeevruchten aan de Côte d'Azur, <sc id="1" dataRef="d1" fs:fs="i" />France Unveiled<ec dataRef="d2" startRef="1" /> biedt inzichten, lokale tips en meeslepende ervaringen voor reizigers die het land willen verkennen als een local. Deze gids staat boordevol gedetailleerde reisroutes, insider-aanbevelingen en verhalen die elke regio tot leven brengen, en helpt u het hart van Frankrijk te ontdekken – van iconische bezienswaardigheden tot de best bewaarde geheimen.</target>
+          <target>Of je nu geniet van een kopje koffie in een rustig café in de Marais, door de middeleeuwse straatjes van de Elzas slentert of verse zeevruchten proeft aan de Côte d&amp;#x27;Azur: <sc id="1" dataRef="d1" fs:fs="i" />France Unveiled<ec dataRef="d2" startRef="1" /> biedt inzichten, lokale tips en meeslepende ervaringen voor reizigers die het land willen verkennen zoals de lokale bevolking dat doet. Deze gids staat boordevol gedetailleerde reisroutes, aanbevelingen van insiders en verhalen die elke regio tot leven brengen, en helpt je zo de essentie van Frankrijk te ontdekken – van de iconische bezienswaardigheden tot de best bewaarde geheimen.</target>
         </segment>
       </unit>
       <unit id="u12" name="/html[1]/body[1]/div[4]/div[1]/p[3]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">3MvZ2M38zOBdztgQJAzw0B-description</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">110</mda:meta>
@@ -265,7 +274,7 @@
           <source>
             <sc id="1" dataRef="d1" fs:fs="i" />Perfect for first-time visitors and seasoned Francophiles alike, this guide will make every trip unforgettable<ec dataRef="d2" startRef="1" /></source>
           <target>
-            <sc id="1" dataRef="d1" fs:fs="i" />Deze gids is perfect voor zowel nieuwe bezoekers als doorgewinterde francofielen en maakt elke reis onvergetelijk.<ec dataRef="d2" startRef="1" /></target>
+            <sc id="1" dataRef="d1" fs:fs="i" />Deze gids is perfect voor zowel mensen die voor het eerst naar Frankrijk gaan als doorgewinterde francofielen, en zorgt ervoor dat elke reis onvergetelijk wordt<ec dataRef="d2" startRef="1" /></target>
         </segment>
       </unit>
     </group>
@@ -317,7 +326,7 @@
       </mda:metadata>
       <segment state="translated">
         <source>Exploring Loire Valley Wines</source>
-        <target>Ontdek de wijnen van de Loirevallei</target>
+        <target>Op ontdekkingstocht naar de wijnen uit de Loirevallei</target>
       </segment>
     </unit>
     <group id="g4">
@@ -329,6 +338,7 @@
       <unit id="u16" name="/html[1]/body[1]/div[5]/div[1]/p[2]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">Tp9LF4pw5n3ydWs58YvOc-text</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">511</mda:meta>
@@ -339,12 +349,13 @@
         </mda:metadata>
         <segment state="translated">
           <source>The Loire Valley is known for its diverse wine offerings, from crisp whites to delicate reds. To experience the region’s viniculture, stop by a local winery in the Vouvray or Chinon area, where family-run vineyards offer tastings and tours. Here, you can sample Loire’s famous Chenin Blancs, earthy Cabernet Francs, and refreshing Rosés, often accompanied by local cheeses and bread. It’s a truly immersive way to connect with the region’s rich agricultural traditions and taste the terroir of the Loire Valley.</source>
-          <target>De Loirevallei staat bekend om zijn gevarieerde wijnassortiment, van frisse witte wijnen tot delicate rode wijnen. Om de wijncultuur van de regio te ervaren, kunt u een bezoek brengen aan een lokale wijnmakerij in de omgeving van Vouvray of Chinon, waar familiebedrijven proeverijen en rondleidingen aanbieden. Hier kunt u de beroemde Chenin Blancs, aardse Cabernet Francs en verfrissende rosés van de Loire proeven, vaak vergezeld van lokale kazen en brood. Het is een echt meeslepende manier om kennis te maken met de rijke agrarische tradities van de regio en het terroir van de Loirevallei te proeven.</target>
+          <target>De Loirevallei staat bekend om zijn gevarieerde wijnaanbod, van frisse witte wijnen tot delicate rode wijnen. Om de wijnbouw van de regio te ontdekken, kun je een bezoek brengen aan een lokaal wijnhuis in de omgeving van Vouvray of Chinon, waar familiebedrijven proeverijen en rondleidingen aanbieden. Hier kun je de beroemde Chenin Blancs, aardse Cabernet Francs en verfrissende roséwijnen van de Loire proeven, vaak vergezeld van lokale kazen en brood. Het is een werkelijk meeslepende manier om kennis te maken met de rijke landbouwtradities van de regio en het terroir van de Loirevallei te proeven.</target>
         </segment>
       </unit>
       <unit id="u17" name="/html[1]/body[1]/div[5]/div[1]/h3[1]" its:tool="DeepL" fs:fs="h3">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">Tp9LF4pw5n3ydWs58YvOc-text</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">41</mda:meta>
@@ -367,6 +378,7 @@
       <unit id="u18" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[1]/p[1]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">Tp9LF4pw5n3ydWs58YvOc-text</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">19</mda:meta>
@@ -389,6 +401,7 @@
       <unit id="u19" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[1]/p[2]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">Tp9LF4pw5n3ydWs58YvOc-text</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">134</mda:meta>
@@ -399,12 +412,13 @@
         </mda:metadata>
         <segment state="translated">
           <source>Spring and autumn offer pleasant weather and fewer crowds, while summer brings the region to life with festivals and outdoor concerts.</source>
-          <target>De lente en herfst bieden aangenaam weer en minder drukte, terwijl de zomer de regio tot leven brengt met festivals en openluchtconcerten.</target>
+          <target>In de lente en de herfst is het aangenaam weer en is het minder druk, terwijl de zomer de regio tot leven brengt met festivals en openluchtconcerten.</target>
         </segment>
       </unit>
       <unit id="u20" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[2]/p[1]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">Tp9LF4pw5n3ydWs58YvOc-text</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">15</mda:meta>
@@ -427,6 +441,7 @@
       <unit id="u21" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[2]/p[2]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">Tp9LF4pw5n3ydWs58YvOc-text</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">131</mda:meta>
@@ -437,12 +452,13 @@
         </mda:metadata>
         <segment state="translated">
           <source>Renting a bike is a great way to explore the scenic Loire à Vélo bicycling routes, which connect many of the region’s major sights.</source>
-          <target>Een fiets huren is een geweldige manier om de schilderachtige fietsroutes van Loire à Vélo te verkennen, die veel van de belangrijkste bezienswaardigheden van de regio met elkaar verbinden.</target>
+          <target>Een fiets huren is een geweldige manier om de schilderachtige fietsroutes van de Loire à Vélo te verkennen, die veel van de belangrijkste bezienswaardigheden van de regio met elkaar verbinden.</target>
         </segment>
       </unit>
       <unit id="u22" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[3]/p[1]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">Tp9LF4pw5n3ydWs58YvOc-text</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">11</mda:meta>
@@ -459,12 +475,13 @@
           <source>
             <sc id="1" dataRef="d1" fs:fs="strong" />Hidden Gem:<ec dataRef="d2" startRef="1" /></source>
           <target>
-            <sc id="1" dataRef="d1" fs:fs="strong" />Hidden Gem:<ec dataRef="d2" startRef="1" /></target>
+            <sc id="1" dataRef="d1" fs:fs="strong" />Verborgen pareltje:<ec dataRef="d2" startRef="1" /></target>
         </segment>
       </unit>
       <unit id="u23" name="/html[1]/body[1]/div[5]/div[1]/ul[1]/li[3]/p[2]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">Tp9LF4pw5n3ydWs58YvOc-text</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">218</mda:meta>
@@ -475,12 +492,13 @@
         </mda:metadata>
         <segment state="translated">
           <source>Don’t miss the lesser-known Château de Villandry, celebrated for its Renaissance gardens. Spend a serene afternoon wandering through its maze of perfectly manicured flowerbeds, orchards, and ornamental vegetable plots.</source>
-          <target>Mis het minder bekende Château de Villandry niet, dat bekend staat om zijn renaissancetuinen. Breng een rustige middag door met een wandeling door het doolhof van perfect onderhouden bloembedden, boomgaarden en siergroentetuinen.</target>
+          <target>Mis het minder bekende Château de Villandry, dat bekendstaat om zijn renaissancetuinen, zeker niet. Breng een rustige middag door met een wandeling door het doolhof van perfect onderhouden bloembedden, boomgaarden en siertuinen.</target>
         </segment>
       </unit>
       <unit id="u24" name="/html[1]/body[1]/div[5]/div[1]/p[3]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">Tp9LF4pw5n3ydWs58YvOc-text</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">0</mda:meta>
@@ -497,6 +515,7 @@
       <unit id="u25" name="/html[1]/body[1]/div[5]/div[1]/p[4]" its:tool="DeepL" fs:fs="p">
         <mda:metadata>
           <mda:metaGroup category="blackbird">
+            <mda:meta type="key">Tp9LF4pw5n3ydWs58YvOc-text</mda:meta>
             <mda:metaGroup category="usage">
               <mda:metaGroup category="DeepL">
                 <mda:meta type="value">248</mda:meta>
@@ -507,7 +526,7 @@
         </mda:metadata>
         <segment state="translated">
           <source>Blackbird is a TMS — not a Translation Management System, but a Transformation Management System. Built as iPaaS infrastructure with a memory layer, it automates, adapts, and orchestrates content across languages, formats, and platforms — at scale.</source>
-          <target>Blackbird is een TMS – niet een Translation Management System (vertaalbeheersysteem), maar een Transformation Management System (transformatiebeheersysteem). Het is gebouwd als iPaaS-infrastructuur met een geheugenlaag en automatiseert, past aan en coördineert content in verschillende talen, formaten en platforms – op grote schaal.</target>
+          <target>Blackbird is een TMS — geen vertaalbeheersysteem (Translation Management System), maar een transformatiebeheersysteem (Transformation Management System). Het is opgezet als een iPaaS-infrastructuur met een geheugenlaag en automatiseert, past aan en coördineert content in verschillende talen, formaten en op verschillende platforms — op grote schaal.</target>
         </segment>
       </unit>
     </group>

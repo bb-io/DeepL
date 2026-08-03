@@ -34,6 +34,22 @@ public class TranslationActionsTests : TestBase
     }
 
     [TestMethod]
+    public async Task Translate_with_context()
+    {
+        var result = await _actions.Translate(new TextTranslationRequest
+        {
+            Text = "Chat",
+            TargetLanguage = "nl",
+            Context = "As to communicate with someone"
+        });
+
+        Assert.IsNotNull(result.TranslatedText);
+        Console.WriteLine(result.TranslatedText);
+        Console.WriteLine(result.BilledCharacters);
+        Assert.IsTrue(result.BilledCharacters > 0);
+    }
+
+    [TestMethod]
     public async Task Translate_WithStyleRules()
     {
         var result = await _actions.Translate(new TextTranslationRequest
