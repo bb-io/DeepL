@@ -139,7 +139,7 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
 
         async Task<IEnumerable<TextResult>> BatchTranslate(IEnumerable<(Unit Unit, Segment Segment)> batch)
         {
-            var tagHandling = GetDefaultTagHandling(input.File);
+            var tagHandling = GetDefaultTagHandling(content);
 
             var notesContext = string.Join('\n', batch.Select(x => BuildContext(x.Unit)));
 
@@ -159,8 +159,10 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
                 options.ExtraBodyParameters = new Dictionary<string, string> { { "tag_handling_version", "v2" } };
             }
 
+            var batches = batch.Select(x => x.Segment.GetSource()).ToList();
+
             return await ErrorHandler.ExecuteWithErrorHandlingAsync(async () =>
-                    await Client.TranslateTextAsync(batch.Select(x => x.Segment.GetSource()), input.SourceLanguage, input.TargetLanguage, options));
+                    await Client.TranslateTextAsync(batches, input.SourceLanguage, input.TargetLanguage, options));
         }
 
         var translations = await content.GetUnits().Batch(100, x => !x.IsIgnorbale && x.IsInitial && !string.IsNullOrEmpty(x.GetSource())).Process(BatchTranslate);
@@ -236,14 +238,14 @@ public class TranslationActions(InvocationContext invocationContext, IFileManage
         };
     }
 
-    private static string GetDefaultTagHandling(FileReference file)
+    private static string GetDefaultTagHandling(Transformation transformation)
     {
-        if (file.ContentType?.Contains(MediaTypeNames.Text.Html, StringComparison.OrdinalIgnoreCase) == true)
+        if (transformation.OriginalMediaType?.Contains(MediaTypeNames.Text.Html, StringComparison.OrdinalIgnoreCase) == true)
         {
             return "html";
         }
 
-        var extension = Path.GetExtension(file.Name);
+        var extension = Path.GetExtension(transformation.OriginalName);
         return extension.Equals(".html", StringComparison.OrdinalIgnoreCase) ||
                extension.Equals(".htm", StringComparison.OrdinalIgnoreCase)
             ? "html"

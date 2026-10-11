@@ -1,0 +1,73 @@
+<xliff srcLang="en-us" trgLang="nl" version="2.2" xmlns:mda="urn:oasis:names:tc:xliff:metadata:2.0" xmlns:its="http://www.w3.org/2005/11/its" xmlns:fs="urn:oasis:names:tc:xliff:fs:2.0" xmlns="urn:oasis:names:tc:xliff:document:2.2">
+  <file id="f1" its:revPerson="Mathijs Sonnemans" its:revTool="Zendesk">
+    <skeleton>&lt;html lang="en-us"&gt;&lt;head&gt;&lt;title data-blackbird-key="17442755172497-title"&gt;Is Blackbird an iPaaS? Is Blackbird a TMS?&lt;/title&gt;&lt;meta name="blackbird-reference-id" content="17442755172497"&gt;&lt;meta name="blackbird-ucid" content="17442755172497"&gt;&lt;meta name="blackbird-content-name" content="Is Blackbird an iPaaS? Is Blackbird a TMS?"&gt;&lt;meta name="blackbird-admin-url" content="https://d3v-blackbird.zendesk.com/knowledge/editor/17442755172497/en-us"&gt;&lt;meta name="blackbird-public-url" content="https://d3v-blackbird.zendesk.com/hc/en-us/articles/17442755172497"&gt;&lt;meta name="blackbird-system-name" content="Zendesk"&gt;&lt;meta name="blackbird-system-ref" content="https://www.zendesk.com"&gt;&lt;/head&gt;&lt;body its-rev-tool="Zendesk" its-rev-tool-ref="https://www.zendesk.com" its-rev-person="Mathijs Sonnemans"&gt;&lt;p&gt;&lt;strong&gt;Is Blackbird an iPaaS?&lt;/strong&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;‍&lt;/strong&gt;Partly, but that description is increasingly incomplete.&lt;br&gt;&lt;br&gt;Blackbird has many characteristics of an integration and automation platform: connectors, triggers, workflow logic, APIs, an SDK and orchestration across applications. This makes it comparable to platforms like n8n, Camunda, Workato, Make or Zapier.&lt;br&gt;&lt;br&gt;But Blackbird is purpose-built for content and language operations. It understands concepts such as source and target content, language, translation, metadata, human review, AI quality, terminology, content changes and multilingual reuse.&lt;br&gt;&lt;br&gt;Blacklake also gives the platform a persistent content and context layer that a traditional iPaaS does not provide as they are stateless.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Is Blackbird a TMS?&lt;/strong&gt;&lt;br&gt;&lt;br&gt;Blackbird can work with a TMS, around a TMS, or increasingly without one.&lt;br&gt;&lt;br&gt;Many customers use Blackbird to orchestrate existing TMS platforms such as Smartling, Phrase, memoQ, Trados, XTM and others. In this model, Blackbird decouples integrations and business logic from the TMS.&lt;br&gt;&lt;br&gt;Blacklake extends the architecture further by providing capabilities traditionally associated with a TMS, including multilingual memory, terminology, style guidance, change detection, reuse, editing and approval.&lt;br&gt;&lt;br&gt;For some organizations, the TMS remains an important execution component. For others, Blackbird and Blacklake can become the foundation of a post-TMS architecture.&lt;br&gt; &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</skeleton>
+    <mda:metadata>
+      <mda:metaGroup category="blackbird">
+        <mda:meta type="original-name">Is Blackbird an iPaaS Is Blackbird a TMS.html</mda:meta>
+        <mda:meta type="original-media-type">text/html</mda:meta>
+        <mda:meta type="source-ucid">17442755172497</mda:meta>
+        <mda:meta type="source-content-name">Is Blackbird an iPaaS? Is Blackbird a TMS?</mda:meta>
+        <mda:meta type="source-admin-url">https://d3v-blackbird.zendesk.com/knowledge/editor/17442755172497/en-us</mda:meta>
+        <mda:meta type="source-public-url">https://d3v-blackbird.zendesk.com/hc/en-us/articles/17442755172497</mda:meta>
+        <mda:meta type="source-system-name">Zendesk</mda:meta>
+        <mda:meta type="source-system-ref">https://www.zendesk.com</mda:meta>
+      </mda:metaGroup>
+      <mda:metaGroup>
+        <mda:meta type="blackbird-reference-id">17442755172497</mda:meta>
+      </mda:metaGroup>
+      <mda:metaGroup category="Blacklake">
+        <mda:meta type="leverageId">90ea3541-681a-4d30-9d81-b9961d1b8746</mda:meta>
+      </mda:metaGroup>
+    </mda:metadata>
+    <notes>
+      <note category="Audience and messaging">Frame training around strength, energy, health and feeling good, not around weight loss, calorie burning or body shame. Examples: "Word sterker, elke week"; not "Verbrand die kerstkilo's".</note>
+      <note category="Audience and messaging">Never use guilt, fear or "bikini body" style pressure as motivation. Do not imply the reader's current body is a problem to be fixed.</note>
+      <note category="Audience and messaging">Assume the reader is busy and knows the basics. Reference real-life context such as werk, studie, reistijd and een druk weekend, and offer realistic options (15-minuten workout, thuis of in de gym).</note>
+      <note category="Audience and messaging">Avoid patronising or diminutive language. Do not use "meisje", "dametjes", "lieverd" or feminised product talk such as "gewichtjes" and "roze dumbbells". Address the reader as an adult athlete.</note>
+      <note category="Dates and times">Use the 24-hour clock with a colon as separator and write dates in day-month-year order. Examples: 07:30; 19:15; 4 januari 2027; 04-01-2027. Do not capitalise weekdays or months.</note>
+      <note category="Formatting">Front-load the benefit in headings and keep them under 60 characters. Use bullet lists for exercises, tips and steps rather than long paragraphs.</note>
+      <note category="Formatting">Use emoji generously to add energy and rhythm. Headings, social posts and short body copy may carry several, and bullet lists can be led by a fitting emoji per item. Favour sport, energy and celebration emoji. Examples: "Sterker in 4 weken"; "Rustdag = groeidag"; "Klaar voor leg day?". Keep them out of legal text, disclaimers and product specifications.</note>
+      <note category="Inclusivity">Write for all bodies and all levels. Mention beginner-friendly alternatives and equipment-free variations, and do not assume a specific body type, fitness level, relationship status or parenthood.</note>
+      <note category="Numbers and units">Use the metric system with a non-breaking space between number and unit. Examples: 5 km; 20 kg; 45 min; 2,5 kg. Use a comma as decimal separator and a period as thousands separator.</note>
+      <note category="Numbers and units">Write sets and reps in the conventional short form with a multiplication sign. Examples: 3 x 12 reps; 4 x 8 squats. Spell out numbers one to twelve in running text, but always use digits for sets, reps, weights and distances.</note>
+      <note category="Spelling and grammar">Write English loanwords as compounds according to Dutch rules, with a hyphen only where it aids readability. Examples: workoutschema; crossfitbox; hiit-training; core-oefening. Not: workout schema; core oefening.</note>
+      <note category="Spelling and grammar">Avoid writing entire words or sentences in capitals, except for acronyms and official names. Examples: HIIT; PR; AMRAP.</note>
+      <note category="Style and tone">Address the reader informally with "je" and "jij", never "u". The voice is a training buddy, not a coach barking orders. Examples: "Klaar voor je volgende PR?"; not "Bent u klaar voor uw volgende PR?".</note>
+      <note category="Style and tone">Keep the energy up but stay authentic: enthusiastic and encouraging, never shouty or hype-driven. Avoid exclamation-mark stacking and all-caps motivation. Examples: "Lekker bezig."; not "JIJ BENT EEN BEEST!!!".</note>
+      <note category="Style and tone">Write short, punchy sentences. Aim for a maximum of 20 words per sentence and one idea per sentence, so content stays scannable on mobile.</note>
+      <note category="Style and tone">Use active voice and direct calls to action. Examples: "Boek je proefles"; not "Er kan een proefles geboekt worden".</note>
+      <note category="Terminology">Keep established English fitness terms that this audience actually uses, and do not translate them into stiff Dutch. Examples: workout; core; squat; deadlift; reps; sets; warming-up; cooling-down; PR; rustdag. Not: opdrukoefening voor push-up; herhalingen voor reps.</note>
+      <note category="Terminology">Limit unnecessary anglicisms outside fitness jargon. Use the Dutch word when it is just as natural. Examples: "doel" instead of "goal"; "schema" instead of "schedule"; "voeding" instead of "nutrition".</note>
+      <note category="Terminology">Explain physiological or training-science terms in plain language the first time they appear. Examples: "progressive overload (steeds iets zwaarder of vaker trainen)"; "DOMS (spierpijn een dag of twee later)".</note>
+      <note category="Terminology">Never present training or nutrition advice as medical advice. Refer to a huisarts, fysiotherapeut or dietist for injuries, pregnancy, cycle-related complaints or eating concerns.</note>
+      <note category="Dates and times">Write years in full. Examples: 1989; 2025.</note>
+      <note category="Dates and times">Use the 24-hour clock with a colon as separator. Examples: 08:30; 17:00; 22:15.</note>
+      <note category="Spelling and grammar">Avoid writing entire words or sentences in capitals, except for acronyms, initialisms, and official names.</note>
+      <note category="Style and tone">Address the reader informally using “je”.</note>
+      <note category="Style and tone">Use a warm, friendly, and accessible tone.</note>
+      <note category="Style and tone">Prefer gender-neutral words and job titles where possible. Examples: voorzitter; medewerker; politieagent.</note>
+      <note category="Other">Write for a younger audience ages 20-35</note>
+    </notes>
+    <unit id="u1" name="/html[1]/head[1]/title[1]" fs:fs="title">
+      <mda:metadata>
+        <mda:metaGroup category="blackbird">
+          <mda:meta type="key">17442755172497-title</mda:meta>
+        </mda:metaGroup>
+      </mda:metadata>
+      <segment>
+        <source>Is Blackbird an iPaaS? Is Blackbird a TMS?</source>
+      </segment>
+    </unit>
+    <unit id="u2" name="/html[1]/body[1]/p[1]" fs:fs="p">
+      <originalData>
+        <data id="d1">&lt;strong&gt;</data>
+        <data id="d2">&lt;/strong&gt;</data>
+        <data id="d3">&lt;br&gt;</data>
+      </originalData>
+      <segment>
+        <source>
+          <sc id="1" dataRef="d1" fs:fs="strong" />Is Blackbird an iPaaS?<ec dataRef="d2" startRef="1" /><ph id="2" dataRef="d3" fs:fs="br" /><ph id="3" dataRef="d3" fs:fs="br" /><sc id="4" dataRef="d1" fs:fs="strong" />‍<ec dataRef="d2" startRef="4" />Partly, but that description is increasingly incomplete.<ph id="5" dataRef="d3" fs:fs="br" /><ph id="6" dataRef="d3" fs:fs="br" />Blackbird has many characteristics of an integration and automation platform: connectors, triggers, workflow logic, APIs, an SDK and orchestration across applications. This makes it comparable to platforms like n8n, Camunda, Workato, Make or Zapier.<ph id="7" dataRef="d3" fs:fs="br" /><ph id="8" dataRef="d3" fs:fs="br" />But Blackbird is purpose-built for content and language operations. It understands concepts such as source and target content, language, translation, metadata, human review, AI quality, terminology, content changes and multilingual reuse.<ph id="9" dataRef="d3" fs:fs="br" /><ph id="10" dataRef="d3" fs:fs="br" />Blacklake also gives the platform a persistent content and context layer that a traditional iPaaS does not provide as they are stateless.<ph id="11" dataRef="d3" fs:fs="br" /><ph id="12" dataRef="d3" fs:fs="br" /><sc id="13" dataRef="d1" fs:fs="strong" />Is Blackbird a TMS?<ec dataRef="d2" startRef="13" /><ph id="14" dataRef="d3" fs:fs="br" /><ph id="15" dataRef="d3" fs:fs="br" />Blackbird can work with a TMS, around a TMS, or increasingly without one.<ph id="16" dataRef="d3" fs:fs="br" /><ph id="17" dataRef="d3" fs:fs="br" />Many customers use Blackbird to orchestrate existing TMS platforms such as Smartling, Phrase, memoQ, Trados, XTM and others. In this model, Blackbird decouples integrations and business logic from the TMS.<ph id="18" dataRef="d3" fs:fs="br" /><ph id="19" dataRef="d3" fs:fs="br" />Blacklake extends the architecture further by providing capabilities traditionally associated with a TMS, including multilingual memory, terminology, style guidance, change detection, reuse, editing and approval.<ph id="20" dataRef="d3" fs:fs="br" /><ph id="21" dataRef="d3" fs:fs="br" />For some organizations, the TMS remains an important execution component. For others, Blackbird and Blacklake can become the foundation of a post-TMS architecture.<ph id="22" dataRef="d3" fs:fs="br" /></source>
+      </segment>
+    </unit>
+  </file>
+</xliff>
