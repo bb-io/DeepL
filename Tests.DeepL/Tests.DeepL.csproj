@@ -28,6 +28,9 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Input\Is Blackbird an iPaaS Is Blackbird a TMS.html.xlf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Input\Multilingual AI Roundtable 2025 in Malmö!.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

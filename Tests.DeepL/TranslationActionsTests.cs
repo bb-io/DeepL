@@ -212,6 +212,24 @@ public class TranslationActionsTests : TestBase
     }
 
     [TestMethod]
+    public async Task Translate_PrepardXliff()
+    {
+        var result = await _actions.TranslateContent(
+            new ContentTranslationRequest
+            {
+                File = new Blackbird.Applications.Sdk.Common.Files.FileReference
+                {
+                    Name = "Is Blackbird an iPaaS Is Blackbird a TMS.html.xlf",
+                },
+                TargetLanguage = "nl",
+            });
+
+        Assert.IsNotNull(result);
+        Console.WriteLine(result.BilledCharacters);
+        Assert.IsTrue(result.BilledCharacters > 0);
+    }
+
+    [TestMethod]
     public async Task Translate_Buttons()
     {
         var result = await _actions.TranslateContent(
