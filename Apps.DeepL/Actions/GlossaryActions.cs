@@ -1026,9 +1026,18 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         }
 
         var entries = new List<KeyValuePair<string, string>>();
-        foreach (var line in lines)
+        for (var i = 0; i < lines.Count; i++)
         {
-            entries.Add(new KeyValuePair<string, string>(line.Split(',')[0], line.Split(',')[1]));
+            var line = lines[i];
+            if (string.IsNullOrWhiteSpace(line))
+                continue;
+
+            var columns = SplitDelimitedLine(line, ',');
+            if (columns.Count < 2)
+                throw new PluginMisconfigurationException(
+                    $"Invalid CSV format at line {i + 1}. Each non-empty row must contain at least two comma-separated columns.");
+
+            entries.Add(new KeyValuePair<string, string>(columns[0], columns[1]));
         }
 
         return (new GlossaryEntries(entries.DistinctBy(x => x.Key)), request.Name ?? request.File.Name);
@@ -1047,9 +1056,18 @@ public class GlossaryActions(InvocationContext invocationContext, IFileManagemen
         }
 
         var tsvEntries = new List<KeyValuePair<string, string>>();
-        foreach (var line in tsvLines)
+        for (var i = 0; i < tsvLines.Count; i++)
         {
-            tsvEntries.Add(new KeyValuePair<string, string>(line.Split('\t')[0], line.Split('\t')[1]));
+            var line = tsvLines[i];
+            if (string.IsNullOrWhiteSpace(line))
+                continue;
+
+            var columns = SplitDelimitedLine(line, '\t');
+            if (columns.Count < 2)
+                throw new PluginMisconfigurationException(
+                    $"Invalid TSV format at line {i + 1}. Each non-empty row must contain at least two tab-separated columns.");
+
+            tsvEntries.Add(new KeyValuePair<string, string>(columns[0], columns[1]));
         }
 
         return (new GlossaryEntries(tsvEntries.DistinctBy(x => x.Key)), request.Name ?? request.File.Name);
